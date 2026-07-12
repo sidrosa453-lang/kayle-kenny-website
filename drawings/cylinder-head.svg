@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M175 110 L220 70 L220 130 L175 170 Z" fill="#e3e3e3"/>
+    <path d="M25 110 L175 110 L175 170 L25 170 Z" fill="#f2f2f2"/>
+    <path d="M25 110 L70 70 L220 70 L175 110 Z" fill="#ffffff"/>
+    <path d="M25 158 L175 158" stroke-width="3"/>
+    <path d="M175 158 L220 118" stroke-width="3"/>
+    <ellipse cx="58" cy="134" rx="13" ry="9" fill="#e3e3e3" stroke-width="3.5"/>
+    <ellipse cx="100" cy="134" rx="13" ry="9" fill="#e3e3e3" stroke-width="3.5"/>
+    <ellipse cx="142" cy="134" rx="13" ry="9" fill="#e3e3e3" stroke-width="3.5"/>
+    <ellipse cx="100" cy="134" rx="6" ry="4" fill="#da291c" stroke-width="3"/>
+    <path d="M66 91 L66 69" stroke-width="3"/>
+    <path d="M90 91 L90 69" stroke-width="3"/>
+    <path d="M66 91 A12 5 0 0 0 90 91" stroke-width="3"/>
+    <path d="M66 84 A12 5 0 0 0 90 84" stroke-width="3"/>
+    <path d="M66 77 A12 5 0 0 0 90 77" stroke-width="3"/>
+    <ellipse cx="78" cy="69" rx="12" ry="4.5" fill="#f2f2f2" stroke-width="3"/>
+    <path d="M112 91 L112 69" stroke-width="3"/>
+    <path d="M136 91 L136 69" stroke-width="3"/>
+    <path d="M112 91 A12 5 0 0 0 136 91" stroke-width="3"/>
+    <path d="M112 84 A12 5 0 0 0 136 84" stroke-width="3"/>
+    <path d="M112 77 A12 5 0 0 0 136 77" stroke-width="3"/>
+    <ellipse cx="124" cy="69" rx="12" ry="4.5" fill="#f2f2f2" stroke-width="3"/>
+    <path d="M158 91 L158 69" stroke-width="3"/>
+    <path d="M182 91 L182 69" stroke-width="3"/>
+    <path d="M158 91 A12 5 0 0 0 182 91" stroke-width="3"/>
+    <path d="M158 84 A12 5 0 0 0 182 84" stroke-width="3"/>
+    <path d="M158 77 A12 5 0 0 0 182 77" stroke-width="3"/>
+    <ellipse cx="170" cy="69" rx="12" ry="4.5" fill="#f2f2f2" stroke-width="3"/>
+    <ellipse cx="50" cy="102" rx="4" ry="2.5" fill="#e3e3e3" stroke-width="3"/>
+    <ellipse cx="94" cy="102" rx="4" ry="2.5" fill="#e3e3e3" stroke-width="3"/>
+    <ellipse cx="138" cy="102" rx="4" ry="2.5" fill="#e3e3e3" stroke-width="3"/>
+    <ellipse cx="178" cy="102" rx="4" ry="2.5" fill="#e3e3e3" stroke-width="3"/>
+  </g>
+</svg>

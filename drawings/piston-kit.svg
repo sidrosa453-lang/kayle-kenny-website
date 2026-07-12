@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <!-- ===== cylinder liner (left) ===== -->
+  <path d="M31 59.5 L31 196 A27 8 0 0 0 85 196 L85 59.5 A34 9 0 0 1 31 59.5 Z" fill="#ffffff" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 42 L24 54 A34 9 0 0 0 92 54 L92 42 A34 9 0 0 1 24 42 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="58" cy="42" rx="34" ry="9" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="3.5"/>
+  <ellipse cx="58" cy="42" rx="23" ry="6" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3"/>
+  <path d="M40 44 A18 5 0 0 1 76 44" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M31 180 A27 8 0 0 0 85 180" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <!-- ===== piston (top right) ===== -->
+  <path d="M128 38 Q128 30 136 30 L184 30 Q192 30 192 38 L192 116 Q160 126 128 116 Z" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M128 44 H192 V49 H128 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M128 55 H192 V60 H128 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M128 66 H192 V73 H128 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="160" cy="96" r="15" fill="#ffffff" stroke="#1a1a1a" stroke-width="3.5"/>
+  <circle cx="160" cy="96" r="9" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3"/>
+  <path d="M166 106.4 A12 12 0 1 0 154 106.4" fill="none" stroke="#da291c" stroke-width="3" stroke-linecap="round"/>
+  <!-- ===== wrist pin (middle right) ===== -->
+  <path d="M130 139 L192 139 A8 13 0 0 1 192 165 L130 165 Z" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="130" cy="152" rx="8" ry="13" fill="#ffffff" stroke="#1a1a1a" stroke-width="3.5"/>
+  <ellipse cx="130" cy="152" rx="4" ry="6.5" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3"/>
+  <!-- ===== ring set with end gaps (bottom right) ===== -->
+  <path d="M153.1 192.9 A40 9 0 1 1 166.9 192.9" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M153.1 206.9 A40 9 0 1 1 166.9 206.9" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M153.1 220.9 A40 9 0 1 1 166.9 220.9" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- open circlip body, gap at top -->
+    <path d="M151.3 29.2 A96 96 0 1 1 88.7 29.2 L97.2 53.8 A70 70 0 1 0 142.8 53.8 Z" fill="#e3e3e3"/>
+    <!-- rounded lug ears at the gap -->
+    <circle cx="147" cy="41.5" r="15" fill="#e3e3e3"/>
+    <circle cx="93" cy="41.5" r="15" fill="#e3e3e3"/>
+    <!-- plier holes -->
+    <circle cx="147" cy="41.5" r="7" fill="#ffffff" stroke-width="3.5"/>
+    <circle cx="93" cy="41.5" r="7" fill="#ffffff" stroke-width="3.5"/>
+    <!-- red size-marking paint dot -->
+    <circle cx="120" cy="203" r="4.5" fill="#da291c" stroke-width="3"/>
+  </g>
+</svg>

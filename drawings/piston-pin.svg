@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- pin body, back edge curved -->
+    <path d="M37 69 L203 69 A20 51 0 0 1 203 171 L37 171 Z" fill="#f2f2f2"/>
+    <!-- chamfer ring near far end -->
+    <path d="M193 69 A20 51 0 0 1 193 171" fill="none" stroke-width="3"/>
+    <!-- front face: thick wall with chamfer and through-bore -->
+    <ellipse cx="37" cy="120" rx="20" ry="51" fill="#e3e3e3"/>
+    <ellipse cx="37" cy="120" rx="17" ry="44" fill="none" stroke-width="3"/>
+    <ellipse cx="37" cy="120" rx="12" ry="31" fill="#ffffff"/>
+    <!-- red center oiling hole -->
+    <ellipse cx="120" cy="74" rx="8" ry="4.5" fill="#da291c" stroke-width="3.5"/>
+  </g>
+</svg>

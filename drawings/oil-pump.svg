@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- mounting flange with bolt holes -->
+    <rect x="36" y="28" width="168" height="20" rx="5" fill="#e3e3e3"/>
+    <circle cx="50" cy="38" r="5" fill="#ffffff" stroke-width="3"/>
+    <circle cx="190" cy="38" r="5" fill="#ffffff" stroke-width="3"/>
+    <!-- pump body -->
+    <rect x="52" y="46" width="136" height="114" rx="16" fill="#f2f2f2"/>
+    <!-- outlet port stub (right) -->
+    <path d="M188 92 h18 v26 h-18" fill="#e3e3e3"/>
+    <!-- cutaway gear cavity -->
+    <rect x="61" y="71" width="118" height="66" rx="33" fill="#ffffff"/>
+    <!-- drive gear teeth -->
+    <g stroke-width="3" fill="#e3e3e3">
+      <rect x="89.5" y="74" width="9" height="10" rx="2"/>
+      <rect x="89.5" y="74" width="9" height="10" rx="2" transform="rotate(45 94 104)"/>
+      <rect x="89.5" y="74" width="9" height="10" rx="2" transform="rotate(90 94 104)"/>
+      <rect x="89.5" y="74" width="9" height="10" rx="2" transform="rotate(135 94 104)"/>
+      <rect x="89.5" y="74" width="9" height="10" rx="2" transform="rotate(180 94 104)"/>
+      <rect x="89.5" y="74" width="9" height="10" rx="2" transform="rotate(225 94 104)"/>
+      <rect x="89.5" y="74" width="9" height="10" rx="2" transform="rotate(270 94 104)"/>
+      <rect x="89.5" y="74" width="9" height="10" rx="2" transform="rotate(315 94 104)"/>
+    </g>
+    <circle cx="94" cy="104" r="23" fill="#e3e3e3"/>
+    <!-- idler gear teeth (offset to mesh) -->
+    <g stroke-width="3" fill="#e3e3e3">
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(22.5 146 104)"/>
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(67.5 146 104)"/>
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(112.5 146 104)"/>
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(157.5 146 104)"/>
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(202.5 146 104)"/>
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(247.5 146 104)"/>
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(292.5 146 104)"/>
+      <rect x="141.5" y="74" width="9" height="10" rx="2" transform="rotate(337.5 146 104)"/>
+    </g>
+    <circle cx="146" cy="104" r="23" fill="#e3e3e3"/>
+    <!-- shaft hubs (red = drive shaft accent) -->
+    <circle cx="94" cy="104" r="5.5" fill="#da291c" stroke-width="3"/>
+    <circle cx="146" cy="104" r="5.5" fill="#ffffff" stroke-width="3"/>
+    <!-- pickup tube and strainer bell -->
+    <path d="M104 160 v14 l-16 22 h48 l-16 -22 v-14" fill="#f2f2f2"/>
+    <rect x="80" y="196" width="72" height="10" rx="4" fill="#e3e3e3"/>
+    <path d="M96 199 v4 M112 199 v4 M128 199 v4" fill="none" stroke-width="3"/>
+  </g>
+</svg>

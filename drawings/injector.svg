@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- electrical connector (top right) -->
+    <path d="M140 30 h24 a6 6 0 0 1 6 6 v8 a6 6 0 0 1 -6 6 h-24" fill="#f2f2f2"/>
+    <path d="M160 34 v12" fill="none" stroke-width="3"/>
+    <!-- solenoid cap -->
+    <rect x="98" y="20" width="44" height="40" rx="7" fill="#e3e3e3"/>
+    <path d="M106 32 h28" fill="none" stroke-width="3"/>
+    <!-- upper body -->
+    <rect x="103" y="60" width="34" height="42" fill="#f2f2f2"/>
+    <!-- high-pressure fuel inlet stub (left) -->
+    <path d="M103 68 H84 V84 H103" fill="#f2f2f2"/>
+    <rect x="72" y="63" width="14" height="26" rx="3" fill="#e3e3e3"/>
+    <path d="M79 66 v20" fill="none" stroke-width="3"/>
+    <!-- red O-ring band accent -->
+    <rect x="103" y="92" width="34" height="8" fill="#da291c"/>
+    <!-- hex body nut -->
+    <rect x="91" y="102" width="58" height="30" fill="#e3e3e3"/>
+    <path d="M109 102 v30 M131 102 v30" fill="none" stroke-width="3"/>
+    <!-- lower body -->
+    <rect x="106" y="132" width="28" height="30" fill="#f2f2f2"/>
+    <path d="M106 147 h28" fill="none" stroke-width="3"/>
+    <!-- nozzle retaining nut taper -->
+    <path d="M106 162 h28 l-8 32 h-12 z" fill="#f2f2f2"/>
+    <!-- nozzle -->
+    <rect x="116" y="194" width="8" height="16" fill="#e3e3e3"/>
+    <path d="M116 210 h8 l-4 12 z" fill="#e3e3e3"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 12-tooth gear body -->
+    <path d="M 103 39.8 L 107.8 20.7 A 100 100 0 0 1 132.2 20.7 L 137 39.8 A 82 82 0 0 1 145.3 42 L 159.1 27.9 A 100 100 0 0 1 180.2 40.1 L 174.9 59.1 A 82 82 0 0 1 180.9 65.1 L 199.9 59.8 A 100 100 0 0 1 212.1 80.9 L 198 94.7 A 82 82 0 0 1 200.2 103 L 219.3 107.8 A 100 100 0 0 1 219.3 132.2 L 200.2 137 A 82 82 0 0 1 198 145.3 L 212.1 159.1 A 100 100 0 0 1 199.9 180.2 L 180.9 174.9 A 82 82 0 0 1 174.9 180.9 L 180.2 199.9 A 100 100 0 0 1 159.1 212.1 L 145.3 198 A 82 82 0 0 1 137 200.2 L 132.2 219.3 A 100 100 0 0 1 107.8 219.3 L 103 200.2 A 82 82 0 0 1 94.7 198 L 80.9 212.1 A 100 100 0 0 1 59.8 199.9 L 65.1 180.9 A 82 82 0 0 1 59.1 174.9 L 40.1 180.2 A 100 100 0 0 1 27.9 159.1 L 42 145.3 A 82 82 0 0 1 39.8 137 L 20.7 132.2 A 100 100 0 0 1 20.7 107.8 L 39.8 103 A 82 82 0 0 1 42 94.7 L 27.9 80.9 A 100 100 0 0 1 40.1 59.8 L 59.1 65.1 A 82 82 0 0 1 65.1 59.1 L 59.8 40.1 A 100 100 0 0 1 80.9 27.9 L 94.7 42 A 82 82 0 0 1 103 39.8 Z" fill="#f2f2f2" stroke-width="4"/>
+    <!-- gear bore -->
+    <circle cx="120" cy="120" r="60" fill="#ffffff" stroke-width="4"/>
+    <!-- piston silhouette inside the bore -->
+    <path d="M 90 82 L 150 82 Q 156 82 156 88 L 156 156 Q 156 166 146 166 L 94 166 Q 84 166 84 156 L 84 88 Q 84 82 90 82 Z" fill="#e3e3e3" stroke-width="4"/>
+    <!-- top ring groove (red accent) -->
+    <path d="M 86 96 L 154 96" fill="none" stroke="#da291c" stroke-width="4"/>
+    <!-- second and oil ring grooves -->
+    <path d="M 85 106 L 155 106" fill="none" stroke-width="3"/>
+    <path d="M 85 116 L 155 116" fill="none" stroke-width="3"/>
+    <!-- piston pin bore -->
+    <circle cx="120" cy="141" r="12" fill="#ffffff" stroke-width="4"/>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- top bypass port stub (behind housing) -->
+    <path d="M98 58 V30 h28 V58" fill="#f2f2f2"/>
+    <rect x="90" y="18" width="44" height="14" rx="5" fill="#e3e3e3"/>
+    <!-- mounting bolt ears (behind housing) -->
+    <circle cx="44" cy="70" r="13" fill="#e3e3e3"/>
+    <circle cx="34" cy="160" r="13" fill="#e3e3e3"/>
+    <circle cx="150" cy="204" r="13" fill="#e3e3e3"/>
+    <!-- volute housing -->
+    <circle cx="110" cy="126" r="74" fill="#f2f2f2"/>
+    <!-- coolant inlet pipe with hose bead flange -->
+    <path d="M176 100 h32 v40 h-32" fill="#f2f2f2"/>
+    <rect x="206" y="92" width="16" height="56" rx="7" fill="#e3e3e3"/>
+    <!-- volute scroll line into the pipe -->
+    <path d="M110 74 a56 56 0 0 1 56 52 l10 2" fill="none" stroke-width="3"/>
+    <!-- pulley hub flange -->
+    <circle cx="110" cy="126" r="34" fill="#e3e3e3"/>
+    <circle cx="110" cy="126" r="12" fill="#ffffff"/>
+    <!-- hub bolt holes -->
+    <circle cx="110" cy="102" r="4.5" fill="#ffffff" stroke-width="3"/>
+    <circle cx="110" cy="150" r="4.5" fill="#ffffff" stroke-width="3"/>
+    <circle cx="86" cy="126" r="4.5" fill="#ffffff" stroke-width="3"/>
+    <circle cx="134" cy="126" r="4.5" fill="#ffffff" stroke-width="3"/>
+    <!-- bolt holes in mounting ears -->
+    <circle cx="44" cy="70" r="4.5" fill="#ffffff" stroke-width="3"/>
+    <circle cx="34" cy="160" r="4.5" fill="#ffffff" stroke-width="3"/>
+    <circle cx="150" cy="204" r="4.5" fill="#ffffff" stroke-width="3"/>
+    <!-- shaft end red accent -->
+    <circle cx="110" cy="126" r="5" fill="#da291c" stroke-width="3"/>
+  </g>
+</svg>

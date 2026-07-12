@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <g stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- sleeve body, back edge curved -->
+    <path d="M51 41 L192 41 A31 79 0 0 1 192 199 L51 199 Z" fill="#f2f2f2"/>
+    <!-- circumferential oil groove -->
+    <path d="M124 41 A31 79 0 0 1 124 199" fill="none" stroke-width="3"/>
+    <!-- front face ring showing wall thickness -->
+    <ellipse cx="51" cy="120" rx="31" ry="79" fill="#e3e3e3"/>
+    <ellipse cx="51" cy="120" rx="22" ry="61" fill="#ffffff"/>
+    <!-- red oil hole on the groove -->
+    <ellipse cx="124" cy="48" rx="10" ry="6" fill="#da291c" stroke-width="3.5"/>
+  </g>
+</svg>

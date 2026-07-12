@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EURL Kayle Kenny — Engine Parts | Algiers</title>
+  <meta name="description" content="EURL Kayle Kenny — engine parts in stock in Algiers. Search your part reference to check availability, compatible references and price.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#home" class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="currentColor" d="M24 4l3.1 4.9 5.6-1.6 1 5.7 5.7 1-1.6 5.6L42.7 22 38 25.9l1.6 5.6-5.7 1-1 5.7-5.6-1.6L24 44l-3.1-4.9-5.6 1.6-1-5.7-5.7-1 1.6-5.6L5.3 22 10 18.1l-1.6-5.6 5.7-1 1-5.7 5.6 1.6L24 4z" opacity="0.3"/>
+        <circle cx="24" cy="24" r="11" fill="none" stroke="currentColor" stroke-width="3"/>
+        <circle cx="24" cy="24" r="4" fill="currentColor"/>
+      </svg>
+      <span class="brand-text">
+        <strong>KAYLE KENNY</strong>
+        <small data-i18n="brand.tag">Engine parts · Algiers</small>
+      </span>
+    </a>
+    <div class="header-right">
+      <nav class="main-nav">
+        <a href="#home" data-i18n="nav.search">Search</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language" id="lang-switch">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="ar">ع</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="view-home">
+    <section class="hero" id="search">
+      <div class="container">
+        <p class="hero-kicker"><span class="kicker-bar"></span><span data-i18n="hero.kicker">Diesel engine parts — Algiers</span></p>
+        <h1 data-i18n="hero.title">Find your part. Check it. Reserve it.</h1>
+        <p class="hero-sub" data-i18n="hero.sub">Enter your part reference or part name — we instantly tell you if it is available, which references are interchangeable, and the price.</p>
+        <form class="search-box" id="search-form" role="search">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <input id="search-input" type="search" autocomplete="off" spellcheck="false"
+                 placeholder="Part reference or name — e.g. 3917320, injector…" aria-label="Search parts">
+          <button type="submit" data-i18n="search.button">Search</button>
+        </form>
+        <p class="hero-hint"><span data-i18n="search.hint">Try:</span><span id="hint-chips"></span></p>
+        <p class="hero-disclaimer" data-i18n="brand.disclaimer">Independent parts supplier — not affiliated with or endorsed by Cummins Inc. References are used for identification only.</p>
+      </div>
+    </section>
+
+    <section class="results container" id="results" hidden aria-live="polite"></section>
+
+    <section class="steps">
+      <div class="container steps-grid">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3 data-i18n="steps.1title">Search your reference</h3>
+          <p data-i18n="steps.1body">Type the part number stamped on your part or listed in your engine manual.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3 data-i18n="steps.2title">Check availability &amp; price</h3>
+          <p data-i18n="steps.2body">See instantly if it is in stock, which references are interchangeable, and the price.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3 data-i18n="steps.3title">Call or WhatsApp us</h3>
+          <p data-i18n="steps.3body">Reserve your part in one message — we confirm compatibility before you buy.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="view-detail" hidden>
+    <section class="detail container" id="detail-content"></section>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-card">
+        <h2 data-i18n="contact.title">Visit our shop</h2>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <div>
+              <strong data-i18n="contact.address">Address</strong>
+              <span id="company-address"></span>
+              <a id="company-maps" href="#" target="_blank" rel="noopener" data-i18n="contact.directions">Get directions →</a>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.9 15.9 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+            <div>
+              <strong data-i18n="contact.phone">Phone</strong>
+              <a id="company-phone" href="#" dir="ltr"></a>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 3.5 17.3L2 22l4.8-1.4A10 10 0 1 0 12 2zm5 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.8-5.1c-.7-1.1-1-2-1-2.6 0-.7.4-1.3.7-1.6.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2c.1.2.1.4 0 .6l-.4.7c-.2.2-.3.4-.1.7.5.9 1.3 1.7 2 2.3.6.5 1.2.8 1.5 1 .3.1.5.1.7-.1l.8-1c.2-.3.4-.3.7-.2l2 1c.3.1.5.2.5.4 0 .1 0 .5-.2.7z"/></svg>
+            <div>
+              <strong>WhatsApp</strong>
+              <a id="company-whatsapp" href="#" target="_blank" rel="noopener" data-i18n="contact.whatsappCta">Message us on WhatsApp</a>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4 11h-5V6h2v5h3z"/></svg>
+            <div>
+              <strong data-i18n="contact.hours">Opening hours</strong>
+              <span data-i18n="contact.hoursValue">Saturday – Thursday, 8:00 – 17:00</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h2 data-i18n="about.title">About Kayle Kenny</h2>
+        <p data-i18n="about.body">EURL Kayle Kenny imports and distributes diesel engine parts for trucks, machinery and industrial engines: crankshafts, cylinder heads, injectors, bearings, pistons, gasket sets, pumps and more.</p>
+        <p data-i18n="about.cta">Can't find your reference? Contact us — we check compatibility and order the part for you.</p>
+        <div class="registry" id="company-registry"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span id="footer-name"></span>
+    <span data-i18n="footer.disclaimer">Independent supplier. Not affiliated with or endorsed by Cummins Inc. All trademarks belong to their respective owners and are used for identification purposes only.</span>
+    <span data-i18n="footer.note">Prices are indicative and subject to confirmation.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

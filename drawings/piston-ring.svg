@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <!-- inner far wall visible through the ring bore -->
+  <path d="M50 119 A72 34 0 1 1 190 119 A72 34 0 0 0 50 119 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- front outer wall, left of end gap -->
+  <path d="M25 111 A95 46 0 0 0 108 156.6 L108 172.6 A95 46 0 0 1 25 127 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- front outer wall, right of end gap -->
+  <path d="M132 156.6 A95 46 0 0 0 215 111 L215 127 A95 46 0 0 1 132 172.6 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- top face of ring, broken at the end gap -->
+  <path d="M108 156.6 A95 46 0 1 1 132 156.6 L130 144.7 A72 34 0 1 0 110 144.7 Z" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- end gap faces -->
+  <path d="M108 156.6 L110 144.7 L110 160.7 L108 172.6 Z" fill="#ffffff" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M132 156.6 L130 144.7 L130 160.7 L132 172.6 Z" fill="#ffffff" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- red top-side marking dot near the gap -->
+  <circle cx="95" cy="149" r="4.5" fill="#da291c"/>
+</svg>

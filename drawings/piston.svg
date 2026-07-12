@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <!-- piston body: crown, ring belt, skirt with curved bottom -->
+  <path d="M56 42 Q56 32 66 32 L174 32 Q184 32 184 42 L184 198 Q120 212 56 198 Z" fill="#f2f2f2" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ring groove 1 (top compression) -->
+  <path d="M56 52 H184 V60 H56 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ring groove 2 (second compression) -->
+  <path d="M56 70 H184 V78 H56 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ring groove 3 (oil control, taller with rail line) -->
+  <path d="M56 88 H184 V100 H56 Z" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M62 94 H178" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <!-- pin bore -->
+  <circle cx="120" cy="150" r="27" fill="#ffffff" stroke="#1a1a1a" stroke-width="4"/>
+  <circle cx="120" cy="150" r="17" fill="#e3e3e3" stroke="#1a1a1a" stroke-width="3.5"/>
+  <!-- red circlip accent in pin bore -->
+  <path d="M131 169 A22 22 0 1 0 109 169" fill="none" stroke="#da291c" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
