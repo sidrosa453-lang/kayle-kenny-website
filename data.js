@@ -4,18 +4,12 @@
 window.PARTS_DATA = {
   "company": {
     "name": "EURL KAYLE KENNY",
-    "address": "El Djenina 200 Logts Social Participatif, Lido, Mohammadia, Algiers, Algeria",
     "phone": "+213 558 96 10 49",
-    "phoneRaw": "+213558961049",
     "whatsapp": "https://wa.me/213558961049",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=El+Djenina+200+Logts+Lido+Mohammadia+Alger",
     "nif": "002416105252219",
     "nis": "002416290068050",
     "rc": "16/00-1052522B24"
-  },
-  "config": {
-    "currency": "DZD",
-    "priceMultiplier": 1
   },
   "parts": [
     {
@@ -28,8 +22,7 @@ window.PARTS_DATA = {
       "display": "3801106",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 29500
+      "inStock": true
     },
     {
       "id": 2,
@@ -41,8 +34,7 @@ window.PARTS_DATA = {
       "display": "214951",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 10500
+      "inStock": true
     },
     {
       "id": 3,
@@ -55,8 +47,7 @@ window.PARTS_DATA = {
       "display": "3950661 / 4966244",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 16700
+      "inStock": true
     },
     {
       "id": 4,
@@ -69,8 +60,7 @@ window.PARTS_DATA = {
       "display": "3966245 / 3901431",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 6400
+      "inStock": true
     },
     {
       "id": 5,
@@ -83,8 +73,7 @@ window.PARTS_DATA = {
       "display": "3969562 / 4893693",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 1000
+      "inStock": true
     },
     {
       "id": 6,
@@ -96,8 +85,7 @@ window.PARTS_DATA = {
       "display": "3016760",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 32600
+      "inStock": true
     },
     {
       "id": 7,
@@ -109,8 +97,7 @@ window.PARTS_DATA = {
       "display": "3016761",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 10800
+      "inStock": true
     },
     {
       "id": 8,
@@ -123,8 +110,7 @@ window.PARTS_DATA = {
       "display": "3950661 / 4966244",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 1400
+      "inStock": true
     },
     {
       "id": 9,
@@ -137,8 +123,7 @@ window.PARTS_DATA = {
       "display": "3969562 / 4893693",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 5900
+      "inStock": true
     },
     {
       "id": 10,
@@ -151,8 +136,7 @@ window.PARTS_DATA = {
       "display": "4893693 / 3939859",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 4000
+      "inStock": true
     },
     {
       "id": 11,
@@ -164,8 +148,7 @@ window.PARTS_DATA = {
       "display": "214950",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 31200
+      "inStock": true
     },
     {
       "id": 12,
@@ -177,8 +160,7 @@ window.PARTS_DATA = {
       "display": "4892795",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 500
+      "inStock": true
     },
     {
       "id": 13,
@@ -190,8 +172,7 @@ window.PARTS_DATA = {
       "display": "2882729",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 354600
+      "inStock": true
     },
     {
       "id": 14,
@@ -203,8 +184,7 @@ window.PARTS_DATA = {
       "display": "3608833",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 782900
+      "inStock": true
     },
     {
       "id": 15,
@@ -216,8 +196,7 @@ window.PARTS_DATA = {
       "display": "3917320",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 226300
+      "inStock": true
     },
     {
       "id": 16,
@@ -229,8 +208,7 @@ window.PARTS_DATA = {
       "display": "3965012",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 226300
+      "inStock": true
     },
     {
       "id": 17,
@@ -242,8 +220,7 @@ window.PARTS_DATA = {
       "display": "5362421",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 115900
+      "inStock": true
     },
     {
       "id": 18,
@@ -255,8 +232,7 @@ window.PARTS_DATA = {
       "display": "5362424",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 132800
+      "inStock": true
     },
     {
       "id": 19,
@@ -268,8 +244,7 @@ window.PARTS_DATA = {
       "display": "3966448",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 118400
+      "inStock": true
     },
     {
       "id": 20,
@@ -281,8 +256,7 @@ window.PARTS_DATA = {
       "display": "3966454",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 183000
+      "inStock": true
     },
     {
       "id": 21,
@@ -294,8 +268,7 @@ window.PARTS_DATA = {
       "display": "3967432",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 141400
+      "inStock": true
     },
     {
       "id": 22,
@@ -307,8 +280,7 @@ window.PARTS_DATA = {
       "display": "3973493",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 264000
+      "inStock": true
     },
     {
       "id": 23,
@@ -320,8 +292,7 @@ window.PARTS_DATA = {
       "display": "4981003",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 139800
+      "inStock": true
     },
     {
       "id": 24,
@@ -333,8 +304,7 @@ window.PARTS_DATA = {
       "display": "4987973",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 361800
+      "inStock": true
     },
     {
       "id": 25,
@@ -346,8 +316,7 @@ window.PARTS_DATA = {
       "display": "4999617",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 612000
+      "inStock": true
     },
     {
       "id": 26,
@@ -359,8 +328,7 @@ window.PARTS_DATA = {
       "display": "5259423",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 450600
+      "inStock": true
     },
     {
       "id": 27,
@@ -372,8 +340,7 @@ window.PARTS_DATA = {
       "display": "3938267",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 12300
+      "inStock": true
     },
     {
       "id": 28,
@@ -385,8 +352,7 @@ window.PARTS_DATA = {
       "display": "4022500",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 41600
+      "inStock": true
     },
     {
       "id": 29,
@@ -398,8 +364,7 @@ window.PARTS_DATA = {
       "display": "4058790",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 14200
+      "inStock": true
     },
     {
       "id": 30,
@@ -411,8 +376,7 @@ window.PARTS_DATA = {
       "display": "4981796 (Grey)",
       "note": "Grey",
       "unit": "pc",
-      "inStock": true,
-      "price": 12300
+      "inStock": true
     },
     {
       "id": 31,
@@ -424,8 +388,7 @@ window.PARTS_DATA = {
       "display": "3800328",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 12300
+      "inStock": true
     },
     {
       "id": 32,
@@ -437,8 +400,7 @@ window.PARTS_DATA = {
       "display": "3801826",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 21000
+      "inStock": true
     },
     {
       "id": 33,
@@ -450,8 +412,7 @@ window.PARTS_DATA = {
       "display": "3904166",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 2600
+      "inStock": true
     },
     {
       "id": 34,
@@ -463,8 +424,7 @@ window.PARTS_DATA = {
       "display": "3904167",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 3300
+      "inStock": true
     },
     {
       "id": 35,
@@ -476,8 +436,7 @@ window.PARTS_DATA = {
       "display": "3080760",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 12500
+      "inStock": true
     },
     {
       "id": 36,
@@ -489,8 +448,7 @@ window.PARTS_DATA = {
       "display": "145701",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 4900
+      "inStock": true
     },
     {
       "id": 37,
@@ -502,8 +460,7 @@ window.PARTS_DATA = {
       "display": "5259419",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 4300
+      "inStock": true
     },
     {
       "id": 38,
@@ -515,8 +472,7 @@ window.PARTS_DATA = {
       "display": "3920868",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 1700
+      "inStock": true
     },
     {
       "id": 39,
@@ -528,8 +484,7 @@ window.PARTS_DATA = {
       "display": "4934063",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 400
+      "inStock": true
     },
     {
       "id": 40,
@@ -541,8 +496,7 @@ window.PARTS_DATA = {
       "display": "3904409",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 300
+      "inStock": true
     },
     {
       "id": 41,
@@ -554,8 +508,7 @@ window.PARTS_DATA = {
       "display": "3054218",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 44400
+      "inStock": true
     },
     {
       "id": 42,
@@ -567,8 +520,7 @@ window.PARTS_DATA = {
       "display": "4026222",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 206600
+      "inStock": true
     },
     {
       "id": 43,
@@ -580,8 +532,7 @@ window.PARTS_DATA = {
       "display": "5263308",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 87900
+      "inStock": true
     },
     {
       "id": 44,
@@ -595,8 +546,7 @@ window.PARTS_DATA = {
       "display": "3356587 / 3283577 / 5342352",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 10700
+      "inStock": true
     },
     {
       "id": 45,
@@ -609,8 +559,7 @@ window.PARTS_DATA = {
       "display": "4945969 / 5263262",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 84300
+      "inStock": true
     },
     {
       "id": 46,
@@ -623,8 +572,7 @@ window.PARTS_DATA = {
       "display": "3356587 / 4063212",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 30300
+      "inStock": true
     },
     {
       "id": 47,
@@ -636,8 +584,7 @@ window.PARTS_DATA = {
       "display": "200354",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 1700
+      "inStock": true
     },
     {
       "id": 48,
@@ -649,8 +596,7 @@ window.PARTS_DATA = {
       "display": "3920867",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 1300
+      "inStock": true
     },
     {
       "id": 49,
@@ -662,8 +608,7 @@ window.PARTS_DATA = {
       "display": "5259420",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 4500
+      "inStock": true
     },
     {
       "id": 50,
@@ -675,8 +620,7 @@ window.PARTS_DATA = {
       "display": "135957",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 1900
+      "inStock": true
     },
     {
       "id": 51,
@@ -688,8 +632,7 @@ window.PARTS_DATA = {
       "display": "3904408",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 300
+      "inStock": true
     },
     {
       "id": 52,
@@ -701,8 +644,7 @@ window.PARTS_DATA = {
       "display": "3801468",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 75000
+      "inStock": true
     },
     {
       "id": 53,
@@ -714,8 +656,7 @@ window.PARTS_DATA = {
       "display": "4089998",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 148800
+      "inStock": true
     },
     {
       "id": 54,
@@ -727,8 +668,7 @@ window.PARTS_DATA = {
       "display": "3802375",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 11800
+      "inStock": true
     },
     {
       "id": 55,
@@ -740,8 +680,7 @@ window.PARTS_DATA = {
       "display": "3802011",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 4500
+      "inStock": true
     },
     {
       "id": 56,
@@ -753,8 +692,7 @@ window.PARTS_DATA = {
       "display": "3945917",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 11000
+      "inStock": true
     },
     {
       "id": 57,
@@ -766,8 +704,7 @@ window.PARTS_DATA = {
       "display": "3945918",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 8600
+      "inStock": true
     },
     {
       "id": 58,
@@ -779,8 +716,7 @@ window.PARTS_DATA = {
       "display": "4025120",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 61800
+      "inStock": true
     },
     {
       "id": 59,
@@ -794,8 +730,7 @@ window.PARTS_DATA = {
       "display": "3978818 / 3978820 / 3978822",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 6000
+      "inStock": true
     },
     {
       "id": 60,
@@ -807,8 +742,7 @@ window.PARTS_DATA = {
       "display": "3802070",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 6000
+      "inStock": true
     },
     {
       "id": 61,
@@ -820,8 +754,7 @@ window.PARTS_DATA = {
       "display": "3802071",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 4900
+      "inStock": true
     },
     {
       "id": 62,
@@ -833,8 +766,7 @@ window.PARTS_DATA = {
       "display": "3929016",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 6700
+      "inStock": true
     },
     {
       "id": 63,
@@ -846,8 +778,7 @@ window.PARTS_DATA = {
       "display": "4025121",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 21100
+      "inStock": true
     },
     {
       "id": 64,
@@ -859,8 +790,7 @@ window.PARTS_DATA = {
       "display": "3801260",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 53700
+      "inStock": true
     },
     {
       "id": 65,
@@ -872,8 +802,7 @@ window.PARTS_DATA = {
       "display": "3801261",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 17600
+      "inStock": true
     },
     {
       "id": 66,
@@ -885,8 +814,7 @@ window.PARTS_DATA = {
       "display": "3032861",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 24000
+      "inStock": true
     },
     {
       "id": 67,
@@ -898,8 +826,7 @@ window.PARTS_DATA = {
       "display": "3415365",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 26900
+      "inStock": true
     },
     {
       "id": 68,
@@ -911,8 +838,7 @@ window.PARTS_DATA = {
       "display": "3966840",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 19700
+      "inStock": true
     },
     {
       "id": 69,
@@ -924,8 +850,7 @@ window.PARTS_DATA = {
       "display": "4003950",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 30500
+      "inStock": true
     },
     {
       "id": 70,
@@ -937,8 +862,7 @@ window.PARTS_DATA = {
       "display": "4939587",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 17200
+      "inStock": true
     },
     {
       "id": 71,
@@ -950,8 +874,7 @@ window.PARTS_DATA = {
       "display": "4939588",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 16300
+      "inStock": true
     },
     {
       "id": 72,
@@ -965,8 +888,7 @@ window.PARTS_DATA = {
       "display": "3931283 / 3991123 / 4941464",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 21200
+      "inStock": true
     },
     {
       "id": 73,
@@ -978,8 +900,7 @@ window.PARTS_DATA = {
       "display": "3800969",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 7200
+      "inStock": true
     },
     {
       "id": 74,
@@ -991,8 +912,7 @@ window.PARTS_DATA = {
       "display": "3970548",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 3500
+      "inStock": true
     },
     {
       "id": 75,
@@ -1004,8 +924,7 @@ window.PARTS_DATA = {
       "display": "4890832",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 4600
+      "inStock": true
     },
     {
       "id": 76,
@@ -1018,8 +937,7 @@ window.PARTS_DATA = {
       "display": "3020186 / 3006737",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 51800
+      "inStock": true
     },
     {
       "id": 77,
@@ -1031,8 +949,7 @@ window.PARTS_DATA = {
       "display": "3804304",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 8200
+      "inStock": true
     },
     {
       "id": 78,
@@ -1044,8 +961,7 @@ window.PARTS_DATA = {
       "display": "3892794",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 8200
+      "inStock": true
     },
     {
       "id": 79,
@@ -1057,8 +973,7 @@ window.PARTS_DATA = {
       "display": "4024938",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 20000
+      "inStock": true
     },
     {
       "id": 80,
@@ -1070,8 +985,7 @@ window.PARTS_DATA = {
       "display": "3957795",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 19400
+      "inStock": true
     },
     {
       "id": 81,
@@ -1083,8 +997,7 @@ window.PARTS_DATA = {
       "display": "3919565",
       "note": null,
       "unit": "kit",
-      "inStock": true,
-      "price": 10800
+      "inStock": true
     },
     {
       "id": 82,
@@ -1096,8 +1009,7 @@ window.PARTS_DATA = {
       "display": "4024938",
       "note": null,
       "unit": "kit",
-      "inStock": true,
-      "price": 22200
+      "inStock": true
     },
     {
       "id": 83,
@@ -1109,8 +1021,7 @@ window.PARTS_DATA = {
       "display": "4941393",
       "note": null,
       "unit": "kit",
-      "inStock": true,
-      "price": 21200
+      "inStock": true
     },
     {
       "id": 84,
@@ -1122,8 +1033,7 @@ window.PARTS_DATA = {
       "display": "4955160",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 24300
+      "inStock": true
     },
     {
       "id": 85,
@@ -1135,8 +1045,7 @@ window.PARTS_DATA = {
       "display": "4955190",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 10300
+      "inStock": true
     },
     {
       "id": 86,
@@ -1148,8 +1057,7 @@ window.PARTS_DATA = {
       "display": "3917707",
       "note": null,
       "unit": "kit",
-      "inStock": true,
-      "price": 10800
+      "inStock": true
     },
     {
       "id": 87,
@@ -1161,8 +1069,7 @@ window.PARTS_DATA = {
       "display": "3926631",
       "note": null,
       "unit": "kit",
-      "inStock": true,
-      "price": 11400
+      "inStock": true
     },
     {
       "id": 88,
@@ -1174,8 +1081,7 @@ window.PARTS_DATA = {
       "display": "3957797",
       "note": null,
       "unit": "kit",
-      "inStock": true,
-      "price": 15900
+      "inStock": true
     },
     {
       "id": 89,
@@ -1188,8 +1094,7 @@ window.PARTS_DATA = {
       "display": "3907163 / 3926631",
       "note": null,
       "unit": "kit",
-      "inStock": true,
-      "price": 11000
+      "inStock": true
     },
     {
       "id": 90,
@@ -1201,8 +1106,7 @@ window.PARTS_DATA = {
       "display": "3934047",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 1700
+      "inStock": true
     },
     {
       "id": 91,
@@ -1214,8 +1118,7 @@ window.PARTS_DATA = {
       "display": "3950549",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 2600
+      "inStock": true
     },
     {
       "id": 92,
@@ -1227,8 +1130,7 @@ window.PARTS_DATA = {
       "display": "4374086",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 6400
+      "inStock": true
     },
     {
       "id": 93,
@@ -1240,8 +1142,7 @@ window.PARTS_DATA = {
       "display": "3803977",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 22000
+      "inStock": true
     },
     {
       "id": 94,
@@ -1253,8 +1154,7 @@ window.PARTS_DATA = {
       "display": "3801056",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 27600
+      "inStock": true
     },
     {
       "id": 95,
@@ -1266,8 +1166,7 @@ window.PARTS_DATA = {
       "display": "4955251",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 6700
+      "inStock": true
     },
     {
       "id": 96,
@@ -1279,8 +1178,7 @@ window.PARTS_DATA = {
       "display": "5482359",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 3200
+      "inStock": true
     },
     {
       "id": 97,
@@ -1293,8 +1191,7 @@ window.PARTS_DATA = {
       "display": "3802465 / 5482359",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 3200
+      "inStock": true
     },
     {
       "id": 98,
@@ -1307,8 +1204,7 @@ window.PARTS_DATA = {
       "display": "18001 / 4089644",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 7200
+      "inStock": true
     },
     {
       "id": 99,
@@ -1320,8 +1216,7 @@ window.PARTS_DATA = {
       "display": "3047188",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 700
+      "inStock": true
     },
     {
       "id": 100,
@@ -1333,8 +1228,7 @@ window.PARTS_DATA = {
       "display": "3907177",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 600
+      "inStock": true
     },
     {
       "id": 101,
@@ -1347,8 +1241,7 @@ window.PARTS_DATA = {
       "display": "215090 / 3032874",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 2500
+      "inStock": true
     },
     {
       "id": 102,
@@ -1360,8 +1253,7 @@ window.PARTS_DATA = {
       "display": "3016652",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 200
+      "inStock": true
     },
     {
       "id": 103,
@@ -1373,8 +1265,7 @@ window.PARTS_DATA = {
       "display": "3901706",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 100
+      "inStock": true
     },
     {
       "id": 104,
@@ -1386,8 +1277,7 @@ window.PARTS_DATA = {
       "display": "3920691",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 100
+      "inStock": true
     },
     {
       "id": 105,
@@ -1399,8 +1289,7 @@ window.PARTS_DATA = {
       "display": "4025271",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 74400
+      "inStock": true
     },
     {
       "id": 106,
@@ -1412,8 +1301,7 @@ window.PARTS_DATA = {
       "display": "3801330",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 75100
+      "inStock": true
     },
     {
       "id": 107,
@@ -1425,8 +1313,7 @@ window.PARTS_DATA = {
       "display": "4089478",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 108500
+      "inStock": true
     },
     {
       "id": 108,
@@ -1438,8 +1325,7 @@ window.PARTS_DATA = {
       "display": "4089758",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 82100
+      "inStock": true
     },
     {
       "id": 109,
@@ -1451,8 +1337,7 @@ window.PARTS_DATA = {
       "display": "4955229",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 63100
+      "inStock": true
     },
     {
       "id": 110,
@@ -1464,8 +1349,7 @@ window.PARTS_DATA = {
       "display": "5523153",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 47400
+      "inStock": true
     },
     {
       "id": 111,
@@ -1477,8 +1361,7 @@ window.PARTS_DATA = {
       "display": "3804896",
       "note": null,
       "unit": "set",
-      "inStock": true,
-      "price": 16800
+      "inStock": true
     },
     {
       "id": 112,
@@ -1490,8 +1373,7 @@ window.PARTS_DATA = {
       "display": "3957913",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 200
+      "inStock": true
     },
     {
       "id": 113,
@@ -1503,8 +1385,7 @@ window.PARTS_DATA = {
       "display": "3929612",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 28400
+      "inStock": true
     },
     {
       "id": 114,
@@ -1516,8 +1397,7 @@ window.PARTS_DATA = {
       "display": "3966841",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 18900
+      "inStock": true
     },
     {
       "id": 115,
@@ -1529,8 +1409,7 @@ window.PARTS_DATA = {
       "display": "4299041",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 61700
+      "inStock": true
     },
     {
       "id": 116,
@@ -1542,8 +1421,7 @@ window.PARTS_DATA = {
       "display": "4935793",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 12800
+      "inStock": true
     },
     {
       "id": 117,
@@ -1556,8 +1434,7 @@ window.PARTS_DATA = {
       "display": "3960342 / 4935793",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 12800
+      "inStock": true
     },
     {
       "id": 118,
@@ -1570,8 +1447,7 @@ window.PARTS_DATA = {
       "display": "4891252 / 3800984",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 12700
+      "inStock": true
     },
     {
       "id": 119,
@@ -1584,8 +1460,7 @@ window.PARTS_DATA = {
       "display": "WP.1058-01 / 3801708",
       "note": null,
       "unit": "pc",
-      "inStock": true,
-      "price": 120500
+      "inStock": true
     }
   ]
 };

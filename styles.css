@@ -163,8 +163,7 @@ html[lang="ar"] .search-box button { font-family: "Tajawal", var(--font-head); l
 }
 .ref-badge.hit { background: var(--red); border-color: var(--red); color: #fff; }
 .result-foot { display: flex; align-items: baseline; gap: 12px; margin-top: auto; flex-wrap: wrap; }
-.result-price { font-size: 19px; font-weight: 700; color: var(--ink); }
-.result-price small { font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.result-unit { font-size: 12.5px; font-weight: 500; color: var(--muted); }
 .match-tag { font-size: 12px; color: var(--muted); }
 
 .stock-pill {
@@ -217,8 +216,19 @@ html[lang="ar"] .search-box button { font-family: "Tajawal", var(--font-head); l
   font: 700 22px var(--font-head); border-bottom: 4px solid var(--red);
   margin-bottom: 14px;
 }
-.step h3 { font-size: 21px; margin-bottom: 6px; }
+.step h2 { font-size: 21px; margin-bottom: 6px; }
 .step p { color: var(--muted); font-size: 14px; }
+
+/* ---------- Category chips ---------- */
+.cats { padding: 48px 20px 10px; }
+.cats h2 { font-size: 30px; margin-bottom: 16px; }
+.cat-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.cat-chips button {
+  font: 500 13.5px var(--font-body); color: var(--ink); background: var(--card);
+  border: 1px solid #c9c9c9; border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  transition: all .15s;
+}
+.cat-chips button:hover { border-color: var(--red); color: var(--red-dark); }
 
 /* ---------- Detail page ---------- */
 .detail { padding: 40px 20px 56px; }
@@ -244,9 +254,7 @@ html[lang="ar"] .search-box button { font-family: "Tajawal", var(--font-head); l
 .detail-info h1 { font-size: clamp(30px, 4vw, 44px); line-height: 1.05; margin-bottom: 14px; color: var(--ink); }
 .detail-refs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
 .detail-refs .ref-badge { font-size: 15px; padding: 8px 13px; }
-.detail-price-row { display: flex; align-items: center; gap: 16px; margin: 6px 0 18px; flex-wrap: wrap; }
-.detail-price { font-size: 38px; font-weight: 700; font-family: var(--font-head); color: var(--ink); }
-.detail-price small { font-size: 15px; font-family: var(--font-body); font-weight: 500; color: var(--muted); }
+.detail-price-row { display: flex; align-items: center; gap: 16px; margin: 6px 0 14px; flex-wrap: wrap; }
 .detail-note {
   background: #f0f4f8; border-radius: 6px; padding: 12px 16px;
   font-size: 13.5px; color: #33414f; margin-bottom: 18px; max-width: 560px;

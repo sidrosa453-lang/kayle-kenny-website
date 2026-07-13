@@ -4,7 +4,6 @@
   const DATA = window.PARTS_DATA;
   const parts = DATA.parts;
   const company = DATA.company;
-  const config = DATA.config;
 
   /* ---------------- category translations (also searchable aliases) ---------------- */
   const CAT_I18N = {
@@ -39,39 +38,40 @@
   /* ---------------- i18n ---------------- */
   const I18N = {
     en: {
-      'title': 'EURL Kayle Kenny — Engine Parts | Algiers',
-      'meta.description': 'EURL Kayle Kenny — engine parts in stock in Algiers. Search your part reference to check availability, compatible references and price.',
+      'title': 'Cummins-Compatible Engine Parts in Algeria | Kayle Kenny',
+      'meta.description': 'Cummins-compatible diesel engine parts in stock in Algiers: injectors, cylinder heads, crankshafts, pistons. Check your reference and reserve on WhatsApp.',
       'aria.language': 'Language', 'aria.search': 'Search parts',
       'brand.tag': 'Engine parts · Algiers',
       'brand.disclaimer': 'Independent parts supplier — not affiliated with or endorsed by Cummins Inc. References are used for identification only.',
       'nav.search': 'Search', 'nav.contact': 'Contact',
-      'hero.kicker': 'Diesel engine parts — Algiers',
-      'hero.title': 'Find your part. Check it. Reserve it.',
-      'hero.sub': 'Enter your part reference or part name — we instantly tell you if it is available, which references are interchangeable, and the price.',
+      'hero.kicker': 'Diesel engine parts — Algiers, Algeria',
+      'hero.title': 'Cummins-compatible engine parts, in stock in Algiers',
+      'hero.sub': 'Enter your part reference or part name — we instantly tell you if it is available and which references are interchangeable. Price and reservation on WhatsApp.',
       'search.placeholder': 'Part reference or name — e.g. 3917320, injector…',
       'search.button': 'Search', 'search.hint': 'Try:', 'search.hintName': 'injector',
       'results.title': 'Search results',
       'results.count': (n) => `${n} matching part${n === 1 ? '' : 's'}`,
       'results.none.title': 'Reference not in our stock',
-      'results.none.body': 'We could not find this reference. It may still be compatible with a part we stock — check online below, or send it to us and we answer quickly.',
-      'results.call': 'Call us', 'results.whatsapp': 'Ask on WhatsApp',
+      'results.none.body': "We could not find this reference. It may still be compatible with a part we stock — check online below, or send it to us and we'll get back to you quickly.",
+      'results.whatsapp': 'Ask on WhatsApp',
       'badge.in': 'In stock', 'badge.out': 'Out of stock',
       'match.partial': 'Partial reference match — verify with us',
       'match.interchangeable': 'Interchangeable references — same part',
-      'price.onRequest': 'Price on request',
+      'price.ask': "Price on request — send us the reference on WhatsApp and we'll reply quickly.",
+      'cats.title': 'Parts we stock',
       'steps.1title': 'Search your reference',
       'steps.1body': 'Type the part number stamped on your part or listed in your engine manual.',
-      'steps.2title': 'Check availability & price',
-      'steps.2body': 'See instantly if it is in stock, which references are interchangeable, and the price.',
-      'steps.3title': 'Call or WhatsApp us',
-      'steps.3body': 'Reserve your part in one message — we confirm compatibility before you buy.',
+      'steps.2title': 'Check availability',
+      'steps.2body': 'See instantly if it is in stock and which references are interchangeable.',
+      'steps.3title': 'Reserve on WhatsApp',
+      'steps.3body': 'Send the reference in one message — we confirm compatibility and price before you buy.',
       'detail.back': '← Back to search',
       'detail.eyebrow': 'Diesel engine part',
       'ext.arrow': '↗',
       'detail.interchangeableTitle': 'Interchangeable references',
       'detail.interchangeableBody': 'All the references below identify the same part. If your reference is one of them, this part fits.',
       'detail.variantsTitle': 'Other versions of this part',
-      'detail.call': 'Call to reserve', 'detail.whatsapp': 'Reserve on WhatsApp',
+      'detail.whatsapp': 'Reserve on WhatsApp',
       'detail.figureNote': 'Illustration for identification only — actual part appearance may differ.',
       'check.title': 'Not sure about compatibility?',
       'check.body': 'Cross-check your reference in public databases, or send it to us — we verify it before you buy.',
@@ -81,7 +81,8 @@
       'wa.msgPart': (name, ref) => `Hello, I would like to ask about: ${name} — ref ${ref}`,
       'wa.msgQuery': (q) => `Hello, do you have this part or a compatible one? Reference: ${q}`,
       'contact.title': 'Visit our shop',
-      'contact.address': 'Address', 'contact.phone': 'Phone',
+      'contact.address': 'Address', 'contact.phone': 'Phone / WhatsApp',
+      'contact.addressValue': 'El Djenina 200 Logts Social Participatif, Lido, Mohammadia, Algiers, Algeria',
       'contact.directions': 'Get directions →',
       'contact.whatsappCta': 'Message us on WhatsApp',
       'contact.hours': 'Opening hours',
@@ -90,43 +91,43 @@
       'about.body': 'EURL Kayle Kenny imports and distributes diesel engine parts for trucks, machinery and industrial engines: crankshafts, cylinder heads, injectors, bearings, pistons, gasket sets, pumps and more.',
       'about.cta': "Can't find your reference? Contact us — we check compatibility and order the part for you.",
       'footer.disclaimer': 'Independent supplier. Not affiliated with or endorsed by Cummins Inc. All trademarks belong to their respective owners and are used for identification purposes only.',
-      'footer.note': 'Prices are indicative and subject to confirmation.',
       'unit.pc': 'pc', 'unit.set': 'set', 'unit.kit': 'kit',
     },
     fr: {
-      'title': 'EURL Kayle Kenny — Pièces moteur | Alger',
-      'meta.description': 'EURL Kayle Kenny — pièces moteur en stock à Alger. Recherchez votre référence pour vérifier la disponibilité, les références compatibles et le prix.',
+      'title': 'Pièces compatibles Cummins en Algérie | Kayle Kenny Alger',
+      'meta.description': "Pièces moteur compatibles Cummins en stock à Alger : injecteurs, culasses, vilebrequins, pistons. Vérifiez votre référence et réservez sur WhatsApp.",
       'aria.language': 'Langue', 'aria.search': 'Rechercher des pièces',
       'brand.tag': 'Pièces moteur · Alger',
       'brand.disclaimer': "Fournisseur indépendant de pièces — non affilié à Cummins Inc. ni approuvé par elle. Les références sont utilisées uniquement à des fins d'identification.",
       'nav.search': 'Recherche', 'nav.contact': 'Contact',
-      'hero.kicker': 'Pièces moteur diesel — Alger',
-      'hero.title': 'Trouvez votre pièce. Vérifiez-la. Réservez-la.',
-      'hero.sub': 'Saisissez votre référence ou le nom de la pièce — nous vous disons instantanément si elle est disponible, quelles références sont interchangeables, et son prix.',
+      'hero.kicker': 'Pièces moteur diesel — Alger, Algérie',
+      'hero.title': 'Pièces moteur compatibles Cummins, en stock à Alger',
+      'hero.sub': 'Saisissez votre référence ou le nom de la pièce — nous vous disons instantanément si elle est disponible et quelles références sont interchangeables. Prix et réservation sur WhatsApp.',
       'search.placeholder': 'Référence ou nom de pièce — ex. 3917320, injecteur…',
       'search.button': 'Rechercher', 'search.hint': 'Essayez :', 'search.hintName': 'injecteur',
       'results.title': 'Résultats de recherche',
       'results.count': (n) => `${n} pièce${n === 1 ? '' : 's'} trouvée${n === 1 ? '' : 's'}`,
       'results.none.title': 'Référence non disponible dans notre stock',
       'results.none.body': "Nous n'avons pas trouvé cette référence. Elle peut néanmoins être compatible avec une pièce en stock — vérifiez en ligne ci-dessous, ou envoyez-la-nous et nous répondons rapidement.",
-      'results.call': 'Appelez-nous', 'results.whatsapp': 'Demander sur WhatsApp',
+      'results.whatsapp': 'Demander sur WhatsApp',
       'badge.in': 'En stock', 'badge.out': 'Rupture de stock',
       'match.partial': 'Correspondance partielle — vérifiez auprès de nous',
       'match.interchangeable': 'Références interchangeables — même pièce',
-      'price.onRequest': 'Prix sur demande',
+      'price.ask': 'Prix sur demande — envoyez-nous la référence sur WhatsApp, réponse rapide.',
+      'cats.title': 'Nos pièces en stock',
       'steps.1title': 'Recherchez votre référence',
       'steps.1body': 'Saisissez le numéro gravé sur votre pièce ou indiqué dans le manuel du moteur.',
-      'steps.2title': 'Vérifiez disponibilité et prix',
-      'steps.2body': 'Voyez instantanément si elle est en stock, les références interchangeables et le prix.',
-      'steps.3title': 'Appelez-nous ou écrivez-nous sur WhatsApp',
-      'steps.3body': "Réservez votre pièce en un message — nous confirmons la compatibilité avant l'achat.",
+      'steps.2title': 'Vérifiez la disponibilité',
+      'steps.2body': 'Voyez instantanément si elle est en stock, ainsi que les références interchangeables.',
+      'steps.3title': 'Réservez sur WhatsApp',
+      'steps.3body': "Envoyez la référence en un message — nous confirmons la compatibilité et le prix avant l'achat.",
       'detail.back': '← Retour à la recherche',
       'detail.eyebrow': 'Pièce moteur diesel',
       'ext.arrow': '↗',
       'detail.interchangeableTitle': 'Références interchangeables',
       'detail.interchangeableBody': 'Toutes les références ci-dessous désignent la même pièce. Si votre référence en fait partie, cette pièce convient.',
       'detail.variantsTitle': 'Autres versions de cette pièce',
-      'detail.call': 'Appeler pour réserver', 'detail.whatsapp': 'Réserver sur WhatsApp',
+      'detail.whatsapp': 'Réserver sur WhatsApp',
       'detail.figureNote': "Illustration à titre indicatif — l'aspect réel de la pièce peut différer.",
       'check.title': 'Un doute sur la compatibilité ?',
       'check.body': 'Vérifiez votre référence dans les bases publiques, ou envoyez-la-nous — nous la vérifions avant votre achat.',
@@ -136,7 +137,8 @@
       'wa.msgPart': (name, ref) => `Bonjour, je voudrais me renseigner sur : ${name} — réf ${ref}`,
       'wa.msgQuery': (q) => `Bonjour, avez-vous cette pièce ou une pièce compatible ? Référence : ${q}`,
       'contact.title': 'Visitez notre magasin',
-      'contact.address': 'Adresse', 'contact.phone': 'Téléphone',
+      'contact.address': 'Adresse', 'contact.phone': 'Téléphone / WhatsApp',
+      'contact.addressValue': 'El Djenina 200 Logts Social Participatif, Lido, Mohammadia, Alger, Algérie',
       'contact.directions': 'Itinéraire →',
       'contact.whatsappCta': 'Écrivez-nous sur WhatsApp',
       'contact.hours': "Heures d'ouverture",
@@ -145,19 +147,18 @@
       'about.body': 'EURL Kayle Kenny importe et distribue des pièces de moteurs diesel pour camions, engins et moteurs industriels : vilebrequins, culasses, injecteurs, coussinets, pistons, pochettes de joints, pompes et plus encore.',
       'about.cta': 'Vous ne trouvez pas votre référence ? Contactez-nous — nous vérifions la compatibilité et commandons la pièce pour vous.',
       'footer.disclaimer': "Fournisseur indépendant. Non affilié à Cummins Inc. ni approuvé par elle. Toutes les marques appartiennent à leurs propriétaires respectifs et sont utilisées à des fins d'identification uniquement.",
-      'footer.note': 'Les prix sont indicatifs et sous réserve de confirmation.',
       'unit.pc': 'pièce', 'unit.set': 'jeu', 'unit.kit': 'kit',
     },
     ar: {
-      'title': 'EURL Kayle Kenny — قطع غيار المحركات | الجزائر العاصمة',
-      'meta.description': 'EURL Kayle Kenny — قطع غيار محركات متوفرة في الجزائر العاصمة. ابحث بمرجع القطعة للتحقق من التوفر والمراجع المتوافقة والسعر.',
+      'title': 'قطع غيار متوافقة مع محركات Cummins في الجزائر | Kayle Kenny',
+      'meta.description': 'قطع غيار محركات ديزل متوافقة مع Cummins متوفرة في الجزائر العاصمة: حاقنات، رؤوس محركات، أعمدة مرفقية، مكابس. تحقق من مرجعك واحجز عبر واتساب.',
       'aria.language': 'اللغة', 'aria.search': 'البحث عن القطع',
       'brand.tag': 'قطع غيار المحركات · الجزائر العاصمة',
       'brand.disclaimer': 'مورّد مستقل لقطع الغيار — غير تابع لشركة Cummins وغير معتمد منها. تُستخدم المراجع لأغراض التعريف فقط.',
       'nav.search': 'بحث', 'nav.contact': 'اتصل بنا',
       'hero.kicker': 'قطع غيار محركات الديزل — الجزائر العاصمة',
-      'hero.title': 'اعثر على قطعتك. تحقق منها. احجزها.',
-      'hero.sub': 'أدخل مرجع القطعة أو اسمها — نخبرك فوراً إن كانت متوفرة، وما المراجع القابلة للتبديل، وسعرها.',
+      'hero.title': 'قطع غيار متوافقة مع محركات Cummins، متوفرة في الجزائر العاصمة',
+      'hero.sub': 'أدخل مرجع القطعة أو اسمها — نخبرك فوراً إن كانت متوفرة وما المراجع القابلة للتبديل. السعر والحجز عبر واتساب.',
       'search.placeholder': 'مرجع القطعة أو اسمها — مثال: 3917320، حاقن…',
       'search.button': 'بحث', 'search.hint': 'جرّب:', 'search.hintName': 'حاقن',
       'results.title': 'نتائج البحث',
@@ -168,24 +169,25 @@
         : `${n} قطعة مطابقة`,
       'results.none.title': 'المرجع غير متوفر في مخزوننا',
       'results.none.body': 'لم نعثر على هذا المرجع. قد يكون متوافقاً مع قطعة لدينا — تحقق عبر الإنترنت أدناه أو أرسله إلينا وسنرد بسرعة.',
-      'results.call': 'اتصل بنا', 'results.whatsapp': 'اسأل عبر واتساب',
+      'results.whatsapp': 'اسأل عبر واتساب',
       'badge.in': 'متوفر', 'badge.out': 'غير متوفر',
       'match.partial': 'تطابق جزئي للمرجع — تحقق معنا',
       'match.interchangeable': 'مراجع قابلة للتبديل — نفس القطعة',
-      'price.onRequest': 'السعر عند الطلب',
+      'price.ask': 'السعر عند الطلب — أرسل لنا المرجع عبر واتساب ونرد بسرعة.',
+      'cats.title': 'قطع الغيار المتوفرة لدينا',
       'steps.1title': 'ابحث عن مرجعك',
       'steps.1body': 'أدخل رقم القطعة المحفور عليها أو المذكور في دليل المحرك.',
-      'steps.2title': 'تحقق من التوفر والسعر',
-      'steps.2body': 'اعرف فوراً إن كانت متوفرة، والمراجع القابلة للتبديل، والسعر.',
-      'steps.3title': 'اتصل بنا أو راسلنا على واتساب',
-      'steps.3body': 'احجز قطعتك برسالة واحدة — نؤكد التوافق قبل الشراء.',
+      'steps.2title': 'تحقق من التوفر',
+      'steps.2body': 'اعرف فوراً إن كانت متوفرة وما المراجع القابلة للتبديل.',
+      'steps.3title': 'احجز عبر واتساب',
+      'steps.3body': 'أرسل المرجع برسالة واحدة — نؤكد التوافق والسعر قبل الشراء.',
       'detail.back': '→ العودة إلى البحث',
       'detail.eyebrow': 'قطعة غيار محرك ديزل',
       'ext.arrow': '↖',
       'detail.interchangeableTitle': 'مراجع قابلة للتبديل',
       'detail.interchangeableBody': 'جميع المراجع أدناه تشير إلى نفس القطعة. إذا كان مرجعك من بينها، فهذه القطعة مناسبة.',
       'detail.variantsTitle': 'إصدارات أخرى من هذه القطعة',
-      'detail.call': 'اتصل للحجز', 'detail.whatsapp': 'احجز عبر واتساب',
+      'detail.whatsapp': 'احجز عبر واتساب',
       'detail.figureNote': 'الرسم للتوضيح فقط — قد يختلف الشكل الفعلي للقطعة.',
       'check.title': 'لست متأكداً من التوافق؟',
       'check.body': 'تحقق من مرجعك في قواعد البيانات العامة، أو أرسله إلينا — نتحقق منه قبل الشراء.',
@@ -195,7 +197,8 @@
       'wa.msgPart': (name, ref) => `مرحباً، أود الاستفسار عن: ${name} — مرجع ${ref}`,
       'wa.msgQuery': (q) => `مرحباً، هل لديكم هذه القطعة أو قطعة متوافقة معها؟ المرجع: ${q}`,
       'contact.title': 'زوروا متجرنا',
-      'contact.address': 'العنوان', 'contact.phone': 'الهاتف',
+      'contact.address': 'العنوان', 'contact.phone': 'الهاتف / واتساب',
+      'contact.addressValue': 'الجنينة 200 مسكن اجتماعي تساهمي، ليدو، المحمدية، الجزائر العاصمة',
       'contact.directions': 'الاتجاهات ←',
       'contact.whatsappCta': 'راسلنا عبر واتساب',
       'contact.hours': 'ساعات العمل',
@@ -204,14 +207,13 @@
       'about.body': 'تستورد EURL Kayle Kenny وتوزع قطع غيار محركات الديزل للشاحنات والآليات والمحركات الصناعية: أعمدة مرفقية، رؤوس محركات، حاقنات، محامل، مكابس، أطقم حشيات، مضخات وغيرها.',
       'about.cta': 'لم تجد مرجعك؟ اتصل بنا — نتحقق من التوافق ونطلب القطعة لك.',
       'footer.disclaimer': 'مورّد مستقل. غير تابع لشركة Cummins وغير معتمد منها. جميع العلامات التجارية ملك لأصحابها وتُستخدم للتعريف فقط.',
-      'footer.note': 'الأسعار إرشادية وتخضع للتأكيد.',
       'unit.pc': 'قطعة', 'unit.set': 'طقم', 'unit.kit': 'كيت',
     },
   };
 
   let lang = null;
   try { lang = localStorage.getItem('kk-lang'); } catch (e) { /* storage blocked */ }
-  if (!I18N[lang]) lang = 'en';
+  if (!I18N[lang]) lang = 'fr'; // French default — primary search language in Algeria
 
   function t(key, ...args) {
     const entry = (I18N[lang] && I18N[lang][key]) !== undefined ? I18N[lang][key] : I18N.en[key];
@@ -241,18 +243,6 @@
       .trim()
       .replace(/\s+/g, ' ');
   const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-
-  const LOCALES = { en: 'en-US', fr: 'fr-DZ', ar: 'ar-DZ' };
-  function fmtPrice(p) {
-    if (p == null) return t('price.onRequest');
-    const v = p * (config.priceMultiplier || 1);
-    return new Intl.NumberFormat(LOCALES[lang] || 'en-US', {
-      style: 'currency',
-      currency: config.currency || 'USD',
-      numberingSystem: 'latn',
-      maximumFractionDigits: Number.isInteger(v) ? 0 : 2,
-    }).format(v);
-  }
 
   const unitLabel = (u) => {
     const key = 'unit.' + u;
@@ -398,7 +388,7 @@
           </span>
           <span class="result-refs">${refBadges}</span>
           <span class="result-foot">
-            <span class="result-price">${esc(fmtPrice(part.price))} <small>/ ${esc(unitLabel(part.unit))}</small></span>
+            <span class="result-unit">${esc(unitLabel(part.unit))}</span>
             ${tag}
           </span>
         </span>
@@ -438,8 +428,7 @@
           <h3>${esc(t('results.none.title'))}</h3>
           <p>${esc(t('results.none.body'))}</p>
           <div class="cta-row">
-            <a class="btn btn-red" href="tel:${esc(company.phoneRaw)}">${esc(t('results.call'))} <bdi dir="ltr">${esc(company.phone)}</bdi></a>
-            <a class="btn btn-green" href="${esc(waLink(t('wa.msgQuery', q)))}" target="_blank" rel="noopener">${esc(t('results.whatsapp'))}</a>
+            <a class="btn btn-green" href="${esc(waLink(t('wa.msgQuery', q)))}" target="_blank" rel="noopener">${esc(t('results.whatsapp'))} — <bdi dir="ltr">${esc(company.phone)}</bdi></a>
           </div>
           ${checkOnlineBlock(q)}
         </div>`;
@@ -479,7 +468,7 @@
               .map(
                 (r) => `<li><a href="#p/${r.id}">
                   <span>${esc(localizedName(r))} — <bdi dir="ltr">${esc(r.numbers.join(' / '))}</bdi> (${esc(unitLabel(r.unit))})</span>
-                  <strong>${esc(fmtPrice(r.price))}</strong>
+                  <span class="stock-pill ${r.inStock ? 'in' : 'out'}">${esc(t(r.inStock ? 'badge.in' : 'badge.out'))}</span>
                 </a></li>`
               )
               .join('')}
@@ -499,11 +488,11 @@
           <h1>${esc(localizedName(p))}${note}</h1>
           <div class="detail-refs">${refBadges}</div>
           <div class="detail-price-row">
-            <span class="detail-price">${esc(fmtPrice(p.price))} <small>/ ${esc(unitLabel(p.unit))}</small></span>
             <span class="stock-pill ${p.inStock ? 'in' : 'out'}">${esc(t(p.inStock ? 'badge.in' : 'badge.out'))}</span>
+            <span class="result-unit">${esc(unitLabel(p.unit))}</span>
           </div>
+          <p class="detail-note">${esc(t('price.ask'))}</p>
           <div class="cta-row">
-            <a class="btn btn-red" href="tel:${esc(company.phoneRaw)}">${esc(t('detail.call'))}</a>
             <a class="btn btn-green" href="${esc(waLink(t('wa.msgPart', localizedName(p), primaryRef)))}" target="_blank" rel="noopener">${esc(t('detail.whatsapp'))}</a>
           </div>
           ${interchangeable}
@@ -568,16 +557,29 @@
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
     renderHintChips();
+    renderCategoryChips();
     if (!viewDetail.hidden) route();
     if (input.value) runSearch(input.value, false);
   }
 
+  // Category chips are static in index.html (crawlable text); this localizes
+  // their labels and lets a click run the matching search.
+  function renderCategoryChips() {
+    document.querySelectorAll('#cat-chips [data-cat]').forEach((btn) => {
+      const cat = btn.dataset.cat;
+      btn.textContent = lang === 'en' ? cat : (CAT_I18N[cat] && CAT_I18N[cat][lang]) || cat;
+    });
+  }
+
   /* ---------------- company info ---------------- */
   function renderCompany() {
-    document.getElementById('company-address').textContent = company.address;
+    // (address is a localized data-i18n string — applyLang fills it)
+    // The number opens WhatsApp, not a phone call — owner prefers messages.
     const phone = document.getElementById('company-phone');
     phone.textContent = company.phone;
-    phone.href = 'tel:' + company.phoneRaw;
+    phone.href = company.whatsapp;
+    phone.target = '_blank';
+    phone.rel = 'noopener';
     document.getElementById('company-whatsapp').href = company.whatsapp;
     document.getElementById('company-maps').href = company.mapsUrl;
     document.getElementById('company-registry').innerHTML =
@@ -611,6 +613,17 @@
     runSearch(input.value, true);
   });
 
+  const catChips = document.getElementById('cat-chips');
+  if (catChips) {
+    catChips.addEventListener('click', (e) => {
+      const chip = e.target.closest('[data-cat]');
+      if (!chip) return;
+      location.hash = '';
+      input.value = chip.textContent;
+      runSearch(input.value, true);
+    });
+  }
+
   document.querySelectorAll('.lang-switch button').forEach((b) => {
     b.addEventListener('click', () => {
       lang = b.dataset.lang;
@@ -622,4 +635,13 @@
   renderCompany();
   applyLang();
   route();
+
+  // ?q=<reference> deep links straight into a search — but never override an
+  // explicit #p/<id> in the URL (a shared/reloaded detail link wins over ?q).
+  const urlQuery = new URLSearchParams(location.search).get('q');
+  if (urlQuery && !/^#p\/\d+$/.test(location.hash)) {
+    input.value = urlQuery;
+    const scored = runSearch(urlQuery, true);
+    if (scored && scored.length === 1 && scored[0].score >= 95) location.hash = '#p/' + scored[0].part.id;
+  }
 })();

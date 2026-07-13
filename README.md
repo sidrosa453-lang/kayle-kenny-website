@@ -1,9 +1,13 @@
 # EURL Kayle Kenny — Parts Website
 
+Live at **https://www.kaylekenny.com** (GitHub Pages, repo sidrosa453-lang/kayle-kenny-website).
+
 Search-only parts website: customers search a part reference (or name in EN/FR/AR)
-and get a product page with availability, interchangeable references, price, and
-your contact details. There is deliberately **no catalog page and no quantities** —
-visitors can only check the specific reference they need.
+and get a product page with availability, interchangeable references, and WhatsApp
+contact. There is deliberately **no catalog page, no quantities, and no prices** —
+visitors check the reference they need and ask the price on WhatsApp. All contact
+paths open WhatsApp; there are no phone-call (tel:) links anywhere. French is the
+default language (primary search language in Algeria).
 
 ## Files
 
@@ -48,20 +52,23 @@ node tools/serve.js
 
 Then open http://localhost:5533
 
-## Prices / currency
+## Prices
 
-The site shows **DZD selling prices**, computed by the converter — the USD
-invoice cost prices are never published. Formula (see `tools/update-data.js`):
+Prices are **not published anywhere** (owner's decision, 2026-07). The Excel
+price column is ignored by the converter; the site shows "price on request —
+WhatsApp". If you ever want prices back, the old DZD formula
+(invoice USD × 1.5 taxes × 250 DZD/USD × 30–50% sliding margin) is in git
+history — ask Claude to restore it.
 
-```
-landed cost = invoice USD × 1.5 (taxes) × 250 (USD→DZD)
-selling     = landed cost × margin, rounded to the nearest 100 DZD
-margin      = ×1.5 on the cheapest items, sliding down to ×1.3 on the most expensive
-```
+## SEO
 
-To change the tax factor, exchange rate, or margins, edit `TAX_FACTOR`,
-`USD_TO_DZD`, `MARGIN_CHEAP`, `MARGIN_EXPENSIVE` at the top of
-`tools/update-data.js` and re-run it.
+- French-first static content, SEO title/description/keywords, canonical,
+  Open Graph + Twitter cards (`images/og.png` is the WhatsApp/Facebook share image),
+  JSON-LD structured data (AutoPartsStore + WebSite search action),
+  `robots.txt` + `sitemap.xml`, crawlable category-chips section.
+- `?q=REFERENCE` in the URL deep-links straight into a search.
+- Off-site (owner actions): Google Business Profile + Search Console — see the
+  deployment conversation notes.
 
 ## To fill in
 
@@ -79,7 +86,7 @@ Cummins references but the shop is not an authorized dealer.
 Fully static — upload `index.html`, `styles.css`, `app.js`, `data.js`,
 `drawings/`, `images/` to any host (Netlify, Vercel, GitHub Pages, shared host).
 
-Note: `data.js` ships the full parts list (references + prices, no quantities) to
-the browser; a technically skilled visitor could read it in the page source. If
-you ever need the list fully hidden, that requires a small server-side search API
-instead of a static site — ask for it when needed.
+Note: `data.js` ships the full parts list (references only — no quantities, no
+prices) to the browser; a technically skilled visitor could read it in the page
+source. If you ever need the list fully hidden, that requires a small
+server-side search API instead of a static site — ask for it when needed.
