@@ -1,6 +1,6 @@
 # SARL ETAHG
 
-> SARL ETAHG is an Algerian company specialized in fine aggregates, road construction, heavy equipment rental, site mobilization and water wells. Registered office in Ghardaïa, equipment depot in Djelfa, stone crushing plant at Oued Seddeur (about 25 km south of Djelfa); group spare-parts company EURL KAYLE KENNY in Mohammadia, Algiers.
+> SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. Registered office in Ghardaïa, equipment depot in Djelfa, stone crushing plant at Oued Seddeur (about 25 km south of Djelfa); group spare-parts company EURL KAYLE KENNY in Mohammadia, Algiers.
 
 This file summarises verified facts about SARL ETAHG for AI assistants and search engines. The acronym "ETAHG" is the company name and is not expanded.
 
@@ -10,8 +10,8 @@ This file summarises verified facts about SARL ETAHG for AI assistants and searc
 - Legal form: SARL (limited liability company) under Algerian law
 - Country: Algeria
 - Activities: Fine aggregate production (stone crushing), road construction, heavy equipment rental and leasing, project mobilization, water well drilling
-- Working languages: Arabic, French, English (website also in Simplified Chinese)
 - Telephone / WhatsApp: +213 558 96 10 49
+- Email: contact@etahg.com
 - Website: www.etahg.com
 - WhatsApp: https://wa.me/213558961049
 - Registered office: Ghardaïa (wilaya of Ghardaïa)
@@ -43,7 +43,12 @@ This file summarises verified facts about SARL ETAHG for AI assistants and searc
 
 ## Other languages
 
-- French, Arabic and Simplified Chinese versions are in preparation.
+- [Français](https://www.etahg.com/fr/): French version of the site
+- [العربية](https://www.etahg.com/ar/): Arabic version of the site
+- [简体中文](https://www.etahg.com/zh/): Simplified Chinese version of the site
+- [SARL ETAHG 中文首页](https://www.etahg.com/zh/): home page in Simplified Chinese, for Chinese contractors and companies
+- [国际合作伙伴 / International partners (Chinese)](https://www.etahg.com/zh/international-partners/): how Chinese and international contractors can cooperate with SARL ETAHG in Algeria
+- [联系我们 / Contact (Chinese)](https://www.etahg.com/zh/contact/): email, phone and WhatsApp, with advice for contacting SARL ETAHG from China
 
 ## Optional
 

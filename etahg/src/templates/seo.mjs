@@ -25,7 +25,7 @@ ${alts.filter((a) => a.lang !== lang).map((a) => html`<meta property="og:locale:
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:alt" content="${site.companyName}: ${ctx.ui.og.tagline}">`}
+<meta property="og:image:alt" content="${site.companyName}${ctx.P.colon}${ctx.ui.og.tagline}">`}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
 <meta name="twitter:description" content="${page.description}">
@@ -55,14 +55,19 @@ function postal(a, country = 'DZ') {
   };
 }
 
+// The Organization node is LANGUAGE-NEUTRAL and identical on every page (English canonical
+// text, English service URLs), so graph consumers merging by @id never see conflicting values.
+// Localized text lives on the per-page WebPage / Service / FAQPage nodes.
+const LANG_NAMES_EN = { ar: 'Arabic', fr: 'French', en: 'English', zh: 'Chinese' };
+
 export function organization(ctx) {
-  const { site, lang } = ctx;
+  const { site } = ctx;
+  const D = ctx.def; // default-language view
   const c = site.contact || {};
   const base = site.siteUrl;
-  const L = ctx.languagesPresent;
   const locs = site.locations || [];
   const nonHq = locs.filter((l) => l.id === 'depot' || l.id === 'quarry');
-  const types = ctx.ui.locations.types;
+  const types = D.ui.locations.types;
   const reg = site.registry || {};
   const idents = [['RC', reg.rc], ['NIF', reg.nif], ['NIS', reg.nis], ['AI', reg.ai]]
     .filter(([, v]) => v)
@@ -70,7 +75,7 @@ export function organization(ctx) {
   const social = Object.values(site.social || {}).filter((v) => typeof v === 'string' && /^https?:/.test(v));
   const kk = (site.group || [])[0];
   const logo = ctx.logoPng();
-  const og = ctx.ogImage();
+  const spoken = (site.spokenLanguages || []).filter(Boolean);
   return {
     '@type': ['Organization', 'GeneralContractor'],
     '@id': `${base}/#organization`,
@@ -79,54 +84,53 @@ export function organization(ctx) {
     alternateName: [site.shortName],
     url: `${base}/`,
     logo: logo ? { '@type': 'ImageObject', '@id': `${base}/#logo`, url: logo.url, width: logo.size, height: logo.size, caption: site.companyName } : undefined,
-    image: og ? og.url : logo ? logo.url : undefined,
-    description: plain(ctx.ui.footer.tagline),
+    image: ctx.ogImageDefault() ? ctx.ogImageDefault().url : logo ? logo.url : undefined,
+    description: plain(D.ui.footer.tagline),
     telephone: c.phone,
     email: c.email || undefined,
     address: postal(c.address || {}),
     location: nonHq.map((l) => ({
       '@type': 'Place',
-      name: `${types[l.id] || l.type}, ${ctx.locName(l)}`,
+      name: `${types[l.id] || l.type}, ${l.locality}`,
       address: postal({ locality: l.locality, region: l.region }),
       hasMap: l.mapsUrl || undefined,
     })),
     hasMap: c.mapsUrl || undefined,
     areaServed: { '@type': 'Country', name: 'Algeria', identifier: 'DZ' },
-    knowsLanguage: ['ar', 'fr', 'en'],
+    // Working languages only once confirmed by the owner (site.config.json spokenLanguages).
+    knowsLanguage: spoken.length ? spoken : undefined,
     knowsAbout: [
       'Fine aggregate production', 'Stone crushing', 'Crushed sand', 'Road construction', 'Earthworks',
       'Heavy equipment rental', 'Heavy equipment leasing', 'Construction site mobilization',
-      'Water well drilling', 'Heavy-duty spare parts', 'Road building in the Sahara', 'Algeria',
+      'Water well drilling', 'Heavy-duty spare parts', 'Road building on Algerian terrains', 'Algeria',
     ],
     contactPoint: [{
       '@type': 'ContactPoint', telephone: c.phone, email: c.email || undefined, contactType: 'sales',
-      areaServed: 'DZ', availableLanguage: ['Arabic', 'French', 'English'],
+      areaServed: 'DZ', availableLanguage: spoken.length ? spoken.map((l) => LANG_NAMES_EN[l] || l) : undefined,
     }],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: ctx.pageNav('services'),
-      itemListElement: SERVICE_PAGES.filter((id) => ctx.hasPage(id)).map((id) => ({
+      name: `${site.companyName} services`,
+      itemListElement: SERVICE_PAGES.filter((id) => ctx.hasPage(id, ctx.site.defaultLanguage)).map((id) => ({
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', '@id': `${ctx.abs(id, lang)}#service`, name: ctx.t.pages[id].service?.name || ctx.pageNav(id), url: ctx.abs(id, lang) },
+        itemOffered: { '@type': 'Service', '@id': `${D.abs(id)}#service`, name: D.serviceName(id), url: D.abs(id) },
       })),
     },
     subOrganization: kk ? {
       '@type': 'AutoPartsStore',
-      '@id': `${kk.url.replace(/\/$/, '')}/#organization`,
+      // Same @id as the store node published on kaylekenny.com, so the two graphs join.
+      '@id': kk.jsonldId || `${kk.url.replace(/\/$/, '')}/#organization`,
       name: kk.name,
-      url: kk.url,
+      url: kk.url.replace(/\/?$/, '/'),
       telephone: kk.phone,
       description: /cummins/i.test(kk.activity || '') ? `${kk.activity}. Independent supplier, not affiliated with or endorsed by Cummins Inc.` : kk.activity,
-      address: postal({ locality: 'Mohammadia', region: 'Algiers' }),
+      address: postal({ street: kk.street, locality: kk.addressLocality || 'Mohammadia', region: kk.addressRegion || 'Algiers', country: 'DZ' }),
       parentOrganization: { '@id': `${base}/#organization` },
     } : undefined,
     sameAs: social.length ? social : undefined,
     foundingDate: site.foundedYear ? String(site.foundedYear) : undefined,
     identifier: idents.length ? idents : undefined,
-    numberOfEmployees: undefined,
     hasCredential: (site.certifications || []).filter(Boolean).map((cname) => ({ '@type': 'EducationalOccupationalCredential', name: typeof cname === 'string' ? cname : cname.name })),
-    inLanguage: undefined,
-    _languages: L,
   };
 }
 
@@ -135,7 +139,6 @@ export function jsonLd(ctx) {
   const base = site.siteUrl;
   const url = ctx.abs(pageId, lang);
   const org = organization(ctx);
-  delete org._languages;
   const graph = [org];
   graph.push({
     '@type': 'WebSite',
@@ -158,7 +161,7 @@ export function jsonLd(ctx) {
     about: { '@id': `${base}/#organization` },
     primaryImageOfPage: ctx.ogImage() ? { '@type': 'ImageObject', url: ctx.ogImage().url } : undefined,
     breadcrumb: crumbs.length > 1 ? { '@id': `${url}#breadcrumb` } : undefined,
-    dateModified: ctx.buildDate,
+    dateModified: ctx.dateModified || ctx.buildDate,
   };
   graph.push(webPage);
   if (crumbs.length > 1) {
@@ -177,7 +180,7 @@ export function jsonLd(ctx) {
       description: page.description,
       url,
       provider: { '@id': pageId === 'parts' && org.subOrganization ? org.subOrganization['@id'] : `${base}/#organization` },
-      areaServed: { '@type': 'Country', name: 'Algeria', identifier: 'DZ' },
+      areaServed: { '@type': 'Country', name: ctx.ui.facts.countryValue || 'Algeria', identifier: 'DZ' },
       availableChannel: { '@type': 'ServiceChannel', servicePhone: { '@type': 'ContactPoint', telephone: site.contact.phone }, serviceUrl: ctx.abs('contact', lang) },
     });
   }

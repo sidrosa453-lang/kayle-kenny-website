@@ -83,6 +83,12 @@ export default {
     contactCta: 'Contact us',
     whatsappLabel: 'WhatsApp',
     whatsappAria: 'Message SARL ETAHG on WhatsApp',
+    emailAria: 'Email SARL ETAHG',
+    // Which channel the header shortcut and the contact block put first: 'whatsapp' or 'email'.
+    headerChannel: 'whatsapp',
+    // Optional note under the WhatsApp channel on the contact page ('' = none).
+    whatsappNote: '',
+    subMenuLabel: 'Show the services submenu',
     phoneLabel: 'Telephone',
     emailLabel: 'Email',
     breadcrumbLabel: 'Breadcrumb',
@@ -99,6 +105,10 @@ export default {
     homeLabel: 'Home',
     faqMore: 'All questions and answers',
     sectionPrefix: '',
+    // Separators used by generated strings (facts panel, footer, addresses, share-image alt text).
+    punct: { colon: ': ', comma: ', ', list: '; ', enum: ', ', open: ' (', close: ')' },
+    // Names of working languages (shown only when site.config.json spokenLanguages is filled).
+    languageNames: { ar: 'Arabic', fr: 'French', en: 'English', zh: 'Chinese' },
 
     footer: {
       // Also used as the schema.org Organization description, the web manifest and the vCard note.
@@ -126,7 +136,7 @@ export default {
       activities: 'Activities',
       activitiesValue: 'Fine aggregate production (stone crushing), road construction, heavy equipment rental and leasing, project mobilization, water well drilling',
       languages: 'Working languages',
-      languagesValue: 'Arabic, French, English (website also in Simplified Chinese)',
+      languagesNote: '(website also in Simplified Chinese)',
       group: 'Group company',
       groupValue: 'EURL KAYLE KENNY: heavy-duty spare parts, Algiers',
       founded: 'Founded',
@@ -239,11 +249,11 @@ export default {
           size: 'home',
           eyebrow: 'Algerian heavy-works company',
           title: 'SARL ETAHG: fine aggregates, heavy equipment and road construction in Algeria',
-          lead: 'SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. We run our own stone crushing plant and own the fleet that built our roads, and we put both at the service of project owners and contractors, including international companies looking for a local partner.',
+          lead: 'SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. For international contractors, we are a local partner that owns its machines, produces its own aggregates and knows the ground.',
           points: [
-            'Registered office in Ghardaïa, northern Sahara',
-            'Equipment depot in Djelfa, on the RN1 north–south axis',
-            'Stone crushing plant at Oued Seddeur, about 25 km south of Djelfa',
+            'Own stone crushing plant: fine aggregates for high production rates',
+            'Own fleet: trucks, bulldozers, excavators, road pavers and drilling rigs, for rent, lease or subcontract',
+            'Equipment depot in Djelfa on the RN1 axis, registered office in Ghardaïa, parts in Algiers',
           ],
           ctas: [
             { label: 'Partner with us', page: 'partners', variant: 'primary' },
@@ -258,33 +268,33 @@ export default {
             { title: 'Fine aggregates', text: 'Crushed fine aggregates from our own crushing plant, suited to high production rates.' },
             { title: 'Road construction', text: 'Earthworks, pavement layers and asphalt surfacing with our own fleet.' },
             { title: 'Equipment rental', text: 'Semi-trailer trucks, trucks, bulldozers, excavators and pavers for rent or lease.' },
-            { title: 'Site mobilization', text: 'New sites opened: clearing, access tracks, platforms, earthworks, aggregate supply.' },
-            { title: 'Water wells', text: 'Water well drilling with our own rigs, for sites, farms, industry and communities.' },
+            { title: 'Site mobilization', text: 'Opening new sites: clearing, access tracks, platforms, earthworks and aggregate supply.' },
+            { title: 'Water wells', text: 'Our own rigs can drill water wells for sites, farms, industry and communities.' },
           ],
         },
         {
           type: 'split',
           label: 'Company',
-          title: 'A heavy-works partner between the north and the south of Algeria',
+          title: 'A heavy‑works partner between the north and the south of Algeria',
           paragraphs: [
             '{{company}} is an Algerian limited liability company (SARL) registered in **Ghardaïa**, in the M’zab valley of the northern Sahara. Its heavy equipment is based in **Djelfa**, on the High Plateaus and on the RN1, the main north–south road linking Algiers to the Sahara. Its stone crushing plant is at **Oued Seddeur**, about 25 km south of Djelfa, and its group spare-parts company, EURL KAYLE KENNY, is in Algiers.',
             'The company’s fleet of semi-trailer trucks, trucks, bulldozers, excavators and road pavers was assembled mainly to build roads, and ETAHG has completed road projects in many regions of Algeria. That work gave our teams a practical understanding of the country’s terrains and of what it takes to keep machines productive on them. Today the same fleet, aggregate production and site experience are available to project owners and contractors through supply, rental, leasing and subcontracting.',
           ],
           ctas: [{ label: 'About the company', page: 'about', variant: 'secondary' }],
-          illustration: 'mobilization',
+          illustration: 'semi-truck',
         },
         {
           type: 'cards',
           label: 'Services',
           title: 'What we do',
-          intro: 'Six complementary services, delivered with our own plant and machines, so that one partner can cover materials, equipment and site work on the same project.',
+          intro: 'Five services delivered with our own plant and machines, plus spare parts through our group company, so that one partner can cover materials, equipment and site work on the same project.',
           style: 'services',
           items: [
             { page: 'aggregates', illustration: 'crusher', title: 'Aggregate production', text: 'High-quality crushed fine aggregates (manufactured sand) from our plant near Djelfa, for concrete, asphalt and road layers, especially where high production rates are required.' },
             { page: 'roads', illustration: 'paver', title: 'Road construction', text: 'Our original activity: earthworks, sub-base and base courses and asphalt surfacing, built with our own trucks, bulldozers, excavators and pavers.' },
             { page: 'rental', illustration: 'excavator', title: 'Equipment rental and leasing', text: 'Semi-trailer trucks, trucks, bulldozers, excavators and road pavers for a phase of work or a whole project, on terms agreed per project.' },
             { page: 'mobilization', illustration: 'mobilization', title: 'Project mobilization', text: 'Project initialization: machines on site, clearing, access tracks, platforms, first earthworks and aggregate supply, so the main works can start.' },
-            { page: 'drilling', illustration: 'drill-rig', title: 'Water well drilling', text: 'Our own drilling rigs for water wells serving construction sites, agriculture, industry and communities.' },
+            { page: 'drilling', illustration: 'drill-rig', title: 'Water well drilling', text: 'Our own drilling rigs can drill water wells for construction sites, agriculture, industry and communities.' },
             { page: 'parts', illustration: 'spare-parts', title: 'Spare parts (EURL KAYLE KENNY)', text: 'Our group company supplies heavy-duty diesel engine parts from its store and depot in Algiers.' },
           ],
         },
@@ -294,7 +304,7 @@ export default {
           title: 'Why ETAHG is a practical local partner',
           intro: 'An international contractor, supplier or investor starting a project in Algeria needs a local company that already owns equipment, produces materials and knows the ground. That is the core of what ETAHG offers.',
           items: [
-            { title: 'Equipment we own', text: 'Trucks, bulldozers, excavators, pavers and drilling rigs from our own fleet, managed by us and ready to be mobilized.' },
+            { title: 'Equipment we own', text: 'Trucks, bulldozers, excavators, pavers and drilling rigs from our own fleet, dispatched from our Djelfa depot.' },
             { title: 'Materials at the source', text: 'Our crushing plant produces fine aggregates, so a project can secure a local supply of a critical material from the start.' },
             { title: 'Central position', text: 'Based in Djelfa and Ghardaïa, on the RN1 axis between Algiers and the Sahara, we are positioned to serve projects in the north and in the south.' },
             { title: 'Terrain experience', text: 'Road projects in many regions of Algeria have given us practical knowledge of the ground, the materials and the working conditions.' },
@@ -340,10 +350,11 @@ export default {
           title: 'EURL KAYLE KENNY: spare parts within the group',
           paragraphs: [
             'EURL KAYLE KENNY is part of the {{company}} portfolio. From its store and parts depot in Mohammadia, Algiers, it supplies heavy-duty diesel engine spare parts, including Cummins-compatible parts, to fleets and workshops.',
-            'For our clients and partners, a parts company inside the group means quicker access to the right part and machines that spend more time working.',
+            'For our clients and partners, a parts company inside the group is a local source for heavy-duty engine parts.',
           ],
           disclaimer: 'EURL KAYLE KENNY is an independent supplier, not affiliated with or endorsed by Cummins Inc.',
           cta: { label: 'Visit kaylekenny.com', href: 'https://www.kaylekenny.com' },
+          illustration: 'bulldozer',
         },
         {
           type: 'facts',
@@ -375,7 +386,7 @@ export default {
     services: {
       slug: 'services',
       nav: 'Services',
-      title: 'Heavy-Works & Construction Services, Algeria | SARL ETAHG',
+      title: 'Civil Works & Construction Services in Algeria | SARL ETAHG',
       description: 'SARL ETAHG services in Algeria: crushed fine aggregates, road construction, heavy equipment rental and leasing, site mobilization and water well drilling.',
       summary: 'Overview of the services of SARL ETAHG and how they combine on one project.',
       blocks: [
@@ -383,9 +394,9 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Services',
-          title: 'Six services, one heavy-works partner in Algeria',
+          title: 'One civil works partner in Algeria: five services and group parts support',
           lead: '{{company}} combines material production, a heavy equipment fleet and road-building experience. Each service can be contracted on its own or combined with others in one agreement, with a single point of contact from the first study to the end of the works.',
-          illustration: 'hero-terrain',
+          illustration: 'dump-truck',
         },
         {
           type: 'cards',
@@ -397,7 +408,7 @@ export default {
             { page: 'roads', illustration: 'paver', title: 'Road construction', text: 'Our original activity: roads built with our own fleet in many regions of Algeria, from earthworks and granular layers to asphalt surfacing.' },
             { page: 'rental', illustration: 'excavator', title: 'Equipment rental and leasing', text: 'The fleet that built our roads, available to other contractors for a phase of work or for a whole project, on terms agreed per project.' },
             { page: 'mobilization', illustration: 'mobilization', title: 'Project mobilization', text: 'Project initialization: we bring machines and operators to open a new site, build access and platforms, and prepare it for the main works.' },
-            { page: 'drilling', illustration: 'drill-rig', title: 'Water well drilling', text: 'Our own drilling rigs for water wells serving construction sites, agriculture, industry and communities.' },
+            { page: 'drilling', illustration: 'drill-rig', title: 'Water well drilling', text: 'Our own drilling rigs can drill water wells for construction sites, agriculture, industry and communities.' },
             { page: 'parts', illustration: 'spare-parts', title: 'Spare parts', text: 'Heavy-duty diesel engine parts through our group company EURL KAYLE KENNY, with stock in Algiers.' },
           ],
         },
@@ -495,7 +506,7 @@ export default {
             'Granular sub-base and base layers of roads and platforms',
             'Mortars, renders and general building works',
           ],
-          illustration: 'crusher',
+          illustration: 'dump-truck',
         },
         {
           type: 'prose',
@@ -524,12 +535,12 @@ export default {
           type: 'features',
           label: 'Quality',
           title: 'Quality focus areas for fine aggregates',
-          intro: 'The performance of a fine aggregate depends on a few measurable properties. These are the points we manage in production and the parameters buyers usually specify.',
+          intro: 'The performance of a fine aggregate depends on a few measurable properties. These are the parameters buyers usually specify; the tests required for each supply are agreed with the client.',
           items: [
             { title: 'Grading', text: 'The distribution of particle sizes, checked by sieve analysis. A continuous, stable grading makes concrete and asphalt easier to design and to reproduce.' },
             { title: 'Cleanliness', text: 'The quantity and nature of the fines, usually assessed with the sand equivalent and methylene blue tests. Clay fines raise water demand and weaken the bond with the binder.' },
             { title: 'Particle shape', text: 'Compact, cubical grains pack and compact better than flat or elongated ones. Shape depends mainly on the crushing stages and on how they are fed.' },
-            { title: 'Consistency', text: 'The same product from one delivery to the next, supported by separate stockpiles for each fraction and regular checks during production.' },
+            { title: 'Consistency', text: 'The same product from one delivery to the next, which depends on separate stockpiles for each fraction and on checks during production.' },
             { title: 'Parent rock', text: 'The hardness and durability of the rock, measured on coarse fractions by tests such as Los Angeles and Micro-Deval, determine where a material can be used in a road.' },
             { title: 'Documented supply', text: 'The tests required for a project, and the laboratory that performs them, are agreed with the client before supply starts.' },
           ],
@@ -592,7 +603,7 @@ export default {
             { id: 'agg-what', q: 'What is manufactured sand?', a: 'Manufactured sand is fine aggregate produced by crushing rock instead of extracting it from rivers or dunes, and it is what SARL ETAHG produces at its Oued Seddeur plant near Djelfa. Its angular particles and controlled grading make it suitable for concrete, asphalt and road layers, alone or blended with natural sand.' },
             { id: 'agg-uses', q: 'Can ETAHG’s fine aggregates be used for concrete and asphalt?', a: 'The high-quality fine aggregates produced by SARL ETAHG are intended for concrete, precast elements, asphalt mixes and road layers. Suitability for a specific mix is confirmed against the project specification before supply starts.' },
             { id: 'agg-fractions', q: 'Which aggregate sizes does ETAHG produce?', a: 'SARL ETAHG specializes in fine aggregates, the sand-sized fractions used in concrete, asphalt and road layers. The exact fractions available for a project are confirmed in the quotation.' },
-            { id: 'agg-testing', q: 'Can we test the aggregates before ordering?', a: 'Yes. SARL ETAHG agrees the required tests with each client, such as grading, sand equivalent and methylene blue value, and samples can be arranged for testing by a laboratory accepted by both parties.' },
+            { id: 'agg-testing', q: 'Can we test the aggregates before ordering?', a: 'SARL ETAHG agrees the required tests with each client before supply starts, such as grading, sand equivalent and methylene blue value. Sampling for testing can be discussed once the project details are known.' },
             { id: 'agg-delivery', q: 'Does ETAHG deliver aggregates to the site?', a: 'Yes. SARL ETAHG can deliver aggregates with its own trucks and semi-trailer trucks. Transport conditions are agreed with each client according to distance, volumes and call-off schedule.' },
           ],
         },
@@ -634,7 +645,7 @@ export default {
           type: 'equipment',
           label: 'Machines',
           title: 'Equipment available for rent and lease',
-          intro: 'Machines are available individually or as a complete package for a scope of work, such as an earthworks team or a paving train.',
+          intro: 'Machines are available individually or as a group for a defined scope of work, such as earthworks or paving.',
           items: [
             { illustration: 'semi-truck', title: 'Semi-trailer trucks', text: 'Tractor units with semi-trailers for heavy haulage: moving construction machines between sites and hauling materials over longer distances.', uses: ['Machine transport', 'Long-distance haulage', 'Material supply'], count: 'semiTrailerTrucks' },
             { illustration: 'dump-truck', title: 'Trucks', text: 'Trucks for moving aggregates, fill and excavated material on site and between sites, the everyday workhorses of earthworks and road building.', uses: ['Earthworks haulage', 'Aggregate delivery', 'Spoil removal'], count: 'dumpTrucks' },
@@ -659,8 +670,8 @@ export default {
           intro: 'No two sites are alike, so we do not publish fixed rental conditions. The following points are discussed and written into each contract.',
           items: [
             { title: 'Duration', text: 'Short-term rental for a phase of work or longer-term leasing for the life of a project.' },
-            { title: 'Operators', text: 'Machines with or without operators, depending on the project and on the client’s own teams.' },
-            { title: 'Transport', text: 'Mobilization and demobilization of the machines, including transport by our semi-trailer trucks where suitable.' },
+            { title: 'Operators', text: 'Whether machines are supplied with operators, depending on the project and on the client’s own teams.' },
+            { title: 'Transport', text: 'Mobilization and demobilization of the machines, and whether and on what terms they are moved by our own semi-trailer trucks.' },
             { title: 'Maintenance and repairs', text: 'Who services the machines and who handles repairs, with parts support available through our group company.' },
             { title: 'Fuel and consumables', text: 'Who supplies fuel, lubricants and wear parts during the rental.' },
             { title: 'Site conditions', text: 'Working hours, access, security, insurance and the responsibilities of each party on site.' },
@@ -674,9 +685,9 @@ export default {
             { title: 'Request', text: 'You send the machine types, the project location, the start date, the expected duration and the scope of work.' },
             { title: 'Availability and proposal', text: 'We confirm which machines are available and send a proposal with the terms.' },
             { title: 'Contract', text: 'Duration, operators, transport, maintenance and responsibilities are written into the rental or lease agreement.' },
-            { title: 'Mobilization', text: 'The machines are transported from our Djelfa depot or from another site, and their condition is checked jointly at hand-over.' },
+            { title: 'Mobilization', text: 'The machines are delivered to site as agreed in the contract.' },
             { title: 'Work and support', text: 'The machines work on your project; parts for heavy-duty engines are supported through EURL KAYLE KENNY in Algiers.' },
-            { title: 'Return', text: 'At the end of the agreement the machines are demobilized and a closing check is carried out.' },
+            { title: 'Return', text: 'At the end of the agreement the machines are demobilized as agreed.' },
           ],
         },
         {
@@ -684,8 +695,8 @@ export default {
           label: 'Why rent from ETAHG',
           title: 'Why rent from a contractor rather than a rental agency',
           paragraphs: [
-            'Our machines were acquired for our own road projects, not for a rental catalogue. They are sized for real heavy works in Algeria, and the people who manage them understand production, not only contracts.',
-            'For a foreign contractor starting a project, renting locally avoids the cost and lead time of importing equipment for the first phase and leaves time to decide what to bring in. For an Algerian company, it adds capacity for a peak of work without buying machines. In both cases, one contact at {{company}} coordinates the machines, their transport and their parts support.',
+            'Our machines were acquired for our own road projects, not for a rental catalogue. They are sized for heavy works in Algeria and managed by a company that uses them on its own projects. See [our fleet](page:fleet) for the equipment categories.',
+            'For a foreign contractor starting a project, renting locally avoids the cost and lead time of importing equipment for the first phase and leaves time to decide what to bring in. For an Algerian company, it adds capacity for a peak of work without buying machines. In both cases, the terms are agreed directly with {{company}}, the company that owns the machines.',
           ],
         },
         {
@@ -697,7 +708,7 @@ export default {
             'Project location and site access conditions',
             'Start date and expected duration',
             'Scope of work and working hours',
-            'With or without operators',
+            'Whether you need operators',
             'Transport requirements to and from the site',
           ],
           note: 'Availability is confirmed in writing for each request.',
@@ -720,10 +731,10 @@ export default {
           title: 'Questions about equipment rental',
           items: [
             { id: 'rent-what', q: 'Does ETAHG rent heavy equipment in Algeria?', a: 'Yes. SARL ETAHG rents and leases its own heavy equipment in Algeria: semi-trailer trucks, trucks, bulldozers, excavators and road pavers. The machines are dispatched from its depot in Djelfa, and terms are agreed per project.' },
-            { id: 'rent-operators', q: 'Are operators included in the rental?', a: 'SARL ETAHG rents machines with or without operators, depending on the project. Operators, duration, transport and maintenance are agreed per project and written into the contract.' },
+            { id: 'rent-operators', q: 'Are operators included in the rental?', a: 'SARL ETAHG agrees per project whether machines are supplied with operators, together with duration, transport and maintenance, and writes these terms into the contract.' },
             { id: 'rent-lease', q: 'Does ETAHG offer long-term equipment leasing?', a: 'Yes. Besides rental for a phase of work, SARL ETAHG leases machines for longer periods, for example for the duration of a project. This is a direct arrangement with ETAHG as owner, not a bank financing product.' },
             { id: 'rent-where', q: 'Where can ETAHG equipment be used?', a: 'SARL ETAHG’s fleet is based at its equipment depot in Djelfa, on the RN1 north–south axis, and has built roads in many regions of Algeria. Availability for a given location is confirmed when you send your project details.' },
-            { id: 'rent-transport', q: 'Can ETAHG transport the machines to our site?', a: 'Yes. SARL ETAHG operates semi-trailer trucks that can move its machines to and from the site. Transport is included in the proposal when requested, and its conditions are agreed per project.' },
+            { id: 'rent-transport', q: 'Can ETAHG transport the machines to our site?', a: 'SARL ETAHG operates semi-trailer trucks. Whether it transports the machines to and from your site, and on what terms, is agreed per project.' },
             { id: 'rent-breakdown', q: 'What happens if a rented machine breaks down?', a: 'With SARL ETAHG, responsibilities for maintenance and repairs are agreed in the contract before the rental starts. Its group company EURL KAYLE KENNY supplies heavy-duty diesel engine parts from Algiers, which supports the availability of the fleet.' },
           ],
         },
@@ -753,8 +764,8 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Project mobilization',
-          title: 'Project initialization: opening new sites with our own machines',
-          lead: '{{company}} mobilizes heavy equipment to start up new projects in Algeria. We move machines to the location, clear and open the site, build access tracks and platforms, carry out the first earthworks, set up aggregate supply and, where there is no water, drill a well, so that the main works can begin on schedule.',
+          title: 'Project mobilization: opening new sites with our own machines',
+          lead: '{{company}} mobilizes heavy equipment to start up new projects in Algeria (project initialization). We move machines to the location, clear and open the site, build access tracks and platforms, carry out the first earthworks, set up aggregate supply and, where there is no water, drill a well, so that the main works can begin on schedule.',
           ctas: [
             { label: 'Discuss your project', kind: 'whatsapp', variant: 'primary' },
             { label: 'International partners', page: 'partners', variant: 'secondary' },
@@ -835,7 +846,7 @@ export default {
           label: 'Related services',
           title: 'Services that complete a mobilization',
           items: [
-            { title: 'Equipment rental', text: 'Keep our machines on site for the main works, with or without operators.', page: 'rental' },
+            { title: 'Equipment rental', text: 'Keep our machines on site for the main works, on terms agreed per project.', page: 'rental' },
             { title: 'Aggregate production', text: 'Crushed fine aggregates from our plant at Oued Seddeur, near Djelfa.', page: 'aggregates' },
             { title: 'Water well drilling', text: 'A water well for the works and the site facilities.', page: 'drilling' },
             { title: 'Road construction', text: 'Access roads and permanent roads built by ETAHG.', page: 'roads' },
@@ -909,7 +920,7 @@ export default {
           title: 'Aggregates, machines and paving in one company',
           paragraphs: [
             'Road construction consumes large quantities of aggregates, in the granular layers and in the asphalt itself. Because {{company}} produces fine aggregates at its own crushing plant and operates its own trucks, the supply of materials and the pace of the works can be planned together.',
-            'Our own bulldozers, excavators and pavers mean that each phase, from earthworks to surfacing, is carried out by machines and teams that are used to working together. For a main contractor, this reduces the number of interfaces on the critical path.',
+            'Our own bulldozers, excavators and pavers mean that each phase, from earthworks to surfacing, is carried out by machines and teams that are used to working together. For a main contractor, this reduces the number of interfaces on the critical path. See [our fleet](page:fleet) for the equipment involved.',
           ],
           list: ['New roads and access roads', 'Widening and rehabilitation of existing roads', 'Access roads to industrial, mining and energy sites', 'Platforms, yards and site roads'],
           illustration: 'dump-truck',
@@ -920,7 +931,7 @@ export default {
           title: 'Adapting road building to the terrain',
           paragraphs: [
             'On the coastal Tell, clay soils and winter rainfall make drainage and subgrade treatment the priority, and works often run alongside live traffic. In the Atlas mountains, rock cuts, embankments and slope stability demand heavy dozing and excavation. On the High Plateaus, long straight alignments reward productivity and a steady flow of aggregates, while cold winters and hot summers call for careful seasonal planning; around the salt flats (chotts), soft and saline soils need particular attention.',
-            'In the Sahara, sand, heat and distance shape every decision: drifting sand must be kept off the alignment, asphalt must tolerate high surface temperatures, and local materials such as calcareous tuff are widely used in pavement layers. Crews and supplies must be planned to be self-sufficient. ETAHG has built roads in many regions of Algeria and knows the terrain of those regions; more on our [experience](page:experience) page.',
+            'In the Sahara, sand, heat and distance shape every decision: drifting sand must be kept off the alignment, asphalt must tolerate high surface temperatures, and local materials such as calcareous tuff are widely used in pavement layers. Crews and supplies must be planned to be self-sufficient. ETAHG has built roads in many regions of Algeria and knows the terrain of those regions; more about our [road-building experience](page:experience).',
           ],
         },
         {
@@ -969,7 +980,7 @@ export default {
             { id: 'road-experience', q: 'Does ETAHG have experience in road construction?', a: 'Yes. Road construction is the original activity of SARL ETAHG: its fleet was mainly used to build roads, and the company has completed road projects in many regions of Algeria.' },
             { id: 'road-scope', q: 'Which parts of a road project can ETAHG carry out?', a: 'SARL ETAHG can carry out earthworks, subgrade preparation, sub-base and base courses, asphalt surfacing with its own road pavers, aggregate supply and haulage, either as a complete scope or as a subcontract for part of the works.' },
             { id: 'road-subcontract', q: 'Can ETAHG work as a subcontractor on a road project?', a: 'Yes. SARL ETAHG can work for a main contractor, including a foreign contractor, on a defined scope such as earthworks, granular layers, paving or aggregate supply.' },
-            { id: 'road-regions', q: 'In which regions has ETAHG built roads?', a: 'SARL ETAHG has completed road projects in many regions of Algeria and knows the terrain of those regions. Details of past road projects are available on request.' },
+            { id: 'road-regions', q: 'In which regions has ETAHG built roads?', a: 'SARL ETAHG has completed road projects in many regions of Algeria and knows the terrain of those regions. Information on past road projects can be discussed with prospective partners.' },
             { id: 'road-materials', q: 'Can ETAHG supply the aggregates for a road project?', a: 'Yes. SARL ETAHG produces high-quality fine aggregates at its crushing plant at Oued Seddeur, near Djelfa, and can deliver them with its own trucks, so material supply and road works can be planned together.' },
             { id: 'road-equipment', q: 'What equipment does ETAHG use to build roads?', a: 'SARL ETAHG builds roads with its own bulldozers, excavators, trucks, semi-trailer trucks and road pavers, supported by aggregates from its own crushing plant.' },
           ],
@@ -991,7 +1002,7 @@ export default {
       slug: 'services/water-well-drilling',
       nav: 'Water well drilling',
       title: 'Water Well & Borehole Drilling in Algeria | SARL ETAHG',
-      description: 'SARL ETAHG drills water wells in Algeria with its own rigs, for construction sites, agriculture, industry and communities, including remote southern sites.',
+      description: 'SARL ETAHG drills water wells in Algeria with its own rigs, for construction sites and for agricultural, industrial and community needs, on request.',
       summary: 'Water well drilling in Algeria with SARL ETAHG’s own drilling rigs, for sites, farms, industry and communities.',
       service: { name: 'Water well drilling', serviceType: 'Water well drilling' },
       whatsapp: 'Hello SARL ETAHG, I would like information about drilling a water well (location, use of the water).',
@@ -1001,7 +1012,7 @@ export default {
           size: 'page',
           eyebrow: 'Water well drilling',
           title: 'Water well drilling for sites, farms, industry and communities',
-          lead: '{{company}} owns water well drilling machines and drills water wells in Algeria for construction sites, agriculture, industrial facilities and communities. Based in Djelfa and Ghardaïa, between the High Plateaus and the northern Sahara, ETAHG can also include a well in the start-up of a new project, so that water is available early in the works.',
+          lead: '{{company}} owns water well drilling rigs and can drill water wells in Algeria for construction sites, agriculture, industrial facilities and communities. Based in Djelfa and Ghardaïa, between the High Plateaus and the northern Sahara, ETAHG can also include a well in the start-up of a new project, so that water is available early in the works.',
           ctas: [
             { label: 'Ask about a well', kind: 'whatsapp', variant: 'primary' },
             { label: 'Contact us', page: 'contact', variant: 'secondary' },
@@ -1013,11 +1024,11 @@ export default {
           label: 'Why it matters',
           title: 'Water is a project in itself',
           paragraphs: [
-            'Earthworks need water for compaction, concrete needs water for mixing and curing, haul roads need water for dust control, and site camps need water to live. On the High Plateaus and in the Sahara, where surface water is scarce, a well is often the only reliable source, and hauling water by tanker over long distances is costly.',
+            'Earthworks need water for compaction, concrete needs water for mixing and curing, haul roads need water for dust control, and site camps need drinking and service water. On the High Plateaus and in the Sahara, where surface water is scarce, a well is often the only reliable source, and hauling water by tanker over long distances is costly.',
             'Drilling a well early, as part of the mobilization, removes one of the main constraints of a remote project. After the works, the well can continue to serve the owner, a farm or the local community.',
           ],
           list: ['Construction and road sites', 'Agricultural irrigation and livestock', 'Industrial and mining facilities', 'Community water supply'],
-          illustration: 'drill-rig',
+          illustration: 'terrain-desert',
         },
         {
           type: 'features',
@@ -1037,7 +1048,7 @@ export default {
           intro: 'The main stages of a water well project are below. The exact scope ETAHG carries out is agreed in each contract.',
           items: [
             { title: 'Needs and location', text: 'Water demand, intended use, location and access are defined with the client, together with any information on existing wells nearby.' },
-            { title: 'Authorization', text: 'The well owner obtains the authorization required under Algerian regulations before drilling starts; the drilling is planned around it.' },
+            { title: 'Authorization', text: 'The authorization required under Algerian regulations is obtained before drilling starts; who applies for it is agreed in the contract, and the drilling is planned around it.' },
             { title: 'Rig mobilization', text: 'The drilling rig and support equipment are transported to the site.' },
             { title: 'Drilling', text: 'The borehole is drilled through the formations to the water-bearing layer, with a method suited to the ground.' },
             { title: 'Casing and completion', text: 'The well is cased, with screens at the water-bearing layer, and equipped according to the agreed specification.' },
@@ -1051,7 +1062,7 @@ export default {
           paragraphs: [
             'Algeria’s groundwater varies with its landscapes. In the Tell, aquifers lie mainly in alluvial plains and fissured limestone, recharged by winter rain; near the coast, over-pumping can draw in salt water. On the High Plateaus, water-bearing layers occur in sedimentary basins whose depth and quality vary, and water near the salt flats (chotts) can be saline.',
             'Under the northern Sahara lie two large aquifer systems shared with Tunisia and Libya: the Complexe Terminal, closer to the surface, and the deeper Continental Intercalaire, commonly called the Albian aquifer. Deep wells can deliver warm water under pressure, which affects the choice of casing and wellhead. Because much of this water is not renewed, its use is regulated by the authorities.',
-            'Each well is therefore planned for its location: the method, depth, casing and completion depend on the ground and on the aquifer to be reached. Every project starts with an exchange on the site and on the expected water needs.',
+            'Each well is therefore planned for its location: the method, depth, casing and completion depend on the ground and on the aquifer to be reached. Every project starts with an exchange on the site and on the expected water needs. How Algeria’s terrains shape our work is described on our [road-building experience](page:experience) page.',
           ],
         },
         {
@@ -1083,11 +1094,11 @@ export default {
           label: 'FAQ',
           title: 'Questions about water well drilling',
           items: [
-            { id: 'drill-own', q: 'Does ETAHG own its drilling rigs?', a: 'Yes. SARL ETAHG has its own water well drilling machines, which it uses for its own projects and for clients.' },
-            { id: 'drill-uses', q: 'What kinds of water wells does ETAHG drill?', a: 'SARL ETAHG drills water wells for construction sites, agricultural irrigation, industrial and mining facilities and community water supply. The design of each well depends on its use and on local geology.' },
+            { id: 'drill-own', q: 'Does ETAHG own its drilling rigs?', a: 'Yes. SARL ETAHG has its own water well drilling machines.' },
+            { id: 'drill-uses', q: 'What kinds of water wells does ETAHG drill?', a: 'SARL ETAHG can drill water wells for construction sites, agricultural irrigation, industrial and mining facilities and community water supply. The design of each well depends on its use and on local geology.' },
             { id: 'drill-combined', q: 'Can a well be drilled as part of a site mobilization?', a: 'Yes. SARL ETAHG can include a water well in the mobilization of a new site, so that water is available for earthworks, concrete and site facilities.' },
             { id: 'drill-where', q: 'Where can ETAHG drill water wells?', a: 'SARL ETAHG works from Djelfa and Ghardaïa, on the axis between northern Algeria and the Sahara. Feasibility for a specific location is assessed when you send the project details.' },
-            { id: 'drill-permit', q: 'Is a permit needed to drill a water well in Algeria?', a: 'Yes. In Algeria, drilling a water well requires prior authorization from the administration responsible for water resources, and SARL ETAHG plans its drilling around the authorization obtained by the well owner.' },
+            { id: 'drill-permit', q: 'Is a permit needed to drill a water well in Algeria?', a: 'Yes. In Algeria, drilling a water well requires prior authorization from the administration responsible for water resources. SARL ETAHG plans its drilling around that authorization; who applies for it is agreed with the client.' },
             { id: 'drill-depth', q: 'How deep will the well be?', a: 'SARL ETAHG sets the depth of each well according to local geology and the aquifer to be reached. Depth is estimated after reviewing the location and any data from existing wells nearby.' },
           ],
         },
@@ -1134,7 +1145,7 @@ export default {
             'EURL KAYLE KENNY stocks heavy-duty diesel engine parts, including Cummins-compatible parts, in Algiers. Customers can check a part reference on [kaylekenny.com](https://www.kaylekenny.com) and ask for availability and price directly.',
           ],
           list: ['Diesel engine spare parts for heavy-duty machines', 'Cummins-compatible parts', 'Stock in Mohammadia, Algiers', 'Search by part reference online'],
-          illustration: 'spare-parts',
+          illustration: 'excavator',
           reverse: true,
         },
         {
@@ -1142,7 +1153,7 @@ export default {
           label: 'For partners',
           title: 'What it means for ETAHG’s partners',
           paragraphs: [
-            'For a contractor renting ETAHG machines, or working alongside ETAHG on a project, parts support within the group is part of what keeps equipment available. It also gives partners with their own fleets a local source of heavy-duty engine parts in Algiers.',
+            'For a contractor renting ETAHG machines, or working alongside ETAHG on a project, parts support within the group is a local source of engine parts. It also gives partners with their own fleets a local source of heavy-duty engine parts in Algiers.',
             'To ask for a part, send the part reference or the engine model and serial number. A photo of the part and of the engine plate helps to identify the right item.',
           ],
         },
@@ -1225,7 +1236,7 @@ export default {
           type: 'features',
           label: 'Availability',
           title: 'How we keep the fleet available',
-          intro: 'A fleet is only as useful as its availability on site. Our approach is practical and grounded in daily use on real projects.',
+          intro: 'A fleet is only as useful as its availability on site.',
           items: [
             { title: 'Central depot', text: 'The Djelfa depot, on the RN1 axis, is the base for preparing and dispatching machines toward the north and the south.' },
             { title: 'Own transport', text: 'Our semi-trailer trucks move our machines without depending on third-party transport.' },
@@ -1238,7 +1249,7 @@ export default {
           label: 'Fleet details',
           title: 'Fleet list and machine details',
           paragraphs: [
-            'A detailed list of the machines proposed for a project, with their characteristics, is provided with each offer. Fleet figures are published on this page once they have been confirmed.',
+            'A detailed list of the machines proposed for a project, with their characteristics, is provided with each offer.',
           ],
         },
         {
@@ -1275,7 +1286,7 @@ export default {
           eyebrow: 'Experience',
           title: 'Experience built on road projects in many regions of Algeria',
           lead: '{{company}} has completed road projects in many regions of Algeria and knows the terrain of those regions. Its fleet was assembled to build roads, and that experience now informs everything the company offers: aggregate production, equipment rental, project mobilization and water well drilling.',
-          illustration: 'hero-terrain',
+          illustration: 'paver',
         },
         {
           type: 'prose',
@@ -1328,7 +1339,7 @@ export default {
           title: 'Regions and projects',
           regionsTitle: 'Regions where we have built roads',
           projectsTitle: 'Selected projects',
-          emptyText: 'Details of our past road projects are available on request.',
+          emptyText: 'Information on past road projects can be discussed with prospective partners.',
         },
         {
           type: 'locations',
@@ -1339,7 +1350,7 @@ export default {
         {
           type: 'cta',
           title: 'Working in a demanding location?',
-          text: 'Tell us about the terrain and the scope. We will tell you how we would approach it.',
+          text: 'Tell us about the terrain and the scope, and we will tell you how we would approach it. Information on past road projects can be discussed with prospective partners.',
           ctas: [
             { label: 'Contact us', page: 'contact', variant: 'primary' },
             { label: 'Road construction', page: 'roads', variant: 'secondary' },
@@ -1353,7 +1364,7 @@ export default {
       slug: 'international-partners',
       nav: 'International partners',
       title: 'Local Partner in Algeria for Foreign Companies | SARL ETAHG',
-      description: 'SARL ETAHG is a local partner for foreign contractors in Algeria: subcontracting, equipment rental, aggregate supply, site start-up and water wells.',
+      description: 'Foreign contractors in Algeria can work with SARL ETAHG as a local partner: subcontracting, equipment rental, aggregates, site start-up and water wells.',
       summary: 'How international contractors and foreign companies can cooperate with SARL ETAHG in Algeria, and how to start.',
       whatsapp: 'Hello SARL ETAHG, we are an international company and would like to discuss cooperation in Algeria.',
       blocks: [
@@ -1361,21 +1372,32 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'International partners',
-          title: 'A local heavy-works partner for international contractors in Algeria',
-          lead: '{{company}} is an Algerian company that gives international contractors, EPC companies, cement and mining groups and investors what a project in Algeria needs from the start: its own heavy equipment fleet, its own fine aggregate production, road-building experience in many regions of the country and a group spare-parts company in Algiers.',
+          title: 'A local heavy‑works partner for international contractors in Algeria',
+          lead: '{{company}} is an Algerian heavy-works company that works alongside international contractors, EPC companies and investors. We can take on a defined scope under your contract, supply machines and fine aggregates to your site, or open your site while your own organization is being set up, with our own fleet, our own crushing plant and road-building experience in many regions of Algeria.',
           ctas: [
-            { label: 'Start a conversation', kind: 'whatsapp', variant: 'primary' },
-            { label: 'Download company profile (PDF)', kind: 'pdf', variant: 'secondary' },
+            { label: 'Email us', kind: 'mailto', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+            { label: 'Download company profile (PDF)', kind: 'pdf', variant: 'ghost' },
           ],
-          illustration: 'hero-terrain',
+          illustration: 'semi-truck',
         },
         {
           type: 'prose',
           label: 'Context',
           title: 'Working alongside international contractors',
           paragraphs: [
-            'Algeria’s roads, railways, dams, housing and industrial plants are delivered by Algerian companies and by international contractors, among them many Chinese, Turkish and European groups. International contractors bring engineering, financing and the management of large projects. What they often need locally is equipment that can start immediately, a secure supply of materials, subcontractors for earthworks and road layers, and a partner who knows the ground and the practical conditions of working in the country.',
+            'Algeria’s roads, railways, dams, housing and industrial plants are delivered by Algerian companies and by international contractors, among them many Chinese, Turkish and European groups. International contractors bring engineering, financing and the management of large projects. What they often need locally is equipment that is already in the country, a secure supply of materials, subcontractors for earthworks and road layers, and a partner who knows the ground and the practical conditions of working in the country (see our [road-building experience](page:experience)).',
             '{{company}} is organized to fill that role. It can take on a defined scope under your contract, supply machines and aggregates to your site, or open the site for you while your own organization is being set up. Because it owns its equipment and its crushing plant, it commits its own resources rather than coordinating third parties on your behalf.',
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Chinese companies',
+          title: 'For Chinese companies working in Algeria',
+          paragraphs: [
+            'Chinese companies building roads, railways, water and housing projects in Algeria often meet the same questions at the same stages: at the start of a project their own equipment may still be at sea or in customs; a steady source of manufactured sand near the site is not always available; fuel, spare parts and water are hard to secure on remote southern sites; and they need subcontractors who know local ground and working conditions.',
+            'With its own fleet, its own crushing plant at Oued Seddeur and road-building experience in many regions of Algeria, {{company}} can work with your project team at these stages: opening the site before your equipment arrives, supplying fine aggregates, taking on earthworks, pavement layers or paving as a subcontractor and, where needed, drilling a water well for the works.',
+            'Your head office or your project team in Algeria can write to us at [amar@etahg.com](mailto:), in English or French; email is also the practical channel from mainland China. This website is available in [Simplified Chinese](page:home@zh).',
           ],
         },
         {
@@ -1383,12 +1405,12 @@ export default {
           label: 'Why ETAHG',
           title: 'What ETAHG brings to your project',
           items: [
-            { title: 'Own fleet, ready to mobilize', text: 'Semi-trailer trucks, trucks, bulldozers, excavators, road pavers and drilling rigs that ETAHG owns, dispatched from its depot in Djelfa.' },
+            { title: 'Own fleet, own transport', text: 'Semi-trailer trucks, trucks, bulldozers, excavators, road pavers and drilling rigs that ETAHG owns, dispatched from its depot in Djelfa.' },
             { title: 'Own aggregate production', text: 'A stone crushing plant at Oued Seddeur producing high-quality fine aggregates, suited to high production rates.' },
             { title: 'Road-building experience', text: 'Road projects completed in many regions of Algeria, with practical knowledge of their terrain, materials and working conditions.' },
             { title: 'A footprint between north and south', text: 'Registered in Ghardaïa, in the northern Sahara, with the fleet in Djelfa on the RN1 axis from Algiers to the Sahara, and parts in Algiers.' },
-            { title: 'Fleet uptime through the group', text: 'Heavy-duty diesel engine parts supplied by EURL KAYLE KENNY in Algiers help keep machines working on your project.' },
-            { title: 'Direct communication', text: 'We work in Arabic, French and English, and the people you meet are the people who decide and deliver.' },
+            { title: 'Parts support through the group', text: 'EURL KAYLE KENNY in Algiers is a local source of heavy-duty diesel engine parts for machines working on your project.' },
+            { title: 'Direct communication', text: 'Reach us directly by email, phone or WhatsApp. You can write to us in Arabic, French or English.' },
           ],
         },
         {
@@ -1399,7 +1421,7 @@ export default {
           style: 'compact',
           items: [
             { title: 'Subcontracting', text: 'We carry out a defined scope, such as earthworks, road layers, paving or site preparation, under your contract.', page: 'roads' },
-            { title: 'Equipment supply', text: 'Our machines are rented or leased to your project, with or without operators, on terms agreed per project.', page: 'rental' },
+            { title: 'Equipment supply', text: 'Our machines are rented or leased to your project on terms agreed per project (operators, transport, maintenance).', page: 'rental' },
             { title: 'Aggregate supply', text: 'We supply crushed fine aggregates from our plant for your concrete, asphalt or road works.', page: 'aggregates' },
             { title: 'Site start-up', text: 'We mobilize equipment and open your site while your own organization is being set up.', page: 'mobilization' },
             { title: 'Water supply', text: 'We drill water wells for your site, especially where there is no network.', page: 'drilling' },
@@ -1414,7 +1436,7 @@ export default {
           head: ['Model', 'What ETAHG provides', 'Usual form of agreement'],
           rows: [
             ['Subcontracting', 'A defined works scope with its own machines and operators', 'Subcontract under the main contract'],
-            ['Equipment supply', 'Machines, with or without operators, transport as agreed', 'Rental or lease agreement'],
+            ['Equipment supply', 'Machines on terms agreed per project (operators, transport, maintenance)', 'Rental or lease agreement'],
             ['Aggregate supply', 'Crushed fine aggregates, delivered or collected', 'Supply contract'],
             ['Site start-up', 'Mobilization, clearing, access, platforms, first earthworks', 'Subcontract or service agreement'],
             ['Water supply', 'Drilling of water wells', 'Service contract'],
@@ -1426,13 +1448,13 @@ export default {
           label: 'How to start',
           title: 'How cooperation starts',
           items: [
-            { title: 'First contact', text: 'Send a short description of your company and your project by phone or WhatsApp on {{phone}}.' },
-            { title: 'Confidentiality', text: 'If your project information is sensitive, a confidentiality agreement can be signed before details are exchanged.' },
+            { title: 'First contact', text: 'Send a short description of your company and your project by email to [amar@etahg.com](mailto:), or by phone or WhatsApp on {{phone}}.' },
+            { title: 'Confidentiality', text: 'If your project information is sensitive, a confidentiality agreement can be discussed before details are exchanged.' },
             { title: 'Exchange of information', text: 'We share our company profile, registration documents and equipment details; you share the scope, location and schedule.' },
-            { title: 'Meeting and site visit', text: 'We meet and visit the project location together; a visit to our depot in Djelfa and our crushing plant at Oued Seddeur can also be arranged.' },
+            { title: 'Meeting and site visit', text: 'We meet and visit the project location together; a visit to our depot in Djelfa and our crushing plant at Oued Seddeur can also be discussed.' },
             { title: 'Proposal', text: 'We send a proposal covering scope, equipment, materials, schedule and commercial terms.' },
             { title: 'Agreement', text: 'The cooperation model is formalized in a contract suited to the project.' },
-            { title: 'Mobilization and follow-up', text: 'Equipment and teams are mobilized according to the agreed plan, with one point of contact at ETAHG throughout.' },
+            { title: 'Mobilization and follow-up', text: 'Equipment and teams are mobilized according to the agreed plan.' },
           ],
         },
         {
@@ -1460,10 +1482,10 @@ export default {
           lead: 'Partners evaluating ETAHG usually ask for legal and technical documents. On request, and under a confidentiality agreement where appropriate, we provide:',
           list: [
             'Commercial register extract (RC) and tax identification numbers (NIF, NIS, AI)',
-            'Company profile, in PDF and printable versions',
+            '[Company profile](page:profile), in PDF and printable versions',
             'List of the equipment proposed for your project',
             'Information on our crushing plant and on the aggregates it produces',
-            'Details of past road projects',
+            'Information on past road projects, to be discussed with prospective partners',
           ],
           note: 'This website is also available in [Simplified Chinese](page:home@zh), French and Arabic. Technical and commercial documents are exchanged in French or English.',
         },
@@ -1478,10 +1500,10 @@ export default {
         {
           type: 'cta',
           title: 'Let us discuss your project in Algeria',
-          text: 'Reach us directly. International enquiries are answered by the people who will run the cooperation.',
+          text: 'Reach us directly by email, phone or WhatsApp.',
           ctas: [
-            { label: 'WhatsApp', kind: 'whatsapp', variant: 'primary' },
-            { label: 'Contact details', page: 'contact', variant: 'secondary' },
+            { label: 'Email us', kind: 'mailto', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
             { label: 'Download company profile (PDF)', kind: 'pdf', variant: 'ghost' },
           ],
         },
@@ -1492,7 +1514,7 @@ export default {
     about: {
       slug: 'about',
       nav: 'About',
-      title: 'Who We Are: Algerian Heavy-Works Company | SARL ETAHG',
+      title: 'About Us: Algerian Civil Works Company | SARL ETAHG',
       description: 'About SARL ETAHG: an Algerian SARL registered in Ghardaïa, with an equipment depot in Djelfa, a crushing plant at Oued Seddeur and a group parts company.',
       summary: 'Company profile of SARL ETAHG: legal form, activities, locations and group.',
       blocks: [
@@ -1503,7 +1525,7 @@ export default {
           title: 'About SARL ETAHG',
           lead: 'SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. It is registered in Ghardaïa and operates from Djelfa, between the north of the country and the Sahara.',
           ctas: [{ label: 'Download company profile (PDF)', kind: 'pdf', variant: 'primary' }],
-          illustration: 'hero-terrain',
+          illustration: 'bulldozer',
         },
         {
           type: 'prose',
@@ -1520,7 +1542,7 @@ export default {
           label: 'Development',
           title: 'From road builder to multi-service partner',
           paragraphs: [
-            'ETAHG’s development is that of a road builder that acquired its own means of production. Building roads required trucks, earthmoving machines, pavers and large quantities of aggregates; owning them gave the company control over the pace and quality of its works.',
+            'ETAHG grew as a road builder that invested in its own means of production. Building roads required trucks, earthmoving machines, pavers and large quantities of aggregates; owning them allowed the company to plan its own works.',
             'Today those same means are offered as services in their own right. Contractors can rent or lease the machines, buy fine aggregates from the crushing plant, ask ETAHG to open a new site, or have a water well drilled. International companies can combine these services with ETAHG’s road-building experience in a single cooperation.',
           ],
         },
@@ -1544,14 +1566,11 @@ export default {
           type: 'features',
           label: 'How we work',
           title: 'How we work',
-          intro: 'Our working principles come from heavy works on real sites.',
+          intro: 'Principles we apply on our own sites.',
           items: [
-            { title: 'Safety on site', text: 'Heavy machines demand discipline. Work areas, machine movements and access are planned so that crews and third parties stay safe.' },
-            { title: 'Quality of materials', text: 'Our aggregates come from a controlled crushing process, and our works follow the specifications agreed with the client.' },
-            { title: 'Equipment availability', text: 'Machines are managed for availability on site, with spare parts supported through our group company.' },
-            { title: 'Clear commitments', text: 'Scope, schedule and terms are agreed in writing before work starts, and progress is reported to the client.' },
-            { title: 'Respect for the environment', text: 'Dust, water use and land disturbance are managed in line with applicable regulations.' },
-            { title: 'Long-term relationships', text: 'We prefer partners we can work with again, project after project.' },
+            { title: 'Written terms', text: 'Scope, schedule and terms are agreed in writing before work starts.' },
+            { title: 'Agreed test requirements', text: 'Test requirements for aggregates are agreed with the client before supply.' },
+            { title: 'Parts support in the group', text: 'Spare parts for heavy-duty engines through our group company EURL KAYLE KENNY.' },
           ],
         },
         {
@@ -1594,7 +1613,7 @@ export default {
           size: 'page',
           eyebrow: 'FAQ',
           title: 'Frequently asked questions about SARL ETAHG',
-          lead: 'Short, factual answers about the company, its services and how to work with it. SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling.',
+          lead: 'Short, factual answers about the company, its services and how to work with it.',
         },
         {
           type: 'faq',
@@ -1604,10 +1623,10 @@ export default {
             { id: 'what-is-etahg', q: 'Who is SARL ETAHG?', a: 'SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. It is a limited liability company (SARL) registered in Ghardaïa, with an equipment depot in Djelfa and a stone crushing plant at Oued Seddeur, south of Djelfa. Its group includes EURL KAYLE KENNY, a heavy-duty spare parts company in Algiers.' },
             { id: 'what-does-etahg-do', q: 'What does ETAHG do?', a: 'SARL ETAHG produces fine aggregates, builds roads, rents and leases heavy equipment, mobilizes new project sites and drills water wells in Algeria. It does this with its own stone crushing plant and its own fleet of semi-trailer trucks, trucks, bulldozers, excavators, road pavers and drilling rigs, while its group company EURL KAYLE KENNY supplies heavy-duty spare parts.' },
             { id: 'where', q: 'Where is SARL ETAHG located?', a: 'SARL ETAHG is registered in Ghardaïa, Algeria, and keeps its equipment depot in Djelfa, on the High Plateaus. Its stone crushing plant is at Oued Seddeur, about 25 km south of Djelfa, and its group company EURL KAYLE KENNY has a store and parts depot in Mohammadia, Algiers. Djelfa lies on the RN1, the main north–south road between Algiers and the Sahara.' },
-            { id: 'legal-form', q: 'What kind of company is SARL ETAHG?', a: 'SARL ETAHG is a société à responsabilité limitée (SARL), the Algerian form of limited liability company. Its commercial register and tax identification details are available on request and are published on the legal notice page once confirmed.' },
+            { id: 'legal-form', q: 'What kind of company is SARL ETAHG?', a: 'SARL ETAHG is a société à responsabilité limitée (SARL), the Algerian form of limited liability company. Its commercial register and tax identification numbers are available on request.' },
             { id: 'name', q: 'How is the company name written?', a: 'The legal name of the company is SARL ETAHG, where SARL indicates the legal form. The short name ETAHG is written in Latin capital letters in every language, including Arabic and Chinese.' },
-            { id: 'kayle-kenny-link', q: 'What is the relationship between ETAHG and Kayle Kenny?', a: 'EURL KAYLE KENNY is part of the portfolio of SARL ETAHG and is the group’s spare parts company for heavy-duty machines, with a store and parts depot in Mohammadia, Algiers. It supplies diesel engine parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For ETAHG’s partners, it is a parts source inside the group that supports fleet availability.' },
-            { id: 'languages', q: 'In which languages can we contact ETAHG?', a: 'SARL ETAHG can be contacted in Arabic, French and English. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.' },
+            { id: 'kayle-kenny-link', q: 'What is the relationship between SARL ETAHG and EURL KAYLE KENNY?', a: 'EURL KAYLE KENNY is part of the portfolio of SARL ETAHG and is the group’s spare parts company for heavy-duty machines, with a store and parts depot in Mohammadia, Algiers. It supplies diesel engine parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For ETAHG’s partners, it is a parts source inside the group.' },
+            { id: 'languages', q: 'In which languages can we contact ETAHG?', a: 'You can write to SARL ETAHG in Arabic, French or English, by email, phone or WhatsApp. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.' },
           ],
         },
         {
@@ -1623,7 +1642,7 @@ export default {
             { id: 'fleet', q: 'What equipment does ETAHG own?', a: 'SARL ETAHG owns stone crushing plants, semi-trailer trucks, trucks, bulldozers, excavators, road pavers and water well drilling rigs. The mobile fleet is based at its depot in Djelfa.' },
             { id: 'roads', q: 'Does ETAHG build roads?', a: 'Yes. Road construction is the original activity of SARL ETAHG: its fleet was mainly used to build roads, and the company has completed road projects in many regions of Algeria, from earthworks to asphalt surfacing.' },
             { id: 'mobilization', q: 'What is project mobilization (project initialization)?', a: 'For SARL ETAHG, project mobilization is the start-up of a new site with its own machines: transporting equipment to the site, clearing, building access tracks and platforms, carrying out the first earthworks, organizing aggregate supply and, where needed, drilling a water well.' },
-            { id: 'drilling', q: 'Does ETAHG drill water wells?', a: 'Yes. SARL ETAHG owns water well drilling machines and drills wells for construction sites, agriculture, industry and communities in Algeria.' },
+            { id: 'drilling', q: 'Does ETAHG drill water wells?', a: 'Yes. SARL ETAHG owns water well drilling machines and can drill wells for construction sites, agriculture, industry and communities in Algeria.' },
             { id: 'regions', q: 'Where in Algeria does ETAHG work?', a: 'SARL ETAHG has completed road projects in many regions of Algeria. From its bases in Djelfa and Ghardaïa, on the RN1 axis between Algiers and the Sahara, it is positioned to serve projects in both the north and the south; availability for a specific location is confirmed on request.' },
           ],
         },
@@ -1633,10 +1652,10 @@ export default {
           title: 'Working with ETAHG',
           items: [
             { id: 'foreign-companies', q: 'Does ETAHG work with foreign companies?', a: 'Yes. SARL ETAHG is open to cooperation with foreign companies active in Algeria, including international EPC contractors, cement and mining groups, investors and equipment suppliers. It can act as subcontractor, equipment or aggregate supplier, site start-up partner or local partner for a project.' },
-            { id: 'chinese-contractors', q: 'Can Chinese contractors work with ETAHG?', a: 'Yes. SARL ETAHG welcomes cooperation with Chinese contractors and companies working on projects in Algeria, on the same basis as other international partners. This website is available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.' },
+            { id: 'chinese-contractors', q: 'Can Chinese contractors work with ETAHG?', a: 'Yes. SARL ETAHG welcomes cooperation with Chinese contractors and Chinese-owned companies building projects in Algeria, as a subcontractor, equipment or aggregate supplier, site start-up partner or local partner. This website is available in Simplified Chinese; day-to-day communication can be in English or French, and from mainland China email (amar@etahg.com) is the most practical channel.' },
             { id: 'subcontract', q: 'Can ETAHG work as a subcontractor?', a: 'Yes. SARL ETAHG can work as a subcontractor for a main contractor on a defined scope, such as earthworks, road layers, asphalt paving, site preparation, aggregate supply or water wells, using its own equipment.' },
-            { id: 'quote', q: 'How do I request a quote from ETAHG?', a: 'To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by WhatsApp or phone on +213 558 96 10 49.' },
-            { id: 'contact', q: 'How do I contact ETAHG?', a: 'SARL ETAHG can be contacted by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.' },
+            { id: 'quote', q: 'How do I request a quote from ETAHG?', a: 'To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by email to amar@etahg.com, or by WhatsApp or phone on +213 558 96 10 49.' },
+            { id: 'contact', q: 'How do I contact ETAHG?', a: 'SARL ETAHG can be contacted by email at amar@etahg.com, or by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.' },
             { id: 'profile', q: 'Is there a company profile we can share internally?', a: 'Yes. SARL ETAHG publishes a printable company profile on this website, also available as a PDF download.' },
             { id: 'kayle-kenny', q: 'Is EURL KAYLE KENNY affiliated with Cummins?', a: 'No. EURL KAYLE KENNY, the spare parts company of the SARL ETAHG group, supplies Cummins-compatible parts as an independent supplier, not affiliated with or endorsed by Cummins Inc.' },
           ],
@@ -1644,10 +1663,11 @@ export default {
         {
           type: 'cta',
           title: 'Another question?',
-          text: 'Ask us directly by phone or WhatsApp.',
+          text: 'Ask us directly by email, phone or WhatsApp.',
           ctas: [
-            { label: 'WhatsApp', kind: 'whatsapp', variant: 'primary' },
-            { label: 'Contact us', page: 'contact', variant: 'secondary' },
+            { label: 'Email us', kind: 'mailto', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+            { label: 'Contact us', page: 'contact', variant: 'ghost' },
           ],
         },
       ],
@@ -1657,8 +1677,8 @@ export default {
     contact: {
       slug: 'contact',
       nav: 'Contact',
-      title: 'Contact: Phone & WhatsApp, Algeria | SARL ETAHG',
-      description: 'Contact SARL ETAHG by phone or WhatsApp on +213 558 96 10 49. Registered office in Ghardaïa, equipment depot in Djelfa, Algeria. Quotes on request.',
+      title: 'Contact: Email, Phone & WhatsApp | SARL ETAHG',
+      description: 'Contact SARL ETAHG by email at amar@etahg.com or by phone and WhatsApp on +213 558 96 10 49. Registered office in Ghardaïa, depot in Djelfa, Algeria.',
       summary: 'Contact details of SARL ETAHG and how to request a quote.',
       blocks: [
         {
@@ -1666,13 +1686,13 @@ export default {
           size: 'page',
           eyebrow: 'Contact',
           title: 'Contact SARL ETAHG',
-          lead: 'Call SARL ETAHG or write on WhatsApp on {{phone}}. We answer enquiries from Algerian and international companies directly, in Arabic, French or English.',
+          lead: 'Write to SARL ETAHG at [amar@etahg.com](mailto:), or call or message us on WhatsApp on {{phone}}. We answer enquiries from Algerian and international companies directly.',
         },
         {
           type: 'contact',
           label: 'Get in touch',
           title: 'Contact details',
-          intro: 'The fastest way to reach us is a phone call or a WhatsApp message on the number below. It is the group number, shared with EURL KAYLE KENNY.',
+          intro: 'Email is the best channel for documents and for enquiries from China, where WhatsApp is not available. For a quick exchange, call or send a WhatsApp message to the number below; it is the group number, shared with EURL KAYLE KENNY.',
           checklistTitle: 'What to include in your enquiry',
           checklist: [
             'Your company name and country',
@@ -1685,6 +1705,7 @@ export default {
           quoteTitle: 'Request a quote on WhatsApp',
           quoteText: 'Open WhatsApp with a ready-made message and complete the details.',
           quoteLabel: 'Request a quote',
+          quoteEmailLabel: 'Send by email',
           quoteMessage: 'Hello SARL ETAHG, I would like a quote.\nCompany:\nProject location (wilaya):\nScope of work:\nEquipment or volumes needed:\nDuration:\nStart date:',
         },
         {
@@ -1692,8 +1713,8 @@ export default {
           label: 'International',
           title: 'Calling from abroad',
           paragraphs: [
-            'From outside Algeria, dial **{{phone}}**. If WhatsApp is not available to your team in its country, a direct phone call to the same number works; we then agree the most practical channel for exchanging documents.',
-            'Enquiries can be made in Arabic, French or English. International companies can find more on cooperation models on our page for [international partners](page:partners).',
+            'From outside Algeria, dial **{{phone}}**. If WhatsApp is not available to your team, for example in mainland China, write to [amar@etahg.com](mailto:); technical and commercial documents can also be exchanged by email.',
+            'You can write to us in Arabic, French or English. International companies can find more on cooperation models on our page for [international partners](page:partners).',
           ],
         },
         {
@@ -1745,7 +1766,7 @@ export default {
             { title: 'Road construction', text: 'Earthworks, pavement layers and asphalt surfacing with our own fleet.', page: 'roads' },
             { title: 'Equipment rental and leasing', text: 'Semi-trailer trucks, trucks, bulldozers, excavators, road pavers.', page: 'rental' },
             { title: 'Project mobilization', text: 'Site opening, access tracks, platforms, earthworks, aggregate supply.', page: 'mobilization' },
-            { title: 'Water well drilling', text: 'Own drilling rigs for site, agricultural, industrial and community wells.', page: 'drilling' },
+            { title: 'Water well drilling', text: 'Own drilling rigs; wells for sites, farms, industry and communities on request.', page: 'drilling' },
             { title: 'Spare parts', text: 'EURL KAYLE KENNY, Algiers: heavy-duty diesel engine parts.', page: 'parts' },
           ],
         },
@@ -1761,7 +1782,7 @@ export default {
           type: 'prose',
           title: 'Cooperation with international companies',
           paragraphs: [
-            'Subcontracting, equipment rental and leasing, aggregate supply, site start-up, water wells, and local partnership for projects in Algeria. We work in Arabic, French and English; this profile is also available in Simplified Chinese.',
+            'Subcontracting, equipment rental and leasing, aggregate supply, site start-up, water wells, and local partnership for projects in Algeria. Contact: amar@etahg.com. You can write to us in Arabic, French or English; this profile is also available in French, Arabic and Simplified Chinese.',
           ],
           note: 'EURL KAYLE KENNY is an independent supplier, not affiliated with or endorsed by Cummins Inc.',
         },
@@ -1803,9 +1824,9 @@ export default {
           title: 'Privacy policy',
           paragraphs: [
             '**No cookies, no tracking.** This website does not use cookies, analytics, advertising or tracking tools, and it has no contact forms. We do not collect personal data through the website.',
-            '**Fonts.** Text fonts are loaded from Google Fonts. When a page is displayed, your browser connects to Google servers, which receive your IP address as part of that technical request.',
+            '**Fonts.** The fonts used on this website are served from this website itself; pages in Chinese use the fonts already installed on your device. No font is loaded from a third-party server, so displaying a page sends no data to a font provider.',
             '**Contacting us.** If you contact us by telephone, WhatsApp or email, we use the information you send only to answer your enquiry and to prepare and manage any business relationship. WhatsApp is operated by WhatsApp LLC / Meta under its own privacy policy.',
-            '**Your rights.** You can ask us at any time to access, correct or delete the personal data you have sent us, by contacting us on [{{phone}}](tel:).',
+            '**Your rights.** You can ask us at any time to access, correct or delete the personal data you have sent us, by writing to [amar@etahg.com](mailto:) or calling [{{phone}}](tel:).',
           ],
         },
         {

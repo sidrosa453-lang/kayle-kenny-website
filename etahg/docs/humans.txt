@@ -5,7 +5,7 @@
 
 /* SITE */
   Last update: 2026-09-30
-  Languages: English
+  Languages: English, Français, العربية, 简体中文
   Standards: HTML5, CSS3, schema.org JSON-LD
   Components: none (static, zero-dependency generator)
   Privacy: no cookies, no tracking

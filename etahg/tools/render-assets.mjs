@@ -40,8 +40,11 @@ const topo = fs.readFileSync(path.join(TMP, 'assets', 'topo.svg'), 'utf8');
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const tok = (s) => String(s ?? '').replace(/\{\{company\}\}/g, site.companyName).replace(/\{\{short\}\}/g, site.shortName).replace(/\{\{phone\}\}/g, site.contact.phone);
 
+// Render-time fonts only (this tool, never the live site): the OG images and the Chinese
+// PDF embed real brand/CJK fonts fetched through tools/browser.mjs (curl + cache).
+const RENDER_FONTS = { ar: ['IBM+Plex+Sans+Arabic:wght@400;500;600;700'], zh: ['Noto+Sans+SC:wght@400;500;700'] };
 const fontsFor = (l) => {
-  const fams = ['Archivo:wdth,wght@62..125,500..800', 'Inter:wght@400;500;600', ...(LANG_META[l]?.fonts || [])];
+  const fams = ['Archivo:wdth,wght@62..125,500..800', 'Inter:wght@400;500;600', ...(RENDER_FONTS[l] || [])];
   return `https://fonts.googleapis.com/css2?${fams.map((f) => `family=${f}`).join('&')}&display=swap`;
 };
 const BASE_CSS = `
@@ -52,6 +55,15 @@ const BASE_CSS = `
   :lang(zh-Hans) body { font-family: 'Inter', 'Noto Sans SC', sans-serif; }
   .h { font-family: 'Archivo', 'IBM Plex Sans Arabic', 'Noto Sans SC', sans-serif; font-stretch: 88%; }
 `;
+
+// Headline in two deliberate lines: "A · B · C" / "Country"; separators stay glued to the
+// following word so a line never ends on a dangling "·".
+function ogTagline(t) {
+  const parts = String(t).split(' · ');
+  const glue = (a) => a.map((x, i) => (i ? `·\u00A0${esc(x)}` : esc(x))).join(' ');
+  if (parts.length < 3) return `<span>${glue(parts)}</span>`;
+  return `<span>${glue(parts.slice(0, -1))}</span><span>${esc(parts[parts.length - 1])}</span>`;
+}
 
 function ogHtml(l) {
   const m = LANG_META[l] || { htmlLang: l, dir: 'ltr' };
@@ -75,10 +87,12 @@ body { background: #0F1318; color: #F3F0E9; position: relative; }
 .meta { font: 600 19px/1.5 'Archivo', sans-serif; letter-spacing: .03em; color: #A8AFB5; text-align: end; }
 .meta b { color: #F3F0E9; font-weight: 600; display: block; }
 .copy { position: absolute; top: 170px; inset-inline: 72px; }
-.tag { font-size: 54px; line-height: 1.06; font-weight: 750; letter-spacing: -.01em; max-width: 17em; text-wrap: balance; }
+.tag { font-size: 54px; line-height: 1.06; font-weight: 750; letter-spacing: -.01em; max-width: 19em; }
+.tag span { display: block; }
 :lang(ar) .tag, :lang(zh-Hans) .tag { line-height: 1.35; letter-spacing: 0; font-weight: 700; font-size: 48px; }
 .line { margin-top: 18px; font-size: 22px; line-height: 1.5; color: #A8AFB5; max-width: 40em; }
-.pano { position: absolute; bottom: 0; left: 0; width: 1200px; height: 250px; overflow: hidden; color: #E9E3D6; }
+.pano { position: absolute; bottom: 0; left: 0; width: 1200px; height: 250px; overflow: hidden; color: #E9E3D6;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 70px); mask-image: linear-gradient(180deg, transparent 0, #000 70px); }
 .pano svg { width: 1200px; height: auto; display: block; margin-top: -350px; }
 .art { position: absolute; bottom: 40px; inset-inline-end: 72px; width: 380px; color: #E9E3D6; }
 .art svg { width: 100%; height: auto; }
@@ -89,7 +103,7 @@ ${pano ? `<div class="pano">${pano}</div>` : `<div class="art">${art}</div>`}
   <div class="brand"><div class="mark">${logo}</div><div><div class="word">${esc(site.shortName)}</div><div class="cap">${esc(site.companyName)}</div></div></div>
   <div class="meta"><b dir="ltr">${esc(site.siteUrl.replace(/^https?:\/\//, ''))}</b><span dir="ltr">${esc(site.contact.phone)}</span></div>
 </div>
-<div class="copy"><div class="tag h">${esc(tok(ui.og.tagline))}</div><p class="line">${esc(tok(ui.og.line))}</p></div>
+<div class="copy"><div class="tag h">${ogTagline(tok(ui.og.tagline))}</div><p class="line">${esc(tok(ui.og.line))}</p></div>
 <div class="bar"></div>
 </body></html>`;
 }
@@ -137,6 +151,12 @@ try {
       const slug = (content[l].pages.profile?.slug ?? content.en.pages.profile.slug).replace(/^\/|\/$/g, '');
       const url = `${srv.url}/${l === (site.defaultLanguage || 'en') ? '' : l + '/'}${slug}/`;
       await page.goto(url, { waitUntil: 'networkidle' });
+      if (RENDER_FONTS[l] && l === 'zh') {
+        // The live Chinese pages use system CJK fonts; the PDF embeds Noto Sans SC for a consistent document.
+        await page.addStyleTag({ url: fontsFor(l) });
+        await page.addStyleTag({ content: "*:lang(zh-Hans) { --font-head: 'Archivo', 'Noto Sans SC', sans-serif !important; --font-body: 'Inter', 'Noto Sans SC', sans-serif !important; }" });
+        await page.waitForLoadState('networkidle');
+      }
       await page.evaluate(() => document.fonts.ready);
       await page.emulateMedia({ media: 'print' });
       await page.pdf({ path: path.join(GEN, `etahg-company-profile-${l}.pdf`), format: 'A4', printBackground: true, preferCSSPageSize: true });

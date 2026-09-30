@@ -30,15 +30,17 @@ export const FOOTER_COLUMNS = [
 ];
 
 // Default per-language metadata; a language file may override any key in `meta`.
+// `fonts`: self-hosted font files (src/assets/fonts) preloaded on that language's pages.
+// Chinese pages use the visitor's system CJK fonts, so no CJK web font is loaded.
 export const LANG_META = {
-  en: { label: 'EN', name: 'English', hreflang: 'en', htmlLang: 'en', dir: 'ltr', ogLocale: 'en_US', fonts: [] },
-  fr: { label: 'FR', name: 'Français', hreflang: 'fr', htmlLang: 'fr', dir: 'ltr', ogLocale: 'fr_FR', fonts: [] },
-  ar: { label: 'عربي', name: 'العربية', hreflang: 'ar', htmlLang: 'ar', dir: 'rtl', ogLocale: 'ar_DZ', fonts: ['IBM+Plex+Sans+Arabic:wght@400;500;600;700'] },
-  zh: { label: '中文', name: '简体中文', hreflang: 'zh-Hans', htmlLang: 'zh-Hans', dir: 'ltr', ogLocale: 'zh_CN', fonts: ['Noto+Sans+SC:wght@400;500;700'] },
+  en: { label: 'EN', name: 'English', englishName: 'English', hreflang: 'en', htmlLang: 'en', dir: 'ltr', ogLocale: 'en_US', fonts: [] },
+  fr: { label: 'FR', name: 'Français', englishName: 'French', hreflang: 'fr', htmlLang: 'fr', dir: 'ltr', ogLocale: 'fr_FR', fonts: [] },
+  ar: { label: 'عربي', name: 'العربية', englishName: 'Arabic', hreflang: 'ar', htmlLang: 'ar', dir: 'rtl', ogLocale: 'ar_DZ', fonts: ['plex-arabic-arabic-400.woff2', 'plex-arabic-arabic-700.woff2'] },
+  zh: { label: '中文', name: '简体中文', englishName: 'Simplified Chinese', hreflang: 'zh-Hans', htmlLang: 'zh-Hans', dir: 'ltr', ogLocale: 'zh_CN', fonts: [] },
 };
 
-// Fonts loaded on every page.
-export const BASE_FONTS = ['Archivo:wdth,wght@62..125,500..800', 'Inter:wght@400;500;600'];
+// Self-hosted font files preloaded on every page (variable fonts: one file covers all weights).
+export const BASE_FONTS = ['archivo-latin.woff2', 'inter-latin.woff2'];
 
 // Illustration name -> photo slot name used in site.config.json "photos".
 export const PHOTO_SLOTS = {

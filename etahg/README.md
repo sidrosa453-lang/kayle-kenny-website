@@ -7,8 +7,9 @@ drilling, and the group spare-parts company EURL KAYLE KENNY.
 - Live domain: **https://www.etahg.com**
 - Languages: English (default, `/`), French (`/fr/`), Arabic (`/ar/`, right-to-left),
   Simplified Chinese (`/zh/`)
-- Static site, **zero dependencies**: a Node.js script generates plain HTML/CSS into `docs/`,
-  which GitHub Pages serves. No cookies, no tracking, no backend.
+- Static site, **zero dependencies**: a Node.js script generates plain HTML/CSS into `docs/`.
+  No cookies, no tracking, no backend, **no third-party requests** (fonts are self-hosted;
+  Chinese pages use system CJK fonts), so pages display normally from mainland China.
 
 > **Content rule:** `BRIEF.md` lists the only facts the site may state. Never add numbers,
 > project names, clients, certifications or places that are not verified. Numbers and
@@ -39,14 +40,17 @@ src/
     js/site.js           mobile nav, services dropdown, header state (< 5 KB)
     illustrations/*.svg  line illustrations (inlined, themed with currentColor/--accent)
     photos/              optional real photos (see "Real photos")
+    fonts/               self-hosted woff2 subsets + fonts.css (made by tools/fetch-fonts.mjs)
     generated/           OG images, PDF profiles, icons (made by tools/render-assets.mjs)
+  lastmod.json           per-page content hash + date for sitemap <lastmod> (updated by docs/ builds)
 tools/
   serve.mjs              local preview server
   check.mjs              automated QA (links, SEO tags, hreflang, JSON-LD, sitemap…)
   screenshot.mjs         full-page screenshots (Playwright)
   render-assets.mjs      OG images, company-profile PDFs, logo/favicons (Playwright)
+  fetch-fonts.mjs        downloads the font subsets once into src/assets/fonts (curl)
   browser.mjs            shared Playwright helper
-docs/                    BUILD OUTPUT, committed, served by GitHub Pages
+docs/                    BUILD OUTPUT, committed, served by the static host
 ```
 
 ## Everyday commands
@@ -61,7 +65,16 @@ node tools/render-assets.mjs              # regenerate OG images, PDFs and icons
 ```
 
 `node src/build.mjs --content some/folder --out .qa/x` builds from another content folder (useful to test
-draft translations). `BUILD_DATE=2026-10-01 node src/build.mjs` fixes the sitemap `lastmod` date (default: today).
+draft translations). `BUILD_DATE=2026-10-01 node src/build.mjs` sets the build date (default: today).
+
+**Production build is strict.** A build into `docs/` (or with `--strict`) *fails* if any language lacks
+its own company-profile PDF or share image in `src/assets/generated/` — a Chinese visitor must never
+receive the English PDF. Builds elsewhere only warn (`--no-strict` forces a draft build into docs/).
+The build also warns when a PDF is older than its content file (re-run `render-assets`).
+
+**Sitemap `lastmod`** changes only when a page's rendered main content changes: the build hashes each
+page's `<main>` and keeps `{hash, date}` in `src/lastmod.json` (commit it). Only `docs/` builds update
+the file; the same date feeds `WebPage.dateModified`.
 Node 18+ is enough for the build. Only the two Playwright tools need Playwright + Chromium
 (`NODE_PATH` pointing at a global install is supported; nothing is ever installed automatically).
 
@@ -76,13 +89,22 @@ All visible text lives in `src/content/<lang>.mjs`. The schema is documented at 
 of `src/content/en.mjs`. In short:
 
 - `ui` — interface strings (menu, footer, facts panel labels, location types, map labels…)
-- `pages.<id>` — one object per page: `slug`, `nav`, `title` (≤ 60 chars, ends with
-  `| SARL ETAHG`), `description` (110–155 chars), `summary`, optional `service`, and `blocks`.
+- `pages.<id>` — one object per page: `slug`, `nav`, `title` (≤ 60 display width, ends with
+  `| SARL ETAHG`), `description` (110–155 display width; CJK counts 2), `summary`, optional `service`, and `blocks`.
 - Blocks: `hero, pillars, prose, split, cards, features, steps, terrain, equipment, facts,
   locations, group, faq, records, table, links, contact, download, cta`.
 - Inline markup inside any text: `**bold**`, `[label](page:about)`, `[label](page:home@zh)`,
   `[label](https://…)`, `[label](tel:)`, `[label](whatsapp:)`, `[label](pdf:)`.
-- Tokens: `{{company}}`, `{{short}}`, `{{phone}}`, `{{group}}`, `{{year}}`.
+- Tokens: `{{company}}`, `{{short}}`, `{{phone}}` (rendered with no-break spaces), `{{group}}`, `{{year}}`.
+- `ui.punct` holds the separators used by generated strings (facts panel, footer, addresses, share-image
+  alt): ASCII in EN, `\u00A0:` in FR, `،` in AR, full-width `：，；（）` in ZH. ZH also sets
+  `ui.addressOrder: 'country-first'` (阿尔及利亚盖尔达耶) and `ui.headerChannel: 'email'` (email first in the
+  header and contact block, because WhatsApp is blocked in mainland China).
+- Chinese headings break only at punctuation or at an explicit U+200B (CSS `word-break: keep-all`); add a
+  U+200B hint in any long heading without punctuation so words such as 阿尔及利亚 are never split.
+- FAQ blocks with `from`/`ids` reuse questions of the FAQ page: they are shown but their `FAQPage`
+  structured data is emitted only on the FAQ page (Google: mark up a repeated FAQ once).
+- A `records` block (Experience page) is skipped entirely until `regions` or `projects` are filled.
 
 The page tree (which pages exist, parents, menu order) is in `src/templates/structure.mjs`.
 FAQ blocks automatically produce `FAQPage` structured data; service pages produce `Service`.
@@ -94,6 +116,10 @@ Everything below is optional; the site renders cleanly with it empty and never i
 | Field | Effect when filled |
 |---|---|
 | `contact.email` | mailto links, footer, contact page, JSON-LD, vCard |
+| `contact.wechat` | WeChat ID row on the contact page (strongly recommended for the Chinese partner) |
+| `spokenLanguages` | e.g. `["ar","fr","en"]` once the owner confirms who answers in which language: adds the "Working languages" fact, JSON-LD `knowsLanguage` / `availableLanguage` and the llms.txt line |
+| `verification.google / bing / baidu` | site-verification `<meta>` tags for Search Console, Bing Webmaster Tools and Baidu 搜索资源平台 |
+| `group[0].jsonldId`, `street`, `addressLocality`, `addressRegion` | the Kayle Kenny node in JSON-LD; `jsonldId` must equal the `@id` published on kaylekenny.com (`https://www.kaylekenny.com/#store`) so the two graphs join |
 | `contact.address.street` / `postalCode` | full registered-office address (footer, legal, JSON-LD, vCard) |
 | `contact.mapsUrl`, `locations[].mapsUrl` | "Open in Google Maps" links on location cards, `hasMap` |
 | `contact.hours` | opening hours on the contact page (string or `{ "en": …, "fr": … }`) |
@@ -104,7 +130,7 @@ Everything below is optional; the site renders cleanly with it empty and never i
 | `regions` | list of regions on the Experience page (strings or `{ "en": …, "fr": … }`) |
 | `projects` | project table on the Experience page: `[{ "name", "region", "year", "scope" }]` (values may be per-language objects) |
 | `certifications` | facts panel + JSON-LD (only real, current certificates) |
-| `social.linkedin / facebook` | JSON-LD `sameAs` |
+| `social.linkedin / facebook / googleBusinessProfile` | JSON-LD `sameAs` |
 | `locations[].names` | location names per language (`fr`, `ar`, `zh`) |
 
 ## Real photos
@@ -141,10 +167,32 @@ mark is used while it is missing). After changing the logo, run `node tools/rend
 3. `node tools/render-assets.mjs && node src/build.mjs && node tools/check.mjs`.
 
 hreflang, sitemap alternates, the language switcher, `og:locale:alternate` and the
-per-language PDF/OG image are all generated automatically. Missing UI strings fall back to
+per-language PDF/OG image are all generated automatically; `404.html` switches its heading, text
+and links to the language of the requested URL (`/fr/…`, `/ar/…`, `/zh/…`) using `ui.notFound`. Missing UI strings fall back to
 English with a build warning; a language whose file is absent is skipped with a warning.
 
 ---
+
+## Fonts
+
+`node tools/fetch-fonts.mjs` downloads Archivo and Inter (Latin + Latin Extended) and IBM Plex Sans
+Arabic (Arabic subset) once into `src/assets/fonts/` (SIL Open Font License). The build prepends
+`fonts.css` to the stylesheet, copies the woff2 files to `assets/fonts/` and preloads the Latin faces
+(plus the Arabic 400/700 faces on `/ar/`). Nothing is requested from Google at display time.
+Chinese pages use the visitor's system fonts (PingFang SC, Microsoft YaHei, Noto Sans CJK SC…);
+only `render-assets` uses Noto Sans SC, to embed it in the Chinese PDF and share image.
+
+## Hosting for a Chinese audience (read before choosing a host)
+
+GitHub Pages is known to block Baiduspider and can be slow or unreliable from mainland China, so Baidu
+(and Chinese AI assistants that rely on it) may never index `/zh/`. Recommended:
+
+1. Serve `docs/` from a static host with Asia edge locations that does not block Baiduspider
+   (e.g. Cloudflare Pages or Netlify with a Hong Kong / Singapore edge, or a CDN in front of GitHub Pages).
+   Do not host in mainland China (that requires an ICP licence).
+2. Verify the domain in **Baidu 搜索资源平台** (ziyuan.baidu.com) and **Bing Webmaster Tools**; put the
+   issued codes in `site.config.json → verification`, rebuild, then submit `https://www.etahg.com/sitemap.xml`.
+3. `robots.txt` already allows every crawler and names Baiduspider, Bytespider, YisouSpider, Sogou, 360Spider.
 
 ## Deploying on GitHub Pages
 
@@ -173,13 +221,19 @@ before the domain is connected (only `404.html` uses absolute URLs, by design).
       website `https://www.etahg.com`; add the Djelfa depot as a second location if it receives visitors.
 - [ ] **LinkedIn company page** "SARL ETAHG": same description, website link; then add the
       URL to `site.config.json → social.linkedin` (feeds JSON-LD `sameAs`).
-- [ ] **kaylekenny.com**: add a visible link "Part of the SARL ETAHG group → https://www.etahg.com"
-      (footer and about section). Links between the two sites confirm the relationship for search and AI engines.
+- [ ] **kaylekenny.com** (separate site, owner approval needed): add a visible footer line
+      "Société du groupe SARL ETAHG → www.etahg.com" and, in its JSON-LD store node (`@id` `https://www.kaylekenny.com/#store`),
+      `"parentOrganization": {"@type": "Organization", "@id": "https://www.etahg.com/#organization", "name": "SARL ETAHG", "url": "https://www.etahg.com/"}`.
+      kaylekenny.com is the group's only indexed site today; this link is the fastest way for Google and AI engines to find and trust etahg.com.
+- [ ] **Owner data that makes the site verifiable** (fill `site.config.json`, then rebuild): RC / NIF / NIS / AI,
+      the Ghardaïa street address, a WeChat ID, confirmed working languages (`spokenLanguages`), 2–3 approved
+      road projects or the wilayas where roads were built, fleet counts, real photos, LinkedIn page and
+      Google Business Profile URLs (`social`), and the confirmed spelling of Oued Seddeur in Arabic/Chinese.
 - [ ] **Directories**: Kompass Algeria, Algerian chamber of commerce (CACI) member directory,
       Europages, Made-in-Algeria/B2B directories, Google Maps, Apple Business Connect, Bing Places:
       use exactly the same name, address and phone everywhere (NAP consistency).
-- [ ] Send the company-profile PDF (`/downloads/etahg-company-profile-en.pdf`, and the Chinese
-      version once available) together with the website link to the partner company.
+- [ ] Send the Chinese company-profile PDF (`/downloads/etahg-company-profile-zh.pdf`) and the link
+      `https://www.etahg.com/zh/` to the partner company (English: `…-en.pdf`).
 - [ ] Fill `site.config.json` as soon as data is confirmed (email, addresses, RC/NIF/NIS,
       founding year, fleet counts, capacity, regions, projects), then rebuild.
 - [ ] After each content change: `render-assets` (if needed) → `build` → `check` → commit `docs/`.
@@ -190,5 +244,8 @@ before the domain is connected (only `404.html` uses absolute URLs, by design).
 `<h1>` per page; title ≤ 60 chars; description 110–160 chars; absolute self-canonical;
 reciprocal hreflang with `x-default`; `html lang/dir`; JSON-LD parses (Organization,
 WebSite, WebPage, FAQPage matches rendered FAQs); sitemap lists exactly the indexable pages;
-no `TODO`, `undefined`, `null`, `NaN`, `{{ }}` or lorem text; every `<img>` has alt and
-width/height; no duplicate titles/descriptions; CSS ≤ 45 KB, JS ≤ 5 KB; page weights.
+no `TODO`, `undefined`, `null`, `NaN`, `{{ }}` or lorem text, also inside URL-encoded links such as
+WhatsApp `?text=`; every `<img>` has alt and width/height; no duplicate titles/descriptions; each
+language uses its own share image and PDF; no third-party stylesheet, preconnect or script; CSS ≤ 45 KB
+(excluding generated `@font-face` rules), JS ≤ 5 KB; page weights. Title and description lengths are
+measured in display width (a CJK character counts 2), so 60–80-character Chinese descriptions pass.

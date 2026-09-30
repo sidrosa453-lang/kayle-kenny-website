@@ -53,7 +53,8 @@ export function inline(text, ctx) {
     const r = ctx && ctx.resolveLink ? ctx.resolveLink(t) : { href: t };
     if (!r || !r.href) return label;
     const ext = r.external ? ' rel="noopener" target="_blank"' : '';
-    return `<a href="${esc(r.href)}"${ext}>${label}</a>`;
+    const note = r.external && ctx?.ui?.openExternal ? `<span class="sr-only"> ${esc(ctx.ui.openExternal)}</span>` : '';
+    return `<a href="${esc(r.href)}"${ext}>${label}${note}</a>`;
   });
   return raw(s);
 }
@@ -61,6 +62,7 @@ export function inline(text, ctx) {
 // Plain-text version of an inline string (for meta, JSON-LD, llms-full).
 export function plain(text) {
   return String(text ?? '')
+    .replace(/\u200b/g, '') // line-break hints in Chinese headings
     .replace(/\*\*(.+?)\*\*/g, '$1')
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '$1');
 }

@@ -4,6 +4,9 @@
     <loc>https://www.etahg.com/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/"/>
     <priority>1.0</priority>
   </url>
@@ -11,6 +14,9 @@
     <loc>https://www.etahg.com/services/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/"/>
     <priority>0.7</priority>
   </url>
@@ -18,6 +24,9 @@
     <loc>https://www.etahg.com/services/aggregate-production/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/production-de-granulats/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/aggregate-production/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/aggregate-production/"/>
     <priority>0.9</priority>
   </url>
@@ -25,6 +34,9 @@
     <loc>https://www.etahg.com/services/equipment-rental/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/location-engins/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/equipment-rental/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/equipment-rental/"/>
     <priority>0.9</priority>
   </url>
@@ -32,6 +44,9 @@
     <loc>https://www.etahg.com/services/project-mobilization/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/demarrage-de-chantier/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/project-mobilization/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/project-mobilization/"/>
     <priority>0.9</priority>
   </url>
@@ -39,6 +54,9 @@
     <loc>https://www.etahg.com/services/road-construction/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/travaux-routiers/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/road-construction/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/road-construction/"/>
     <priority>0.9</priority>
   </url>
@@ -46,6 +64,9 @@
     <loc>https://www.etahg.com/services/water-well-drilling/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/forage-puits-eau/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/water-well-drilling/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/water-well-drilling/"/>
     <priority>0.9</priority>
   </url>
@@ -53,6 +74,9 @@
     <loc>https://www.etahg.com/services/spare-parts/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/pieces-de-rechange/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/spare-parts/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/spare-parts/"/>
     <priority>0.9</priority>
   </url>
@@ -60,6 +84,9 @@
     <loc>https://www.etahg.com/fleet/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/parc-materiel/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/fleet/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/fleet/"/>
     <priority>0.7</priority>
   </url>
@@ -67,6 +94,9 @@
     <loc>https://www.etahg.com/experience/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/experience/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/experience/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/experience/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/experience/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/experience/"/>
     <priority>0.7</priority>
   </url>
@@ -74,6 +104,9 @@
     <loc>https://www.etahg.com/international-partners/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/partenaires-internationaux/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/international-partners/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/international-partners/"/>
     <priority>0.9</priority>
   </url>
@@ -81,6 +114,9 @@
     <loc>https://www.etahg.com/about/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/a-propos/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/about/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/about/"/>
     <priority>0.7</priority>
   </url>
@@ -88,6 +124,9 @@
     <loc>https://www.etahg.com/faq/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/faq/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/faq/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/faq/"/>
     <priority>0.7</priority>
   </url>
@@ -95,6 +134,9 @@
     <loc>https://www.etahg.com/contact/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/contact/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/contact/"/>
     <priority>0.7</priority>
   </url>
@@ -102,6 +144,9 @@
     <loc>https://www.etahg.com/company-profile/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/profil-entreprise/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/company-profile/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/company-profile/"/>
     <priority>0.7</priority>
   </url>
@@ -109,6 +154,489 @@
     <loc>https://www.etahg.com/legal/</loc>
     <lastmod>2026-09-30</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/legal/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/legal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/legal/"/>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/services/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/services/production-de-granulats/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/production-de-granulats/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/aggregate-production/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/services/location-engins/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/location-engins/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/equipment-rental/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/services/demarrage-de-chantier/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/demarrage-de-chantier/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/project-mobilization/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/services/travaux-routiers/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/travaux-routiers/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/road-construction/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/services/forage-puits-eau/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/forage-puits-eau/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/water-well-drilling/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/services/pieces-de-rechange/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/pieces-de-rechange/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/spare-parts/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/parc-materiel/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/parc-materiel/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/fleet/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/experience/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/experience/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/experience/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/experience/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/experience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/experience/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/partenaires-internationaux/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/partenaires-internationaux/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/international-partners/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/a-propos/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/a-propos/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/about/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/faq/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/faq/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/faq/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/contact/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/contact/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/profil-entreprise/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/profil-entreprise/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/company-profile/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/fr/mentions-legales/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/legal/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/legal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/legal/"/>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/services/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/services/aggregate-production/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/production-de-granulats/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/aggregate-production/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/services/equipment-rental/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/location-engins/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/equipment-rental/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/services/project-mobilization/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/demarrage-de-chantier/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/project-mobilization/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/services/road-construction/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/travaux-routiers/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/road-construction/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/services/water-well-drilling/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/forage-puits-eau/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/water-well-drilling/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/services/spare-parts/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/pieces-de-rechange/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/spare-parts/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/fleet/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/parc-materiel/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/fleet/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/experience/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/experience/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/experience/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/experience/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/experience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/experience/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/international-partners/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/partenaires-internationaux/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/international-partners/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/about/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/a-propos/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/about/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/faq/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/faq/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/faq/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/contact/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/contact/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/company-profile/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/profil-entreprise/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/company-profile/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/ar/legal/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/legal/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/legal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/legal/"/>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/"/>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/services/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/services/aggregate-production/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/production-de-granulats/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/aggregate-production/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/aggregate-production/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/services/equipment-rental/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/location-engins/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/equipment-rental/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/equipment-rental/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/services/project-mobilization/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/demarrage-de-chantier/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/project-mobilization/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/project-mobilization/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/services/road-construction/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/travaux-routiers/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/road-construction/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/road-construction/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/services/water-well-drilling/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/forage-puits-eau/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/water-well-drilling/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/water-well-drilling/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/services/spare-parts/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/services/pieces-de-rechange/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/services/spare-parts/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/services/spare-parts/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/fleet/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/parc-materiel/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/fleet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/fleet/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/experience/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/experience/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/experience/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/experience/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/experience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/experience/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/international-partners/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/partenaires-internationaux/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/international-partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/international-partners/"/>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/about/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/a-propos/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/about/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/faq/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/faq/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/faq/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/faq/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/contact/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/contact/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/contact/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/contact/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/contact/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/company-profile/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/profil-entreprise/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/company-profile/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/company-profile/"/>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.etahg.com/zh/legal/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.etahg.com/legal/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.etahg.com/fr/mentions-legales/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.etahg.com/ar/legal/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.etahg.com/zh/legal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.etahg.com/legal/"/>
     <priority>0.3</priority>
   </url>

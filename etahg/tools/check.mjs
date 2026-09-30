@@ -58,6 +58,12 @@ function resolveHref(href, pageFile) {
   return { local: u.pathname, hash: u.hash };
 }
 
+// Display width: CJK / full-width characters count double (Google and Baidu truncate
+// Chinese snippets at roughly half the Latin character count).
+const WIDE = /[\u2E80-\uA4CF\uAC00-\uD7A3\uF900-\uFAFF\uFE30-\uFE4F\uFF00-\uFF60\uFFE0-\uFFE6]/;
+const width = (s) => [...String(s || '')].reduce((n, ch) => n + (WIDE.test(ch) ? 2 : 1), 0);
+const langOfPath = (f) => { const p = urlPathOf(f).split('/')[1]; return LANG_CODES[p] && p !== DEF ? p : DEF; };
+
 const pages = {};
 const ids = {};
 const forbiddenRe = /\b(undefined|NaN|null)\b|\{\{|\}\}|\bTODO\b|\blorem\b/i;
@@ -102,13 +108,13 @@ for (const f of htmlFiles) {
       const graph = j['@graph'] || [j];
       const types = graph.flatMap((n) => [].concat(n['@type']));
       if (!noindex) for (const t of ['Organization', 'WebSite', 'WebPage']) if (!types.includes(t)) err(f, `JSON-LD @graph lacks ${t}`);
-      const hasFaqMarkup = /class="faq-item"/.test(h);
-      if (hasFaqMarkup && !types.includes('FAQPage')) err(f, 'FAQ rendered but no FAQPage JSON-LD');
+      // Questions reused from the FAQ page carry data-faq-ref and are marked up only there.
+      const ownFaq = (h.match(/<details class="faq-item"(?![^>]*data-faq-ref)[^>]*>/g) || []).length;
+      if (ownFaq && !types.includes('FAQPage')) err(f, 'FAQ rendered but no FAQPage JSON-LD');
       if (types.includes('FAQPage')) {
         const node = graph.find((n) => [].concat(n['@type']).includes('FAQPage'));
         const n = (node.mainEntity || []).length;
-        const rendered = (h.match(/class="faq-item"/g) || []).length;
-        if (n !== rendered) err(f, `FAQPage has ${n} questions but ${rendered} are rendered`);
+        if (n !== ownFaq) err(f, `FAQPage has ${n} questions but ${ownFaq} own questions are rendered`);
       }
     } catch (e) { err(f, `JSON-LD does not parse: ${e.message}`); }
   }
@@ -121,6 +127,30 @@ for (const f of htmlFiles) {
     const m = s.match(forbiddenRe);
     if (m) { const i = m.index; err(f, `forbidden token "${m[0]}" in ${where}: …${s.slice(Math.max(0, i - 40), i + 40).replace(/\s+/g, ' ')}…`); }
   }
+
+  // URL-encoded placeholders in links and meta (e.g. a WhatsApp ?text= with %7B%7Bpage%7D%7D).
+  for (const m of body.matchAll(/\s(href|content|src)="([^"]*)"/gi)) {
+    let v = decode(m[2]);
+    try { v = decodeURIComponent(v); } catch { /* keep raw */ }
+    const bad = v.match(/\{\{|\}\}|\bundefined\b|\bnull\b|\bNaN\b/);
+    if (bad) { err(f, `placeholder "${bad[0]}" in ${m[1]} after URL-decoding: ${v.slice(0, 120)}`); break; }
+  }
+
+  // Localized deliverables: a language never falls back to another language's PDF or share image.
+  {
+    const lg = langOfPath(f);
+    const og = (tags(h, 'meta').find((t) => attr(t, 'property') === 'og:image') || '');
+    const ogUrl = og ? attr(og, 'content') : '';
+    if (ogUrl && /\/og-[a-z]+\.png$/.test(ogUrl) && !ogUrl.endsWith(`/og-${lg}.png`)) err(f, `og:image ${ogUrl} is not the ${lg} share image`);
+    for (const m of h.matchAll(/etahg-company-profile-([a-z]+)\.pdf/g)) if (m[1] !== lg) { err(f, `links the ${m[1]} company-profile PDF on a ${lg} page`); break; }
+  }
+
+  // No third-party render-blocking resources (Google domains are blocked in mainland China).
+  for (const l of tags(h, 'link')) {
+    const href = attr(l, 'href') || '';
+    if (/^https?:\/\//.test(href) && !href.startsWith(SITE) && /stylesheet|preconnect|preload/.test(attr(l, 'rel') || '')) err(f, `third-party <link rel="${attr(l, 'rel')}"> ${href}`);
+  }
+  for (const sc of tags(h, 'script')) { const src = attr(sc, 'src'); if (src && /^https?:\/\//.test(src) && !src.startsWith(SITE)) err(f, `third-party script ${src}`); }
 
   // Kayle Kenny rule (BRIEF.md): wherever Cummins is mentioned, the disclaimer must be present.
   if (/Cummins/.test(h) && !/Cummins Inc/.test(h)) err(f, 'mentions Cummins without the "not affiliated with or endorsed by Cummins Inc." disclaimer');
@@ -152,15 +182,15 @@ for (const p of indexable) {
   const f = p.f;
   if (!p.title) err(f, 'missing <title>');
   else {
-    if ([...p.title].length > 60) err(f, `title ${[...p.title].length} chars (> 60): "${p.title}"`);
+    if (width(p.title) > 60) err(f, `title ${width(p.title)} display width (> 60): "${p.title}"`);
     if (!/\| SARL ETAHG$/.test(p.title) && !/^SARL ETAHG\b/.test(p.title)) wrn(f, `title does not end with "| SARL ETAHG": "${p.title}"`);
     byTitle.set(p.title, [...(byTitle.get(p.title) || []), f]);
   }
-  const dl = [...(p.desc || '')].length;
+  const dl = width(p.desc);
   if (!p.desc) err(f, 'missing meta description');
   else {
-    if (dl < 110 || dl > 160) err(f, `meta description ${dl} chars (expected 110-160)`);
-    else if (dl > 155) wrn(f, `meta description ${dl} chars (target <= 155)`);
+    if (dl < 110 || dl > 160) err(f, `meta description width ${dl} (expected 110-160; CJK counts 2)`);
+    else if (dl > 155) wrn(f, `meta description width ${dl} (target <= 155)`);
     byDesc.set(p.desc, [...(byDesc.get(p.desc) || []), f]);
   }
   if (p.canonical.length !== 1) err(f, `${p.canonical.length} canonical links`);
@@ -227,7 +257,9 @@ if (fileSet.has('llms-full.txt')) {
 const size = (f) => fs.statSync(path.join(DIR, f)).size;
 const css = all.filter((f) => /^assets\/site\.[\w]+\.css$/.test(f));
 const js = all.filter((f) => /^assets\/site\.[\w]+\.js$/.test(f));
-for (const c of css) if (size(c) > 45 * 1024) err(c, `CSS is ${(size(c) / 1024).toFixed(1)} KB (budget 45 KB)`);
+// Budget applies to the design system; the generated @font-face rules (self-hosted fonts) are counted apart.
+const cssOwn = (f) => Buffer.byteLength(fs.readFileSync(path.join(DIR, f), 'utf8').replace(/@font-face\{[^}]*\}/g, ''));
+for (const c of css) if (cssOwn(c) > 45 * 1024) err(c, `CSS is ${(cssOwn(c) / 1024).toFixed(1)} KB without @font-face (budget 45 KB)`);
 for (const j of js) if (size(j) > 5 * 1024) err(j, `JS is ${(size(j) / 1024).toFixed(1)} KB (budget 5 KB)`);
 const cssKB = css.reduce((s, f) => s + size(f), 0) / 1024;
 const jsKB = js.reduce((s, f) => s + size(f), 0) / 1024;
@@ -238,7 +270,8 @@ for (const w of weights) if (w.kb > 250) wrn(w.f, `HTML is ${w.kb.toFixed(0)} KB
 const pad = (s, n) => String(s).padEnd(n);
 console.log(`\nQA report for ${path.relative(process.cwd(), DIR) || DIR}`);
 console.log(`  ${htmlFiles.length} HTML files (${indexable.length} indexable), ${all.length} files total`);
-console.log(`  CSS ${cssKB.toFixed(1)} KB · JS ${jsKB.toFixed(1)} KB (+ Google Fonts)`);
+const fontKB = all.filter((f) => f.startsWith('assets/fonts/')).reduce((s, f) => s + size(f), 0) / 1024;
+console.log(`  CSS ${cssKB.toFixed(1)} KB · JS ${jsKB.toFixed(1)} KB · self-hosted fonts ${fontKB.toFixed(0)} KB (loaded per unicode-range)`);
 console.log('  Page weight (HTML, heaviest first):');
 for (const w of weights.slice(0, 8)) console.log(`    ${pad(w.f, 48)} ${w.kb.toFixed(1).padStart(6)} KB  (+CSS/JS ${(w.kb + cssKB + jsKB).toFixed(1)} KB)`);
 if (warnings.length) { console.log(`\n  WARNINGS (${warnings.length})`); for (const w of warnings) console.log(`    - ${w}`); }

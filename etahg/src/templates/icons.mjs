@@ -12,6 +12,7 @@ const P = {
   check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
   card: '<path d="M3 5h18v14H3z"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16.5c.6-1.8 1.8-2.7 3.2-2.7s2.6.9 3.2 2.7M14.5 10h4M14.5 13.5h3"/>',
   print: '<path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/>',
 };
 
 export function icon(name, cls = '') {

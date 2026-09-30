@@ -1,6 +1,6 @@
 # SARL ETAHG: full website text (English)
 
-> SARL ETAHG is an Algerian company specialized in fine aggregates, road construction, heavy equipment rental, site mobilization and water wells.
+> SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling.
 
 Source: https://www.etahg.com/ · Generated 2026-09-30
 
@@ -10,19 +10,19 @@ URL: https://www.etahg.com/
 
 # SARL ETAHG: fine aggregates, heavy equipment and road construction in Algeria
 
-SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. We run our own stone crushing plant and own the fleet that built our roads, and we put both at the service of project owners and contractors, including international companies looking for a local partner.
+SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. For international contractors, we are a local partner that owns its machines, produces its own aggregates and knows the ground.
 
-- Registered office in Ghardaïa, northern Sahara
-- Equipment depot in Djelfa, on the RN1 north–south axis
-- Stone crushing plant at Oued Seddeur, about 25 km south of Djelfa
+- Own stone crushing plant: fine aggregates for high production rates
+- Own fleet: trucks, bulldozers, excavators, road pavers and drilling rigs, for rent, lease or subcontract
+- Equipment depot in Djelfa on the RN1 axis, registered office in Ghardaïa, parts in Algiers
 
 - **Fine aggregates**: Crushed fine aggregates from our own crushing plant, suited to high production rates.
 - **Road construction**: Earthworks, pavement layers and asphalt surfacing with our own fleet.
 - **Equipment rental**: Semi-trailer trucks, trucks, bulldozers, excavators and pavers for rent or lease.
-- **Site mobilization**: New sites opened: clearing, access tracks, platforms, earthworks, aggregate supply.
-- **Water wells**: Water well drilling with our own rigs, for sites, farms, industry and communities.
+- **Site mobilization**: Opening new sites: clearing, access tracks, platforms, earthworks and aggregate supply.
+- **Water wells**: Our own rigs can drill water wells for sites, farms, industry and communities.
 
-## A heavy-works partner between the north and the south of Algeria
+## A heavy‑works partner between the north and the south of Algeria
 
 SARL ETAHG is an Algerian limited liability company (SARL) registered in **Ghardaïa**, in the M’zab valley of the northern Sahara. Its heavy equipment is based in **Djelfa**, on the High Plateaus and on the RN1, the main north–south road linking Algiers to the Sahara. Its stone crushing plant is at **Oued Seddeur**, about 25 km south of Djelfa, and its group spare-parts company, EURL KAYLE KENNY, is in Algiers.
 
@@ -30,7 +30,7 @@ The company’s fleet of semi-trailer trucks, trucks, bulldozers, excavators and
 
 ## What we do
 
-Six complementary services, delivered with our own plant and machines, so that one partner can cover materials, equipment and site work on the same project.
+Five services delivered with our own plant and machines, plus spare parts through our group company, so that one partner can cover materials, equipment and site work on the same project.
 
 ### Aggregate production
 High-quality crushed fine aggregates (manufactured sand) from our plant near Djelfa, for concrete, asphalt and road layers, especially where high production rates are required. (https://www.etahg.com/services/aggregate-production/)
@@ -45,7 +45,7 @@ Semi-trailer trucks, trucks, bulldozers, excavators and road pavers for a phase 
 Project initialization: machines on site, clearing, access tracks, platforms, first earthworks and aggregate supply, so the main works can start. (https://www.etahg.com/services/project-mobilization/)
 
 ### Water well drilling
-Our own drilling rigs for water wells serving construction sites, agriculture, industry and communities. (https://www.etahg.com/services/water-well-drilling/)
+Our own drilling rigs can drill water wells for construction sites, agriculture, industry and communities. (https://www.etahg.com/services/water-well-drilling/)
 
 ### Spare parts (EURL KAYLE KENNY)
 Our group company supplies heavy-duty diesel engine parts from its store and depot in Algiers. (https://www.etahg.com/services/spare-parts/)
@@ -55,7 +55,7 @@ Our group company supplies heavy-duty diesel engine parts from its store and dep
 An international contractor, supplier or investor starting a project in Algeria needs a local company that already owns equipment, produces materials and knows the ground. That is the core of what ETAHG offers.
 
 ### Equipment we own
-Trucks, bulldozers, excavators, pavers and drilling rigs from our own fleet, managed by us and ready to be mobilized.
+Trucks, bulldozers, excavators, pavers and drilling rigs from our own fleet, dispatched from our Djelfa depot.
 
 ### Materials at the source
 Our crushing plant produces fine aggregates, so a project can secure a local supply of a critical material from the start.
@@ -120,7 +120,7 @@ Four sites along the Algiers – Djelfa – Ghardaïa corridor link the Mediterr
 
 EURL KAYLE KENNY is part of the SARL ETAHG portfolio. From its store and parts depot in Mohammadia, Algiers, it supplies heavy-duty diesel engine spare parts, including Cummins-compatible parts, to fleets and workshops.
 
-For our clients and partners, a parts company inside the group means quicker access to the right part and machines that spend more time working.
+For our clients and partners, a parts company inside the group is a local source for heavy-duty engine parts.
 
 _EURL KAYLE KENNY is an independent supplier, not affiliated with or endorsed by Cummins Inc._
 
@@ -133,9 +133,9 @@ Website: https://www.kaylekenny.com
 - Registered office: Ghardaïa (Wilaya of Ghardaïa)
 - Operating sites: Equipment depot: Djelfa; Stone crushing plant: Oued Seddeur; Spare parts store and depot: Mohammadia, Algiers
 - Activities: Fine aggregate production (stone crushing), road construction, heavy equipment rental and leasing, project mobilization, water well drilling
-- Working languages: Arabic, French, English (website also in Simplified Chinese)
 - Group company: EURL KAYLE KENNY: heavy-duty spare parts, Algiers
 - Telephone / WhatsApp: +213 558 96 10 49
+- Email: contact@etahg.com
 - Website: www.etahg.com
 
 ## Frequently asked questions
@@ -161,7 +161,7 @@ SARL ETAHG agrees rental and leasing terms per project rather than applying fixe
 
 URL: https://www.etahg.com/services/
 
-# Six services, one heavy-works partner in Algeria
+# One civil works partner in Algeria: five services and group parts support
 
 SARL ETAHG combines material production, a heavy equipment fleet and road-building experience. Each service can be contracted on its own or combined with others in one agreement, with a single point of contact from the first study to the end of the works.
 
@@ -180,7 +180,7 @@ The fleet that built our roads, available to other contractors for a phase of wo
 Project initialization: we bring machines and operators to open a new site, build access and platforms, and prepare it for the main works. (https://www.etahg.com/services/project-mobilization/)
 
 ### Water well drilling
-Our own drilling rigs for water wells serving construction sites, agriculture, industry and communities. (https://www.etahg.com/services/water-well-drilling/)
+Our own drilling rigs can drill water wells for construction sites, agriculture, industry and communities. (https://www.etahg.com/services/water-well-drilling/)
 
 ### Spare parts
 Heavy-duty diesel engine parts through our group company EURL KAYLE KENNY, with stock in Algiers. (https://www.etahg.com/services/spare-parts/)
@@ -271,7 +271,7 @@ A stone crushing plant is a chain of machines linked by conveyors. Each crushing
 
 ## Quality focus areas for fine aggregates
 
-The performance of a fine aggregate depends on a few measurable properties. These are the points we manage in production and the parameters buyers usually specify.
+The performance of a fine aggregate depends on a few measurable properties. These are the parameters buyers usually specify; the tests required for each supply are agreed with the client.
 
 ### Grading
 The distribution of particle sizes, checked by sieve analysis. A continuous, stable grading makes concrete and asphalt easier to design and to reproduce.
@@ -283,7 +283,7 @@ The quantity and nature of the fines, usually assessed with the sand equivalent 
 Compact, cubical grains pack and compact better than flat or elongated ones. Shape depends mainly on the crushing stages and on how they are fed.
 
 ### Consistency
-The same product from one delivery to the next, supported by separate stockpiles for each fraction and regular checks during production.
+The same product from one delivery to the next, which depends on separate stockpiles for each fraction and on checks during production.
 
 ### Parent rock
 The hardness and durability of the rock, measured on coarse fractions by tests such as Los Angeles and Micro-Deval, determine where a material can be used in a road.
@@ -351,7 +351,7 @@ The high-quality fine aggregates produced by SARL ETAHG are intended for concret
 SARL ETAHG specializes in fine aggregates, the sand-sized fractions used in concrete, asphalt and road layers. The exact fractions available for a project are confirmed in the quotation.
 
 ### Can we test the aggregates before ordering?
-Yes. SARL ETAHG agrees the required tests with each client, such as grading, sand equivalent and methylene blue value, and samples can be arranged for testing by a laboratory accepted by both parties.
+SARL ETAHG agrees the required tests with each client before supply starts, such as grading, sand equivalent and methylene blue value. Sampling for testing can be discussed once the project details are known.
 
 ### Does ETAHG deliver aggregates to the site?
 Yes. SARL ETAHG can deliver aggregates with its own trucks and semi-trailer trucks. Transport conditions are agreed with each client according to distance, volumes and call-off schedule.
@@ -368,7 +368,7 @@ SARL ETAHG rents and leases its own heavy equipment to contractors and project o
 
 ## Equipment available for rent and lease
 
-Machines are available individually or as a complete package for a scope of work, such as an earthworks team or a paving train.
+Machines are available individually or as a group for a defined scope of work, such as earthworks or paving.
 
 ### Semi-trailer trucks
 Tractor units with semi-trailers for heavy haulage: moving construction machines between sites and hauling materials over longer distances.
@@ -414,10 +414,10 @@ No two sites are alike, so we do not publish fixed rental conditions. The follow
 Short-term rental for a phase of work or longer-term leasing for the life of a project.
 
 ### Operators
-Machines with or without operators, depending on the project and on the client’s own teams.
+Whether machines are supplied with operators, depending on the project and on the client’s own teams.
 
 ### Transport
-Mobilization and demobilization of the machines, including transport by our semi-trailer trucks where suitable.
+Mobilization and demobilization of the machines, and whether and on what terms they are moved by our own semi-trailer trucks.
 
 ### Maintenance and repairs
 Who services the machines and who handles repairs, with parts support available through our group company.
@@ -433,15 +433,15 @@ Working hours, access, security, insurance and the responsibilities of each part
 1. **Request**: You send the machine types, the project location, the start date, the expected duration and the scope of work.
 2. **Availability and proposal**: We confirm which machines are available and send a proposal with the terms.
 3. **Contract**: Duration, operators, transport, maintenance and responsibilities are written into the rental or lease agreement.
-4. **Mobilization**: The machines are transported from our Djelfa depot or from another site, and their condition is checked jointly at hand-over.
+4. **Mobilization**: The machines are delivered to site as agreed in the contract.
 5. **Work and support**: The machines work on your project; parts for heavy-duty engines are supported through EURL KAYLE KENNY in Algiers.
-6. **Return**: At the end of the agreement the machines are demobilized and a closing check is carried out.
+6. **Return**: At the end of the agreement the machines are demobilized as agreed.
 
 ## Why rent from a contractor rather than a rental agency
 
-Our machines were acquired for our own road projects, not for a rental catalogue. They are sized for real heavy works in Algeria, and the people who manage them understand production, not only contracts.
+Our machines were acquired for our own road projects, not for a rental catalogue. They are sized for heavy works in Algeria and managed by a company that uses them on its own projects. See [our fleet](https://www.etahg.com/fleet/) for the equipment categories.
 
-For a foreign contractor starting a project, renting locally avoids the cost and lead time of importing equipment for the first phase and leaves time to decide what to bring in. For an Algerian company, it adds capacity for a peak of work without buying machines. In both cases, one contact at SARL ETAHG coordinates the machines, their transport and their parts support.
+For a foreign contractor starting a project, renting locally avoids the cost and lead time of importing equipment for the first phase and leaves time to decide what to bring in. For an Algerian company, it adds capacity for a peak of work without buying machines. In both cases, the terms are agreed directly with SARL ETAHG, the company that owns the machines.
 
 ## What to include in a rental request
 
@@ -449,7 +449,7 @@ For a foreign contractor starting a project, renting locally avoids the cost and
 - Project location and site access conditions
 - Start date and expected duration
 - Scope of work and working hours
-- With or without operators
+- Whether you need operators
 - Transport requirements to and from the site
 
 _Availability is confirmed in writing for each request._
@@ -476,7 +476,7 @@ Heavy-duty engine parts through EURL KAYLE KENNY in Algiers. (https://www.etahg.
 Yes. SARL ETAHG rents and leases its own heavy equipment in Algeria: semi-trailer trucks, trucks, bulldozers, excavators and road pavers. The machines are dispatched from its depot in Djelfa, and terms are agreed per project.
 
 ### Are operators included in the rental?
-SARL ETAHG rents machines with or without operators, depending on the project. Operators, duration, transport and maintenance are agreed per project and written into the contract.
+SARL ETAHG agrees per project whether machines are supplied with operators, together with duration, transport and maintenance, and writes these terms into the contract.
 
 ### Does ETAHG offer long-term equipment leasing?
 Yes. Besides rental for a phase of work, SARL ETAHG leases machines for longer periods, for example for the duration of a project. This is a direct arrangement with ETAHG as owner, not a bank financing product.
@@ -485,7 +485,7 @@ Yes. Besides rental for a phase of work, SARL ETAHG leases machines for longer p
 SARL ETAHG’s fleet is based at its equipment depot in Djelfa, on the RN1 north–south axis, and has built roads in many regions of Algeria. Availability for a given location is confirmed when you send your project details.
 
 ### Can ETAHG transport the machines to our site?
-Yes. SARL ETAHG operates semi-trailer trucks that can move its machines to and from the site. Transport is included in the proposal when requested, and its conditions are agreed per project.
+SARL ETAHG operates semi-trailer trucks. Whether it transports the machines to and from your site, and on what terms, is agreed per project.
 
 ### What happens if a rented machine breaks down?
 With SARL ETAHG, responsibilities for maintenance and repairs are agreed in the contract before the rental starts. Its group company EURL KAYLE KENNY supplies heavy-duty diesel engine parts from Algiers, which supports the availability of the fleet.
@@ -496,9 +496,9 @@ With SARL ETAHG, responsibilities for maintenance and repairs are agreed in the 
 
 URL: https://www.etahg.com/services/project-mobilization/
 
-# Project initialization: opening new sites with our own machines
+# Project mobilization: opening new sites with our own machines
 
-SARL ETAHG mobilizes heavy equipment to start up new projects in Algeria. We move machines to the location, clear and open the site, build access tracks and platforms, carry out the first earthworks, set up aggregate supply and, where there is no water, drill a well, so that the main works can begin on schedule.
+SARL ETAHG mobilizes heavy equipment to start up new projects in Algeria (project initialization). We move machines to the location, clear and open the site, build access tracks and platforms, carry out the first earthworks, set up aggregate supply and, where there is no water, drill a well, so that the main works can begin on schedule.
 
 ## What project initialization covers
 
@@ -563,7 +563,7 @@ Our position in Djelfa, on the RN1 between Algiers and the Sahara, and our road-
 ## Services that complete a mobilization
 
 ### Equipment rental
-Keep our machines on site for the main works, with or without operators. (https://www.etahg.com/services/equipment-rental/)
+Keep our machines on site for the main works, on terms agreed per project. (https://www.etahg.com/services/equipment-rental/)
 
 ### Aggregate production
 Crushed fine aggregates from our plant at Oued Seddeur, near Djelfa. (https://www.etahg.com/services/aggregate-production/)
@@ -620,7 +620,7 @@ A road is a layered structure. Each layer spreads traffic loads to the one below
 
 Road construction consumes large quantities of aggregates, in the granular layers and in the asphalt itself. Because SARL ETAHG produces fine aggregates at its own crushing plant and operates its own trucks, the supply of materials and the pace of the works can be planned together.
 
-Our own bulldozers, excavators and pavers mean that each phase, from earthworks to surfacing, is carried out by machines and teams that are used to working together. For a main contractor, this reduces the number of interfaces on the critical path.
+Our own bulldozers, excavators and pavers mean that each phase, from earthworks to surfacing, is carried out by machines and teams that are used to working together. For a main contractor, this reduces the number of interfaces on the critical path. See [our fleet](https://www.etahg.com/fleet/) for the equipment involved.
 
 - New roads and access roads
 - Widening and rehabilitation of existing roads
@@ -631,7 +631,7 @@ Our own bulldozers, excavators and pavers mean that each phase, from earthworks 
 
 On the coastal Tell, clay soils and winter rainfall make drainage and subgrade treatment the priority, and works often run alongside live traffic. In the Atlas mountains, rock cuts, embankments and slope stability demand heavy dozing and excavation. On the High Plateaus, long straight alignments reward productivity and a steady flow of aggregates, while cold winters and hot summers call for careful seasonal planning; around the salt flats (chotts), soft and saline soils need particular attention.
 
-In the Sahara, sand, heat and distance shape every decision: drifting sand must be kept off the alignment, asphalt must tolerate high surface temperatures, and local materials such as calcareous tuff are widely used in pavement layers. Crews and supplies must be planned to be self-sufficient. ETAHG has built roads in many regions of Algeria and knows the terrain of those regions; more on our [experience](https://www.etahg.com/experience/) page.
+In the Sahara, sand, heat and distance shape every decision: drifting sand must be kept off the alignment, asphalt must tolerate high surface temperatures, and local materials such as calcareous tuff are widely used in pavement layers. Crews and supplies must be planned to be self-sufficient. ETAHG has built roads in many regions of Algeria and knows the terrain of those regions; more about our [road-building experience](https://www.etahg.com/experience/).
 
 ## Scopes we take on for main contractors
 
@@ -690,7 +690,7 @@ SARL ETAHG can carry out earthworks, subgrade preparation, sub-base and base cou
 Yes. SARL ETAHG can work for a main contractor, including a foreign contractor, on a defined scope such as earthworks, granular layers, paving or aggregate supply.
 
 ### In which regions has ETAHG built roads?
-SARL ETAHG has completed road projects in many regions of Algeria and knows the terrain of those regions. Details of past road projects are available on request.
+SARL ETAHG has completed road projects in many regions of Algeria and knows the terrain of those regions. Information on past road projects can be discussed with prospective partners.
 
 ### Can ETAHG supply the aggregates for a road project?
 Yes. SARL ETAHG produces high-quality fine aggregates at its crushing plant at Oued Seddeur, near Djelfa, and can deliver them with its own trucks, so material supply and road works can be planned together.
@@ -706,11 +706,11 @@ URL: https://www.etahg.com/services/water-well-drilling/
 
 # Water well drilling for sites, farms, industry and communities
 
-SARL ETAHG owns water well drilling machines and drills water wells in Algeria for construction sites, agriculture, industrial facilities and communities. Based in Djelfa and Ghardaïa, between the High Plateaus and the northern Sahara, ETAHG can also include a well in the start-up of a new project, so that water is available early in the works.
+SARL ETAHG owns water well drilling rigs and can drill water wells in Algeria for construction sites, agriculture, industrial facilities and communities. Based in Djelfa and Ghardaïa, between the High Plateaus and the northern Sahara, ETAHG can also include a well in the start-up of a new project, so that water is available early in the works.
 
 ## Water is a project in itself
 
-Earthworks need water for compaction, concrete needs water for mixing and curing, haul roads need water for dust control, and site camps need water to live. On the High Plateaus and in the Sahara, where surface water is scarce, a well is often the only reliable source, and hauling water by tanker over long distances is costly.
+Earthworks need water for compaction, concrete needs water for mixing and curing, haul roads need water for dust control, and site camps need drinking and service water. On the High Plateaus and in the Sahara, where surface water is scarce, a well is often the only reliable source, and hauling water by tanker over long distances is costly.
 
 Drilling a well early, as part of the mobilization, removes one of the main constraints of a remote project. After the works, the well can continue to serve the owner, a farm or the local community.
 
@@ -738,7 +738,7 @@ Wells for villages, settlements and pastoral areas where the network does not re
 The main stages of a water well project are below. The exact scope ETAHG carries out is agreed in each contract.
 
 1. **Needs and location**: Water demand, intended use, location and access are defined with the client, together with any information on existing wells nearby.
-2. **Authorization**: The well owner obtains the authorization required under Algerian regulations before drilling starts; the drilling is planned around it.
+2. **Authorization**: The authorization required under Algerian regulations is obtained before drilling starts; who applies for it is agreed in the contract, and the drilling is planned around it.
 3. **Rig mobilization**: The drilling rig and support equipment are transported to the site.
 4. **Drilling**: The borehole is drilled through the formations to the water-bearing layer, with a method suited to the ground.
 5. **Casing and completion**: The well is cased, with screens at the water-bearing layer, and equipped according to the agreed specification.
@@ -750,7 +750,7 @@ Algeria’s groundwater varies with its landscapes. In the Tell, aquifers lie ma
 
 Under the northern Sahara lie two large aquifer systems shared with Tunisia and Libya: the Complexe Terminal, closer to the surface, and the deeper Continental Intercalaire, commonly called the Albian aquifer. Deep wells can deliver warm water under pressure, which affects the choice of casing and wellhead. Because much of this water is not renewed, its use is regulated by the authorities.
 
-Each well is therefore planned for its location: the method, depth, casing and completion depend on the ground and on the aquifer to be reached. Every project starts with an exchange on the site and on the expected water needs.
+Each well is therefore planned for its location: the method, depth, casing and completion depend on the ground and on the aquifer to be reached. Every project starts with an exchange on the site and on the expected water needs. How Algeria’s terrains shape our work is described on our [road-building experience](https://www.etahg.com/experience/) page.
 
 ## What to send for a well project
 
@@ -778,10 +778,10 @@ How foreign contractors can work with ETAHG. (https://www.etahg.com/internationa
 ## Questions about water well drilling
 
 ### Does ETAHG own its drilling rigs?
-Yes. SARL ETAHG has its own water well drilling machines, which it uses for its own projects and for clients.
+Yes. SARL ETAHG has its own water well drilling machines.
 
 ### What kinds of water wells does ETAHG drill?
-SARL ETAHG drills water wells for construction sites, agricultural irrigation, industrial and mining facilities and community water supply. The design of each well depends on its use and on local geology.
+SARL ETAHG can drill water wells for construction sites, agricultural irrigation, industrial and mining facilities and community water supply. The design of each well depends on its use and on local geology.
 
 ### Can a well be drilled as part of a site mobilization?
 Yes. SARL ETAHG can include a water well in the mobilization of a new site, so that water is available for earthworks, concrete and site facilities.
@@ -790,7 +790,7 @@ Yes. SARL ETAHG can include a water well in the mobilization of a new site, so t
 SARL ETAHG works from Djelfa and Ghardaïa, on the axis between northern Algeria and the Sahara. Feasibility for a specific location is assessed when you send the project details.
 
 ### Is a permit needed to drill a water well in Algeria?
-Yes. In Algeria, drilling a water well requires prior authorization from the administration responsible for water resources, and SARL ETAHG plans its drilling around the authorization obtained by the well owner.
+Yes. In Algeria, drilling a water well requires prior authorization from the administration responsible for water resources. SARL ETAHG plans its drilling around that authorization; who applies for it is agreed with the client.
 
 ### How deep will the well be?
 SARL ETAHG sets the depth of each well according to local geology and the aquifer to be reached. Depth is estimated after reviewing the location and any data from existing wells nearby.
@@ -818,7 +818,7 @@ EURL KAYLE KENNY stocks heavy-duty diesel engine parts, including Cummins-compat
 
 ## What it means for ETAHG’s partners
 
-For a contractor renting ETAHG machines, or working alongside ETAHG on a project, parts support within the group is part of what keeps equipment available. It also gives partners with their own fleets a local source of heavy-duty engine parts in Algiers.
+For a contractor renting ETAHG machines, or working alongside ETAHG on a project, parts support within the group is a local source of engine parts. It also gives partners with their own fleets a local source of heavy-duty engine parts in Algiers.
 
 To ask for a part, send the part reference or the engine model and serial number. A photo of the part and of the engine plate helps to identify the right item.
 
@@ -897,7 +897,7 @@ Because SARL ETAHG owns machines in each of these categories, it can staff a com
 
 ## How we keep the fleet available
 
-A fleet is only as useful as its availability on site. Our approach is practical and grounded in daily use on real projects.
+A fleet is only as useful as its availability on site.
 
 ### Central depot
 The Djelfa depot, on the RN1 axis, is the base for preparing and dispatching machines toward the north and the south.
@@ -913,7 +913,7 @@ For each rental or project, servicing and repair responsibilities are set out in
 
 ## Fleet list and machine details
 
-A detailed list of the machines proposed for a project, with their characteristics, is provided with each offer. Fleet figures are published on this page once they have been confirmed.
+A detailed list of the machines proposed for a project, with their characteristics, is provided with each offer.
 
 ## Questions about the fleet
 
@@ -993,7 +993,7 @@ Aggregate needs identified early, with our own crushing plant as a source.
 Fuel, water and parts planned for sites far from towns and workshops.
 
 ## Regions and projects
-Details of our past road projects are available on request.
+Information on past road projects can be discussed with prospective partners.
 
 ## Where we are based
 
@@ -1004,25 +1004,33 @@ Our bases in Djelfa and Ghardaïa sit on the main north–south axis, between th
 - **Stone crushing plant**: Oued Seddeur (Wilaya of Djelfa). Fine aggregate production site outside Djelfa, about 25 km south of the city.
 - **Spare parts store and depot**: Mohammadia, Algiers (Wilaya of Algiers). EURL KAYLE KENNY, the group’s spare parts company, with stock in Algiers. Map: https://www.google.com/maps/search/?api=1&query=El+Djenina+200+Logts+Lido+Mohammadia+Alger
 
-**Working in a demanding location?** Tell us about the terrain and the scope. We will tell you how we would approach it.
+**Working in a demanding location?** Tell us about the terrain and the scope, and we will tell you how we would approach it. Information on past road projects can be discussed with prospective partners.
 
 ---
 
 URL: https://www.etahg.com/international-partners/
 
-# A local heavy-works partner for international contractors in Algeria
+# A local heavy‑works partner for international contractors in Algeria
 
-SARL ETAHG is an Algerian company that gives international contractors, EPC companies, cement and mining groups and investors what a project in Algeria needs from the start: its own heavy equipment fleet, its own fine aggregate production, road-building experience in many regions of the country and a group spare-parts company in Algiers.
+SARL ETAHG is an Algerian heavy-works company that works alongside international contractors, EPC companies and investors. We can take on a defined scope under your contract, supply machines and fine aggregates to your site, or open your site while your own organization is being set up, with our own fleet, our own crushing plant and road-building experience in many regions of Algeria.
 
 ## Working alongside international contractors
 
-Algeria’s roads, railways, dams, housing and industrial plants are delivered by Algerian companies and by international contractors, among them many Chinese, Turkish and European groups. International contractors bring engineering, financing and the management of large projects. What they often need locally is equipment that can start immediately, a secure supply of materials, subcontractors for earthworks and road layers, and a partner who knows the ground and the practical conditions of working in the country.
+Algeria’s roads, railways, dams, housing and industrial plants are delivered by Algerian companies and by international contractors, among them many Chinese, Turkish and European groups. International contractors bring engineering, financing and the management of large projects. What they often need locally is equipment that is already in the country, a secure supply of materials, subcontractors for earthworks and road layers, and a partner who knows the ground and the practical conditions of working in the country (see our [road-building experience](https://www.etahg.com/experience/)).
 
 SARL ETAHG is organized to fill that role. It can take on a defined scope under your contract, supply machines and aggregates to your site, or open the site for you while your own organization is being set up. Because it owns its equipment and its crushing plant, it commits its own resources rather than coordinating third parties on your behalf.
 
+## For Chinese companies working in Algeria
+
+Chinese companies building roads, railways, water and housing projects in Algeria often meet the same questions at the same stages: at the start of a project their own equipment may still be at sea or in customs; a steady source of manufactured sand near the site is not always available; fuel, spare parts and water are hard to secure on remote southern sites; and they need subcontractors who know local ground and working conditions.
+
+With its own fleet, its own crushing plant at Oued Seddeur and road-building experience in many regions of Algeria, SARL ETAHG can work with your project team at these stages: opening the site before your equipment arrives, supplying fine aggregates, taking on earthworks, pavement layers or paving as a subcontractor and, where needed, drilling a water well for the works.
+
+Your head office or your project team in Algeria can write to us at [amar@etahg.com](mailto:contact@etahg.com), in English or French; email is also the practical channel from mainland China. This website is available in [Simplified Chinese](https://www.etahg.com/zh/).
+
 ## What ETAHG brings to your project
 
-### Own fleet, ready to mobilize
+### Own fleet, own transport
 Semi-trailer trucks, trucks, bulldozers, excavators, road pavers and drilling rigs that ETAHG owns, dispatched from its depot in Djelfa.
 
 ### Own aggregate production
@@ -1034,11 +1042,11 @@ Road projects completed in many regions of Algeria, with practical knowledge of 
 ### A footprint between north and south
 Registered in Ghardaïa, in the northern Sahara, with the fleet in Djelfa on the RN1 axis from Algiers to the Sahara, and parts in Algiers.
 
-### Fleet uptime through the group
-Heavy-duty diesel engine parts supplied by EURL KAYLE KENNY in Algiers help keep machines working on your project.
+### Parts support through the group
+EURL KAYLE KENNY in Algiers is a local source of heavy-duty diesel engine parts for machines working on your project.
 
 ### Direct communication
-We work in Arabic, French and English, and the people you meet are the people who decide and deliver.
+Reach us directly by email, phone or WhatsApp. You can write to us in Arabic, French or English.
 
 ## Ways to work together
 
@@ -1048,7 +1056,7 @@ We adapt to the structure of your project. The most common models are:
 We carry out a defined scope, such as earthworks, road layers, paving or site preparation, under your contract. (https://www.etahg.com/services/road-construction/)
 
 ### Equipment supply
-Our machines are rented or leased to your project, with or without operators, on terms agreed per project. (https://www.etahg.com/services/equipment-rental/)
+Our machines are rented or leased to your project on terms agreed per project (operators, transport, maintenance). (https://www.etahg.com/services/equipment-rental/)
 
 ### Aggregate supply
 We supply crushed fine aggregates from our plant for your concrete, asphalt or road works. (https://www.etahg.com/services/aggregate-production/)
@@ -1066,7 +1074,7 @@ We can act as your Algerian partner for a project, bringing equipment, materials
 | Model | What ETAHG provides | Usual form of agreement |
 | --- | --- | --- |
 | Subcontracting | A defined works scope with its own machines and operators | Subcontract under the main contract |
-| Equipment supply | Machines, with or without operators, transport as agreed | Rental or lease agreement |
+| Equipment supply | Machines on terms agreed per project (operators, transport, maintenance) | Rental or lease agreement |
 | Aggregate supply | Crushed fine aggregates, delivered or collected | Supply contract |
 | Site start-up | Mobilization, clearing, access, platforms, first earthworks | Subcontract or service agreement |
 | Water supply | Drilling of water wells | Service contract |
@@ -1074,13 +1082,13 @@ We can act as your Algerian partner for a project, bringing equipment, materials
 
 ## How cooperation starts
 
-1. **First contact**: Send a short description of your company and your project by phone or WhatsApp on +213 558 96 10 49.
-2. **Confidentiality**: If your project information is sensitive, a confidentiality agreement can be signed before details are exchanged.
+1. **First contact**: Send a short description of your company and your project by email to [amar@etahg.com](mailto:contact@etahg.com), or by phone or WhatsApp on +213 558 96 10 49.
+2. **Confidentiality**: If your project information is sensitive, a confidentiality agreement can be discussed before details are exchanged.
 3. **Exchange of information**: We share our company profile, registration documents and equipment details; you share the scope, location and schedule.
-4. **Meeting and site visit**: We meet and visit the project location together; a visit to our depot in Djelfa and our crushing plant at Oued Seddeur can also be arranged.
+4. **Meeting and site visit**: We meet and visit the project location together; a visit to our depot in Djelfa and our crushing plant at Oued Seddeur can also be discussed.
 5. **Proposal**: We send a proposal covering scope, equipment, materials, schedule and commercial terms.
 6. **Agreement**: The cooperation model is formalized in a contract suited to the project.
-7. **Mobilization and follow-up**: Equipment and teams are mobilized according to the agreed plan, with one point of contact at ETAHG throughout.
+7. **Mobilization and follow-up**: Equipment and teams are mobilized according to the agreed plan.
 
 ## What to send us
 
@@ -1100,12 +1108,12 @@ To give you a relevant first answer quickly, please include as much of the follo
 Partners evaluating ETAHG usually ask for legal and technical documents. On request, and under a confidentiality agreement where appropriate, we provide:
 
 - Commercial register extract (RC) and tax identification numbers (NIF, NIS, AI)
-- Company profile, in PDF and printable versions
+- [Company profile](https://www.etahg.com/company-profile/), in PDF and printable versions
 - List of the equipment proposed for your project
 - Information on our crushing plant and on the aggregates it produces
-- Details of past road projects
+- Information on past road projects, to be discussed with prospective partners
 
-_This website is also available in Simplified Chinese, French and Arabic. Technical and commercial documents are exchanged in French or English._
+_This website is also available in [Simplified Chinese](https://www.etahg.com/zh/), French and Arabic. Technical and commercial documents are exchanged in French or English._
 
 ## Questions from international companies
 
@@ -1113,21 +1121,21 @@ _This website is also available in Simplified Chinese, French and Arabic. Techni
 Yes. SARL ETAHG is open to cooperation with foreign companies active in Algeria, including international EPC contractors, cement and mining groups, investors and equipment suppliers. It can act as subcontractor, equipment or aggregate supplier, site start-up partner or local partner for a project.
 
 ### Can Chinese contractors work with ETAHG?
-Yes. SARL ETAHG welcomes cooperation with Chinese contractors and companies working on projects in Algeria, on the same basis as other international partners. This website is available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
+Yes. SARL ETAHG welcomes cooperation with Chinese contractors and Chinese-owned companies building projects in Algeria, as a subcontractor, equipment or aggregate supplier, site start-up partner or local partner. This website is available in Simplified Chinese; day-to-day communication can be in English or French, and from mainland China email (amar@etahg.com) is the most practical channel.
 
 ### Can ETAHG work as a subcontractor?
 Yes. SARL ETAHG can work as a subcontractor for a main contractor on a defined scope, such as earthworks, road layers, asphalt paving, site preparation, aggregate supply or water wells, using its own equipment.
 
 ### In which languages can we contact ETAHG?
-SARL ETAHG can be contacted in Arabic, French and English. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
+You can write to SARL ETAHG in Arabic, French or English, by email, phone or WhatsApp. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
 
-### What is the relationship between ETAHG and Kayle Kenny?
-EURL KAYLE KENNY is part of the portfolio of SARL ETAHG and is the group’s spare parts company for heavy-duty machines, with a store and parts depot in Mohammadia, Algiers. It supplies diesel engine parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For ETAHG’s partners, it is a parts source inside the group that supports fleet availability.
+### What is the relationship between SARL ETAHG and EURL KAYLE KENNY?
+EURL KAYLE KENNY is part of the portfolio of SARL ETAHG and is the group’s spare parts company for heavy-duty machines, with a store and parts depot in Mohammadia, Algiers. It supplies diesel engine parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For ETAHG’s partners, it is a parts source inside the group.
 
 ### How do I request a quote from ETAHG?
-To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by WhatsApp or phone on +213 558 96 10 49.
+To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by email to amar@etahg.com, or by WhatsApp or phone on +213 558 96 10 49.
 
-**Let us discuss your project in Algeria** Reach us directly. International enquiries are answered by the people who will run the cooperation.
+**Let us discuss your project in Algeria** Reach us directly by email, phone or WhatsApp.
 
 ---
 
@@ -1147,7 +1155,7 @@ The group also includes EURL KAYLE KENNY, a heavy-duty spare parts company with 
 
 ## From road builder to multi-service partner
 
-ETAHG’s development is that of a road builder that acquired its own means of production. Building roads required trucks, earthmoving machines, pavers and large quantities of aggregates; owning them gave the company control over the pace and quality of its works.
+ETAHG grew as a road builder that invested in its own means of production. Building roads required trucks, earthmoving machines, pavers and large quantities of aggregates; owning them allowed the company to plan its own works.
 
 Today those same means are offered as services in their own right. Contractors can rent or lease the machines, buy fine aggregates from the crushing plant, ask ETAHG to open a new site, or have a water well drilled. International companies can combine these services with ETAHG’s road-building experience in a single cooperation.
 
@@ -1158,9 +1166,9 @@ Today those same means are offered as services in their own right. Contractors c
 - Registered office: Ghardaïa (Wilaya of Ghardaïa)
 - Operating sites: Equipment depot: Djelfa; Stone crushing plant: Oued Seddeur; Spare parts store and depot: Mohammadia, Algiers
 - Activities: Fine aggregate production (stone crushing), road construction, heavy equipment rental and leasing, project mobilization, water well drilling
-- Working languages: Arabic, French, English (website also in Simplified Chinese)
 - Group company: EURL KAYLE KENNY: heavy-duty spare parts, Algiers
 - Telephone / WhatsApp: +213 558 96 10 49
+- Email: contact@etahg.com
 - Website: www.etahg.com
 
 ## Why our locations matter
@@ -1171,25 +1179,16 @@ For a partner, this footprint means a fleet based on the country’s main north�
 
 ## How we work
 
-Our working principles come from heavy works on real sites.
+Principles we apply on our own sites.
 
-### Safety on site
-Heavy machines demand discipline. Work areas, machine movements and access are planned so that crews and third parties stay safe.
+### Written terms
+Scope, schedule and terms are agreed in writing before work starts.
 
-### Quality of materials
-Our aggregates come from a controlled crushing process, and our works follow the specifications agreed with the client.
+### Agreed test requirements
+Test requirements for aggregates are agreed with the client before supply.
 
-### Equipment availability
-Machines are managed for availability on site, with spare parts supported through our group company.
-
-### Clear commitments
-Scope, schedule and terms are agreed in writing before work starts, and progress is reported to the client.
-
-### Respect for the environment
-Dust, water use and land disturbance are managed in line with applicable regulations.
-
-### Long-term relationships
-We prefer partners we can work with again, project after project.
+### Parts support in the group
+Spare parts for heavy-duty engines through our group company EURL KAYLE KENNY.
 
 ## The group: EURL KAYLE KENNY
 
@@ -1214,7 +1213,7 @@ URL: https://www.etahg.com/faq/
 
 # Frequently asked questions about SARL ETAHG
 
-Short, factual answers about the company, its services and how to work with it. SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling.
+Short, factual answers about the company, its services and how to work with it.
 
 ## About the company
 
@@ -1228,16 +1227,16 @@ SARL ETAHG produces fine aggregates, builds roads, rents and leases heavy equipm
 SARL ETAHG is registered in Ghardaïa, Algeria, and keeps its equipment depot in Djelfa, on the High Plateaus. Its stone crushing plant is at Oued Seddeur, about 25 km south of Djelfa, and its group company EURL KAYLE KENNY has a store and parts depot in Mohammadia, Algiers. Djelfa lies on the RN1, the main north–south road between Algiers and the Sahara.
 
 ### What kind of company is SARL ETAHG?
-SARL ETAHG is a société à responsabilité limitée (SARL), the Algerian form of limited liability company. Its commercial register and tax identification details are available on request and are published on the legal notice page once confirmed.
+SARL ETAHG is a société à responsabilité limitée (SARL), the Algerian form of limited liability company. Its commercial register and tax identification numbers are available on request.
 
 ### How is the company name written?
 The legal name of the company is SARL ETAHG, where SARL indicates the legal form. The short name ETAHG is written in Latin capital letters in every language, including Arabic and Chinese.
 
-### What is the relationship between ETAHG and Kayle Kenny?
-EURL KAYLE KENNY is part of the portfolio of SARL ETAHG and is the group’s spare parts company for heavy-duty machines, with a store and parts depot in Mohammadia, Algiers. It supplies diesel engine parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For ETAHG’s partners, it is a parts source inside the group that supports fleet availability.
+### What is the relationship between SARL ETAHG and EURL KAYLE KENNY?
+EURL KAYLE KENNY is part of the portfolio of SARL ETAHG and is the group’s spare parts company for heavy-duty machines, with a store and parts depot in Mohammadia, Algiers. It supplies diesel engine parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For ETAHG’s partners, it is a parts source inside the group.
 
 ### In which languages can we contact ETAHG?
-SARL ETAHG can be contacted in Arabic, French and English. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
+You can write to SARL ETAHG in Arabic, French or English, by email, phone or WhatsApp. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
 
 ## Services
 
@@ -1266,7 +1265,7 @@ Yes. Road construction is the original activity of SARL ETAHG: its fleet was mai
 For SARL ETAHG, project mobilization is the start-up of a new site with its own machines: transporting equipment to the site, clearing, building access tracks and platforms, carrying out the first earthworks, organizing aggregate supply and, where needed, drilling a water well.
 
 ### Does ETAHG drill water wells?
-Yes. SARL ETAHG owns water well drilling machines and drills wells for construction sites, agriculture, industry and communities in Algeria.
+Yes. SARL ETAHG owns water well drilling machines and can drill wells for construction sites, agriculture, industry and communities in Algeria.
 
 ### Where in Algeria does ETAHG work?
 SARL ETAHG has completed road projects in many regions of Algeria. From its bases in Djelfa and Ghardaïa, on the RN1 axis between Algiers and the Sahara, it is positioned to serve projects in both the north and the south; availability for a specific location is confirmed on request.
@@ -1277,16 +1276,16 @@ SARL ETAHG has completed road projects in many regions of Algeria. From its base
 Yes. SARL ETAHG is open to cooperation with foreign companies active in Algeria, including international EPC contractors, cement and mining groups, investors and equipment suppliers. It can act as subcontractor, equipment or aggregate supplier, site start-up partner or local partner for a project.
 
 ### Can Chinese contractors work with ETAHG?
-Yes. SARL ETAHG welcomes cooperation with Chinese contractors and companies working on projects in Algeria, on the same basis as other international partners. This website is available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
+Yes. SARL ETAHG welcomes cooperation with Chinese contractors and Chinese-owned companies building projects in Algeria, as a subcontractor, equipment or aggregate supplier, site start-up partner or local partner. This website is available in Simplified Chinese; day-to-day communication can be in English or French, and from mainland China email (amar@etahg.com) is the most practical channel.
 
 ### Can ETAHG work as a subcontractor?
 Yes. SARL ETAHG can work as a subcontractor for a main contractor on a defined scope, such as earthworks, road layers, asphalt paving, site preparation, aggregate supply or water wells, using its own equipment.
 
 ### How do I request a quote from ETAHG?
-To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by WhatsApp or phone on +213 558 96 10 49.
+To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by email to amar@etahg.com, or by WhatsApp or phone on +213 558 96 10 49.
 
 ### How do I contact ETAHG?
-SARL ETAHG can be contacted by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.
+SARL ETAHG can be contacted by email at amar@etahg.com, or by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.
 
 ### Is there a company profile we can share internally?
 Yes. SARL ETAHG publishes a printable company profile on this website, also available as a PDF download.
@@ -1294,7 +1293,7 @@ Yes. SARL ETAHG publishes a printable company profile on this website, also avai
 ### Is EURL KAYLE KENNY affiliated with Cummins?
 No. EURL KAYLE KENNY, the spare parts company of the SARL ETAHG group, supplies Cummins-compatible parts as an independent supplier, not affiliated with or endorsed by Cummins Inc.
 
-**Another question?** Ask us directly by phone or WhatsApp.
+**Another question?** Ask us directly by email, phone or WhatsApp.
 
 ---
 
@@ -1302,14 +1301,15 @@ URL: https://www.etahg.com/contact/
 
 # Contact SARL ETAHG
 
-Call SARL ETAHG or write on WhatsApp on +213 558 96 10 49. We answer enquiries from Algerian and international companies directly, in Arabic, French or English.
+Write to SARL ETAHG at [amar@etahg.com](mailto:contact@etahg.com), or call or message us on WhatsApp on +213 558 96 10 49. We answer enquiries from Algerian and international companies directly.
 
 ## Contact details
 
-The fastest way to reach us is a phone call or a WhatsApp message on the number below. It is the group number, shared with EURL KAYLE KENNY.
+Email is the best channel for documents and for enquiries from China, where WhatsApp is not available. For a quick exchange, call or send a WhatsApp message to the number below; it is the group number, shared with EURL KAYLE KENNY.
 
 - Telephone: +213 558 96 10 49
 - WhatsApp: https://wa.me/213558961049
+- Email: contact@etahg.com
 
 ### What to include in your enquiry
 - Your company name and country
@@ -1321,9 +1321,9 @@ The fastest way to reach us is a phone call or a WhatsApp message on the number 
 
 ## Calling from abroad
 
-From outside Algeria, dial **+213 558 96 10 49**. If WhatsApp is not available to your team in its country, a direct phone call to the same number works; we then agree the most practical channel for exchanging documents.
+From outside Algeria, dial **+213 558 96 10 49**. If WhatsApp is not available to your team, for example in mainland China, write to [amar@etahg.com](mailto:contact@etahg.com); technical and commercial documents can also be exchanged by email.
 
-Enquiries can be made in Arabic, French or English. International companies can find more on cooperation models on our page for [international partners](https://www.etahg.com/international-partners/).
+You can write to us in Arabic, French or English. International companies can find more on cooperation models on our page for [international partners](https://www.etahg.com/international-partners/).
 
 ## Where to find us
 
@@ -1335,13 +1335,13 @@ Enquiries can be made in Arabic, French or English. International companies can 
 ## Before you contact us
 
 ### How do I request a quote from ETAHG?
-To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by WhatsApp or phone on +213 558 96 10 49.
+To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by email to amar@etahg.com, or by WhatsApp or phone on +213 558 96 10 49.
 
 ### How do I contact ETAHG?
-SARL ETAHG can be contacted by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.
+SARL ETAHG can be contacted by email at amar@etahg.com, or by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.
 
 ### In which languages can we contact ETAHG?
-SARL ETAHG can be contacted in Arabic, French and English. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
+You can write to SARL ETAHG in Arabic, French or English, by email, phone or WhatsApp. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.
 
 ### Does ETAHG work with foreign companies?
 Yes. SARL ETAHG is open to cooperation with foreign companies active in Algeria, including international EPC contractors, cement and mining groups, investors and equipment suppliers. It can act as subcontractor, equipment or aggregate supplier, site start-up partner or local partner for a project.
@@ -1373,7 +1373,7 @@ Semi-trailer trucks, trucks, bulldozers, excavators, road pavers. (https://www.e
 Site opening, access tracks, platforms, earthworks, aggregate supply. (https://www.etahg.com/services/project-mobilization/)
 
 ### Water well drilling
-Own drilling rigs for site, agricultural, industrial and community wells. (https://www.etahg.com/services/water-well-drilling/)
+Own drilling rigs; wells for sites, farms, industry and communities on request. (https://www.etahg.com/services/water-well-drilling/)
 
 ### Spare parts
 EURL KAYLE KENNY, Algiers: heavy-duty diesel engine parts. (https://www.etahg.com/services/spare-parts/)
@@ -1385,9 +1385,9 @@ EURL KAYLE KENNY, Algiers: heavy-duty diesel engine parts. (https://www.etahg.co
 - Registered office: Ghardaïa (Wilaya of Ghardaïa)
 - Operating sites: Equipment depot: Djelfa; Stone crushing plant: Oued Seddeur; Spare parts store and depot: Mohammadia, Algiers
 - Activities: Fine aggregate production (stone crushing), road construction, heavy equipment rental and leasing, project mobilization, water well drilling
-- Working languages: Arabic, French, English (website also in Simplified Chinese)
 - Group company: EURL KAYLE KENNY: heavy-duty spare parts, Algiers
 - Telephone / WhatsApp: +213 558 96 10 49
+- Email: contact@etahg.com
 - Website: www.etahg.com
 
 ## Locations
@@ -1399,7 +1399,7 @@ EURL KAYLE KENNY, Algiers: heavy-duty diesel engine parts. (https://www.etahg.co
 
 ## Cooperation with international companies
 
-Subcontracting, equipment rental and leasing, aggregate supply, site start-up, water wells, and local partnership for projects in Algeria. We work in Arabic, French and English; this profile is also available in Simplified Chinese.
+Subcontracting, equipment rental and leasing, aggregate supply, site start-up, water wells, and local partnership for projects in Algeria. Contact: amar@etahg.com. You can write to us in Arabic, French or English; this profile is also available in French, Arabic and Simplified Chinese.
 
 _EURL KAYLE KENNY is an independent supplier, not affiliated with or endorsed by Cummins Inc._
 
@@ -1416,6 +1416,7 @@ Information about the publisher of this website and how we handle your data.
 - Legal form: SARL (limited liability company) under Algerian law
 - Registered office: Ghardaïa, Algeria
 - Telephone / WhatsApp: +213 558 96 10 49
+- Email: contact@etahg.com
 - Website: www.etahg.com
 
 ## Hosting
@@ -1426,11 +1427,11 @@ This website is a static website hosted on GitHub Pages, a service of GitHub, In
 
 **No cookies, no tracking.** This website does not use cookies, analytics, advertising or tracking tools, and it has no contact forms. We do not collect personal data through the website.
 
-**Fonts.** Text fonts are loaded from Google Fonts. When a page is displayed, your browser connects to Google servers, which receive your IP address as part of that technical request.
+**Fonts.** The fonts used on this website are served from this website itself; pages in Chinese use the fonts already installed on your device. No font is loaded from a third-party server, so displaying a page sends no data to a font provider.
 
 **Contacting us.** If you contact us by telephone, WhatsApp or email, we use the information you send only to answer your enquiry and to prepare and manage any business relationship. WhatsApp is operated by WhatsApp LLC / Meta under its own privacy policy.
 
-**Your rights.** You can ask us at any time to access, correct or delete the personal data you have sent us, by contacting us on [+213 558 96 10 49](tel:+213558961049).
+**Your rights.** You can ask us at any time to access, correct or delete the personal data you have sent us, by writing to [amar@etahg.com](mailto:contact@etahg.com) or calling [+213 558 96 10 49](tel:+213558961049).
 
 ## Intellectual property and liability
 

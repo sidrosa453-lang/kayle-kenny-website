@@ -21,17 +21,21 @@ const SRC = path.join(ROOT, 'src');
 const ILLUS_DIR = path.join(SRC, 'assets', 'illustrations');
 const PHOTO_DIR = path.join(SRC, 'assets', 'photos');
 const GEN_DIR = path.join(SRC, 'assets', 'generated');
+const FONT_DIR = path.join(SRC, 'assets', 'fonts');
+const LASTMOD_FILE = path.join(SRC, 'lastmod.json');
 
 const warnings = [];
 const warn = (m) => { if (!warnings.includes(m)) { warnings.push(m); console.warn(`  warn  ${m}`); } };
 
 /* ------------------------------------------------------------------ args */
 function parseArgs(argv) {
-  const a = { out: path.join(ROOT, 'docs'), content: path.join(SRC, 'content') };
+  const a = { out: path.join(ROOT, 'docs'), content: path.join(SRC, 'content'), strict: null };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--out') a.out = path.resolve(argv[++i]);
     else if (argv[i].startsWith('--out=')) a.out = path.resolve(argv[i].slice(6));
     else if (argv[i] === '--content') a.content = path.resolve(argv[++i]); // alternative content folder (testing)
+    else if (argv[i] === '--strict') a.strict = true; // missing localized PDF / OG image = error
+    else if (argv[i] === '--no-strict') a.strict = false;
   }
   return a;
 }
@@ -148,6 +152,8 @@ function placeholderSvg(cls) {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const OUT = args.out;
+  // Production build (docs/) is strict: every language must have its own PDF and share image.
+  const STRICT = args.strict ?? path.resolve(OUT) === path.join(ROOT, 'docs');
   const forbidden = [ROOT, SRC, path.parse(ROOT).root, process.env.HOME || '/root'].map((p) => path.resolve(p));
   if (forbidden.includes(path.resolve(OUT))) throw new Error(`refusing to wipe ${OUT}`);
 
@@ -161,7 +167,8 @@ async function main() {
 
   /* ---------------------------------------------------------- languages */
   const tokens = {
-    company: site.companyName, short: site.shortName, phone: site.contact.phone,
+    // No-break spaces keep the phone number on one line in running text.
+    company: site.companyName, short: site.shortName, phone: String(site.contact.phone).replace(/ /g, '\u00A0'),
     group: (site.group || [])[0]?.name || '', year,
   };
   const applyTokens = (s) => s.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in tokens ? tokens[k] : m));
@@ -208,7 +215,12 @@ async function main() {
   const copy = (from, rel) => write(rel, fs.readFileSync(from));
 
   // CSS / JS (fingerprinted) + textures.
-  const css = fs.readFileSync(path.join(SRC, 'assets', 'css', 'site.css'));
+  // Self-hosted fonts (tools/fetch-fonts.mjs): @font-face rules are prepended to the stylesheet.
+  const fontCssFile = path.join(FONT_DIR, 'fonts.css');
+  const fontCss = fs.existsSync(fontCssFile) ? fs.readFileSync(fontCssFile, 'utf8') : (warn('src/assets/fonts/fonts.css missing (run: node tools/fetch-fonts.mjs); system fonts used'), '');
+  const fontFiles = fs.existsSync(FONT_DIR) ? fs.readdirSync(FONT_DIR).filter((f) => f.endsWith('.woff2')) : [];
+  for (const f of fontFiles) copy(path.join(FONT_DIR, f), `assets/fonts/${f}`);
+  const css = Buffer.from(fontCss + '\n' + fs.readFileSync(path.join(SRC, 'assets', 'css', 'site.css'), 'utf8'));
   const js = fs.readFileSync(path.join(SRC, 'assets', 'js', 'site.js'));
   const cssMin = Buffer.from(minifyCss(css.toString('utf8')));
   const cssFile = `assets/site.${hash(cssMin)}.css`;
@@ -246,11 +258,18 @@ async function main() {
     write('favicon.ico', Buffer.concat([head, png]));
   }
   const ogFor = {}, pdfFor = {};
+  const missingAssets = [];
   for (const l of langs) {
     const o = gen(`og-${l}.png`);
-    if (o) { copy(o, `assets/og-${l}.png`); ogFor[l] = `assets/og-${l}.png`; } else warn(`src/assets/generated/og-${l}.png missing (run: node tools/render-assets.mjs)`);
+    if (o) { copy(o, `assets/og-${l}.png`); ogFor[l] = `assets/og-${l}.png`; } else { missingAssets.push(`og-${l}.png`); warn(`src/assets/generated/og-${l}.png missing (run: node tools/render-assets.mjs)`); }
     const p = gen(`etahg-company-profile-${l}.pdf`);
-    if (p) { copy(p, `downloads/etahg-company-profile-${l}.pdf`); pdfFor[l] = `downloads/etahg-company-profile-${l}.pdf`; } else warn(`src/assets/generated/etahg-company-profile-${l}.pdf missing (run: node tools/render-assets.mjs)`);
+    if (p) { copy(p, `downloads/etahg-company-profile-${l}.pdf`); pdfFor[l] = `downloads/etahg-company-profile-${l}.pdf`; } else { missingAssets.push(`etahg-company-profile-${l}.pdf`); warn(`src/assets/generated/etahg-company-profile-${l}.pdf missing (run: node tools/render-assets.mjs)`); }
+    // A stale PDF (older than the content it prints) is worth a warning.
+    const cf = path.join(args.content, `${l}.mjs`);
+    if (p && fs.existsSync(cf) && fs.statSync(cf).mtimeMs > fs.statSync(p).mtimeMs) warn(`etahg-company-profile-${l}.pdf is older than src/content/${l}.mjs (re-run: node tools/render-assets.mjs)`);
+  }
+  if (STRICT && missingAssets.length) {
+    throw new Error(`production build refused: missing localized assets in src/assets/generated/: ${missingAssets.join(', ')}.\n  Run: node tools/render-assets.mjs   (or build elsewhere / pass --no-strict for a draft build)`);
   }
 
   // Photos.
@@ -288,6 +307,15 @@ async function main() {
     const c = site.contact;
     const ctx = {
       site, config: site, lang, L, t, ui, page, pageId, buildDate, noindex: !!opts.noindex,
+      dateModified: buildDate,
+      // Default-language view used for the language-neutral Organization node (identical on every page).
+      def: {
+        ui: content[DEF].ui,
+        pageNav: (id) => content[DEF].pages[id]?.nav || id,
+        serviceName: (id) => content[DEF].pages[id]?.service?.name || content[DEF].pages[id]?.nav || id,
+        abs: (id) => abs(id, DEF),
+        locName: (l) => l.locality,
+      },
       switchPage: opts.altPage || pageId,
       cssFile, jsFile, warn,
       languagesPresent: langs,
@@ -339,7 +367,7 @@ async function main() {
         return target;
       },
       whatsappUrl(message) {
-        const msg = message || page.whatsapp || ui.whatsappMessage.replace('{{page}}', page.nav || '');
+        const msg = message || page.whatsapp || ui.whatsappMessage.replaceAll('{{page}}', page.nav || '');
         return `https://wa.me/${c.whatsapp}?text=${encodeURIComponent(msg)}`;
       },
       telUrl: () => `tel:${String(c.phone).replace(/[^+\d]/g, '')}`,
@@ -351,12 +379,14 @@ async function main() {
       },
       pdfAbs() { const rel = pdfFor[lang] || pdfFor[DEF]; return rel ? `${site.siteUrl}/${rel}` : abs('profile', lang); },
       ogImage() { const rel = ogFor[lang] || ogFor[DEF]; return rel ? { url: `${site.siteUrl}/${rel}` } : files.has('icon-512.png') ? { url: `${site.siteUrl}/icon-512.png` } : null; },
+      ogImageDefault() { const rel = ogFor[DEF]; return rel ? { url: `${site.siteUrl}/${rel}` } : null; },
       logoPng: () => (files.has('icon-512.png') ? { url: `${site.siteUrl}/icon-512.png`, size: 512 } : null),
       logoSvg,
-      fontsUrl() {
-        const fam = [...BASE_FONTS, ...(L.fonts || [])].map((f) => `family=${f}`).join('&');
-        return `https://fonts.googleapis.com/css2?${fam}&display=swap`;
+      // Self-hosted font files worth preloading on this page (latin faces + the language's own).
+      fontPreloads() {
+        return [...BASE_FONTS, ...(L.fonts || [])].filter((f) => fontFiles.includes(f)).map((f) => toUrl(`assets/fonts/${f}`));
       },
+      P: { colon: ': ', comma: ', ', list: '; ', enum: ', ', open: ' (', close: ')', ...(ui.punct || {}) },
       visual(name, o = {}) {
         const cls = `illus ${o.cls || ''}`.trim();
         const slot = PHOTO_SLOTS[name] || name;
@@ -382,8 +412,10 @@ async function main() {
         const parts = [];
         if (l.id === 'hq' && c.address?.street) parts.push(c.address.street);
         if (l.id === 'hq' && c.address?.postalCode) parts.push(`${c.address.postalCode} ${ctx.locName(l)}`); else parts.push(ctx.locName(l));
+        // Chinese addresses run from the largest unit to the smallest: 阿尔及利亚盖尔达耶.
+        if (ui.addressOrder === 'country-first') return [ui.facts.countryValue, ...parts.reverse()].join('');
         parts.push(ui.facts.countryValue);
-        return parts.join(', ');
+        return parts.join(ctx.P.comma);
       },
       stats() {
         const out = [];
@@ -415,22 +447,24 @@ async function main() {
         add(F.legalName, site.companyName);
         add(F.legalForm, F.legalFormValue);
         add(F.country, F.countryValue);
-        if (hq) add(F.registeredOffice, `${ctx.locName(hq)} (${ui.locations.wilaya.replace('{{region}}', ctx.regionName(hq))})`);
+        if (hq) add(F.registeredOffice, `${ctx.locName(hq)}${ctx.P.open}${ui.locations.wilaya.replaceAll('{{region}}', ctx.regionName(hq))}${ctx.P.close}`);
         if (c.address?.street) add(F.address, ctx.addressLine(hq || {}));
         const others = (site.locations || []).filter((l) => l.id !== 'hq');
         if (others.length) {
-          const v = others.map((l) => `${ui.locations.types[l.id] || l.type}: ${ctx.locName(l)}`).join('; ');
-          add(F.operations, v, others.map((l) => `<span class="fact-line">${esc(ui.locations.types[l.id] || l.type)}: ${esc(ctx.locName(l))}</span>`).join(''));
+          const v = others.map((l) => `${ui.locations.types[l.id] || l.type}${ctx.P.colon}${ctx.locName(l)}`).join(ctx.P.list);
+          add(F.operations, v, others.map((l) => `<span class="fact-line">${esc(ui.locations.types[l.id] || l.type)}${esc(ctx.P.colon)}${esc(ctx.locName(l))}</span>`).join(''));
         }
         add(F.activities, F.activitiesValue);
         add(F.founded, site.foundedYear ? String(site.foundedYear) : '');
         const fleetRows = Object.entries(site.fleet || {}).filter(([k, v]) => Number.isFinite(v) && v > 0 && ui.fleetLabels[k]);
-        if (fleetRows.length) add(F.fleet, fleetRows.map(([k, v]) => `${ui.fleetLabels[k]}: ${v}`).join('; '));
+        if (fleetRows.length) add(F.fleet, fleetRows.map(([k, v]) => `${ui.fleetLabels[k]}${ctx.P.colon}${v}`).join(ctx.P.list));
         if (site.crushingCapacityTonnesPerHour) add(F.capacity, `${site.crushingCapacityTonnesPerHour} ${F.capacityUnit}`);
         const certs = (site.certifications || []).map((x) => (typeof x === 'string' ? x : x?.name)).filter(Boolean);
-        if (certs.length) add(F.certifications, certs.join(', '));
+        if (certs.length) add(F.certifications, certs.join(ctx.P.comma));
         add(F.rc, reg.rc); add(F.nif, reg.nif); add(F.nis, reg.nis); add(F.ai, reg.ai);
-        add(F.languages, F.languagesValue);
+        // Working languages: shown only once the owner has confirmed them in site.config.json.
+        const spoken = (site.spokenLanguages || []).map((code) => ui.languageNames?.[code] || code).filter(Boolean);
+        if (spoken.length) add(F.languages, spoken.join(ctx.P.enum) + (ui.facts.languagesNote ? ` ${ui.facts.languagesNote}` : ''));
         add(F.group, F.groupValue);
         add(F.phone, c.phone, phoneHtml);
         add(F.email, c.email, mailHtml);
@@ -446,7 +480,9 @@ async function main() {
         }
         return [];
       },
-      pageFaqs() { return (page.blocks || []).filter((b) => b.type === 'faq').flatMap((b) => ctx.faqItems(b)); },
+      // FAQPage structured data: a page marks up only its own questions; questions reused
+      // from the FAQ page (from/ids) are marked up once, on the FAQ page itself.
+      pageFaqs() { return (page.blocks || []).filter((b) => b.type === 'faq' && (!b.from || pageId === b.from)).flatMap((b) => ctx.faqItems(b)); },
       nextTone(type) { if (type === 'terrain') return 'ink'; return ['paper', 'stone'][tone++ % 2]; },
       nextNumber: () => ++num,
       uid: (p = 'u') => `${p}${++uidN}`,
@@ -464,6 +500,18 @@ async function main() {
   /* -------------------------------------------------------------- pages */
   const sitemapEntries = [];
   let pageCount = 0;
+  // lastmod per page: the date only moves when the page's rendered main content changes.
+  // State lives in src/lastmod.json and is updated by production builds (docs/) only.
+  let lastmodState = {};
+  try { lastmodState = JSON.parse(fs.readFileSync(LASTMOD_FILE, 'utf8')); } catch { lastmodState = {}; }
+  const lastmodNext = {};
+  const lastmodOf = (key, mainHtml) => {
+    const h = hash(Buffer.from(mainHtml));
+    const prev = lastmodState[key];
+    const date = prev && prev.hash === h ? prev.date : buildDate;
+    lastmodNext[key] = { hash: h, date };
+    return date;
+  };
   for (const lang of langs) {
     for (const id of PAGES) {
       if (!hasPage(id, lang)) continue;
@@ -473,8 +521,10 @@ async function main() {
       if (page.layout === 'profile') {
         main = html`<div class="print-head" aria-hidden="true"><span class="brand-mark">${logoSvg()}</span><span class="print-head-name">${site.companyName}</span><span class="print-head-meta">${site.siteUrl.replace(/^https?:\/\//, '')} · <span dir="ltr">${site.contact.phone}</span>${site.contact.email ? ` · ${site.contact.email}` : ''}</span></div>${main}`;
       }
+      const lastmod = lastmodOf(`${lang}:${id}`, String(main));
+      ctx.dateModified = lastmod;
       write(path.join(pagePath(id, lang), 'index.html'), String(documentShell(ctx, main)));
-      sitemapEntries.push({ id, lang });
+      sitemapEntries.push({ id, lang, lastmod });
       pageCount++;
     }
   }
@@ -494,8 +544,19 @@ async function main() {
     ctx.crumbTrail = () => [];
     let out = String(documentShell(ctx, renderBlocks(page.blocks, ctx)));
     out = out.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\n?/, '');
+    // Localized 404: the page is served for any missing URL, so a small script picks the
+    // language from the path (/fr/, /ar/, /zh/) and swaps the heading, text and home link.
+    const nfData = {};
+    for (const l of langs) {
+      if (l === DEF) continue;
+      const n = content[l].ui.notFound || {};
+      const m = langMeta(l);
+      nfData[l] = { lang: m.htmlLang, dir: m.dir, title: n.title, heading: n.heading, text: n.text, home: n.home, homeUrl: abs('home', l), contact: content[l].ui.contactCta, contactUrl: abs('contact', l) };
+    }
+    const nfScript = `<script>(function(){var d=${JSON.stringify(nfData).replace(/</g, '\\u003c')};var m=location.pathname.match(/^\\/(${Object.keys(nfData).join('|') || 'x'})\\//);if(!m)return;var t=d[m[1]],h=document.documentElement;h.lang=t.lang;h.dir=t.dir;document.title=t.title;document.addEventListener('DOMContentLoaded',function(){var q=function(s){return document.querySelector(s)};var h1=q('#page-title');if(h1)h1.textContent=t.heading;var p=q('.hero .lead');if(p)p.textContent=t.text;var b=document.querySelectorAll('.hero .cta-row a');if(b[0]){b[0].href=t.homeUrl;b[0].querySelector('span').textContent=t.home}if(b[1]){b[1].href=t.contactUrl;b[1].querySelector('span').textContent=t.contact}});})();</script>`;
+    out = out.replace('</head>', `${nfScript}\n</head>`);
     // Self-contained styling: 404.html is served for any missing path, so inline the CSS.
-    const inlineCss = cssMin.toString('utf8').replace(/url\("(topo|strata)\.svg"\)/g, `url("${site.siteUrl}/assets/$1.svg")`);
+    const inlineCss = cssMin.toString('utf8').replace(/url\("(topo|strata)\.svg"\)/g, `url("${site.siteUrl}/assets/$1.svg")`).replace(/url\("fonts\//g, `url("${site.siteUrl}/assets/fonts/`);
     out = out.replace(/<link rel="stylesheet" href="[^"]*assets\/site\.[\w]+\.css">/, () => `<style>${inlineCss}</style>`);
     write('404.html', out);
   }
@@ -506,7 +567,7 @@ async function main() {
   if (!/\.github\.io$/i.test(host)) write('CNAME', `${host}\n`);
 
   // robots.txt
-  const bots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Googlebot', 'Bingbot', 'Applebot', 'Applebot-Extended', 'CCBot', 'meta-externalagent', 'Amazonbot', 'DuckAssistBot', 'YandexBot'];
+  const bots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Googlebot', 'Bingbot', 'Applebot', 'Applebot-Extended', 'CCBot', 'meta-externalagent', 'Amazonbot', 'DuckAssistBot', 'YandexBot', 'Baiduspider', 'Bytespider', 'YisouSpider', 'Sogou web spider', '360Spider', 'PetalBot'];
   write('robots.txt', [
     `# robots.txt for ${site.siteUrl}`,
     '# All search engines and AI assistants are welcome to crawl and cite this site.',
@@ -517,21 +578,23 @@ async function main() {
 
   // sitemap.xml
   const sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
-  for (const { id, lang } of sitemapEntries) {
-    sm.push('  <url>', `    <loc>${esc(abs(id, lang))}</loc>`, `    <lastmod>${buildDate}</lastmod>`);
+  for (const { id, lang, lastmod } of sitemapEntries) {
+    sm.push('  <url>', `    <loc>${esc(abs(id, lang))}</loc>`, `    <lastmod>${lastmod}</lastmod>`);
     for (const l of langs) if (hasPage(id, l)) sm.push(`    <xhtml:link rel="alternate" hreflang="${langMeta(l).hreflang}" href="${esc(abs(id, l))}"/>`);
     sm.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(abs(id, DEF))}"/>`);
     sm.push(`    <priority>${id === 'home' ? '1.0' : SERVICE_PAGES.includes(id) || id === 'partners' ? '0.9' : id === 'legal' ? '0.3' : '0.7'}</priority>`, '  </url>');
   }
   sm.push('</urlset>', '');
   write('sitemap.xml', sm.join('\n'));
+  if (STRICT) fs.writeFileSync(LASTMOD_FILE, JSON.stringify(Object.fromEntries(Object.entries(lastmodNext).sort()), null, 1) + '\n');
 
   // llms.txt + llms-full.txt (English).
   const en = content[DEF];
   const enCtx = (id) => makeContext(DEF, id, en.pages[id]);
   const homeCtx = enCtx('home');
   const facts = homeCtx.facts('full');
-  const summary = plain(en.pages.home.description);
+  // The canonical entity statement (same sentence as JSON-LD, vCard and manifest).
+  const summary = plain(en.ui.footer.tagline);
   const linkLine = (id) => `- [${en.pages[id].nav}](${abs(id, DEF)}): ${plain(en.pages[id].summary || en.pages[id].description)}`;
   const llms = [
     `# ${site.companyName}`, '',
@@ -546,7 +609,12 @@ async function main() {
     '## Services', '', ...['services', ...SERVICE_PAGES].filter((i) => hasPage(i, DEF)).map(linkLine), '',
     '## Company', '', ...['about', 'fleet', 'experience', 'partners', 'faq', 'contact', 'profile'].filter((i) => hasPage(i, DEF)).map(linkLine),
     ...(pdfFor[DEF] ? [`- [Company profile (PDF)](${site.siteUrl}/${pdfFor[DEF]}): printable company profile`] : []), '',
-    '## Other languages', '', ...langs.filter((l) => l !== DEF).map((l) => `- [${langMeta(l).name}](${abs('home', l)}): ${langMeta(l).name} version of the site`),
+    '## Other languages', '', ...langs.filter((l) => l !== DEF).map((l) => `- [${langMeta(l).name}](${abs('home', l)}): ${langMeta(l).englishName || langMeta(l).name} version of the site`),
+    ...(hasPage('home', 'zh') ? [
+      `- [SARL ETAHG 中文首页](${abs('home', 'zh')}): home page in Simplified Chinese, for Chinese contractors and companies`,
+      ...(hasPage('partners', 'zh') ? [`- [国际合作伙伴 / International partners (Chinese)](${abs('partners', 'zh')}): how Chinese and international contractors can cooperate with SARL ETAHG in Algeria`] : []),
+      ...(hasPage('contact', 'zh') ? [`- [联系我们 / Contact (Chinese)](${abs('contact', 'zh')}): email, phone and WhatsApp, with advice for contacting SARL ETAHG from China`] : []),
+    ] : []),
     ...(langs.length === 1 ? ['- French, Arabic and Simplified Chinese versions are in preparation.'] : []), '',
     '## Optional', '', `- [Full text of the English website](${site.siteUrl}/llms-full.txt): all English pages as Markdown`,
     `- [Sitemap](${site.siteUrl}/sitemap.xml)`, `- [Legal notice and privacy](${abs('legal', DEF)})`, '',
