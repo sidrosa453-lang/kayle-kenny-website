@@ -84,7 +84,7 @@ export function organization(ctx) {
     '@id': `${base}/#organization`,
     name: site.companyName,
     legalName: site.companyName,
-    alternateName: [site.shortName],
+    alternateName: [site.shortName, site.fullName?.fr, site.fullName?.ar].filter(Boolean),
     url: `${base}/`,
     logo: logo ? { '@type': 'ImageObject', '@id': `${base}/#logo`, url: logo.url, width: logo.size, height: logo.size, caption: site.companyName } : undefined,
     image: ctx.ogImageDefault() ? ctx.ogImageDefault().url : logo ? logo.url : undefined,

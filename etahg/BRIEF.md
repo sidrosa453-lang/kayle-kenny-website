@@ -19,11 +19,13 @@ Algeria. Secondary audience: Algerian public and private project owners.
 ## Verified facts (the ONLY facts the site may state)
 
 - **Company:** SARL ETAHG — an Algerian SARL (limited liability company).
-  The meaning of the acronym "ETAHG" is not known — never expand it.
+  Full name (from the statutes; confirmed by the owner): "Entreprise de Travaux d'Aménagement
+  Hydraulique de Ghardaïa"; official Arabic name: شركة الأشغال لتهيئة الري بغرداية.
+  Established by notarial deed in Ghardaïa on 8 April 1997.
 - **Country:** Algeria. Contact / location details come from `site.config.json`.
 - **Founded:** the company's commercial register (RC) dates from **1997** (owner's statement;
   the RC number itself ends in "B 98").
-- **Registry (from the company letterhead):** RC 47/00-0862220 B 98 · NIF (MF) 099747100152525 ·
+- **Registry (from the company letterhead):** RC 47/00-0862220 B 98 · NIF 099847086222075 (2025 statutes) ·
   NIS 099347100156231 · AI 47100604430.
 - **Locations (confirmed by the owner):**
   - **Registered office:** Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya of **Ghardaïa**.

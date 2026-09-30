@@ -92,7 +92,7 @@
   ],
   "registry": {
     "rc": "47/00-0862220 B 98",
-    "nif": "099747100152525",
+    "nif": "099847086222075",
     "nis": "099347100156231",
     "ai": "47100604430"
   },
@@ -134,5 +134,9 @@
       "addressLocality": "Mohammadia",
       "addressRegion": "Alger"
     }
-  ]
+  ],
+  "fullName": {
+    "fr": "Entreprise de Travaux d'Aménagement Hydraulique de Ghardaïa",
+    "ar": "شركة الأشغال لتهيئة الري بغرداية"
+  }
 }

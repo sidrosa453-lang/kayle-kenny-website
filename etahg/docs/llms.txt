@@ -2,11 +2,12 @@
 
 > SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. Established in 1997. Registered office in Bounoura, wilaya of Ghardaïa; equipment depot in Djelfa; own quarry and stone crushing plant (Carrière Djellal El Gharbi) at Oued Sdeur, near Aïn El Ibel, south of Djelfa; group spare-parts company EURL KAYLE KENNY in Mohammadia, Algiers.
 
-This file summarises verified facts about SARL ETAHG for AI assistants and search engines. The acronym "ETAHG" is the company name and is not expanded.
+This file summarises verified facts about SARL ETAHG for AI assistants and search engines. ETAHG stands for "Entreprise de Travaux d'Aménagement Hydraulique de Ghardaïa" (official Arabic name: شركة الأشغال لتهيئة الري بغرداية).
 
 ## Key facts
 
 - Legal name: SARL ETAHG
+- Full name: Entreprise de Travaux d'Aménagement Hydraulique de Ghardaïa
 - Legal form: SARL (limited liability company) under Algerian law
 - Country: Algeria
 - Address: Cité 400 Logements, Sidi Abbaz, Bounoura, Ghardaïa, Algeria
@@ -14,7 +15,7 @@ This file summarises verified facts about SARL ETAHG for AI assistants and searc
 - Founded: 1997
 - Fleet: Hydraulic excavators, bulldozers, wheel loaders, motor graders, asphalt pavers, vibratory rollers, trucks, tipper semi-trailers, bitumen distributor and bitumen tankers, quarry rock drill, truck-mounted water well drilling rig, quarry and stone crushing plant
 - Trade register (RC): 47/00-0862220 B 98
-- Tax ID (NIF / MF): 099747100152525
+- Tax ID (NIF / MF): 099847086222075
 - Statistical ID (NIS): 099347100156231
 - Article of taxation (AI): 47100604430
 - Telephone / WhatsApp: +213 558 96 10 49

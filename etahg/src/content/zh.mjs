@@ -12,7 +12,7 @@
  *   "SARL ETAHG 是一家阿尔及利亚公司，专业从事细骨料（机制砂）生产、道路施工、重型设备租赁
  *    （短租与长租）、施工进场与开工准备以及水井钻探。"
  * "SARL ETAHG", "ETAHG" and "EURL KAYLE KENNY" stay in Latin capitals; never transliterate
- * and never expand the acronym ETAHG.
+ * and keep ETAHG in Latin capitals.
  *
  * TERMINOLOGY
  *   fine aggregate 细骨料 / crushed sand, manufactured sand 机制砂 / stone crushing plant
@@ -100,6 +100,7 @@ export default {
     facts: {
       title: '公司概况',
       legalName: '公司法定名称',
+      fullName: '公司全称',
       legalForm: '公司形式',
       legalFormValue: 'SARL，即依据阿尔及利亚法律设立的有限责任公司',
       country: '国家',
@@ -1606,6 +1607,7 @@ export default {
           title: '关于公司',
           items: [
             { id: 'what-is-etahg', q: 'SARL ETAHG 是一家什么公司？', a: 'SARL ETAHG 是一家阿尔及利亚公司，专业从事细骨料（机制砂）生产、道路施工、重型设备租赁（短租与长租）、施工进场与开工准备以及水井钻探。公司成立于 1997 年，为有限责任公司（SARL），注册于盖尔达耶省布努拉，设备基地位于杰勒法，自有采石场及石料破碎筛分站位于杰勒法以南的艾因伊贝勒（Oued Sdeur）。集团旗下还有位于阿尔及尔的重型设备配件公司 EURL KAYLE KENNY。' },
+            { id: 'etahg-meaning', q: 'ETAHG 是什么意思？', a: 'ETAHG 是法文公司全称 “Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa”（盖尔达耶水利整治工程公司）的缩写，公司阿拉伯文正式名称为 شركة الأشغال لتهيئة الري بغرداية。SARL ETAHG 于 1997 年在盖尔达耶成立并在当地注册。' },
             { id: 'what-does-etahg-do', q: 'ETAHG 的业务有哪些？', a: 'SARL ETAHG 在阿尔及利亚生产细骨料、修建道路、出租和长期租赁重型设备、为新项目进场动员并钻凿水井。公司依托自有采石场和石料破碎筛分站，以及自有的挖掘机、推土机、装载机、平地机、压路机、摊铺机、沥青设备、卡车、半挂车和水井钻机开展业务；集团公司 EURL KAYLE KENNY 供应重型设备配件。' },
             { id: 'where', q: 'SARL ETAHG 位于哪里？', a: 'SARL ETAHG 的注册地址为阿尔及利亚盖尔达耶省布努拉 Cité 400 Logements, Sidi Abbaz，设备基地位于高原地区的杰勒法。自有采石场及石料破碎筛分站位于杰勒法以南的艾因伊贝勒（Oued Sdeur），集团公司 EURL KAYLE KENNY 在阿尔及尔穆罕默迪亚设有门店和配件仓库。杰勒法地处 1 号国道（RN1）沿线，RN1 是连接阿尔及尔与撒哈拉的南北主干道。' },
             { id: 'legal-form', q: 'SARL ETAHG 是什么类型的公司？', a: 'SARL ETAHG 是一家 société à responsabilité limitée（SARL），即阿尔及利亚的有限责任公司形式。公司成立于 1997 年，其商业注册号（RC）及税务识别号（NIF、NIS、AI）载于本网站的公司简介和法律声明。' },

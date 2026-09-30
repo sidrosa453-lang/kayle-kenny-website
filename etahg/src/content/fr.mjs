@@ -78,6 +78,7 @@ export default {
     facts: {
       title: 'L’entreprise en bref',
       legalName: 'Raison sociale',
+      fullName: 'Dénomination complète',
       legalForm: 'Forme juridique',
       legalFormValue: 'SARL (société à responsabilité limitée) de droit algérien',
       country: 'Pays',
@@ -1591,6 +1592,7 @@ export default {
           title: 'L’entreprise',
           items: [
             { id: 'what-is-etahg', q: 'Qui est SARL ETAHG ?', a: 'SARL ETAHG est une entreprise algérienne spécialisée dans la production de granulats fins, les travaux routiers, la location courte et longue durée d’engins de travaux publics, le démarrage de chantiers et le forage de puits d’eau. Créée en 1997, c’est une société à responsabilité limitée (SARL) dont le siège social est à Bounoura, wilaya de Ghardaïa, avec un parc matériel à Djelfa et sa propre carrière et station de concassage à Oued Sdeur, près d’Aïn El Ibel, au sud de Djelfa. Son groupe comprend EURL KAYLE KENNY, société de pièces de rechange pour engins lourds implantée à Alger.' },
+            { id: 'etahg-meaning', q: 'Que signifie ETAHG ?', a: 'ETAHG signifie « Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa » ; la dénomination officielle en arabe est شركة الأشغال لتهيئة الري بغرداية. SARL ETAHG a été créée à Ghardaïa en 1997, où elle est immatriculée.' },
             { id: 'what-does-etahg-do', q: 'Que fait ETAHG ?', a: 'SARL ETAHG produit des granulats fins, construit des routes, loue ses engins de travaux publics en courte et longue durée, démarre de nouveaux chantiers et fore des puits d’eau en Algérie. Elle s’appuie pour cela sur sa propre carrière et station de concassage et sur son propre parc de pelles, bulldozers, chargeuses, niveleuses, compacteurs, finisseurs, matériel bitume, camions, semi-remorques et atelier de forage de puits, tandis que sa société de groupe EURL KAYLE KENNY fournit des pièces de rechange pour engins lourds.' },
             { id: 'where', q: 'Où se trouve SARL ETAHG ?', a: 'Le siège social de SARL ETAHG est situé Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya de Ghardaïa (Algérie), et son parc matériel à Djelfa, sur les Hauts Plateaux. Sa propre carrière et station de concassage se trouve à Oued Sdeur, près d’Aïn El Ibel, au sud de Djelfa, et sa société de groupe EURL KAYLE KENNY dispose d’un magasin et d’un dépôt de pièces à Mohammadia, à Alger. Djelfa est située sur la RN1, le grand axe nord-sud entre Alger et le Sahara.' },
             { id: 'legal-form', q: 'Quelle est la forme juridique de SARL ETAHG ?', a: 'SARL ETAHG est une société à responsabilité limitée (SARL) de droit algérien. Elle a été créée en 1997. Ses numéros au registre du commerce (RC) et ses identifiants fiscaux (NIF, NIS, AI) figurent dans la présentation de l’entreprise et dans les mentions légales de ce site.' },

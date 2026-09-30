@@ -11,7 +11,7 @@
  *   "SARL ETAHG is an Algerian company specialized in fine aggregate production,
  *    road construction, heavy equipment rental and leasing, project mobilization
  *    and water well drilling."
- * Keep "ETAHG" in Latin capitals in every language; never expand the acronym.
+ * Keep "ETAHG" in Latin capitals in every language. Full name: site.config.json fullName.
  *
  * TOKENS (replaced at build time, usable in any string)
  *   {{company}} SARL ETAHG   {{short}} ETAHG   {{phone}} +213 …   {{email}} contact.email   {{group}} EURL KAYLE KENNY
@@ -130,6 +130,7 @@ export default {
     facts: {
       title: 'Company at a glance',
       legalName: 'Legal name',
+      fullName: 'Full name',
       legalForm: 'Legal form',
       legalFormValue: 'SARL (limited liability company) under Algerian law',
       country: 'Country',
@@ -1639,6 +1640,7 @@ export default {
           title: 'About the company',
           items: [
             { id: 'what-is-etahg', q: 'Who is SARL ETAHG?', a: 'SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. Established in 1997, it is a limited liability company (SARL) registered in Bounoura, wilaya of Ghardaïa, with an equipment depot in Djelfa and its own quarry and stone crushing plant at Oued Sdeur, near Aïn El Ibel, south of Djelfa. Its group includes EURL KAYLE KENNY, a heavy-duty spare parts company in Algiers.' },
+            { id: 'etahg-meaning', q: 'What does ETAHG stand for?', a: 'ETAHG stands for “Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa”; the company’s official Arabic name is شركة الأشغال لتهيئة الري بغرداية. SARL ETAHG was established in Ghardaïa in 1997 and is registered there.' },
             { id: 'what-does-etahg-do', q: 'What does ETAHG do?', a: 'SARL ETAHG produces fine aggregates, builds roads, rents and leases heavy equipment, mobilizes new project sites and drills water wells in Algeria. It does this with its own quarry and stone crushing plant and its own fleet of excavators, bulldozers, loaders, graders, rollers, pavers, bitumen trucks, trucks, semi-trailers and a water well drilling rig, while its group company EURL KAYLE KENNY supplies heavy-duty spare parts.' },
             { id: 'where', q: 'Where is SARL ETAHG located?', a: 'SARL ETAHG’s registered office is at Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya of Ghardaïa, Algeria, and its equipment depot is in Djelfa, on the High Plateaus. Its own quarry and stone crushing plant is at Oued Sdeur, near Aïn El Ibel, south of Djelfa, and its group company EURL KAYLE KENNY has a store and parts depot in Mohammadia, Algiers. Djelfa lies on the RN1, the main north–south road between Algiers and the Sahara.' },
             { id: 'legal-form', q: 'What kind of company is SARL ETAHG?', a: 'SARL ETAHG is a société à responsabilité limitée (SARL), the Algerian form of limited liability company. It was established in 1997. Its commercial register (RC) and tax identification numbers (NIF, NIS, AI) are listed in the company profile and the legal notice of this website.' },

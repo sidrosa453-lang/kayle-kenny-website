@@ -457,6 +457,7 @@ async function main() {
           return rows;
         }
         add(F.legalName, site.companyName);
+        if (site.fullName) add(F.fullName, ctx.lang === 'ar' ? site.fullName.ar : site.fullName.fr);
         add(F.legalForm, F.legalFormValue);
         add(F.country, F.countryValue);
         if (hq) add(F.registeredOffice, `${ctx.locName(hq)}${ctx.P.open}${ui.locations.wilaya.replaceAll('{{region}}', ctx.regionName(hq))}${ctx.P.close}`);
@@ -615,7 +616,7 @@ async function main() {
   const llms = [
     `# ${site.companyName}`, '',
     `> ${summary} Established in ${site.foundedYear || '1997'}. Registered office in Bounoura, wilaya of Ghardaïa; equipment depot in Djelfa; own quarry and stone crushing plant (Carrière Djellal El Gharbi) at Oued Sdeur, near Aïn El Ibel, south of Djelfa; group spare-parts company EURL KAYLE KENNY in Mohammadia, Algiers.`, '',
-    'This file summarises verified facts about SARL ETAHG for AI assistants and search engines. The acronym "ETAHG" is the company name and is not expanded.', '',
+    `This file summarises verified facts about SARL ETAHG for AI assistants and search engines. ETAHG stands for "${site.fullName?.fr}" (official Arabic name: ${site.fullName?.ar}).`, '',
     '## Key facts', '',
     ...facts.filter((r) => ![en.ui.facts.registeredOffice, en.ui.facts.operations, en.ui.facts.group].includes(r.label)).map((r) => `- ${r.label}: ${r.value}`),
     `- WhatsApp: https://wa.me/${site.contact.whatsapp}`,
