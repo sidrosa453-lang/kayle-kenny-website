@@ -121,17 +121,19 @@ Everything below is optional; the site renders cleanly with it empty and never i
 | `verification.google / bing / baidu` | site-verification `<meta>` tags for Search Console, Bing Webmaster Tools and Baidu 搜索资源平台 |
 | `group[0].jsonldId`, `street`, `addressLocality`, `addressRegion` | the Kayle Kenny node in JSON-LD; `jsonldId` must equal the `@id` published on kaylekenny.com (`https://www.kaylekenny.com/#store`) so the two graphs join |
 | `contact.address.street` / `postalCode` | full registered-office address (footer, legal, JSON-LD, vCard) |
+| `contact.phones`, `contact.fax` | secondary office / quarry lines and fax: contact page, facts panel, legal notice, vCard (`TEL;TYPE=WORK,FAX`), JSON-LD `faxNumber` / extra `ContactPoint`s |
+| `locations[].name / street / phones / fax` | extra lines on a location card (e.g. the quarry) and its JSON-LD `Place` |
 | `contact.mapsUrl`, `locations[].mapsUrl` | "Open in Google Maps" links on location cards, `hasMap` |
 | `contact.hours` | opening hours on the contact page (string or `{ "en": …, "fr": … }`) |
 | `registry.rc / nif / nis / ai` | facts panel, legal notice, JSON-LD `identifier` |
 | `foundedYear` | facts panel, stats band, JSON-LD `foundingDate` |
-| `fleet.*` (numbers) | unit counts on fleet/rental cards, facts panel, stats band |
+| `fleet.*` (numbers) | unit counts on fleet/rental cards, facts panel, stats band. **Keep them `null`**: the owner's discretion rule (BRIEF.md) allows equipment categories only, never counts, brands, plates or values |
 | `crushingCapacityTonnesPerHour` | facts panel, stats band |
 | `regions` | list of regions on the Experience page (strings or `{ "en": …, "fr": … }`) |
 | `projects` | project table on the Experience page: `[{ "name", "region", "year", "scope" }]` (values may be per-language objects) |
 | `certifications` | facts panel + JSON-LD (only real, current certificates) |
 | `social.linkedin / facebook / googleBusinessProfile` | JSON-LD `sameAs` |
-| `locations[].names` | location names per language (`fr`, `ar`, `zh`) |
+| `locations[].names` | location names per language (`en`, `fr`, `ar`, `zh`; `en` falls back to `locality`) |
 
 ## Real photos
 
@@ -140,7 +142,7 @@ Put photos in `src/assets/photos/` and map a **slot** to the file in `site.confi
 ```json
 "photos": {
   "hero": "fleet-on-site.jpg",
-  "crusher": { "file": "oued-seddeur-plant.jpg", "alt": { "en": "Crushing plant at Oued Seddeur", "fr": "…" } }
+  "crusher": { "file": "oued-sdeur-quarry.jpg", "alt": { "en": "Quarry and crushing plant at Oued Sdeur", "fr": "…" } }
 }
 ```
 
@@ -225,17 +227,18 @@ before the domain is connected (only `404.html` uses absolute URLs, by design).
       "Société du groupe SARL ETAHG → www.etahg.com" and, in its JSON-LD store node (`@id` `https://www.kaylekenny.com/#store`),
       `"parentOrganization": {"@type": "Organization", "@id": "https://www.etahg.com/#organization", "name": "SARL ETAHG", "url": "https://www.etahg.com/"}`.
       kaylekenny.com is the group's only indexed site today; this link is the fastest way for Google and AI engines to find and trust etahg.com.
-- [ ] **Owner data that makes the site verifiable** (fill `site.config.json`, then rebuild): RC / NIF / NIS / AI,
-      the Ghardaïa street address, a WeChat ID, confirmed working languages (`spokenLanguages`), 2–3 approved
-      road projects or the wilayas where roads were built, fleet counts, real photos, LinkedIn page and
-      Google Business Profile URLs (`social`), and the confirmed spelling of Oued Seddeur in Arabic/Chinese.
+- [ ] **Owner data that makes the site verifiable** (fill `site.config.json`, then rebuild): a WeChat ID,
+      confirmed working languages (`spokenLanguages`), 2–3 approved road projects or the wilayas where roads
+      were built, map links for each location, real photos, LinkedIn page and Google Business Profile URLs
+      (`social`), and the confirmed Arabic/Chinese spelling of Oued Sdeur. (Done: RC / NIF / NIS / AI, founding
+      year 1997, registered-office address, quarry phones and fax. Fleet counts stay unpublished by design.)
 - [ ] **Directories**: Kompass Algeria, Algerian chamber of commerce (CACI) member directory,
       Europages, Made-in-Algeria/B2B directories, Google Maps, Apple Business Connect, Bing Places:
       use exactly the same name, address and phone everywhere (NAP consistency).
 - [ ] Send the Chinese company-profile PDF (`/downloads/etahg-company-profile-zh.pdf`) and the link
       `https://www.etahg.com/zh/` to the partner company (English: `…-en.pdf`).
-- [ ] Fill `site.config.json` as soon as data is confirmed (email, addresses, RC/NIF/NIS,
-      founding year, fleet counts, capacity, regions, projects), then rebuild.
+- [ ] Fill `site.config.json` as soon as data is confirmed (capacity, regions, projects, map links),
+      then rebuild. Never add fleet counts, brands, plates or values (discretion rule).
 - [ ] After each content change: `render-assets` (if needed) → `build` → `check` → commit `docs/`.
 
 ## QA

@@ -446,6 +446,11 @@ main:focus { outline: none; }
 .location-region { font-size: .9rem; color: var(--muted); margin: 2px 0 10px; }
 .location-region::first-letter { text-transform: uppercase; }
 .location-text { font-size: .95rem; color: var(--text); }
+.location-address { font-size: .95rem; font-weight: 600; margin: 0 0 8px; }
+.location-tel { font-size: .9rem; color: var(--muted); margin-top: 10px; }
+.location-tel-line { display: block; }
+.location-tel-label { font-weight: 600; color: var(--text); }
+.location-tel a { unicode-bidi: isolate; white-space: nowrap; }
 .location-map { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font: 600 .9rem var(--font-head); color: var(--accent-ink); }
 @media (min-width: 700px) { .locations { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1000px) {
@@ -526,6 +531,11 @@ main:focus { outline: none; }
 .quote p { color: var(--on-ink-muted); font-size: .95rem; margin-bottom: 18px; }
 .quote .cta-row { margin-top: 0; }
 .channel-note { margin: 6px 0 0; font-size: .85rem; color: var(--muted); }
+.channel-secondary { padding: 16px 0; }
+.channel-secondary .channel-icon { width: 40px; height: 40px; margin-inline: 6px; }
+.channel-secondary .channel-icon .icon { width: 20px; height: 20px; }
+.channel-lines { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; }
+.channel-secondary .channel-value { font-size: 1.15rem; white-space: nowrap; }
 @media (min-width: 960px) { .contact-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 64px; } }
 
 .records-empty { font-size: 1.1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
@@ -628,5 +638,6 @@ main:focus { outline: none; }
   .layout-profile .location-num { top: 10px; inset-inline-start: 10px; width: 22px; height: 22px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .layout-profile .location-name { font-size: 11pt; }
   .layout-profile .location-text { font-size: 8pt; line-height: 1.4; }
+  .layout-profile .location-address, .layout-profile .location-tel { font-size: 8pt; line-height: 1.4; margin: 0 0 2px; }
   .layout-profile .prose p { font-size: 10pt; }
 }

@@ -420,7 +420,7 @@ async function main() {
         if (lang === DEF && l.region && !place.includes(l.region)) place += `${ctx.P.comma}${l.region}`;
         if (l.id === 'hq' && c.address?.postalCode) parts.push(`${c.address.postalCode} ${place}`); else parts.push(place);
         // Chinese addresses run from the largest unit to the smallest: 阿尔及利亚盖尔达耶.
-        if (ui.addressOrder === 'country-first') return [ui.facts.countryValue, ...parts.reverse()].join('');
+        if (ui.addressOrder === 'country-first') return [ui.facts.countryValue, ...parts.reverse()].join('').replace(/([\u3000-\u9fff\uff00-\uffef])([A-Za-z0-9])/g, '$1 $2');
         parts.push(ui.facts.countryValue);
         return parts.join(ctx.P.comma);
       },
