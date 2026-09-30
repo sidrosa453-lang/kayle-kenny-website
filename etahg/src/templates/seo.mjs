@@ -116,7 +116,7 @@ export function organization(ctx) {
       name: kk.name,
       url: kk.url,
       telephone: kk.phone,
-      description: kk.activity,
+      description: /cummins/i.test(kk.activity || '') ? `${kk.activity}. Independent supplier, not affiliated with or endorsed by Cummins Inc.` : kk.activity,
       address: postal({ locality: 'Mohammadia', region: 'Algiers' }),
       parentOrganization: { '@id': `${base}/#organization` },
     } : undefined,

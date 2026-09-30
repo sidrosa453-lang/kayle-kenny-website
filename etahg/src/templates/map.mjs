@@ -12,7 +12,7 @@ const NODE = {
   quarry: { y: 318, dx: 34 },
   hq: { y: 462, dx: 0 },
 };
-const AXIS_X = 150;
+const AXIS_X = 170;
 
 // Zone bands (y ranges) and their ui.locations.map label keys.
 const ZONES = [
@@ -23,7 +23,7 @@ const ZONES = [
 ];
 
 export function corridorMap({ locations, names, types, labels, uid = 'map', compact = false }) {
-  const W = 360, H = 540;
+  const W = 400, H = 540;
   const nodes = locations
     .map((loc, i) => ({ loc, i, pos: NODE[loc.id] }))
     .filter((n) => n.pos);
@@ -42,13 +42,13 @@ export function corridorMap({ locations, names, types, labels, uid = 'map', comp
     for (let x = x0; x < x1; x += 14) d += ` l7 -7 l7 7`;
     return `<path d="${d}" fill="none" stroke="var(--map-ink-soft)" stroke-width="1"/>`;
   };
-  texture += ridge(142, 20, 110) + ridge(150, 196, 344) + ridge(338, 20, 118) + ridge(346, 204, 340);
+  texture += ridge(142, 20, 124) + ridge(150, 232, 384) + ridge(338, 20, 124) + ridge(346, 244, 384);
   for (let r = 0; r < 6; r++) {
-    for (let c = 0; c < 12; c++) {
+    for (let c = 0; c < 14; c++) {
       const x = 22 + c * 28 + (r % 2) * 14;
       const y = 392 + r * 24;
       if (Math.abs(x - AXIS_X) < 18) continue;
-      if (x > 170 && x < 350 && y > 440 && y < 500) continue;
+      if (x > AXIS_X && x < W - 10 && y > 440 && y < 500) continue;
       texture += `<path d="M${x - 5} ${y} q5 -5 10 0" fill="none" stroke="var(--map-ink-soft)" stroke-width="1"/>`;
     }
   }
@@ -57,14 +57,14 @@ export function corridorMap({ locations, names, types, labels, uid = 'map', comp
   let coast = `M0 70`;
   for (let x = 0; x <= W; x += 30) coast += ` Q${x + 7.5} ${66} ${x + 15} 70 T${x + 30} 70`;
   const sea = `<rect x="0" y="0" width="${W}" height="72" fill="var(--map-sea)"/>` +
-    [22, 38, 54].map((y) => {
+    [16, 58].map((y) => {
       let d = `M${10 + (y % 20)} ${y}`;
       for (let x = 10 + (y % 20); x < W - 20; x += 24) d += ` q6 -4 12 0 t12 0`;
       return `<path d="${d}" fill="none" stroke="var(--map-sea-line)" stroke-width="1"/>`;
     }).join('') +
     `<path d="${coast} L${W} 74 L0 74 Z" fill="var(--map-band-a)"/>` +
     `<path d="${coast}" fill="none" stroke="var(--map-ink)" stroke-width="1.5"/>` +
-    `<text class="map-sea" x="${W / 2}" y="44" text-anchor="middle">${esc(labels.sea || '')}</text>`;
+    `<text class="map-sea" x="${W / 2}" y="41" text-anchor="middle">${esc(labels.sea || '')}</text>`;
 
   // Axis (RN1).
   const top = NODE.parts.y, bottom = NODE.hq.y;
@@ -87,7 +87,7 @@ export function corridorMap({ locations, names, types, labels, uid = 'map', comp
     return `<g class="map-node">${spur}${marker}${label}</g>`;
   }).join('');
 
-  const north = `<g transform="translate(${W - 26} 104)"><path d="M0 -16 L7 6 L0 1 L-7 6 Z" fill="var(--map-ink)"/><text class="map-north" x="0" y="20" text-anchor="middle">${esc(labels.north || 'N')}</text></g>`;
+  const north = `<g transform="translate(${W - 24} 30)"><path d="M0 -16 L7 6 L0 1 L-7 6 Z" fill="var(--map-ink)"/><text class="map-north" x="0" y="20" text-anchor="middle">${esc(labels.north || 'N')}</text></g>`;
 
   return raw(
     `<figure class="corridor${compact ? ' corridor-compact' : ''}">` +

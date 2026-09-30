@@ -1,0 +1,11 @@
+/* TEAM */
+  Company: SARL ETAHG
+  Contact: +213 558 96 10 49
+  Location: Ghardaïa and Djelfa, Algeria
+
+/* SITE */
+  Last update: 2026-09-30
+  Languages: English
+  Standards: HTML5, CSS3, schema.org JSON-LD
+  Components: none (static, zero-dependency generator)
+  Privacy: no cookies, no tracking

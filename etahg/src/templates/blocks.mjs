@@ -49,9 +49,11 @@ const bullets = (list, ctx, cls = 'ticks') => (list && list.length ? html`<ul cl
 /* ------------------------------------------------------------------ hero */
 function hero(b, ctx) {
   const size = b.size || 'page';
-  const media = b.illustration ? ctx.visual(b.illustration, { eager: true, cls: 'hero-visual', sizes: '(min-width: 960px) 40vw, 90vw' }) : null;
+  const pano = size === 'home';
+  const media = b.illustration ? ctx.visual(b.illustration, { eager: true, cls: pano ? 'hero-visual pano-visual' : 'hero-visual' }) : null;
   const crumbs = size !== 'home' ? ctx.breadcrumbs() : '';
-  return html`<section class="hero hero-${size}${media ? '' : ' hero-textonly'}" aria-labelledby="page-title">
+  const points = b.points?.length > 0 ? html`<ul class="hero-points">${b.points.map((p, i) => html`<li><span class="hp-num">${pad(i + 1)}</span><span>${inline(p, ctx)}</span></li>`)}</ul>` : '';
+  return html`<section class="hero hero-${size}${media && !pano ? '' : ' hero-textonly'}${pano && points ? ' has-aside' : ''}" aria-labelledby="page-title">
 <div class="hero-texture" aria-hidden="true"></div>
 <div class="wrap hero-grid">
 <div class="hero-copy">
@@ -62,18 +64,20 @@ ${b.lead && html`<p class="lead">${inline(b.lead, ctx)}</p>`}
 ${ctaRow(b.ctas, ctx)}
 ${size === 'profile' && html`<button type="button" class="btn btn-ghost print-btn" data-print>${icon('print')}<span>${ctx.ui.printProfile}</span></button>`}
 </div>
-${media && html`<div class="hero-media">${media}</div>`}
+${pano ? points && html`<div class="hero-aside">${points}</div>` : media && html`<div class="hero-media">${media}</div>`}
 </div>
-${b.points?.length > 0 && html`<div class="wrap"><ul class="hero-points">${b.points.map((p, i) => html`<li><span class="hp-num">${pad(i + 1)}</span><span>${inline(p, ctx)}</span></li>`)}</ul></div>`}
+${pano && media && html`<div class="hero-panorama" aria-hidden="true"><div class="pano-inner">${media}</div></div>`}
+${!pano && points && html`<div class="wrap">${points}</div>`}
 </section>`;
 }
 
 /* --------------------------------------------------------------- pillars */
 function pillars(b, ctx) {
   const stats = b.stats ? ctx.stats() : [];
+  const band = !b.title && !b.label;
   const inner = html`${stats.length > 0 && html`<dl class="stats">${stats.map((s) => html`<div class="stat"><dt>${s.label}</dt><dd>${s.value}</dd></div>`)}</dl>`}
-<ul class="pillars">${b.items.map((it, i) => html`<li class="pillar"><span class="pillar-num">${pad(i + 1)}</span><h3>${it.title}</h3><p>${inline(it.text, ctx)}</p></li>`)}</ul>`;
-  if (!b.title && !b.label) return html`<section class="band-pillars" aria-label="${b.items.map((i) => i.title).join(', ')}"><div class="wrap">${inner}</div></section>`;
+<ul class="pillars">${b.items.map((it, i) => html`<li class="pillar"><span class="pillar-num">${pad(i + 1)}</span>${band ? html`<p class="pillar-title">${it.title}</p>` : html`<h3 class="pillar-title">${it.title}</h3>`}<p>${inline(it.text, ctx)}</p></li>`)}</ul>`;
+  if (band) return html`<section class="band-pillars" aria-label="${b.items.map((i) => i.title).join(', ')}"><div class="wrap">${inner}</div></section>`;
   return section(b, ctx, inner);
 }
 
@@ -207,7 +211,7 @@ function group(b, ctx) {
 ${b.disclaimer && html`<p class="note">${inline(b.disclaimer, ctx)}</p>`}
 <div class="cta-row">
 ${b.cta && ctaLink({ ...b.cta, variant: 'secondary' }, ctx)}
-${ctx.pageId !== 'parts' && ctaLink({ page: 'parts', label: ctx.ui.readMore, variant: 'ghost' }, ctx)}
+${ctx.pageId !== 'parts' && ctaLink({ page: 'parts', label: ctx.pageNav('parts'), variant: 'ghost' }, ctx)}
 </div>
 </div>
 </div>`);

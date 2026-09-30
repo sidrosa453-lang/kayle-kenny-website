@@ -1,0 +1,27 @@
+{
+  "name": "SARL ETAHG",
+  "short_name": "ETAHG",
+  "description": "SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#F6F4EF",
+  "theme_color": "#0F1318",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
