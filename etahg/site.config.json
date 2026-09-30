@@ -1,0 +1,100 @@
+{
+  "siteUrl": "https://www.etahg.com",
+  "companyName": "SARL ETAHG",
+  "shortName": "ETAHG",
+  "legalForm": "SARL",
+  "defaultLanguage": "en",
+  "languages": ["en", "fr", "ar", "zh"],
+
+  "contact": {
+    "phone": "+213 558 96 10 49",
+    "whatsapp": "213558961049",
+    "email": "",
+    "address": {
+      "street": "",
+      "locality": "Ghardaïa",
+      "region": "Ghardaïa",
+      "postalCode": "",
+      "country": "DZ"
+    },
+    "mapsUrl": "",
+    "hours": ""
+  },
+
+  "locations": [
+    {
+      "id": "hq",
+      "type": "Registered office",
+      "locality": "Ghardaïa",
+      "region": "Ghardaïa",
+      "names": { "fr": "Ghardaïa", "ar": "غرداية", "zh": "盖尔达耶" },
+      "mapsUrl": ""
+    },
+    {
+      "id": "depot",
+      "type": "Equipment depot",
+      "locality": "Djelfa",
+      "region": "Djelfa",
+      "names": { "fr": "Djelfa", "ar": "الجلفة", "zh": "杰勒法" },
+      "mapsUrl": ""
+    },
+    {
+      "id": "quarry",
+      "type": "Stone crushing plant (aggregate production)",
+      "locality": "Oued Seddeur",
+      "region": "Djelfa",
+      "note": "outside Djelfa, about 25 km south of the city",
+      "names": { "fr": "Oued Seddeur", "ar": "واد الصدر", "zh": "瓦德塞杜尔" },
+      "mapsUrl": ""
+    },
+    {
+      "id": "parts",
+      "type": "Spare parts store and depot (EURL KAYLE KENNY)",
+      "locality": "Mohammadia, Algiers",
+      "region": "Algiers",
+      "names": { "fr": "Mohammadia, Alger", "ar": "المحمدية، الجزائر العاصمة", "zh": "阿尔及尔穆罕默迪亚" },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=El+Djenina+200+Logts+Lido+Mohammadia+Alger"
+    }
+  ],
+
+  "registry": {
+    "rc": "",
+    "nif": "",
+    "nis": "",
+    "ai": ""
+  },
+
+  "foundedYear": null,
+
+  "fleet": {
+    "crushingPlants": null,
+    "semiTrailerTrucks": null,
+    "dumpTrucks": null,
+    "bulldozers": null,
+    "excavators": null,
+    "roadPavers": null,
+    "drillingRigs": null
+  },
+  "crushingCapacityTonnesPerHour": null,
+
+  "regions": [],
+  "projects": [],
+  "certifications": [],
+
+  "social": {
+    "linkedin": "",
+    "facebook": ""
+  },
+
+  "photos": {},
+
+  "group": [
+    {
+      "name": "EURL KAYLE KENNY",
+      "url": "https://www.kaylekenny.com",
+      "activity": "Heavy-duty diesel engine spare parts (Cummins-compatible), stock in Algiers",
+      "phone": "+213 558 96 10 49",
+      "locality": "Mohammadia, Algiers"
+    }
+  ]
+}
