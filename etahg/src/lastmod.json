@@ -8,7 +8,7 @@
   "date": "2026-09-30"
  },
  "ar:contact": {
-  "hash": "9e133e0fa0",
+  "hash": "4580cb1d39",
   "date": "2026-09-30"
  },
  "ar:drilling": {
@@ -20,7 +20,7 @@
   "date": "2026-09-30"
  },
  "ar:faq": {
-  "hash": "146e3efcc2",
+  "hash": "c36b08da4a",
   "date": "2026-09-30"
  },
  "ar:fleet": {
@@ -28,11 +28,11 @@
   "date": "2026-09-30"
  },
  "ar:home": {
-  "hash": "0be426e547",
+  "hash": "f252fad297",
   "date": "2026-09-30"
  },
  "ar:legal": {
-  "hash": "349dec9df6",
+  "hash": "9da7c78f30",
   "date": "2026-09-30"
  },
  "ar:mobilization": {
@@ -40,7 +40,7 @@
   "date": "2026-09-30"
  },
  "ar:partners": {
-  "hash": "c6cbb6943c",
+  "hash": "a7342da662",
   "date": "2026-09-30"
  },
  "ar:parts": {
@@ -48,7 +48,7 @@
   "date": "2026-09-30"
  },
  "ar:profile": {
-  "hash": "224fa89dda",
+  "hash": "6adb04c652",
   "date": "2026-09-30"
  },
  "ar:rental": {
@@ -72,7 +72,7 @@
   "date": "2026-09-30"
  },
  "en:contact": {
-  "hash": "84f31f030d",
+  "hash": "4adadd4c56",
   "date": "2026-09-30"
  },
  "en:drilling": {
@@ -84,7 +84,7 @@
   "date": "2026-09-30"
  },
  "en:faq": {
-  "hash": "0f7dad2b31",
+  "hash": "b9c75107e1",
   "date": "2026-09-30"
  },
  "en:fleet": {
@@ -92,11 +92,11 @@
   "date": "2026-09-30"
  },
  "en:home": {
-  "hash": "a609899568",
+  "hash": "bf6a51f0f9",
   "date": "2026-09-30"
  },
  "en:legal": {
-  "hash": "403dc6fba5",
+  "hash": "e3ab8befe4",
   "date": "2026-09-30"
  },
  "en:mobilization": {
@@ -104,7 +104,7 @@
   "date": "2026-09-30"
  },
  "en:partners": {
-  "hash": "3de139163f",
+  "hash": "cb85102124",
   "date": "2026-09-30"
  },
  "en:parts": {
@@ -112,7 +112,7 @@
   "date": "2026-09-30"
  },
  "en:profile": {
-  "hash": "fc3738ea63",
+  "hash": "30f8947de2",
   "date": "2026-09-30"
  },
  "en:rental": {
@@ -136,7 +136,7 @@
   "date": "2026-09-30"
  },
  "fr:contact": {
-  "hash": "c3920008ff",
+  "hash": "667265dc77",
   "date": "2026-09-30"
  },
  "fr:drilling": {
@@ -148,7 +148,7 @@
   "date": "2026-09-30"
  },
  "fr:faq": {
-  "hash": "50540752d9",
+  "hash": "6ca4f24317",
   "date": "2026-09-30"
  },
  "fr:fleet": {
@@ -156,11 +156,11 @@
   "date": "2026-09-30"
  },
  "fr:home": {
-  "hash": "5bbd1241bf",
+  "hash": "144dfa09ec",
   "date": "2026-09-30"
  },
  "fr:legal": {
-  "hash": "009efd1f5e",
+  "hash": "21cec4385a",
   "date": "2026-09-30"
  },
  "fr:mobilization": {
@@ -168,7 +168,7 @@
   "date": "2026-09-30"
  },
  "fr:partners": {
-  "hash": "465051bf0e",
+  "hash": "d85899903a",
   "date": "2026-09-30"
  },
  "fr:parts": {
@@ -176,7 +176,7 @@
   "date": "2026-09-30"
  },
  "fr:profile": {
-  "hash": "54143198b1",
+  "hash": "e8d0d87950",
   "date": "2026-09-30"
  },
  "fr:rental": {
@@ -200,7 +200,7 @@
   "date": "2026-09-30"
  },
  "zh:contact": {
-  "hash": "cb54bdb78c",
+  "hash": "0aa58d0f2a",
   "date": "2026-09-30"
  },
  "zh:drilling": {
@@ -212,7 +212,7 @@
   "date": "2026-09-30"
  },
  "zh:faq": {
-  "hash": "7a250ec5dc",
+  "hash": "5d4e4aa67b",
   "date": "2026-09-30"
  },
  "zh:fleet": {
@@ -220,11 +220,11 @@
   "date": "2026-09-30"
  },
  "zh:home": {
-  "hash": "0c832a38f1",
+  "hash": "9079f7565f",
   "date": "2026-09-30"
  },
  "zh:legal": {
-  "hash": "637f90d85d",
+  "hash": "233cc40a84",
   "date": "2026-09-30"
  },
  "zh:mobilization": {
@@ -232,7 +232,7 @@
   "date": "2026-09-30"
  },
  "zh:partners": {
-  "hash": "99dd5e0947",
+  "hash": "361e180eb2",
   "date": "2026-09-30"
  },
  "zh:parts": {
@@ -240,7 +240,7 @@
   "date": "2026-09-30"
  },
  "zh:profile": {
-  "hash": "714f8bae90",
+  "hash": "47bef3c386",
   "date": "2026-09-30"
  },
  "zh:rental": {

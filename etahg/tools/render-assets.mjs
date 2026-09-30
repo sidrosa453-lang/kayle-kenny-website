@@ -38,7 +38,7 @@ const { FALLBACK_LOGO } = await import(pathToFileURL(path.join(ROOT, 'src', 'tem
 const logo = (fs.existsSync(logoFile) ? fs.readFileSync(logoFile, 'utf8') : FALLBACK_LOGO).replace(/<\?xml[\s\S]*?\?>/, '');
 const topo = fs.readFileSync(path.join(TMP, 'assets', 'topo.svg'), 'utf8');
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const tok = (s) => String(s ?? '').replace(/\{\{company\}\}/g, site.companyName).replace(/\{\{short\}\}/g, site.shortName).replace(/\{\{phone\}\}/g, site.contact.phone);
+const tok = (s) => String(s ?? '').replace(/\{\{company\}\}/g, site.companyName).replace(/\{\{short\}\}/g, site.shortName).replace(/\{\{phone\}\}/g, site.contact.phone).replace(/\{\{email\}\}/g, site.contact.email || '');
 
 // Render-time fonts only (this tool, never the live site): the OG images and the Chinese
 // PDF embed real brand/CJK fonts fetched through tools/browser.mjs (curl + cache).

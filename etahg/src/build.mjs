@@ -169,6 +169,7 @@ async function main() {
   const tokens = {
     // No-break spaces keep the phone number on one line in running text.
     company: site.companyName, short: site.shortName, phone: String(site.contact.phone).replace(/ /g, '\u00A0'),
+    email: site.contact.email || '',
     group: (site.group || [])[0]?.name || '', year,
   };
   const applyTokens = (s) => s.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in tokens ? tokens[k] : m));

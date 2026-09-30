@@ -30,8 +30,8 @@
  *   add a U+200B break hint in long headings without punctuation.
  * TYPOGRAPHY: full-width Chinese punctuation (，。：；、（）“”); a space between Chinese and
  *   Latin words or numbers (e.g. "约 25 公里"); inline links keep ASCII [label](target).
- * WHATSAPP: prefilled messages are Chinese first, followed by an English line, because the
- *   ETAHG team works in Arabic, French and English.
+ * WHATSAPP: prefilled messages are Chinese first, followed by an English line, so the message is
+ *   readable even before the team's working languages are confirmed (site.config.json spokenLanguages).
  * META: titles <= 30 Chinese characters before " | SARL ETAHG"; descriptions 60-80 Chinese
  *   characters (Baidu / Google CJK snippet length).
  */
@@ -192,7 +192,7 @@ export default {
     },
 
     notFound: {
-      title: '页面未找到 | SARL ETAHG',
+      title: '页面未找到 | ETAHG',
       heading: '未找到该页面',
       text: '网址可能输入有误，或页面已移动。请通过以下链接继续浏览。',
       home: '返回首页',
@@ -221,7 +221,7 @@ export default {
           lead: 'SARL ETAHG 是一家阿尔及利亚公司，专业从事细骨料（机制砂）生产、道路施工、重型设备租赁（短租与长租）、施工进场与开工准备以及水井钻探。对国际承包商而言，我们是一家拥有自有设备、自产骨料、熟悉当地施工条件的当地合作伙伴。',
           points: [
             '自有石料破碎筛分站：生产细骨料，适合高产量需求',
-            '自有设备：载重卡车、推土机、挖掘机、摊铺机和水井钻机，可短租、长租或分包',
+            '自有设备：半挂车、载重卡车、推土机、挖掘机和摊铺机，可短租或长租',
             '设备基地位于 1 号国道（RN1）沿线的杰勒法，注册地盖尔达耶，配件在阿尔及尔',
           ],
           ctas: [
@@ -355,7 +355,7 @@ export default {
     services: {
       slug: 'services',
       nav: '服务',
-      title: '阿尔及利亚重型工程与施工服务 | SARL ETAHG',
+      title: '阿尔及利亚重型工程与施工服务 | ETAHG',
       description: 'SARL ETAHG 在阿尔及利亚的服务：机制细骨料供应、道路施工、重型设备租赁（短租与长租）、项目进场动员及水井钻探，可单项委托或组合承包。',
       summary: 'SARL ETAHG 各项服务概览，以及如何在同一项目中组合使用。',
       blocks: [
@@ -442,7 +442,7 @@ export default {
     aggregates: {
       slug: 'services/aggregate-production',
       nav: '骨料生产',
-      title: '阿尔及利亚骨料供应：杰勒法机制砂生产 | SARL ETAHG',
+      title: '阿尔及利亚骨料供应：杰勒法机制砂生产 | ETAHG',
       description: 'SARL ETAHG 在阿尔及利亚杰勒法附近自营石料破碎筛分站，供应高品质细骨料（机制砂），用于混凝土、沥青和道路工程，适合高产量项目。',
       summary: 'SARL ETAHG 位于杰勒法附近瓦德塞杜尔的石料破碎筛分站生产高品质机制细骨料，适合高产量需求。',
       service: { name: '细骨料生产与供应', serviceType: '机制细骨料（机制砂）生产' },
@@ -592,7 +592,7 @@ export default {
     rental: {
       slug: 'services/equipment-rental',
       nav: '设备租赁',
-      title: '阿尔及利亚工程机械租赁：短租与长租 | SARL ETAHG',
+      title: '阿尔及利亚工程机械租赁：短租与长租 | ETAHG',
       description: '在阿尔及利亚向 SARL ETAHG 租用重型工程机械：半挂车、载重卡车、推土机、挖掘机和摊铺机，可短租或长期租赁，条款按项目商定。',
       summary: 'SARL ETAHG 在阿尔及利亚出租和长期租赁自有重型设备，从杰勒法调遣。',
       service: { name: '重型设备短期租赁与长期租赁', serviceType: '重型工程机械租赁' },
@@ -723,7 +723,7 @@ export default {
     mobilization: {
       slug: 'services/project-mobilization',
       nav: '进场准备',
-      title: '阿尔及利亚施工进场与开工准备（设备动员） | SARL ETAHG',
+      title: '阿尔及利亚施工进场与开工准备（设备动员） | ETAHG',
       description: 'SARL ETAHG 为阿尔及利亚新项目提供进场准备服务：设备进场动员、场地清理、施工便道、平台、土方、骨料供应及施工用水井，助力主体工程按期开工。',
       summary: 'SARL ETAHG 以自有重型设备在阿尔及利亚承担进场准备与工地开辟。',
       service: { name: '施工进场与开工准备', serviceType: '施工现场进场动员' },
@@ -850,7 +850,7 @@ export default {
     roads: {
       slug: 'services/road-construction',
       nav: '道路施工',
-      title: '阿尔及利亚道路施工与公路工程分包 | SARL ETAHG',
+      title: '阿尔及利亚道路施工与公路工程分包 | ETAHG',
       description: 'SARL ETAHG 以自有设备在阿尔及利亚承建道路：土方、路基、底基层、基层及沥青摊铺，可承接总包或分包，在该国许多地区有施工经验。',
       summary: '道路施工是 SARL ETAHG 的起家业务，以自有设备和自产骨料完成。',
       service: { name: '道路施工', serviceType: '道路施工与土方工程' },
@@ -970,7 +970,7 @@ export default {
     drilling: {
       slug: 'services/water-well-drilling',
       nav: '水井钻探',
-      title: '阿尔及利亚水井钻探与打井服务 | SARL ETAHG',
+      title: '阿尔及利亚水井钻探与打井服务 | ETAHG',
       description: 'SARL ETAHG 以自有水井钻机在阿尔及利亚钻凿水井，可按需为施工工地以及农业灌溉、工矿企业和社区供水需求提供服务，并可纳入新工地的进场准备。',
       summary: 'SARL ETAHG 以自有钻机在阿尔及利亚钻凿水井，服务工地、农场、工业及社区。',
       service: { name: '水井钻探', serviceType: '水井钻探' },
@@ -1087,7 +1087,7 @@ export default {
     parts: {
       slug: 'services/spare-parts',
       nav: '配件供应',
-      title: '重型设备配件：EURL KAYLE KENNY | SARL ETAHG',
+      title: '重型设备配件：EURL KAYLE KENNY | ETAHG',
       description: 'EURL KAYLE KENNY 隶属 SARL ETAHG 集团，从阿尔及尔穆罕默迪亚的门店和配件仓库供应重型柴油发动机配件，服务设备车队与维修厂。',
       summary: '通过集团旗下阿尔及尔公司 EURL KAYLE KENNY 供应重型柴油发动机配件。',
       service: { name: '重型设备配件（EURL KAYLE KENNY）', serviceType: '重型设备配件供应' },
@@ -1161,7 +1161,7 @@ export default {
     fleet: {
       slug: 'fleet',
       nav: '自有设备',
-      title: '杰勒法重型设备：破碎站、推土机、摊铺机 | SARL ETAHG',
+      title: '杰勒法重型设备：破碎站、推土机、摊铺机 | ETAHG',
       description: 'SARL ETAHG 自有设备：石料破碎筛分站、半挂车、载重卡车、推土机、挖掘机、摊铺机和水井钻机，驻扎在阿尔及利亚杰勒法设备基地。',
       summary: 'SARL ETAHG 的重型设备，驻扎在杰勒法设备基地及瓦德塞杜尔破碎站。',
       blocks: [
@@ -1245,7 +1245,7 @@ export default {
     experience: {
       slug: 'experience',
       nav: '工程经验',
-      title: '阿尔及利亚各地区道路施工经验 | SARL ETAHG',
+      title: '阿尔及利亚多个地区道路施工经验 | ETAHG',
       description: 'SARL ETAHG 在阿尔及利亚许多地区修建过道路。本页介绍泰勒地区、阿特拉斯山区、高原地区和撒哈拉的地形如何影响道路施工与水井钻探。',
       summary: 'SARL ETAHG 在阿尔及利亚许多地区的道路施工经验，以及不同地形对施工的影响。',
       blocks: [
@@ -1332,7 +1332,7 @@ export default {
     partners: {
       slug: 'international-partners',
       nav: '国际合作',
-      title: '阿尔及利亚当地合作伙伴：欢迎中资企业洽谈 | SARL ETAHG',
+      title: '阿尔及利亚当地合作伙伴：欢迎中资企业洽谈 | ETAHG',
       description: 'SARL ETAHG 为在阿尔及利亚承建项目的中资及外国承包商提供当地合作：施工分包、工程机械租赁、机制砂供应、施工进场与开工准备及水井钻探，欢迎来邮洽谈。',
       summary: '国际承包商及外国企业（包括中资企业）如何在阿尔及利亚与 SARL ETAHG 合作，以及如何开始。',
       whatsapp: '您好，SARL ETAHG。我们是一家国际企业，希望商谈在阿尔及利亚的合作。\nHello SARL ETAHG, we are an international company and would like to discuss cooperation in Algeria.',
@@ -1366,20 +1366,20 @@ export default {
           paragraphs: [
             '在阿尔及利亚承建公路、铁路、水利和住房项目的中资企业，常在几个环节遇到相同的问题：开工初期国内设备仍在海运和清关途中；工地附近缺少稳定的机制砂来源；南部偏远工地的燃油、配件和用水保障困难；以及需要熟悉当地地质和施工条件的分包队伍。',
             'SARL ETAHG 以自有设备、瓦德塞杜尔自有破碎站和在阿尔及利亚许多地区积累的道路施工经验，可在上述环节与贵方项目部配合：先行进场开辟工地，供应细骨料，承担土方、路面结构层或摊铺分包，并在需要时钻凿施工用水井。',
-            '欢迎贵方国内总部或驻阿项目部通过电子邮件 [amar@etahg.com](mailto:) 与我们联系（英语或法语），我们将在收到项目资料后给出初步答复。本网站另有[英文版](page:home@en)。',
+            '欢迎贵方国内总部或驻阿项目部通过电子邮件 [{{email}}](mailto:) 与我们联系，并请注明贵方首选的沟通语言；我们将在收到项目资料后给出初步答复。本网站另有[英文版](page:home@en)。',
           ],
         },
         {
           type: 'features',
           label: '为何选择 ETAHG',
-          title: 'ETAHG 能为您的项目带来什么',
+          title: 'ETAHG 能为贵方项目带来什么',
           items: [
             { title: '自有设备，自有运输', text: 'ETAHG 自有的半挂车、载重卡车、推土机、挖掘机、摊铺机和钻机，从杰勒法基地调遣。' },
             { title: '自有骨料生产', text: '瓦德塞杜尔石料破碎筛分站生产高品质细骨料，适合高产量需求。' },
             { title: '道路施工经验', text: '在阿尔及利亚许多地区完成道路项目，切实了解当地地形、材料和施工条件。' },
             { title: '布局贯通南北', text: '注册于撒哈拉北部的盖尔达耶，设备驻扎在阿尔及尔至撒哈拉 RN1 轴线上的杰勒法，配件位于阿尔及尔。' },
             { title: '集团配件支持', text: '阿尔及尔的 EURL KAYLE KENNY 供应重型柴油发动机配件，有助于设备在贵方项目上持续运转。' },
-            { title: '直接沟通', text: '可通过电子邮件、电话或 WhatsApp 直接联系我们，可使用英语或法语沟通。' },
+            { title: '直接沟通', text: '可通过电子邮件、电话或 WhatsApp 直接联系我们，并请告知首选沟通语言。本网站提供英文、法文、阿拉伯文和简体中文版本。' },
           ],
         },
         {
@@ -1417,7 +1417,7 @@ export default {
           label: '如何开始',
           title: '合作如何开始',
           items: [
-            { title: '初次联系', text: `通过电子邮件（[amar@etahg.com](mailto:)）、电话或 WhatsApp（${TEL}）简要介绍贵公司及项目情况。` },
+            { title: '初次联系', text: `通过电子邮件（[{{email}}](mailto:)）、电话或 WhatsApp（${TEL}）简要介绍贵公司及项目情况。` },
             { title: '保密', text: '如项目信息敏感，可在交换详细资料前商议签订保密协议。' },
             { title: '交换资料', text: '我们提供公司简介、注册文件和设备资料；贵方提供工作范围、项目地点和工期。' },
             { title: '会谈与现场考察', text: '双方会面并共同考察项目现场；也可商议参观我们的杰勒法设备基地和瓦德塞杜尔破碎站。' },
@@ -1439,7 +1439,7 @@ export default {
             '工作范围、所需设备类型或材料数量',
             '计划开工日期及工期',
             '现有技术文件（图纸、技术规范、工程量清单）',
-            '联系人及首选沟通语言（英语、法语或阿拉伯语）',
+            '联系人及首选沟通语言',
           ],
           illustration: 'mobilization',
           reverse: true,
@@ -1456,7 +1456,7 @@ export default {
             '破碎站及其所产骨料的资料',
             '以往道路项目的资料（可与潜在合作伙伴商谈）',
           ],
-          note: '本网站另有[英文版](page:home@en)、法文版和阿拉伯文版。技术和商务文件以法语或英语往来。',
+          note: '本网站另有[英文版](page:home@en)、法文版和阿拉伯文版。请告知贵方首选的函件和文件语言。',
         },
         {
           type: 'faq',
@@ -1469,7 +1469,7 @@ export default {
         {
           type: 'cta',
           title: '欢迎洽谈贵方在​阿尔及利亚的项目',
-          text: '欢迎通过电子邮件、电话或 WhatsApp 直接与我们联系，可使用英语或法语沟通。',
+          text: '欢迎通过电子邮件、电话或 WhatsApp 直接与我们联系，并请告知首选沟通语言。',
           ctas: [
             { label: '发送邮件洽谈', kind: 'mailto', variant: 'primary' },
             { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
@@ -1483,7 +1483,7 @@ export default {
     about: {
       slug: 'about',
       nav: '关于我们',
-      title: '关于我们：阿尔及利亚重型工程企业 | SARL ETAHG',
+      title: '关于我们：阿尔及利亚重型工程企业 | ETAHG',
       description: '关于 SARL ETAHG：阿尔及利亚有限责任公司，注册于盖尔达耶，设备基地位于杰勒法，破碎站位于瓦德塞杜尔，集团旗下另有配件公司。',
       summary: 'SARL ETAHG 公司简介：公司形式、业务、场所及集团。',
       blocks: [
@@ -1573,7 +1573,7 @@ export default {
     faq: {
       slug: 'faq',
       nav: '常见问题',
-      title: '常见问题：公司、服务与合作 | SARL ETAHG',
+      title: '常见问题：公司、服务与合作 | ETAHG',
       description: '关于 SARL ETAHG 的问答：公司简介、所在地、细骨料供应、设备租赁、进场动员、水井钻探、配件供应，以及中资企业如何与我们合作。',
       summary: '关于 SARL ETAHG 及其服务和合作方式的常见问题。',
       blocks: [
@@ -1595,7 +1595,7 @@ export default {
             { id: 'legal-form', q: 'SARL ETAHG 是什么类型的公司？', a: 'SARL ETAHG 是一家 société à responsabilité limitée（SARL），即阿尔及利亚的有限责任公司形式。公司商业注册号（RC）及税务识别号（NIF、NIS、AI）可应要求提供。' },
             { id: 'name', q: '公司名称如何书写？', a: '公司法定名称为 SARL ETAHG，其中 SARL 表示公司形式。简称 ETAHG 在所有语言（包括阿拉伯语和中文）中均以拉丁大写字母书写，不作音译。' },
             { id: 'kayle-kenny-link', q: 'SARL ETAHG 与 EURL KAYLE KENNY 是什么关系？', a: 'EURL KAYLE KENNY 隶属于 SARL ETAHG 旗下，是集团的重型设备配件公司，在阿尔及尔穆罕默迪亚设有门店和配件仓库。公司作为独立供应商供应柴油发动机配件，包括 Cummins 兼容配件，与 Cummins Inc. 无任何隶属关系，亦未获其认可或授权。对 ETAHG 的合作伙伴而言，它是集团内支持设备运转的配件来源。' },
-            { id: 'languages', q: '可以用哪些语言联系 ETAHG？', a: '可使用阿拉伯语、法语或英语，通过电子邮件、电话或 WhatsApp 联系 SARL ETAHG。本网站另提供简体中文版；技术和商务文件以法语或英语往来。' },
+            { id: 'languages', q: '有关 ETAHG 的信息提供哪些语言版本？', a: '本网站提供英文、法文、阿拉伯文和简体中文版本，公司简介同样提供这四种语言版本。可通过电子邮件、电话或 WhatsApp 联系 SARL ETAHG；请在首次来信中注明贵方首选的沟通语言。' },
           ],
         },
         {
@@ -1621,10 +1621,10 @@ export default {
           title: '与 ETAHG 合作',
           items: [
             { id: 'foreign-companies', q: 'ETAHG 是否与外国企业合作？', a: '是的。SARL ETAHG 欢迎与在阿尔及利亚开展业务的外国企业合作，包括国际 EPC 总承包商、水泥与矿业集团、投资方和设备供应商。公司可担任项目的分包商、设备或骨料供应商、进场准备合作方或当地合作伙伴。' },
-            { id: 'chinese-contractors', q: '中国承包商能否与 ETAHG 合作？', a: '可以。SARL ETAHG 欢迎与在阿尔及利亚承建项目的中国承包商和中资企业合作，可担任分包商、设备或骨料供应商、进场准备合作方或当地合作伙伴。本网站提供简体中文版；日常沟通可使用英语或法语，技术和商务文件以法语或英语往来。在中国境内，建议通过电子邮件（amar@etahg.com）联系。' },
+            { id: 'chinese-contractors', q: '中国承包商能否与 ETAHG 合作？', a: '可以。SARL ETAHG 欢迎与在阿尔及利亚承建项目的中国承包商和中资企业合作，可担任分包商、设备或骨料供应商、进场准备合作方或当地合作伙伴。本网站提供简体中文版；请在首次来信中注明贵方首选的沟通语言。在中国境内，建议通过电子邮件（{{email}}）联系。' },
             { id: 'subcontract', q: 'ETAHG 能否担任分包商？', a: '可以。SARL ETAHG 可为总承包商以自有设备承担明确划分的工作，如土方、路面结构层、沥青摊铺、场地整备、骨料供应或水井钻探。' },
-            { id: 'quote', q: '如何向 ETAHG 询价？', a: `向 SARL ETAHG 询价时，请通过电子邮件（amar@etahg.com）、WhatsApp 或电话（${TEL}）发送项目地点（省或最近城镇）、工作范围、所需设备或数量、工期及开始日期。` },
-            { id: 'contact', q: '如何联系 ETAHG？', a: `可通过电子邮件 amar@etahg.com，或电话、WhatsApp（${TEL}）联系 SARL ETAHG；该号码为与 EURL KAYLE KENNY 共用的集团号码。www.etahg.com 的联系页面列出了全部联系方式和场所。` },
+            { id: 'quote', q: '如何向 ETAHG 询价？', a: `向 SARL ETAHG 询价时，请通过电子邮件（{{email}}）、WhatsApp 或电话（${TEL}）发送项目地点（省或最近城镇）、工作范围、所需设备或数量、工期及开始日期。` },
+            { id: 'contact', q: '如何联系 ETAHG？', a: `可通过电子邮件 {{email}}，或电话、WhatsApp（${TEL}）联系 SARL ETAHG；该号码为与 EURL KAYLE KENNY 共用的集团号码。www.etahg.com 的联系页面列出了全部联系方式和场所。` },
             { id: 'profile', q: '是否有可供内部传阅的公司简介？', a: '有。SARL ETAHG 在本网站发布了可打印的公司简介，并提供 PDF 下载。' },
             { id: 'kayle-kenny', q: 'EURL KAYLE KENNY 与 Cummins 有关联吗？', a: '没有。EURL KAYLE KENNY 是 SARL ETAHG 集团的配件公司，作为独立供应商供应 Cummins 兼容配件，与 Cummins Inc. 无任何隶属关系，亦未获其认可或授权。' },
           ],
@@ -1646,8 +1646,8 @@ export default {
     contact: {
       slug: 'contact',
       nav: '联系我们',
-      title: '联系我们：电子邮件、电话与 WhatsApp | SARL ETAHG',
-      description: '通过电话或 WhatsApp（+213 558 96 10 49）联系 SARL ETAHG，可用英语或法语沟通。注册地盖尔达耶，设备基地杰勒法，可按需报价。',
+      title: '联系我们：电子邮件、电话与 WhatsApp | ETAHG',
+      description: '通过电子邮件、电话或 WhatsApp（+213 558 96 10 49）联系 SARL ETAHG。注册地盖尔达耶，设备基地杰勒法，可按需报价。',
       summary: 'SARL ETAHG 的联系方式及询价方法。',
       blocks: [
         {
@@ -1655,7 +1655,7 @@ export default {
           size: 'page',
           eyebrow: '联系我们',
           title: '联系 SARL ETAHG',
-          lead: `请通过电子邮件 [amar@etahg.com](mailto:)、电话或 WhatsApp（${TEL}）联系 SARL ETAHG。我们直接答复阿尔及利亚及国际企业的询问。`,
+          lead: `请通过电子邮件 [{{email}}](mailto:)、电话或 WhatsApp（${TEL}）联系 SARL ETAHG。我们直接答复阿尔及利亚及国际企业的询问。`,
         },
         {
           type: 'contact',
@@ -1682,8 +1682,8 @@ export default {
           label: '国际联系',
           title: '从海外联系我们',
           paragraphs: [
-            `从阿尔及利亚境外请拨打 **${TEL}**；从中国拨打时，请拨 **${TEL_CN}**。中国境内无法使用 WhatsApp，建议发送电子邮件至 [amar@etahg.com](mailto:)，技术和商务文件也可通过该邮箱往来。`,
-            '中国企业可用英语或法语与我们联系。有关合作模式的更多信息，请见[国际合作](page:partners)页面。',
+            `从阿尔及利亚境外请拨打 **${TEL}**；从中国拨打时，请拨 **${TEL_CN}**。中国境内无法使用 WhatsApp，建议发送电子邮件至 [{{email}}](mailto:)，技术和商务文件也可通过该邮箱往来。`,
+            '来信时请注明贵方首选的沟通语言。本网站提供英文、法文、阿拉伯文和简体中文版本。有关合作模式的更多信息，请见[国际合作](page:partners)页面。',
           ],
         },
         {
@@ -1706,7 +1706,7 @@ export default {
     profile: {
       slug: 'company-profile',
       nav: '公司简介',
-      title: '公司简介 | SARL ETAHG',
+      title: '公司简介 | ETAHG',
       description: 'SARL ETAHG 可打印公司简介：业务范围、设备、破碎站，盖尔达耶、杰勒法和瓦德塞杜尔三地场所，集团公司及联系方式，另提供 PDF 版。',
       summary: 'SARL ETAHG 可打印公司简介，另提供 PDF 版。',
       layout: 'profile',
@@ -1751,7 +1751,7 @@ export default {
           type: 'prose',
           title: '与国际企业合作',
           paragraphs: [
-            '施工分包、设备租赁（短租／长租）、骨料供应、进场准备、水井钻探，以及阿尔及利亚项目的当地合作。联系邮箱：amar@etahg.com。可使用阿拉伯语、法语或英语与我们联系；本简介另有英文、法文和阿拉伯文版本。',
+            '施工分包、设备租赁（短租／长租）、骨料供应、进场准备、水井钻探，以及阿尔及利亚项目的当地合作。联系邮箱：{{email}}。本简介另有英文、法文和阿拉伯文版本。',
           ],
           note: DISCLAIMER,
         },
@@ -1762,7 +1762,7 @@ export default {
     legal: {
       slug: 'legal',
       nav: '法律声明',
-      title: '法律声明与隐私政策 | SARL ETAHG',
+      title: '法律声明与隐私政策 | ETAHG',
       description: 'SARL ETAHG 网站的法律声明与隐私政策：网站发布方、托管服务、不使用 Cookie、不做追踪，以及我们如何处理您发送给我们的联系信息。',
       summary: 'www.etahg.com 的法律声明与隐私政策。',
       blocks: [
@@ -1795,7 +1795,7 @@ export default {
             '**不使用 Cookie，不做追踪。**本网站不使用 Cookie、统计分析、广告或追踪工具，也没有联系表单。我们不通过本网站收集个人数据。',
             '**字体。**本网站中文页面使用访问者设备自带的系统字体，其他语言页面的字体由本网站自行提供，不从第三方服务器加载字体，也不会因字体向第三方传送您的 IP 地址。',
             '**联系我们。**如您通过电话、WhatsApp 或电子邮件与我们联系，我们仅将您发送的信息用于答复您的询问，以及建立和管理可能的业务关系。WhatsApp 由 WhatsApp LLC／Meta 运营，适用其自身的隐私政策。',
-            `**您的权利。**您可随时通过 [amar@etahg.com](mailto:) 或 [${TEL}](tel:) 联系我们，要求查阅、更正或删除您发送给我们的个人数据。`,
+            `**您的权利。**您可随时通过 [{{email}}](mailto:) 或 [${TEL}](tel:) 联系我们，要求查阅、更正或删除您发送给我们的个人数据。`,
           ],
         },
         {

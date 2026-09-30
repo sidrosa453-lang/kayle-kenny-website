@@ -14,7 +14,7 @@
  * Keep "ETAHG" in Latin capitals in every language; never expand the acronym.
  *
  * TOKENS (replaced at build time, usable in any string)
- *   {{company}} SARL ETAHG   {{short}} ETAHG   {{phone}} +213 …   {{group}} EURL KAYLE KENNY
+ *   {{company}} SARL ETAHG   {{short}} ETAHG   {{phone}} +213 …   {{email}} contact.email   {{group}} EURL KAYLE KENNY
  *   {{year}} current year
  *
  * INLINE MARKUP (any text field of a block)
@@ -31,7 +31,7 @@
  *   slug         URL path without leading/trailing slash ('' = home). FR translates it;
  *                AR and ZH keep the English slug.
  *   nav          short label (menus, breadcrumbs, footer, cards)
- *   title        <title>, max 60 chars, must end with "| SARL ETAHG" (home may lead with brand)
+ *   title        <title>, max 60 chars, must end with "| ETAHG" (home leads with "SARL ETAHG |")
  *   description  meta description, 110–155 chars, unique per page
  *   summary      one sentence used in llms.txt and link lists
  *   service      (service pages) { name, serviceType } → schema.org Service
@@ -223,7 +223,7 @@ export default {
     },
 
     notFound: {
-      title: 'Page not found | SARL ETAHG',
+      title: 'Page not found | ETAHG',
       heading: 'This page could not be found',
       text: 'The address may be mistyped or the page may have moved. Use the links below to continue.',
       home: 'Go to the home page',
@@ -252,7 +252,7 @@ export default {
           lead: 'SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. For international contractors, we are a local partner that owns its machines, produces its own aggregates and knows the ground.',
           points: [
             'Own stone crushing plant: fine aggregates for high production rates',
-            'Own fleet: trucks, bulldozers, excavators, road pavers and drilling rigs, for rent, lease or subcontract',
+            'Own fleet: semi-trailer trucks, trucks, bulldozers, excavators and road pavers, for rent or lease',
             'Equipment depot in Djelfa on the RN1 axis, registered office in Ghardaïa, parts in Algiers',
           ],
           ctas: [
@@ -386,7 +386,7 @@ export default {
     services: {
       slug: 'services',
       nav: 'Services',
-      title: 'Civil Works & Construction Services in Algeria | SARL ETAHG',
+      title: 'Civil Works & Construction Services in Algeria | ETAHG',
       description: 'SARL ETAHG services in Algeria: crushed fine aggregates, road construction, heavy equipment rental and leasing, site mobilization and water well drilling.',
       summary: 'Overview of the services of SARL ETAHG and how they combine on one project.',
       blocks: [
@@ -473,7 +473,7 @@ export default {
     aggregates: {
       slug: 'services/aggregate-production',
       nav: 'Aggregate production',
-      title: 'Fine Aggregate Supplier in Djelfa, Algeria | SARL ETAHG',
+      title: 'Fine Aggregate Supplier in Djelfa, Algeria | ETAHG',
       description: 'Crushed fine aggregates (manufactured sand) from SARL ETAHG’s plant near Djelfa, Algeria, for concrete, asphalt and roads at high production rates.',
       summary: 'High-quality crushed fine aggregates from SARL ETAHG’s stone crushing plant at Oued Seddeur, near Djelfa, suited to high production rates.',
       service: { name: 'Fine aggregate production and supply', serviceType: 'Crushed fine aggregate (manufactured sand) production' },
@@ -623,7 +623,7 @@ export default {
     rental: {
       slug: 'services/equipment-rental',
       nav: 'Equipment rental',
-      title: 'Heavy Equipment Rental & Leasing in Algeria | SARL ETAHG',
+      title: 'Heavy Equipment Rental & Leasing in Algeria | ETAHG',
       description: 'Rent or lease heavy equipment in Algeria from SARL ETAHG: semi-trailer trucks, trucks, bulldozers, excavators and road pavers, on terms agreed per project.',
       summary: 'Rental and leasing of SARL ETAHG’s own heavy equipment fleet in Algeria, dispatched from Djelfa.',
       service: { name: 'Heavy equipment rental and leasing', serviceType: 'Heavy equipment rental' },
@@ -754,7 +754,7 @@ export default {
     mobilization: {
       slug: 'services/project-mobilization',
       nav: 'Project mobilization',
-      title: 'Project Mobilization & Site Start-up in Algeria | SARL ETAHG',
+      title: 'Project Mobilization & Site Start-up in Algeria | ETAHG',
       description: 'SARL ETAHG starts up projects in Algeria: equipment mobilization, site clearing, access tracks, platforms, earthworks, aggregate supply and water wells.',
       summary: 'Project initialization and site start-up in Algeria with SARL ETAHG’s own heavy equipment.',
       service: { name: 'Project mobilization and site start-up', serviceType: 'Construction site mobilization' },
@@ -881,7 +881,7 @@ export default {
     roads: {
       slug: 'services/road-construction',
       nav: 'Road construction',
-      title: 'Road Construction Contractor in Algeria | SARL ETAHG',
+      title: 'Road Construction Contractor in Algeria | ETAHG',
       description: 'SARL ETAHG builds roads in Algeria with its own fleet: earthworks, subgrade, sub-base and base courses and asphalt paving, with experience in many regions.',
       summary: 'Road construction, SARL ETAHG’s original activity, carried out with its own fleet and aggregates.',
       service: { name: 'Road construction', serviceType: 'Road construction and earthworks' },
@@ -1001,7 +1001,7 @@ export default {
     drilling: {
       slug: 'services/water-well-drilling',
       nav: 'Water well drilling',
-      title: 'Water Well & Borehole Drilling in Algeria | SARL ETAHG',
+      title: 'Water Well & Borehole Drilling in Algeria | ETAHG',
       description: 'SARL ETAHG drills water wells in Algeria with its own rigs, for construction sites and for agricultural, industrial and community needs, on request.',
       summary: 'Water well drilling in Algeria with SARL ETAHG’s own drilling rigs, for sites, farms, industry and communities.',
       service: { name: 'Water well drilling', serviceType: 'Water well drilling' },
@@ -1118,7 +1118,7 @@ export default {
     parts: {
       slug: 'services/spare-parts',
       nav: 'Spare parts',
-      title: 'Heavy-Duty Spare Parts: EURL KAYLE KENNY | SARL ETAHG',
+      title: 'Heavy-Duty Spare Parts: EURL KAYLE KENNY | ETAHG',
       description: 'EURL KAYLE KENNY, part of the SARL ETAHG group, supplies heavy-duty diesel engine spare parts from its store and parts depot in Mohammadia, Algiers.',
       summary: 'Heavy-duty diesel engine spare parts through the group company EURL KAYLE KENNY in Algiers.',
       service: { name: 'Heavy-duty spare parts (EURL KAYLE KENNY)', serviceType: 'Heavy equipment spare parts supply' },
@@ -1192,7 +1192,7 @@ export default {
     fleet: {
       slug: 'fleet',
       nav: 'Fleet',
-      title: 'Heavy Equipment Fleet in Djelfa, Algeria | SARL ETAHG',
+      title: 'Heavy Equipment Fleet in Djelfa, Algeria | ETAHG',
       description: 'The SARL ETAHG fleet: crushing plants, semi-trailer trucks, trucks, bulldozers, excavators, road pavers and water well drilling rigs, based in Djelfa.',
       summary: 'The heavy equipment fleet of SARL ETAHG, based at its depot in Djelfa and its crushing plant at Oued Seddeur.',
       blocks: [
@@ -1276,7 +1276,7 @@ export default {
     experience: {
       slug: 'experience',
       nav: 'Experience',
-      title: 'Road-Building Experience Across Algeria | SARL ETAHG',
+      title: 'Road-Building Experience in Many Regions of Algeria | ETAHG',
       description: 'SARL ETAHG has built roads in many regions of Algeria. How the Tell, the Atlas, the High Plateaus and the Sahara change road building and water drilling.',
       summary: 'SARL ETAHG’s road-building experience in many regions of Algeria, and how each terrain changes the work.',
       blocks: [
@@ -1363,7 +1363,7 @@ export default {
     partners: {
       slug: 'international-partners',
       nav: 'International partners',
-      title: 'Local Partner in Algeria for Foreign Companies | SARL ETAHG',
+      title: 'Local Partner in Algeria for Foreign Companies | ETAHG',
       description: 'Foreign contractors in Algeria can work with SARL ETAHG as a local partner: subcontracting, equipment rental, aggregates, site start-up and water wells.',
       summary: 'How international contractors and foreign companies can cooperate with SARL ETAHG in Algeria, and how to start.',
       whatsapp: 'Hello SARL ETAHG, we are an international company and would like to discuss cooperation in Algeria.',
@@ -1397,7 +1397,7 @@ export default {
           paragraphs: [
             'Chinese companies building roads, railways, water and housing projects in Algeria often meet the same questions at the same stages: at the start of a project their own equipment may still be at sea or in customs; a steady source of manufactured sand near the site is not always available; fuel, spare parts and water are hard to secure on remote southern sites; and they need subcontractors who know local ground and working conditions.',
             'With its own fleet, its own crushing plant at Oued Seddeur and road-building experience in many regions of Algeria, {{company}} can work with your project team at these stages: opening the site before your equipment arrives, supplying fine aggregates, taking on earthworks, pavement layers or paving as a subcontractor and, where needed, drilling a water well for the works.',
-            'Your head office or your project team in Algeria can write to us at [amar@etahg.com](mailto:), in English or French; email is also the practical channel from mainland China. This website is available in [Simplified Chinese](page:home@zh).',
+            'Your head office or your project team in Algeria can write to us at [{{email}}](mailto:); email is also the practical channel from mainland China. Tell us your preferred language for correspondence when you first write. This website is available in [Simplified Chinese](page:home@zh).',
           ],
         },
         {
@@ -1410,7 +1410,7 @@ export default {
             { title: 'Road-building experience', text: 'Road projects completed in many regions of Algeria, with practical knowledge of their terrain, materials and working conditions.' },
             { title: 'A footprint between north and south', text: 'Registered in Ghardaïa, in the northern Sahara, with the fleet in Djelfa on the RN1 axis from Algiers to the Sahara, and parts in Algiers.' },
             { title: 'Parts support through the group', text: 'EURL KAYLE KENNY in Algiers is a local source of heavy-duty diesel engine parts for machines working on your project.' },
-            { title: 'Direct communication', text: 'Reach us directly by email, phone or WhatsApp. You can write to us in Arabic, French or English.' },
+            { title: 'Direct communication', text: 'Reach us directly by email, phone or WhatsApp, and tell us your preferred language. This website is available in English, French, Arabic and Simplified Chinese.' },
           ],
         },
         {
@@ -1448,7 +1448,7 @@ export default {
           label: 'How to start',
           title: 'How cooperation starts',
           items: [
-            { title: 'First contact', text: 'Send a short description of your company and your project by email to [amar@etahg.com](mailto:), or by phone or WhatsApp on {{phone}}.' },
+            { title: 'First contact', text: 'Send a short description of your company and your project by email to [{{email}}](mailto:), or by phone or WhatsApp on {{phone}}.' },
             { title: 'Confidentiality', text: 'If your project information is sensitive, a confidentiality agreement can be discussed before details are exchanged.' },
             { title: 'Exchange of information', text: 'We share our company profile, registration documents and equipment details; you share the scope, location and schedule.' },
             { title: 'Meeting and site visit', text: 'We meet and visit the project location together; a visit to our depot in Djelfa and our crushing plant at Oued Seddeur can also be discussed.' },
@@ -1470,7 +1470,7 @@ export default {
             'Scope of work, equipment types or material volumes needed',
             'Planned start date and duration',
             'Technical documents available (drawings, specifications, bill of quantities)',
-            'Contact person and preferred language (English, French or Arabic)',
+            'Contact person and preferred language',
           ],
           illustration: 'mobilization',
           reverse: true,
@@ -1487,7 +1487,7 @@ export default {
             'Information on our crushing plant and on the aggregates it produces',
             'Information on past road projects, to be discussed with prospective partners',
           ],
-          note: 'This website is also available in [Simplified Chinese](page:home@zh), French and Arabic. Technical and commercial documents are exchanged in French or English.',
+          note: 'This website is also available in [Simplified Chinese](page:home@zh), French and Arabic. Tell us your preferred language for correspondence and documents.',
         },
         {
           type: 'faq',
@@ -1514,7 +1514,7 @@ export default {
     about: {
       slug: 'about',
       nav: 'About',
-      title: 'About Us: Algerian Civil Works Company | SARL ETAHG',
+      title: 'About Us: Algerian Civil Works Company | ETAHG',
       description: 'About SARL ETAHG: an Algerian SARL registered in Ghardaïa, with an equipment depot in Djelfa, a crushing plant at Oued Seddeur and a group parts company.',
       summary: 'Company profile of SARL ETAHG: legal form, activities, locations and group.',
       blocks: [
@@ -1604,7 +1604,7 @@ export default {
     faq: {
       slug: 'faq',
       nav: 'FAQ',
-      title: 'FAQ: Company, Services and Cooperation | SARL ETAHG',
+      title: 'FAQ: Company, Services and Cooperation | ETAHG',
       description: 'Answers about SARL ETAHG: who we are, where we are based, fine aggregates, equipment rental, mobilization, water wells, spare parts and working with us.',
       summary: 'Frequently asked questions about SARL ETAHG, its services and how to work with it.',
       blocks: [
@@ -1626,7 +1626,7 @@ export default {
             { id: 'legal-form', q: 'What kind of company is SARL ETAHG?', a: 'SARL ETAHG is a société à responsabilité limitée (SARL), the Algerian form of limited liability company. Its commercial register and tax identification numbers are available on request.' },
             { id: 'name', q: 'How is the company name written?', a: 'The legal name of the company is SARL ETAHG, where SARL indicates the legal form. The short name ETAHG is written in Latin capital letters in every language, including Arabic and Chinese.' },
             { id: 'kayle-kenny-link', q: 'What is the relationship between SARL ETAHG and EURL KAYLE KENNY?', a: 'EURL KAYLE KENNY is part of the portfolio of SARL ETAHG and is the group’s spare parts company for heavy-duty machines, with a store and parts depot in Mohammadia, Algiers. It supplies diesel engine parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For ETAHG’s partners, it is a parts source inside the group.' },
-            { id: 'languages', q: 'In which languages can we contact ETAHG?', a: 'You can write to SARL ETAHG in Arabic, French or English, by email, phone or WhatsApp. This website is also available in Simplified Chinese, and technical and commercial documents are exchanged in French or English.' },
+            { id: 'languages', q: 'In which languages is information about ETAHG available?', a: 'This website is available in English, French, Arabic and Simplified Chinese, and so is the company profile. SARL ETAHG can be contacted by email, phone or WhatsApp; please state your preferred language for correspondence in your first message.' },
           ],
         },
         {
@@ -1652,10 +1652,10 @@ export default {
           title: 'Working with ETAHG',
           items: [
             { id: 'foreign-companies', q: 'Does ETAHG work with foreign companies?', a: 'Yes. SARL ETAHG is open to cooperation with foreign companies active in Algeria, including international EPC contractors, cement and mining groups, investors and equipment suppliers. It can act as subcontractor, equipment or aggregate supplier, site start-up partner or local partner for a project.' },
-            { id: 'chinese-contractors', q: 'Can Chinese contractors work with ETAHG?', a: 'Yes. SARL ETAHG welcomes cooperation with Chinese contractors and Chinese-owned companies building projects in Algeria, as a subcontractor, equipment or aggregate supplier, site start-up partner or local partner. This website is available in Simplified Chinese; day-to-day communication can be in English or French, and from mainland China email (amar@etahg.com) is the most practical channel.' },
+            { id: 'chinese-contractors', q: 'Can Chinese contractors work with ETAHG?', a: 'Yes. SARL ETAHG welcomes cooperation with Chinese contractors and Chinese-owned companies building projects in Algeria, as a subcontractor, equipment or aggregate supplier, site start-up partner or local partner. This website is available in Simplified Chinese. Tell us your preferred language for correspondence when you first write; from mainland China, email ({{email}}) is the most practical channel.' },
             { id: 'subcontract', q: 'Can ETAHG work as a subcontractor?', a: 'Yes. SARL ETAHG can work as a subcontractor for a main contractor on a defined scope, such as earthworks, road layers, asphalt paving, site preparation, aggregate supply or water wells, using its own equipment.' },
-            { id: 'quote', q: 'How do I request a quote from ETAHG?', a: 'To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by email to amar@etahg.com, or by WhatsApp or phone on +213 558 96 10 49.' },
-            { id: 'contact', q: 'How do I contact ETAHG?', a: 'SARL ETAHG can be contacted by email at amar@etahg.com, or by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.' },
+            { id: 'quote', q: 'How do I request a quote from ETAHG?', a: 'To request a quote from SARL ETAHG, send the project location (wilaya or nearest town), the scope of work, the equipment or volumes needed, the duration and the start date by email to {{email}}, or by WhatsApp or phone on +213 558 96 10 49.' },
+            { id: 'contact', q: 'How do I contact ETAHG?', a: 'SARL ETAHG can be contacted by email at {{email}}, or by phone or WhatsApp on +213 558 96 10 49, the group number shared with EURL KAYLE KENNY. The contact page of www.etahg.com lists all contact details and locations.' },
             { id: 'profile', q: 'Is there a company profile we can share internally?', a: 'Yes. SARL ETAHG publishes a printable company profile on this website, also available as a PDF download.' },
             { id: 'kayle-kenny', q: 'Is EURL KAYLE KENNY affiliated with Cummins?', a: 'No. EURL KAYLE KENNY, the spare parts company of the SARL ETAHG group, supplies Cummins-compatible parts as an independent supplier, not affiliated with or endorsed by Cummins Inc.' },
           ],
@@ -1677,8 +1677,8 @@ export default {
     contact: {
       slug: 'contact',
       nav: 'Contact',
-      title: 'Contact: Email, Phone & WhatsApp | SARL ETAHG',
-      description: 'Contact SARL ETAHG by email at amar@etahg.com or by phone and WhatsApp on +213 558 96 10 49. Registered office in Ghardaïa, depot in Djelfa, Algeria.',
+      title: 'Contact: Email, Phone & WhatsApp | ETAHG',
+      description: 'Contact SARL ETAHG by email at {{email}} or by phone and WhatsApp on +213 558 96 10 49. Registered office in Ghardaïa, depot in Djelfa, Algeria.',
       summary: 'Contact details of SARL ETAHG and how to request a quote.',
       blocks: [
         {
@@ -1686,7 +1686,7 @@ export default {
           size: 'page',
           eyebrow: 'Contact',
           title: 'Contact SARL ETAHG',
-          lead: 'Write to SARL ETAHG at [amar@etahg.com](mailto:), or call or message us on WhatsApp on {{phone}}. We answer enquiries from Algerian and international companies directly.',
+          lead: 'Write to SARL ETAHG at [{{email}}](mailto:), or call or message us on WhatsApp on {{phone}}. We answer enquiries from Algerian and international companies directly.',
         },
         {
           type: 'contact',
@@ -1713,8 +1713,8 @@ export default {
           label: 'International',
           title: 'Calling from abroad',
           paragraphs: [
-            'From outside Algeria, dial **{{phone}}**. If WhatsApp is not available to your team, for example in mainland China, write to [amar@etahg.com](mailto:); technical and commercial documents can also be exchanged by email.',
-            'You can write to us in Arabic, French or English. International companies can find more on cooperation models on our page for [international partners](page:partners).',
+            'From outside Algeria, dial **{{phone}}**. If WhatsApp is not available to your team, for example in mainland China, write to [{{email}}](mailto:); technical and commercial documents can also be exchanged by email.',
+            'Please tell us your preferred language when you write. This website is available in English, French, Arabic and Simplified Chinese. International companies can find more on cooperation models on our page for [international partners](page:partners).',
           ],
         },
         {
@@ -1737,7 +1737,7 @@ export default {
     profile: {
       slug: 'company-profile',
       nav: 'Company profile',
-      title: 'Company Profile | SARL ETAHG',
+      title: 'Company Profile | ETAHG',
       description: 'Printable company profile of SARL ETAHG: activities, fleet, crushing plant, locations in Ghardaïa, Djelfa and Oued Seddeur, group and contact details.',
       summary: 'Printable company profile of SARL ETAHG, also available as PDF.',
       layout: 'profile',
@@ -1782,7 +1782,7 @@ export default {
           type: 'prose',
           title: 'Cooperation with international companies',
           paragraphs: [
-            'Subcontracting, equipment rental and leasing, aggregate supply, site start-up, water wells, and local partnership for projects in Algeria. Contact: amar@etahg.com. You can write to us in Arabic, French or English; this profile is also available in French, Arabic and Simplified Chinese.',
+            'Subcontracting, equipment rental and leasing, aggregate supply, site start-up, water wells, and local partnership for projects in Algeria. Contact: {{email}}. This profile is also available in French, Arabic and Simplified Chinese.',
           ],
           note: 'EURL KAYLE KENNY is an independent supplier, not affiliated with or endorsed by Cummins Inc.',
         },
@@ -1793,7 +1793,7 @@ export default {
     legal: {
       slug: 'legal',
       nav: 'Legal notice',
-      title: 'Legal Notice & Privacy | SARL ETAHG',
+      title: 'Legal Notice & Privacy | ETAHG',
       description: 'Legal notice and privacy policy of the SARL ETAHG website: publisher, hosting, no cookies, no tracking, and how contact data sent to us is handled.',
       summary: 'Legal notice and privacy policy of www.etahg.com.',
       blocks: [
@@ -1826,7 +1826,7 @@ export default {
             '**No cookies, no tracking.** This website does not use cookies, analytics, advertising or tracking tools, and it has no contact forms. We do not collect personal data through the website.',
             '**Fonts.** The fonts used on this website are served from this website itself; pages in Chinese use the fonts already installed on your device. No font is loaded from a third-party server, so displaying a page sends no data to a font provider.',
             '**Contacting us.** If you contact us by telephone, WhatsApp or email, we use the information you send only to answer your enquiry and to prepare and manage any business relationship. WhatsApp is operated by WhatsApp LLC / Meta under its own privacy policy.',
-            '**Your rights.** You can ask us at any time to access, correct or delete the personal data you have sent us, by writing to [amar@etahg.com](mailto:) or calling [{{phone}}](tel:).',
+            '**Your rights.** You can ask us at any time to access, correct or delete the personal data you have sent us, by writing to [{{email}}](mailto:) or calling [{{phone}}](tel:).',
           ],
         },
         {

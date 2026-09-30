@@ -3,13 +3,16 @@ import { SERVICE_PAGES } from './structure.mjs';
 
 // <head> SEO tags and the JSON-LD @graph for a page.
 
+// Search snippets and social previews may show bidi isolates as stray characters.
+const noBidi = (t) => String(t ?? '').replace(/[\u2066-\u2069]/g, '');
+
 export function headMeta(ctx) {
   const { page, site, lang } = ctx;
   const alts = ctx.alternates(); // [{lang, hreflang, url, ogLocale}]
   const og = ctx.ogImage();
   const title = page.ogTitle || page.title;
   return html`<title>${page.title}</title>
-<meta name="description" content="${page.description}">
+<meta name="description" content="${noBidi(page.description)}">
 <meta name="robots" content="${ctx.noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}">
 ${!ctx.noindex && html`<link rel="canonical" href="${ctx.abs(ctx.pageId, lang)}">
 ${alts.map((a) => html`<link rel="alternate" hreflang="${a.hreflang}" href="${a.url}">
@@ -17,7 +20,7 @@ ${alts.map((a) => html`<link rel="alternate" hreflang="${a.hreflang}" href="${a.
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${site.companyName}">
 <meta property="og:title" content="${title}">
-<meta property="og:description" content="${page.description}">
+<meta property="og:description" content="${noBidi(page.description)}">
 <meta property="og:url" content="${ctx.abs(ctx.pageId, lang)}">
 <meta property="og:locale" content="${ctx.L.ogLocale}">
 ${alts.filter((a) => a.lang !== lang).map((a) => html`<meta property="og:locale:alternate" content="${a.ogLocale}">
@@ -28,7 +31,7 @@ ${alts.filter((a) => a.lang !== lang).map((a) => html`<meta property="og:locale:
 <meta property="og:image:alt" content="${site.companyName}${ctx.P.colon}${ctx.ui.og.tagline}">`}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
-<meta name="twitter:description" content="${page.description}">
+<meta name="twitter:description" content="${noBidi(page.description)}">
 ${og && html`<meta name="twitter:image" content="${og.url}">`}`;
 }
 
@@ -155,7 +158,7 @@ export function jsonLd(ctx) {
     '@id': `${url}#webpage`,
     url,
     name: page.title,
-    description: page.description,
+    description: noBidi(page.description),
     inLanguage: ctx.L.hreflang,
     isPartOf: { '@id': `${base}/#website` },
     about: { '@id': `${base}/#organization` },
@@ -177,7 +180,7 @@ export function jsonLd(ctx) {
       '@id': `${url}#service`,
       name: page.service.name,
       serviceType: page.service.serviceType,
-      description: page.description,
+      description: noBidi(page.description),
       url,
       provider: { '@id': pageId === 'parts' && org.subOrganization ? org.subOrganization['@id'] : `${base}/#organization` },
       areaServed: { '@type': 'Country', name: ctx.ui.facts.countryValue || 'Algeria', identifier: 'DZ' },

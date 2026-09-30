@@ -63,6 +63,7 @@ export function inline(text, ctx) {
 export function plain(text) {
   return String(text ?? '')
     .replace(/\u200b/g, '') // line-break hints in Chinese headings
+    .replace(/[\u2066-\u2069]/g, '') // bidi isolates: fine in HTML, stray characters in snippets
     .replace(/\*\*(.+?)\*\*/g, '$1')
     .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '$1');
 }

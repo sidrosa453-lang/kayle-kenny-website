@@ -95,7 +95,7 @@ of `src/content/en.mjs`. In short:
   locations, group, faq, records, table, links, contact, download, cta`.
 - Inline markup inside any text: `**bold**`, `[label](page:about)`, `[label](page:home@zh)`,
   `[label](https://…)`, `[label](tel:)`, `[label](whatsapp:)`, `[label](pdf:)`.
-- Tokens: `{{company}}`, `{{short}}`, `{{phone}}` (rendered with no-break spaces), `{{group}}`, `{{year}}`.
+- Tokens: `{{company}}`, `{{short}}`, `{{phone}}` (rendered with no-break spaces), `{{email}}` (from `contact.email`; never hard-code the address), `{{group}}`, `{{year}}`.
 - `ui.punct` holds the separators used by generated strings (facts panel, footer, addresses, share-image
   alt): ASCII in EN, `\u00A0:` in FR, `،` in AR, full-width `：，；（）` in ZH. ZH also sets
   `ui.addressOrder: 'country-first'` (阿尔及利亚盖尔达耶) and `ui.headerChannel: 'email'` (email first in the
@@ -117,7 +117,7 @@ Everything below is optional; the site renders cleanly with it empty and never i
 |---|---|
 | `contact.email` | mailto links, footer, contact page, JSON-LD, vCard |
 | `contact.wechat` | WeChat ID row on the contact page (strongly recommended for the Chinese partner) |
-| `spokenLanguages` | e.g. `["ar","fr","en"]` once the owner confirms who answers in which language: adds the "Working languages" fact, JSON-LD `knowsLanguage` / `availableLanguage` and the llms.txt line |
+| `spokenLanguages` | e.g. `["ar","fr","en"]` once the owner confirms who answers in which language: adds the "Working languages" fact, JSON-LD `knowsLanguage` / `availableLanguage` and the llms.txt line. Until then the prose in `src/content/*.mjs` (partners, contact, FAQ, company profile) must not say which languages staff speak or documents are exchanged in; it only lists the four website languages and asks the visitor to state a preferred language. Once confirmed, update those sentences in all four languages and re-render the PDFs |
 | `verification.google / bing / baidu` | site-verification `<meta>` tags for Search Console, Bing Webmaster Tools and Baidu 搜索资源平台 |
 | `group[0].jsonldId`, `street`, `addressLocality`, `addressRegion` | the Kayle Kenny node in JSON-LD; `jsonldId` must equal the `@id` published on kaylekenny.com (`https://www.kaylekenny.com/#store`) so the two graphs join |
 | `contact.address.street` / `postalCode` | full registered-office address (footer, legal, JSON-LD, vCard) |

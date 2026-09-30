@@ -183,7 +183,7 @@ for (const p of indexable) {
   if (!p.title) err(f, 'missing <title>');
   else {
     if (width(p.title) > 60) err(f, `title ${width(p.title)} display width (> 60): "${p.title}"`);
-    if (!/\| SARL ETAHG$/.test(p.title) && !/^SARL ETAHG\b/.test(p.title)) wrn(f, `title does not end with "| SARL ETAHG": "${p.title}"`);
+    if (!/\| ETAHG$/.test(p.title) && !/^SARL ETAHG\b/.test(p.title)) wrn(f, `title does not end with "| ETAHG": "${p.title}"`);
     byTitle.set(p.title, [...(byTitle.get(p.title) || []), f]);
   }
   const dl = width(p.desc);

@@ -177,7 +177,7 @@ export default {
     },
 
     notFound: {
-      title: 'Page introuvable | SARL ETAHG',
+      title: 'Page introuvable | ETAHG',
       heading: 'Cette page est introuvable',
       text: 'L’adresse est peut-être mal saisie ou la page a été déplacée. Utilisez les liens ci-dessous pour poursuivre.',
       home: 'Retour à l’accueil',
@@ -206,7 +206,7 @@ export default {
           lead: 'SARL ETAHG est une entreprise algérienne spécialisée dans la production de granulats fins, les travaux routiers, la location courte et longue durée d’engins de travaux publics, le démarrage de chantiers et le forage de puits d’eau. Pour les entreprises internationales, nous sommes un partenaire local qui possède ses engins, produit ses propres granulats et connaît le terrain.',
           points: [
             'Station de concassage en propre : granulats fins pour de fortes cadences de production',
-            'Parc en propre : camions, bulldozers, pelles, finisseurs et ateliers de forage, en location ou en sous-traitance',
+            'Parc en propre : semi-remorques, camions, bulldozers, pelles et finisseurs, en location ou en leasing',
             'Parc matériel à Djelfa sur l’axe de la RN1, siège social à Ghardaïa, pièces de rechange à Alger',
           ],
           ctas: [
@@ -340,7 +340,7 @@ export default {
     services: {
       slug: 'services',
       nav: 'Services',
-      title: 'Nos services de travaux publics en Algérie | SARL ETAHG',
+      title: 'Nos services de travaux publics en Algérie | ETAHG',
       description: 'Services de SARL ETAHG en Algérie : sable concassé et granulats fins, travaux routiers, location d’engins de TP, démarrage de chantier, forage de puits.',
       summary: 'Vue d’ensemble des services de SARL ETAHG et de la manière de les combiner sur un même projet.',
       blocks: [
@@ -427,7 +427,7 @@ export default {
     aggregates: {
       slug: 'services/production-de-granulats',
       nav: 'Production de granulats',
-      title: 'Sable concassé et granulats, Djelfa (Algérie) | SARL ETAHG',
+      title: 'Sable concassé et granulats, Djelfa (Algérie) | ETAHG',
       description: 'Sable concassé et granulats fins produits par SARL ETAHG près de Djelfa (Algérie), pour bétons, enrobés et chaussées, à fortes cadences de production.',
       summary: 'Granulats fins concassés de qualité issus de la station de concassage de SARL ETAHG à Oued Seddeur, près de Djelfa, adaptés aux fortes cadences de production.',
       service: { name: 'Production et fourniture de granulats fins', serviceType: 'Production de granulats fins concassés (sable de concassage)' },
@@ -577,7 +577,7 @@ export default {
     rental: {
       slug: 'services/location-engins',
       nav: 'Location d’engins',
-      title: 'Location d’engins de travaux publics, Algérie | SARL ETAHG',
+      title: 'Location d’engins de travaux publics, Algérie | ETAHG',
       description: 'SARL ETAHG loue ses engins de TP en Algérie : semi-remorques, camions, bulldozers, pelles et finisseurs, en courte ou longue durée, selon chaque projet.',
       summary: 'Location courte et longue durée du parc d’engins de travaux publics de SARL ETAHG en Algérie, au départ de Djelfa.',
       service: { name: 'Location courte et longue durée d’engins de travaux publics', serviceType: 'Location d’engins de travaux publics' },
@@ -708,7 +708,7 @@ export default {
     mobilization: {
       slug: 'services/demarrage-de-chantier',
       nav: 'Démarrage de chantier',
-      title: 'Installation et démarrage de chantier, Algérie | SARL ETAHG',
+      title: 'Installation et démarrage de chantier, Algérie | ETAHG',
       description: 'SARL ETAHG démarre vos chantiers en Algérie : mobilisation d’engins, débroussaillage, pistes d’accès, plateformes, terrassements, granulats et eau.',
       summary: 'Lancement de projets et démarrage de chantiers en Algérie avec les engins de SARL ETAHG.',
       service: { name: 'Installation et démarrage de chantier', serviceType: 'Mobilisation de chantier' },
@@ -835,7 +835,7 @@ export default {
     roads: {
       slug: 'services/travaux-routiers',
       nav: 'Travaux routiers',
-      title: 'Entreprise de travaux routiers en Algérie | SARL ETAHG',
+      title: 'Entreprise de travaux routiers en Algérie | ETAHG',
       description: 'SARL ETAHG réalise des routes en Algérie avec son propre parc : terrassements, couche de forme, couches de fondation et de base, revêtement en enrobés.',
       summary: 'Les travaux routiers, métier d’origine de SARL ETAHG, réalisés avec son propre parc et ses propres granulats.',
       service: { name: 'Travaux routiers', serviceType: 'Construction de routes et terrassements' },
@@ -955,7 +955,7 @@ export default {
     drilling: {
       slug: 'services/forage-puits-eau',
       nav: 'Forage de puits d’eau',
-      title: 'Forage de puits d’eau, Djelfa et Ghardaïa | SARL ETAHG',
+      title: 'Forage de puits d’eau, Djelfa et Ghardaïa | ETAHG',
       description: 'SARL ETAHG fore des puits d’eau en Algérie avec ses propres ateliers, pour chantiers et besoins agricoles, industriels et collectifs, sur demande.',
       summary: 'Forage de puits d’eau en Algérie avec les ateliers de forage de SARL ETAHG, pour chantiers, exploitations agricoles, industrie et collectivités.',
       service: { name: 'Forage de puits d’eau', serviceType: 'Forage de puits d’eau' },
@@ -1072,7 +1072,7 @@ export default {
     parts: {
       slug: 'services/pieces-de-rechange',
       nav: 'Pièces de rechange',
-      title: 'Pièces de rechange engins : EURL KAYLE KENNY | SARL ETAHG',
+      title: 'Pièces de rechange engins : EURL KAYLE KENNY | ETAHG',
       description: 'EURL KAYLE KENNY, société du groupe SARL ETAHG, fournit des pièces pour moteurs diesel d’engins lourds depuis son magasin de Mohammadia, à Alger.',
       summary: 'Pièces de rechange pour moteurs diesel d’engins lourds par la société de groupe EURL KAYLE KENNY, à Alger.',
       service: { name: 'Pièces de rechange pour engins lourds (EURL KAYLE KENNY)', serviceType: 'Fourniture de pièces de rechange pour engins de travaux publics' },
@@ -1146,7 +1146,7 @@ export default {
     fleet: {
       slug: 'parc-materiel',
       nav: 'Parc matériel',
-      title: 'Parc d’engins de travaux publics à Djelfa | SARL ETAHG',
+      title: 'Parc d’engins de travaux publics à Djelfa | ETAHG',
       description: 'Le parc de SARL ETAHG : stations de concassage, semi-remorques, camions, bulldozers, pelles hydrauliques, finisseurs et ateliers de forage, basé à Djelfa.',
       summary: 'Le parc d’engins de travaux publics de SARL ETAHG, basé à son parc matériel de Djelfa et à sa station de concassage d’Oued Seddeur.',
       blocks: [
@@ -1230,7 +1230,7 @@ export default {
     experience: {
       slug: 'experience',
       nav: 'Expérience',
-      title: 'Expérience en travaux routiers en Algérie | SARL ETAHG',
+      title: 'Expérience en travaux routiers en Algérie | ETAHG',
       description: 'SARL ETAHG a construit des routes dans de nombreuses régions d’Algérie. Tell, Atlas, Hauts Plateaux, Sahara : l’effet du terrain sur les routes et forages.',
       summary: 'L’expérience de SARL ETAHG en travaux routiers dans de nombreuses régions d’Algérie, et l’influence de chaque type de terrain sur les travaux.',
       blocks: [
@@ -1317,7 +1317,7 @@ export default {
     partners: {
       slug: 'partenaires-internationaux',
       nav: 'Partenaires internationaux',
-      title: 'Partenaire local BTP en Algérie, sous-traitance | SARL ETAHG',
+      title: 'Partenaire local BTP en Algérie, sous-traitance | ETAHG',
       description: 'SARL ETAHG, partenaire local pour les entreprises étrangères en Algérie : sous-traitance, location d’engins, granulats, démarrage de chantier, puits d’eau.',
       summary: 'Comment les entreprises internationales et les sociétés étrangères peuvent coopérer avec SARL ETAHG en Algérie, et comment commencer.',
       whatsapp: 'Bonjour SARL ETAHG, nous sommes une entreprise internationale et souhaitons discuter d’une coopération en Algérie.',
@@ -1351,7 +1351,7 @@ export default {
           paragraphs: [
             'Les entreprises chinoises qui réalisent des routes, des voies ferrées, des ouvrages hydrauliques et des logements en Algérie rencontrent souvent les mêmes questions aux mêmes étapes : au démarrage, leurs engins peuvent encore être en mer ou en dédouanement ; une source régulière de sable de concassage proche du chantier n’est pas toujours disponible ; carburant, pièces et eau sont difficiles à assurer sur les chantiers isolés du Sud ; et il leur faut des sous-traitants qui connaissent le terrain et les conditions locales.',
             'Avec son propre parc, sa propre station de concassage à Oued Seddeur et une expérience des travaux routiers dans de nombreuses régions d’Algérie, {{company}} peut intervenir aux côtés de votre équipe de projet à ces étapes : ouvrir le site avant l’arrivée de vos engins, fournir des granulats fins, prendre en charge en sous-traitance des terrassements, des couches de chaussée ou la mise en œuvre des enrobés et, si nécessaire, forer un puits d’eau pour les travaux.',
-            'Votre siège ou votre équipe de projet en Algérie peut nous écrire à [amar@etahg.com](mailto:), en anglais ou en français ; l’e-mail est aussi le canal pratique depuis la Chine continentale. Ce site est disponible en [chinois simplifié](page:home@zh).',
+            'Votre siège ou votre équipe de projet en Algérie peut nous écrire à [{{email}}](mailto:) ; l’e-mail est aussi le canal pratique depuis la Chine continentale. Indiquez-nous votre langue de correspondance souhaitée dès votre premier message. Ce site est disponible en [chinois simplifié](page:home@zh).',
           ],
         },
         {
@@ -1364,7 +1364,7 @@ export default {
             { title: 'L’expérience des travaux routiers', text: 'Des projets routiers réalisés dans de nombreuses régions d’Algérie, avec une connaissance pratique de leurs terrains, matériaux et conditions de travail.' },
             { title: 'Une implantation entre nord et sud', text: 'Siège à Ghardaïa, dans le nord du Sahara, parc à Djelfa sur l’axe de la RN1 entre Alger et le Sahara, et pièces de rechange à Alger.' },
             { title: 'L’appui pièces du groupe', text: 'EURL KAYLE KENNY, à Alger, est une source locale de pièces pour moteurs diesel d’engins lourds pour les machines qui travaillent sur votre projet.' },
-            { title: 'Une communication directe', text: 'Contactez-nous directement par e-mail, téléphone ou WhatsApp. Vous pouvez nous écrire en arabe, en français ou en anglais.' },
+            { title: 'Une communication directe', text: 'Contactez-nous directement par e-mail, téléphone ou WhatsApp, en nous indiquant votre langue souhaitée. Ce site est disponible en anglais, en français, en arabe et en chinois simplifié.' },
           ],
         },
         {
@@ -1402,7 +1402,7 @@ export default {
           label: 'Pour commencer',
           title: 'Comment démarre une coopération',
           items: [
-            { title: 'Premier contact', text: 'Présentez brièvement votre entreprise et votre projet par e-mail à [amar@etahg.com](mailto:), par téléphone ou par WhatsApp au {{phone}}.' },
+            { title: 'Premier contact', text: 'Présentez brièvement votre entreprise et votre projet par e-mail à [{{email}}](mailto:), par téléphone ou par WhatsApp au {{phone}}.' },
             { title: 'Confidentialité', text: 'Si les informations sur votre projet sont sensibles, un accord de confidentialité peut être envisagé avant tout échange de détails.' },
             { title: 'Échange d’informations', text: 'Nous vous transmettons notre présentation, nos documents d’immatriculation et le détail de nos engins ; vous nous communiquez le périmètre, le lieu et le planning.' },
             { title: 'Réunion et visite de site', text: 'Nous nous rencontrons et visitons ensemble le lieu du projet ; une visite de notre parc de Djelfa et de notre station de concassage d’Oued Seddeur peut aussi être envisagée.' },
@@ -1424,7 +1424,7 @@ export default {
             'Travaux, types d’engins ou volumes de matériaux nécessaires',
             'Date de démarrage et durée prévues',
             'Documents techniques disponibles (plans, cahier des charges, devis quantitatif)',
-            'Interlocuteur et langue de travail souhaitée (anglais, français ou arabe)',
+            'Interlocuteur et langue de travail souhaitée',
           ],
           illustration: 'mobilization',
           reverse: true,
@@ -1441,7 +1441,7 @@ export default {
             'Informations sur notre station de concassage et sur les granulats qu’elle produit',
             'Informations sur nos chantiers routiers passés, à aborder avec les partenaires potentiels',
           ],
-          note: 'Ce site est aussi disponible en [chinois simplifié](page:home@zh), en anglais et en arabe. Les documents techniques et commerciaux sont échangés en français ou en anglais.',
+          note: 'Ce site est aussi disponible en [chinois simplifié](page:home@zh), en anglais et en arabe. Indiquez-nous votre langue souhaitée pour la correspondance et les documents.',
         },
         {
           type: 'faq',
@@ -1468,7 +1468,7 @@ export default {
     about: {
       slug: 'a-propos',
       nav: 'À propos',
-      title: 'Qui sommes-nous : entreprise algérienne de TP | SARL ETAHG',
+      title: 'Qui sommes-nous : entreprise algérienne de TP | ETAHG',
       description: 'SARL ETAHG, SARL algérienne dont le siège est à Ghardaïa : parc matériel à Djelfa, station de concassage à Oued Seddeur et société de pièces de rechange.',
       summary: 'Présentation de SARL ETAHG : forme juridique, activités, implantations et groupe.',
       blocks: [
@@ -1558,7 +1558,7 @@ export default {
     faq: {
       slug: 'faq',
       nav: 'FAQ',
-      title: 'FAQ : entreprise, services et coopération | SARL ETAHG',
+      title: 'FAQ : entreprise, services et coopération | ETAHG',
       description: 'Réponses sur SARL ETAHG : qui nous sommes, où nous sommes, granulats fins, location d’engins, démarrage de chantier, forages, pièces et coopération.',
       summary: 'Questions fréquentes sur SARL ETAHG, ses services et la manière de travailler avec elle.',
       blocks: [
@@ -1580,7 +1580,7 @@ export default {
             { id: 'legal-form', q: 'Quelle est la forme juridique de SARL ETAHG ?', a: 'SARL ETAHG est une société à responsabilité limitée (SARL) de droit algérien. Ses numéros au registre du commerce et ses identifiants fiscaux sont communiqués sur demande.' },
             { id: 'name', q: 'Comment s’écrit le nom de l’entreprise ?', a: 'La raison sociale de l’entreprise est SARL ETAHG, SARL désignant la forme juridique. Le nom court ETAHG s’écrit en capitales latines dans toutes les langues, y compris en arabe et en chinois.' },
             { id: 'kayle-kenny-link', q: 'Quel est le lien entre SARL ETAHG et EURL KAYLE KENNY ?', a: 'EURL KAYLE KENNY fait partie du portefeuille de SARL ETAHG ; c’est la société de pièces de rechange du groupe pour les engins lourds, avec un magasin et un dépôt de pièces à Mohammadia, à Alger. Elle fournit des pièces pour moteurs diesel, dont des pièces compatibles Cummins, en tant que fournisseur indépendant, non affilié à Cummins Inc. ni agréé par celle-ci. Pour les partenaires d’ETAHG, c’est une source de pièces au sein du groupe.' },
-            { id: 'languages', q: 'Dans quelles langues peut-on contacter ETAHG ?', a: 'Vous pouvez écrire à SARL ETAHG en arabe, en français ou en anglais, par e-mail, téléphone ou WhatsApp. Ce site est également disponible en chinois simplifié, et les documents techniques et commerciaux sont échangés en français ou en anglais.' },
+            { id: 'languages', q: 'Dans quelles langues les informations sur ETAHG sont-elles disponibles ?', a: 'Ce site est disponible en anglais, en français, en arabe et en chinois simplifié, tout comme la présentation de l’entreprise. SARL ETAHG peut être contactée par e-mail, téléphone ou WhatsApp ; merci d’indiquer votre langue de correspondance souhaitée dans votre premier message.' },
           ],
         },
         {
@@ -1606,10 +1606,10 @@ export default {
           title: 'Travailler avec ETAHG',
           items: [
             { id: 'foreign-companies', q: 'ETAHG travaille-t-elle avec des entreprises étrangères ?', a: 'Oui. SARL ETAHG est ouverte à la coopération avec les entreprises étrangères actives en Algérie, notamment les entreprises EPC internationales, les groupes cimentiers et miniers, les investisseurs et les fournisseurs d’équipements. Elle peut intervenir comme sous-traitant, fournisseur d’engins ou de granulats, partenaire de démarrage de chantier ou partenaire local d’un projet.' },
-            { id: 'chinese-contractors', q: 'Les entreprises chinoises peuvent-elles travailler avec ETAHG ?', a: 'Oui. SARL ETAHG est ouverte à la coopération avec les entreprises chinoises et les sociétés à capitaux chinois qui réalisent des projets en Algérie, comme sous-traitant, fournisseur d’engins ou de granulats, partenaire de démarrage de chantier ou partenaire local. Ce site est disponible en chinois simplifié ; les échanges courants peuvent se faire en anglais ou en français, et depuis la Chine continentale l’e-mail (amar@etahg.com) est le canal le plus pratique.' },
+            { id: 'chinese-contractors', q: 'Les entreprises chinoises peuvent-elles travailler avec ETAHG ?', a: 'Oui. SARL ETAHG est ouverte à la coopération avec les entreprises chinoises et les sociétés à capitaux chinois qui réalisent des projets en Algérie, comme sous-traitant, fournisseur d’engins ou de granulats, partenaire de démarrage de chantier ou partenaire local. Ce site est disponible en chinois simplifié. Indiquez-nous votre langue de correspondance souhaitée dès votre premier message ; depuis la Chine continentale, l’e-mail ({{email}}) est le canal le plus pratique.' },
             { id: 'subcontract', q: 'ETAHG peut-elle intervenir en sous-traitance ?', a: 'Oui. SARL ETAHG peut travailler en sous-traitance pour une entreprise générale sur un lot défini (terrassements, couches de chaussée, mise en œuvre des enrobés, préparation du site, fourniture de granulats ou puits d’eau) avec ses propres engins.' },
-            { id: 'quote', q: 'Comment demander un devis à ETAHG ?', a: 'Pour demander un devis à SARL ETAHG, envoyez le lieu du projet (wilaya ou ville la plus proche), la nature des travaux, les engins ou volumes nécessaires, la durée et la date de démarrage par e-mail à amar@etahg.com, ou par WhatsApp ou téléphone au +213 558 96 10 49.' },
-            { id: 'contact', q: 'Comment contacter ETAHG ?', a: 'SARL ETAHG est joignable par e-mail à amar@etahg.com, ou par téléphone ou WhatsApp au +213 558 96 10 49, le numéro du groupe partagé avec EURL KAYLE KENNY. La page contact de www.etahg.com regroupe toutes les coordonnées et implantations.' },
+            { id: 'quote', q: 'Comment demander un devis à ETAHG ?', a: 'Pour demander un devis à SARL ETAHG, envoyez le lieu du projet (wilaya ou ville la plus proche), la nature des travaux, les engins ou volumes nécessaires, la durée et la date de démarrage par e-mail à {{email}}, ou par WhatsApp ou téléphone au +213 558 96 10 49.' },
+            { id: 'contact', q: 'Comment contacter ETAHG ?', a: 'SARL ETAHG est joignable par e-mail à {{email}}, ou par téléphone ou WhatsApp au +213 558 96 10 49, le numéro du groupe partagé avec EURL KAYLE KENNY. La page contact de www.etahg.com regroupe toutes les coordonnées et implantations.' },
             { id: 'profile', q: 'Existe-t-il une présentation de l’entreprise à diffuser en interne ?', a: 'Oui. SARL ETAHG publie sur ce site une présentation imprimable de l’entreprise, également téléchargeable en PDF.' },
             { id: 'kayle-kenny', q: 'EURL KAYLE KENNY est-elle affiliée à Cummins ?', a: 'Non. EURL KAYLE KENNY, la société de pièces de rechange du groupe SARL ETAHG, fournit des pièces compatibles Cummins en tant que fournisseur indépendant, non affilié à Cummins Inc. ni agréé par celle-ci.' },
           ],
@@ -1631,8 +1631,8 @@ export default {
     contact: {
       slug: 'contact',
       nav: 'Contact',
-      title: 'Contact : téléphone, WhatsApp et e-mail | SARL ETAHG',
-      description: 'Contactez SARL ETAHG par e-mail (amar@etahg.com), par téléphone ou WhatsApp au +213 558 96 10 49. Siège à Ghardaïa, parc matériel à Djelfa (Algérie).',
+      title: 'Contact : téléphone, WhatsApp et e-mail | ETAHG',
+      description: 'Contactez SARL ETAHG par e-mail ({{email}}), par téléphone ou WhatsApp au +213 558 96 10 49. Siège à Ghardaïa, parc matériel à Djelfa (Algérie).',
       summary: 'Coordonnées de SARL ETAHG et marche à suivre pour demander un devis.',
       blocks: [
         {
@@ -1640,7 +1640,7 @@ export default {
           size: 'page',
           eyebrow: 'Contact',
           title: 'Contacter SARL ETAHG',
-          lead: 'Écrivez à SARL ETAHG à [amar@etahg.com](mailto:), ou appelez-nous et écrivez-nous sur WhatsApp au {{phone}}. Nous répondons directement aux demandes des entreprises algériennes et internationales.',
+          lead: 'Écrivez à SARL ETAHG à [{{email}}](mailto:), ou appelez-nous et écrivez-nous sur WhatsApp au {{phone}}. Nous répondons directement aux demandes des entreprises algériennes et internationales.',
         },
         {
           type: 'contact',
@@ -1667,8 +1667,8 @@ export default {
           label: 'International',
           title: 'Appeler depuis l’étranger',
           paragraphs: [
-            'Depuis l’étranger, composez le **{{phone}}**. Si WhatsApp n’est pas accessible à votre équipe, par exemple en Chine continentale, écrivez à [amar@etahg.com](mailto:) ; les documents techniques et commerciaux peuvent aussi être échangés par e-mail.',
-            'Vous pouvez nous écrire en arabe, en français ou en anglais. Les entreprises internationales trouveront plus d’informations sur les modes de coopération sur notre page [partenaires internationaux](page:partners).',
+            'Depuis l’étranger, composez le **{{phone}}**. Si WhatsApp n’est pas accessible à votre équipe, par exemple en Chine continentale, écrivez à [{{email}}](mailto:) ; les documents techniques et commerciaux peuvent aussi être échangés par e-mail.',
+            'Merci de nous indiquer votre langue souhaitée lorsque vous nous écrivez. Ce site est disponible en anglais, en français, en arabe et en chinois simplifié. Les entreprises internationales trouveront plus d’informations sur les modes de coopération sur notre page [partenaires internationaux](page:partners).',
           ],
         },
         {
@@ -1691,7 +1691,7 @@ export default {
     profile: {
       slug: 'profil-entreprise',
       nav: 'Présentation de l’entreprise',
-      title: 'Présentation de l’entreprise | SARL ETAHG',
+      title: 'Présentation de l’entreprise | ETAHG',
       description: 'Présentation imprimable de SARL ETAHG : activités, parc, station de concassage, implantations à Ghardaïa, Djelfa et Oued Seddeur, groupe et coordonnées.',
       summary: 'Présentation imprimable de SARL ETAHG, également disponible en PDF.',
       layout: 'profile',
@@ -1736,7 +1736,7 @@ export default {
           type: 'prose',
           title: 'Coopération avec les entreprises internationales',
           paragraphs: [
-            'Sous-traitance, location courte et longue durée d’engins, fourniture de granulats, démarrage de chantier, puits d’eau et partenariat local pour des projets en Algérie. Contact : amar@etahg.com. Vous pouvez nous écrire en arabe, en français ou en anglais ; cette présentation existe également en anglais, en arabe et en chinois simplifié.',
+            'Sous-traitance, location courte et longue durée d’engins, fourniture de granulats, démarrage de chantier, puits d’eau et partenariat local pour des projets en Algérie. Contact : {{email}}. Cette présentation existe également en anglais, en arabe et en chinois simplifié.',
           ],
           note: 'EURL KAYLE KENNY est un fournisseur indépendant, non affilié à Cummins Inc. ni agréé par celle-ci.',
         },
@@ -1747,7 +1747,7 @@ export default {
     legal: {
       slug: 'mentions-legales',
       nav: 'Mentions légales',
-      title: 'Mentions légales et confidentialité | SARL ETAHG',
+      title: 'Mentions légales et confidentialité | ETAHG',
       description: 'Mentions légales et politique de confidentialité du site de SARL ETAHG : éditeur, hébergement, aucun cookie, aucun suivi, traitement des données reçues.',
       summary: 'Mentions légales et politique de confidentialité de www.etahg.com.',
       blocks: [
@@ -1780,7 +1780,7 @@ export default {
             '**Aucun cookie, aucun suivi.** Ce site n’utilise ni cookies, ni outils de mesure d’audience, de publicité ou de suivi, et ne comporte aucun formulaire de contact. Nous ne collectons aucune donnée personnelle par l’intermédiaire du site.',
             '**Polices de caractères.** Les polices utilisées sont servies par ce site lui-même ; les pages en chinois utilisent les polices déjà installées sur votre appareil. Aucune police n’est chargée depuis un serveur tiers : l’affichage d’une page ne transmet donc aucune donnée à un fournisseur de polices.',
             '**Nous contacter.** Si vous nous contactez par téléphone, WhatsApp ou e-mail, nous utilisons les informations transmises uniquement pour répondre à votre demande et pour préparer et gérer une éventuelle relation commerciale. WhatsApp est exploité par WhatsApp LLC / Meta selon sa propre politique de confidentialité.',
-            '**Vos droits.** Vous pouvez à tout moment nous demander l’accès, la rectification ou la suppression des données personnelles que vous nous avez transmises, en nous écrivant à [amar@etahg.com](mailto:) ou en nous appelant au [{{phone}}](tel:).',
+            '**Vos droits.** Vous pouvez à tout moment nous demander l’accès, la rectification ou la suppression des données personnelles que vous nous avez transmises, en nous écrivant à [{{email}}](mailto:) ou en nous appelant au [{{phone}}](tel:).',
           ],
         },
         {
