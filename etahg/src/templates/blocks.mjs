@@ -195,7 +195,9 @@ function locations(b, ctx) {
 <p class="location-type">${types[l.id]}</p>
 <h3 class="location-name">${names[l.id]}</h3>
 ${l.region && html`<p class="location-region">${ui.wilaya.replaceAll('{{region}}', ctx.regionName(l))}</p>`}
+${(l.name || l.street || (l.id === 'hq' && ctx.config.contact?.address?.street)) && html`<p class="location-address">${l.name || l.street || ctx.config.contact.address.street}</p>`}
 ${ui.details && ui.details[l.id] && html`<p class="location-text">${inline(ui.details[l.id], ctx)}</p>`}
+${((l.phones && l.phones.length) || l.fax) && html`<p class="location-tel">${(l.phones || []).length > 0 && html`<span class="location-tel-line"><span class="location-tel-label">${ctx.ui.phonesShort || ctx.ui.phoneLabel}${ctx.P.colon}</span>${l.phones.map((n, j) => html`${j > 0 && ' / '}<a href="${ctx.telUrl(n)}" dir="ltr">${n}</a>`)}</span>`}${l.fax && html`<span class="location-tel-line"><span class="location-tel-label">${ctx.ui.faxLabel}${ctx.P.colon}</span><span dir="ltr">${l.fax}</span></span>`}</p>`}
 ${l.mapsUrl && html`<a class="location-map" href="${l.mapsUrl}" rel="noopener" target="_blank">${icon('pin')}<span>${ui.mapLink || ctx.ui.mapLink}</span>${newTab(ctx)}</a>`}
 </li>`)}</ol>`;
   return section(b, ctx, html`<div class="loc-grid${map ? '' : ' no-map'}">${map && html`<div class="loc-map">${map}</div>`}${list}</div>`);
@@ -277,6 +279,8 @@ ${emailFirst && mail}
 <li class="channel"><span class="channel-icon">${icon('phone')}</span><div><p class="channel-label">${ui.phoneLabel}</p><a class="channel-value" href="${ctx.telUrl()}" dir="ltr">${c.phone}</a></div></li>
 <li class="channel"><span class="channel-icon">${whatsappIcon()}</span><div><p class="channel-label">${ui.whatsappLabel}</p><a class="channel-value" href="${ctx.whatsappUrl()}" rel="noopener" target="_blank" dir="ltr">${c.phone}${newTab(ctx)}</a>${ui.whatsappNote && html`<p class="channel-note">${ui.whatsappNote}</p>`}</div></li>
 ${!emailFirst && mail}
+${ctx.extraPhones().length > 0 && html`<li class="channel channel-secondary"><span class="channel-icon">${icon('phone')}</span><div><p class="channel-label">${ui.phonesLabel}</p><p class="channel-lines">${ctx.extraPhones().map((n) => html`<a class="channel-value" href="${ctx.telUrl(n)}" dir="ltr">${n}</a>`)}</p></div></li>`}
+${c.fax && html`<li class="channel channel-secondary"><span class="channel-icon">${icon('print')}</span><div><p class="channel-label">${ui.faxLabel}</p><p class="channel-lines"><span class="channel-value" dir="ltr">${c.fax}</span></p></div></li>`}
 ${c.wechat && html`<li class="channel"><span class="channel-icon">${icon('chat')}</span><div><p class="channel-label">${ui.wechatLabel || 'WeChat'}</p><span class="channel-value" dir="ltr">${c.wechat}</span></div></li>`}
 </ul>
 ${c.hours && html`<p class="contact-hours"><strong>${ui.facts.hours}${ctx.P.colon}</strong>${ctx.localize(c.hours)}</p>`}

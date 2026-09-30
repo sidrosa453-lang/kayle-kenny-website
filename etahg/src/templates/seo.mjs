@@ -92,10 +92,13 @@ export function organization(ctx) {
     telephone: c.phone,
     email: c.email || undefined,
     address: postal(c.address || {}),
+    faxNumber: c.fax || undefined,
     location: nonHq.map((l) => ({
       '@type': 'Place',
-      name: `${types[l.id] || l.type}, ${l.locality}`,
-      address: postal({ locality: l.locality, region: l.region }),
+      name: l.name ? `${l.name} (${types[l.id] || l.type}), ${l.locality}` : `${types[l.id] || l.type}, ${l.locality}`,
+      address: postal({ street: l.street, locality: l.locality, region: l.region }),
+      telephone: (l.phones || [])[0] || undefined,
+      faxNumber: l.fax || undefined,
       hasMap: l.mapsUrl || undefined,
     })),
     hasMap: c.mapsUrl || undefined,
@@ -103,14 +106,17 @@ export function organization(ctx) {
     // Working languages only once confirmed by the owner (site.config.json spokenLanguages).
     knowsLanguage: spoken.length ? spoken : undefined,
     knowsAbout: [
-      'Fine aggregate production', 'Stone crushing', 'Crushed sand', 'Road construction', 'Earthworks',
+      'Fine aggregate production', 'Quarrying', 'Stone crushing', 'Crushed sand', 'Road construction',
+      'Asphalt paving', 'Bitumen spraying', 'Earthworks',
       'Heavy equipment rental', 'Heavy equipment leasing', 'Construction site mobilization',
       'Water well drilling', 'Heavy-duty spare parts', 'Road building on Algerian terrains', 'Algeria',
     ],
     contactPoint: [{
       '@type': 'ContactPoint', telephone: c.phone, email: c.email || undefined, contactType: 'sales',
       areaServed: 'DZ', availableLanguage: spoken.length ? spoken.map((l) => LANG_NAMES_EN[l] || l) : undefined,
-    }],
+    }, ...(Array.isArray(c.phones) ? c.phones : []).filter(Boolean).map((n) => ({
+      '@type': 'ContactPoint', telephone: n, faxNumber: c.fax || undefined, contactType: 'customer service', areaServed: 'DZ',
+    }))],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${site.companyName} services`,
@@ -133,6 +139,7 @@ export function organization(ctx) {
     sameAs: social.length ? social : undefined,
     foundingDate: site.foundedYear ? String(site.foundedYear) : undefined,
     identifier: idents.length ? idents : undefined,
+    taxID: reg.nif || undefined,
     hasCredential: (site.certifications || []).filter(Boolean).map((cname) => ({ '@type': 'EducationalOccupationalCredential', name: typeof cname === 'string' ? cname : cname.name })),
   };
 }

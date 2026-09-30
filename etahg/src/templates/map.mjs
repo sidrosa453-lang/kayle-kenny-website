@@ -1,7 +1,7 @@
 import { esc, raw } from './html.mjs';
 
 // Schematic north–south corridor diagram: Mediterranean at the top, then
-// Algiers -> Djelfa / Oued Seddeur -> Ghardaïa along the RN1 axis.
+// Algiers -> Djelfa / Oued Sdeur (Aïn El Ibel) -> Ghardaïa along the RN1 axis.
 // Not a geographic map: positions are deliberately schematic ("not to scale").
 // Location ids from site.config.json are placed at fixed schematic positions;
 // unknown ids are simply not drawn (they still get a card).

@@ -21,12 +21,16 @@ Algeria. Secondary audience: Algerian public and private project owners.
 - **Company:** SARL ETAHG — an Algerian SARL (limited liability company).
   The meaning of the acronym "ETAHG" is not known — never expand it.
 - **Country:** Algeria. Contact / location details come from `site.config.json`.
+- **Founded:** the company's commercial register (RC) dates from **1997** (owner's statement;
+  the RC number itself ends in "B 98").
+- **Registry (from the company letterhead):** RC 47/00-0862220 B 98 · NIF (MF) 099747100152525 ·
+  NIS 099347100156231 · AI 47100604430.
 - **Locations (confirmed by the owner):**
-  - **Registered office: Ghardaïa** (wilaya of Ghardaïa) — where the company is registered.
+  - **Registered office:** Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya of **Ghardaïa**.
   - **Equipment depot: Djelfa** (wilaya of Djelfa).
-  - **Stone crushing plant (aggregate production): Oued Seddeur**, outside Djelfa
-    (about 25 km south of the city, wilaya of Djelfa). Spelling "Oued Seddeur" to be
-    confirmed by the owner (they wrote "Ouad Sdar").
+  - **Quarry and stone crushing plant:** **Carrière Djellal El Gharbi, Oued Sdeur, Aïn El Ibel**
+    (wilaya of Djelfa, south of the city of Djelfa). The company's own spelling is "Oued Sdeur".
+    Do NOT state a distance in km. Quarry phones +213 660 36 75 50 / 51, fax +213 27 90 46 13.
   - **EURL KAYLE KENNY** (group spare-parts company): store + parts depot in
     Mohammadia, **Algiers**.
   Geography that may be stated as context: Ghardaïa is in the northern Algerian
@@ -41,8 +45,13 @@ Algeria. Secondary audience: Algerian public and private project owners.
 - **Aggregate production:** ETAHG operates stone crushing / grinding machines
   (crushing plants) that produce **high-quality fine aggregates**, and they are
   especially suited to projects that require **high production rates**.
-- **Heavy equipment fleet:** semi-trailer trucks (tractor units + semi-trailers),
-  trucks, bulldozers, excavators and road pavers.
+- **Heavy equipment fleet (equipment categories only - DISCRETION RULE):** hydraulic
+  excavators, bulldozer, wheel loaders, motor graders, asphalt paver, vibratory
+  compactor/roller, trucks, semi-trailers (tipper), bitumen distributor (spreader) truck,
+  bitumen tankers, a surface rock-drilling carriage (quarry drilling), and a new
+  truck-mounted water well drilling rig with accessories, plus the crushing plant.
+  **Never publish** machine counts, brands/models, registration numbers, values or
+  condition: the owner wants discretion (local envy). Categories only.
 - **Road construction:** the fleet was mainly used by ETAHG to **build roads**.
   ETAHG has completed road projects in **many regions of Algeria** and knows the
   terrain of those regions.
@@ -78,7 +87,6 @@ Algeria. Secondary audience: Algerian public and private project owners.
 
 ## Fields still to be supplied by the owner (see `site.config.json`)
 
-Full street addresses + map links, registry numbers (RC, NIF, NIS, AI),
-founding year, fleet counts, crushing capacity, regions/wilayas where roads were
-built, project list, certifications, social links, real photos, confirmed
-Arabic/Chinese spelling of Oued Seddeur.
+Map links for each location, crushing capacity, regions/wilayas where roads were
+built, project list, social links, real photos, Arabic spelling of Oued Sdeur.
+Fleet counts are deliberately NOT published (owner's discretion rule).

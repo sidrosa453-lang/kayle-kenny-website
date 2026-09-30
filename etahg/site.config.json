@@ -4,69 +4,99 @@
   "shortName": "ETAHG",
   "legalForm": "SARL",
   "defaultLanguage": "en",
-  "languages": ["en", "fr", "ar", "zh"],
-
+  "languages": [
+    "en",
+    "fr",
+    "ar",
+    "zh"
+  ],
   "contact": {
     "phone": "+213 558 96 10 49",
     "whatsapp": "213558961049",
     "email": "contact@etahg.com",
     "wechat": "",
     "address": {
-      "street": "",
-      "locality": "Ghardaïa",
+      "street": "Cité 400 Logements, Sidi Abbaz",
+      "locality": "Bounoura",
       "region": "Ghardaïa",
       "postalCode": "",
       "country": "DZ"
     },
     "mapsUrl": "",
-    "hours": ""
+    "hours": "",
+    "fax": "+213 27 90 46 13",
+    "phones": [
+      "+213 660 36 75 50",
+      "+213 660 36 75 51"
+    ]
   },
-
   "locations": [
     {
       "id": "hq",
       "type": "Registered office",
-      "locality": "Ghardaïa",
+      "locality": "Bounoura",
       "region": "Ghardaïa",
-      "names": { "fr": "Ghardaïa", "ar": "غرداية", "zh": "盖尔达耶" },
-      "mapsUrl": ""
+      "names": {
+        "fr": "Bounoura, Ghardaïa",
+        "ar": "بونورة، غرداية",
+        "zh": "盖尔达耶省布努拉"
+      },
+      "mapsUrl": "",
+      "street": "Cité 400 Logements, Sidi Abbaz"
     },
     {
       "id": "depot",
       "type": "Equipment depot",
       "locality": "Djelfa",
       "region": "Djelfa",
-      "names": { "fr": "Djelfa", "ar": "الجلفة", "zh": "杰勒法" },
+      "names": {
+        "fr": "Djelfa",
+        "ar": "الجلفة",
+        "zh": "杰勒法"
+      },
       "mapsUrl": ""
     },
     {
       "id": "quarry",
-      "type": "Stone crushing plant (aggregate production)",
-      "locality": "Oued Seddeur",
+      "type": "Quarry and stone crushing plant (aggregate production)",
+      "locality": "Aïn El Ibel",
       "region": "Djelfa",
-      "note": "outside Djelfa, about 25 km south of the city",
-      "names": { "fr": "Oued Seddeur", "ar": "واد الصدر", "zh": "瓦德塞杜尔" },
-      "mapsUrl": ""
+      "note": "quarry at Oued Sdeur, Aïn El Ibel, south of Djelfa",
+      "names": {
+        "en": "Oued Sdeur, Aïn El Ibel",
+        "fr": "Oued Sdeur, Aïn El Ibel",
+        "ar": "واد السدر، عين الإبل",
+        "zh": "艾因伊贝勒（Oued Sdeur）"
+      },
+      "mapsUrl": "",
+      "name": "Carrière Djellal El Gharbi",
+      "street": "Carrière Djellal El Gharbi, Oued Sdeur",
+      "phones": [
+        "+213 660 36 75 50",
+        "+213 660 36 75 51"
+      ],
+      "fax": "+213 27 90 46 13"
     },
     {
       "id": "parts",
       "type": "Spare parts store and depot (EURL KAYLE KENNY)",
       "locality": "Mohammadia, Algiers",
       "region": "Algiers",
-      "names": { "fr": "Mohammadia, Alger", "ar": "المحمدية، الجزائر العاصمة", "zh": "阿尔及尔穆罕默迪亚" },
+      "names": {
+        "fr": "Mohammadia, Alger",
+        "ar": "المحمدية، الجزائر العاصمة",
+        "zh": "阿尔及尔穆罕默迪亚"
+      },
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=El+Djenina+200+Logts+Lido+Mohammadia+Alger"
     }
   ],
-
   "registry": {
-    "rc": "",
-    "nif": "",
-    "nis": "",
-    "ai": ""
+    "rc": "47/00-0862220 B 98",
+    "nif": "099747100152525",
+    "nis": "099347100156231",
+    "ai": "47100604430"
   },
-
-  "foundedYear": null,
-
+  "foundedYear": 1997,
   "fleet": {
     "crushingPlants": null,
     "semiTrailerTrucks": null,
@@ -77,27 +107,21 @@
     "drillingRigs": null
   },
   "crushingCapacityTonnesPerHour": null,
-
   "spokenLanguages": [],
-
   "regions": [],
   "projects": [],
   "certifications": [],
-
   "social": {
     "linkedin": "",
     "facebook": "",
     "googleBusinessProfile": ""
   },
-
   "verification": {
     "google": "",
     "bing": "",
     "baidu": ""
   },
-
   "photos": {},
-
   "group": [
     {
       "name": "EURL KAYLE KENNY",

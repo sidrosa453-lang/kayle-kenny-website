@@ -371,7 +371,9 @@ async function main() {
         const msg = message || page.whatsapp || ui.whatsappMessage.replaceAll('{{page}}', page.nav || '');
         return `https://wa.me/${c.whatsapp}?text=${encodeURIComponent(msg)}`;
       },
-      telUrl: () => `tel:${String(c.phone).replace(/[^+\d]/g, '')}`,
+      telUrl: (n = c.phone) => `tel:${String(n).replace(/[^+\d]/g, '')}`,
+      // Secondary lines (office / quarry phones, fax) from site.config.json; rendered only when present.
+      extraPhones: () => (Array.isArray(c.phones) ? c.phones : []).filter(Boolean),
       mailUrl: () => (c.email ? `mailto:${c.email}` : null),
       pdf() {
         const rel = pdfFor[lang] || pdfFor[DEF];
@@ -401,7 +403,7 @@ async function main() {
         return raw(`<div class="${esc(cls)}${src ? '' : ' is-placeholder'}">${src ? inlineSvg(src, ctx.uid('i'), 'illus-svg') : placeholderSvg('illus-svg')}</div>`);
       },
       localize(v) { if (v == null) return ''; if (typeof v === 'string' || typeof v === 'number') return String(v); return v[lang] || v[DEF] || ''; },
-      locName: (l) => (lang === DEF ? l.locality : l.names?.[lang] || l.locality),
+      locName: (l) => l.names?.[lang] || l.locality,
       regionName(l) {
         const r = l.region || '';
         if (ui.locations.regionNames?.[r]) return ui.locations.regionNames[r];
@@ -411,8 +413,12 @@ async function main() {
       },
       addressLine(l) {
         const parts = [];
-        if (l.id === 'hq' && c.address?.street) parts.push(c.address.street);
-        if (l.id === 'hq' && c.address?.postalCode) parts.push(`${c.address.postalCode} ${ctx.locName(l)}`); else parts.push(ctx.locName(l));
+        const street = l.id === 'hq' ? c.address?.street || l.street : l.street;
+        if (street) parts.push(street);
+        let place = ctx.locName(l);
+        // English names come from the locality alone: add the wilaya (e.g. "Bounoura, Ghardaïa").
+        if (lang === DEF && l.region && !place.includes(l.region)) place += `${ctx.P.comma}${l.region}`;
+        if (l.id === 'hq' && c.address?.postalCode) parts.push(`${c.address.postalCode} ${place}`); else parts.push(place);
         // Chinese addresses run from the largest unit to the smallest: 阿尔及利亚盖尔达耶.
         if (ui.addressOrder === 'country-first') return [ui.facts.countryValue, ...parts.reverse()].join('');
         parts.push(ui.facts.countryValue);
@@ -433,6 +439,9 @@ async function main() {
         const hq = (site.locations || []).find((l) => l.id === 'hq');
         const reg = site.registry || {};
         const phoneHtml = `<a href="${esc(ctx.telUrl())}" dir="ltr">${esc(c.phone)}</a>`;
+        const extra = ctx.extraPhones();
+        const extraHtml = extra.map((n) => `<a href="${esc(ctx.telUrl(n))}" dir="ltr">${esc(n)}</a>`).join(' / ');
+        const faxHtml = c.fax ? `<span dir="ltr">${esc(c.fax)}</span>` : '';
         const mailHtml = c.email ? `<a href="${esc(ctx.mailUrl())}">${esc(c.email)}</a>` : '';
         if (variant === 'legal') {
           add(F.publisher, site.companyName);
@@ -441,6 +450,8 @@ async function main() {
           add(F.founded, site.foundedYear ? String(site.foundedYear) : '');
           add(F.rc, reg.rc); add(F.nif, reg.nif); add(F.nis, reg.nis); add(F.ai, reg.ai);
           add(F.phone, c.phone, phoneHtml);
+          if (extra.length) add(F.phones, extra.join(' / '), extraHtml);
+          add(F.fax, c.fax, faxHtml);
           add(F.email, c.email, mailHtml);
           add(F.website, site.siteUrl.replace(/^https?:\/\//, ''));
           return rows;
@@ -459,6 +470,8 @@ async function main() {
         add(F.founded, site.foundedYear ? String(site.foundedYear) : '');
         const fleetRows = Object.entries(site.fleet || {}).filter(([k, v]) => Number.isFinite(v) && v > 0 && ui.fleetLabels[k]);
         if (fleetRows.length) add(F.fleet, fleetRows.map(([k, v]) => `${ui.fleetLabels[k]}${ctx.P.colon}${v}`).join(ctx.P.list));
+        // Discretion rule (BRIEF.md): equipment categories only, never counts or brands.
+        else add(F.fleet, F.fleetValue);
         if (site.crushingCapacityTonnesPerHour) add(F.capacity, `${site.crushingCapacityTonnesPerHour} ${F.capacityUnit}`);
         const certs = (site.certifications || []).map((x) => (typeof x === 'string' ? x : x?.name)).filter(Boolean);
         if (certs.length) add(F.certifications, certs.join(ctx.P.comma));
@@ -468,6 +481,8 @@ async function main() {
         if (spoken.length) add(F.languages, spoken.join(ctx.P.enum) + (ui.facts.languagesNote ? ` ${ui.facts.languagesNote}` : ''));
         add(F.group, F.groupValue);
         add(F.phone, c.phone, phoneHtml);
+        if (extra.length) add(F.phones, extra.join(' / '), extraHtml);
+        add(F.fax, c.fax, faxHtml);
         add(F.email, c.email, mailHtml);
         add(F.website, site.siteUrl.replace(/^https?:\/\//, ''));
         return rows;
@@ -599,12 +614,16 @@ async function main() {
   const linkLine = (id) => `- [${en.pages[id].nav}](${abs(id, DEF)}): ${plain(en.pages[id].summary || en.pages[id].description)}`;
   const llms = [
     `# ${site.companyName}`, '',
-    `> ${summary} Registered office in Ghardaïa, equipment depot in Djelfa, stone crushing plant at Oued Seddeur (about 25 km south of Djelfa); group spare-parts company EURL KAYLE KENNY in Mohammadia, Algiers.`, '',
+    `> ${summary} Established in ${site.foundedYear || '1997'}. Registered office in Bounoura, wilaya of Ghardaïa; equipment depot in Djelfa; own quarry and stone crushing plant (Carrière Djellal El Gharbi) at Oued Sdeur, near Aïn El Ibel, south of Djelfa; group spare-parts company EURL KAYLE KENNY in Mohammadia, Algiers.`, '',
     'This file summarises verified facts about SARL ETAHG for AI assistants and search engines. The acronym "ETAHG" is the company name and is not expanded.', '',
     '## Key facts', '',
     ...facts.filter((r) => ![en.ui.facts.registeredOffice, en.ui.facts.operations, en.ui.facts.group].includes(r.label)).map((r) => `- ${r.label}: ${r.value}`),
     `- WhatsApp: https://wa.me/${site.contact.whatsapp}`,
-    ...(site.locations || []).map((l) => `- ${en.ui.locations.types[l.id] || l.type}: ${l.locality} (wilaya of ${l.region})${l.note ? `, ${l.note}` : ''}`),
+    ...(site.locations || []).map((l) => {
+      const street = l.id === 'hq' ? site.contact.address?.street || l.street : l.street;
+      const tel = [...(l.phones || []).map((n) => `tel. ${n}`), ...(l.fax ? [`fax ${l.fax}`] : [])].join(', ');
+      return `- ${en.ui.locations.types[l.id] || l.type}: ${street ? `${street}, ` : ''}${l.locality} (wilaya of ${l.region})${l.id === 'quarry' ? ', south of Djelfa' : ''}${tel ? `; ${tel}` : ''}`;
+    }),
     '- Group company: EURL KAYLE KENNY (https://www.kaylekenny.com), heavy-duty diesel engine spare parts, Cummins-compatible; independent supplier, not affiliated with or endorsed by Cummins Inc.',
     '',
     '## Services', '', ...['services', ...SERVICE_PAGES].filter((i) => hasPage(i, DEF)).map(linkLine), '',
@@ -632,6 +651,8 @@ async function main() {
   const a = site.contact.address || {};
   const vc = ['BEGIN:VCARD', 'VERSION:3.0', `FN:${site.companyName}`, `ORG:${site.companyName}`, 'N:;;;;',
     `TEL;TYPE=WORK,VOICE:${String(site.contact.phone).replace(/[^+\d]/g, '')}`,
+    ...(site.contact.phones || []).filter(Boolean).map((n) => `TEL;TYPE=WORK,VOICE:${String(n).replace(/[^+\d]/g, '')}`),
+    site.contact.fax && `TEL;TYPE=WORK,FAX:${String(site.contact.fax).replace(/[^+\d]/g, '')}`,
     site.contact.email && `EMAIL;TYPE=WORK:${site.contact.email}`,
     `ADR;TYPE=WORK:;;${a.street || ''};${a.locality || ''};${a.region || ''};${a.postalCode || ''};Algeria`,
     `URL:${site.siteUrl}/`,
