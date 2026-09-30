@@ -120,7 +120,7 @@ export default {
       details: {
         hq: 'Lieu d’immatriculation de SARL ETAHG. Ghardaïa se situe dans la vallée du M’zab, au nord du Sahara algérien.',
         depot: 'Base du parc d’engins, sur les Hauts Plateaux et sur la RN1, le grand axe nord-sud entre Alger et le Sahara.',
-        quarry: 'Site de production de granulats fins aux abords de Djelfa, à environ 25 km au sud de la ville.',
+        quarry: 'Site de production de granulats fins aux abords de Djelfa, à environ 25 km au sud de la ville.',
         parts: 'EURL KAYLE KENNY, la société de pièces de rechange du groupe, avec un stock à Alger.',
       },
       wilaya: '{{region}}',
@@ -201,7 +201,7 @@ export default {
           points: [
             'Siège social à Ghardaïa, au nord du Sahara',
             'Parc matériel à Djelfa, sur l’axe nord-sud de la RN1',
-            'Station de concassage à Oued Seddeur, à environ 25 km au sud de Djelfa',
+            'Station de concassage à Oued Seddeur, à environ 25 km au sud de Djelfa',
           ],
           ctas: [
             { label: 'Devenir partenaire', page: 'partners', variant: 'primary' },
@@ -225,7 +225,7 @@ export default {
           label: 'Entreprise',
           title: 'Un partenaire de travaux publics entre le nord et le sud de l’Algérie',
           paragraphs: [
-            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien dont le siège social est à **Ghardaïa**, dans la vallée du M’zab, au nord du Sahara. Ses engins sont basés à **Djelfa**, sur les Hauts Plateaux et sur la RN1, le grand axe nord-sud qui relie Alger au Sahara. Sa station de concassage se trouve à **Oued Seddeur**, à environ 25 km au sud de Djelfa, et sa société de pièces de rechange, EURL KAYLE KENNY, est implantée à Alger.',
+            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien dont le siège social est à **Ghardaïa**, dans la vallée du M’zab, au nord du Sahara. Ses engins sont basés à **Djelfa**, sur les Hauts Plateaux et sur la RN1, le grand axe nord-sud qui relie Alger au Sahara. Sa station de concassage se trouve à **Oued Seddeur**, à environ 25 km au sud de Djelfa, et sa société de pièces de rechange, EURL KAYLE KENNY, est implantée à Alger.',
             'Le parc de l’entreprise (semi-remorques, camions, bulldozers, pelles hydrauliques et finisseurs) a été constitué principalement pour construire des routes, et ETAHG a réalisé des projets routiers dans de nombreuses régions d’Algérie. Ces chantiers ont donné à nos équipes une connaissance concrète des terrains du pays et de ce qu’il faut pour que les engins y restent productifs. Aujourd’hui, ce parc, cette production de granulats et cette expérience du chantier sont proposés aux maîtres d’ouvrage et aux entreprises sous forme de fourniture, de location courte ou longue durée et de sous-traitance.',
           ],
           ctas: [{ label: 'Découvrir l’entreprise', page: 'about', variant: 'secondary' }],
@@ -431,7 +431,7 @@ export default {
           size: 'page',
           eyebrow: 'Production de granulats',
           title: 'Sable concassé et granulats fins pour les grands chantiers en Algérie',
-          lead: '{{company}} produit des granulats fins concassés de qualité, appelés aussi sable de concassage ou sable manufacturé, dans sa station de concassage d’Oued Seddeur, à environ 25 km au sud de Djelfa. Les concasseurs et broyeurs de la station sont particulièrement adaptés aux projets qui exigent de fortes cadences de production : programmes routiers, production de béton et grands chantiers d’infrastructure.',
+          lead: '{{company}} produit des granulats fins concassés de qualité, appelés aussi sable de concassage ou sable manufacturé, dans sa station de concassage d’Oued Seddeur, à environ 25 km au sud de Djelfa. Les concasseurs et broyeurs de la station sont particulièrement adaptés aux projets qui exigent de fortes cadences de production : programmes routiers, production de béton et grands chantiers d’infrastructure.',
           ctas: [
             { label: 'Demander une fourniture', kind: 'whatsapp', variant: 'primary' },
             { label: 'Nous contacter', page: 'contact', variant: 'secondary' },
@@ -495,11 +495,11 @@ export default {
         {
           type: 'pillars',
           label: 'Atouts',
-          title: 'Conçue pour les fortes cadences',
+          title: 'Une production dimensionnée pour les fortes cadences',
           stats: true,
           items: [
             { title: 'Un débit pour les grands projets', text: 'Concasseurs et broyeurs adaptés aux projets qui demandent de gros volumes journaliers de granulats fins.' },
-            { title: 'Sur le grand axe', text: 'Oued Seddeur se trouve à environ 25 km au sud de Djelfa, ville située sur l’axe nord-sud de la RN1 : les matériaux peuvent être acheminés vers les chantiers du nord comme du sud.' },
+            { title: 'Sur le grand axe', text: 'Oued Seddeur se trouve à environ 25 km au sud de Djelfa, ville située sur l’axe nord-sud de la RN1 : les matériaux peuvent être acheminés vers les chantiers du nord comme du sud.' },
             { title: 'Transport en propre', text: 'Nos camions et semi-remorques peuvent livrer sur chantier : production et transport sont planifiés ensemble.' },
             { title: 'Fourniture et travaux réunis', text: 'La même entreprise peut fournir granulats, engins de terrassement et mise en œuvre des enrobés, ce qui simplifie la coordination.' },
           ],
@@ -545,7 +545,7 @@ export default {
           label: 'FAQ',
           title: 'Questions sur la fourniture de granulats',
           items: [
-            { id: 'agg-where', q: 'Où se trouve la station de concassage de SARL ETAHG ?', a: 'La station de concassage de SARL ETAHG se trouve à Oued Seddeur, aux abords de Djelfa, à environ 25 km au sud de la ville, dans la wilaya de Djelfa. Djelfa est située sur la RN1, le grand axe nord-sud entre Alger et le Sahara.' },
+            { id: 'agg-where', q: 'Où se trouve la station de concassage de SARL ETAHG ?', a: 'La station de concassage de SARL ETAHG se trouve à Oued Seddeur, aux abords de Djelfa, à environ 25 km au sud de la ville, dans la wilaya de Djelfa. Djelfa est située sur la RN1, le grand axe nord-sud entre Alger et le Sahara.' },
             { id: 'agg-volume', q: 'ETAHG peut-elle fournir de gros volumes de granulats fins ?', a: 'Oui. Les concasseurs et broyeurs de SARL ETAHG sont particulièrement adaptés aux projets qui exigent de fortes cadences de production. Les volumes, les fractions et les plannings de livraison sont fixés pour chaque projet dans une offre écrite.' },
             { id: 'agg-what', q: 'Qu’est-ce que le sable concassé (sable manufacturé) ?', a: 'Le sable concassé, ou sable manufacturé, est un granulat fin obtenu par concassage de roche plutôt que par extraction dans les oueds ou les dunes ; c’est ce que produit SARL ETAHG dans sa station d’Oued Seddeur, près de Djelfa. Ses grains anguleux et sa granulométrie maîtrisée le rendent adapté aux bétons, aux enrobés et aux couches de chaussée, seul ou en mélange avec du sable naturel.' },
             { id: 'agg-uses', q: 'Les granulats fins d’ETAHG conviennent-ils au béton et aux enrobés ?', a: 'Les granulats fins de qualité produits par SARL ETAHG sont destinés aux bétons, aux éléments préfabriqués, aux enrobés bitumineux et aux couches de chaussée. L’aptitude à une formulation donnée est vérifiée par rapport au cahier des charges du projet avant le début des livraisons.' },
@@ -1468,7 +1468,7 @@ export default {
           label: 'Profil',
           title: 'Présentation de l’entreprise',
           paragraphs: [
-            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien, dont le siège social est à Ghardaïa. Son parc matériel est à Djelfa, et sa station de concassage, qui produit des granulats fins de qualité, se trouve à Oued Seddeur, à environ 25 km au sud de Djelfa. Le nom court ETAHG est utilisé dans toutes les langues.',
+            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien, dont le siège social est à Ghardaïa. Son parc matériel est à Djelfa, et sa station de concassage, qui produit des granulats fins de qualité, se trouve à Oued Seddeur, à environ 25 km au sud de Djelfa. Le nom court ETAHG est utilisé dans toutes les langues.',
             'L’entreprise a constitué son parc de semi-remorques, camions, bulldozers, pelles hydrauliques et finisseurs pour construire des routes, et a réalisé des projets routiers dans de nombreuses régions d’Algérie. Elle a depuis ouvert ce parc à d’autres entreprises en location courte et longue durée, propose le démarrage de nouveaux projets avec ses engins et exploite des ateliers de forage de puits d’eau.',
             'Le groupe comprend également EURL KAYLE KENNY, société de pièces de rechange pour engins lourds disposant d’un magasin et d’un dépôt de pièces à Mohammadia, à Alger.',
           ],
@@ -1492,7 +1492,7 @@ export default {
           label: 'Implantations',
           title: 'Pourquoi nos implantations comptent',
           paragraphs: [
-            '**Ghardaïa**, où l’entreprise a son siège, se situe dans la vallée du M’zab, au nord du Sahara, porte d’entrée du Sud du pays. **Djelfa**, où se trouve notre parc matériel, est sur les Hauts Plateaux, à la transition entre la steppe et le Sahara, sur la RN1, le grand axe nord-sud qui relie Alger au Sahara. Notre station de concassage d’**Oued Seddeur**, à environ 25 km au sud de Djelfa, produit des granulats fins dans la même région. Notre société de groupe EURL KAYLE KENNY fournit les pièces de rechange depuis **Alger**.',
+            '**Ghardaïa**, où l’entreprise a son siège, se situe dans la vallée du M’zab, au nord du Sahara, porte d’entrée du Sud du pays. **Djelfa**, où se trouve notre parc matériel, est sur les Hauts Plateaux, à la transition entre la steppe et le Sahara, sur la RN1, le grand axe nord-sud qui relie Alger au Sahara. Notre station de concassage d’**Oued Seddeur**, à environ 25 km au sud de Djelfa, produit des granulats fins dans la même région. Notre société de groupe EURL KAYLE KENNY fournit les pièces de rechange depuis **Alger**.',
             'Pour un partenaire, cette implantation signifie un parc basé sur le principal corridor nord-sud du pays, une production de granulats sur les Hauts Plateaux et un approvisionnement en pièces depuis la capitale : une position entre le nord et le Sud saharien.',
           ],
           illustration: 'semi-truck',
@@ -1561,7 +1561,7 @@ export default {
           items: [
             { id: 'what-is-etahg', q: 'Qui est SARL ETAHG ?', a: 'SARL ETAHG est une entreprise algérienne spécialisée dans la production de granulats fins, les travaux routiers, la location courte et longue durée d’engins de travaux publics, le démarrage de chantiers et le forage de puits d’eau. C’est une société à responsabilité limitée (SARL) dont le siège social est à Ghardaïa, avec un parc matériel à Djelfa et une station de concassage à Oued Seddeur, au sud de Djelfa. Son groupe comprend EURL KAYLE KENNY, société de pièces de rechange pour engins lourds implantée à Alger.' },
             { id: 'what-does-etahg-do', q: 'Que fait ETAHG ?', a: 'SARL ETAHG produit des granulats fins, construit des routes, loue ses engins de travaux publics en courte et longue durée, démarre de nouveaux chantiers et fore des puits d’eau en Algérie. Elle s’appuie pour cela sur sa propre station de concassage et sur son propre parc de semi-remorques, camions, bulldozers, pelles hydrauliques, finisseurs et ateliers de forage, tandis que sa société de groupe EURL KAYLE KENNY fournit des pièces de rechange pour engins lourds.' },
-            { id: 'where', q: 'Où se trouve SARL ETAHG ?', a: 'SARL ETAHG a son siège social à Ghardaïa, en Algérie, et son parc matériel à Djelfa, sur les Hauts Plateaux. Sa station de concassage se trouve à Oued Seddeur, à environ 25 km au sud de Djelfa, et sa société de groupe EURL KAYLE KENNY dispose d’un magasin et d’un dépôt de pièces à Mohammadia, à Alger. Djelfa est située sur la RN1, le grand axe nord-sud entre Alger et le Sahara.' },
+            { id: 'where', q: 'Où se trouve SARL ETAHG ?', a: 'SARL ETAHG a son siège social à Ghardaïa, en Algérie, et son parc matériel à Djelfa, sur les Hauts Plateaux. Sa station de concassage se trouve à Oued Seddeur, à environ 25 km au sud de Djelfa, et sa société de groupe EURL KAYLE KENNY dispose d’un magasin et d’un dépôt de pièces à Mohammadia, à Alger. Djelfa est située sur la RN1, le grand axe nord-sud entre Alger et le Sahara.' },
             { id: 'legal-form', q: 'Quelle est la forme juridique de SARL ETAHG ?', a: 'SARL ETAHG est une société à responsabilité limitée (SARL) de droit algérien. Ses références au registre du commerce et ses identifiants fiscaux sont communiqués sur demande et seront publiés dans les mentions légales dès leur confirmation.' },
             { id: 'name', q: 'Comment s’écrit le nom de l’entreprise ?', a: 'La raison sociale de l’entreprise est SARL ETAHG, SARL désignant la forme juridique. Le nom court ETAHG s’écrit en capitales latines dans toutes les langues, y compris en arabe et en chinois.' },
             { id: 'kayle-kenny-link', q: 'Quel est le lien entre ETAHG et Kayle Kenny ?', a: 'EURL KAYLE KENNY fait partie du portefeuille de SARL ETAHG ; c’est la société de pièces de rechange du groupe pour les engins lourds, avec un magasin et un dépôt de pièces à Mohammadia, à Alger. Elle fournit des pièces pour moteurs diesel, dont des pièces compatibles Cummins, en tant que fournisseur indépendant, non affilié à Cummins Inc. ni agréé par celle-ci. Pour les partenaires d’ETAHG, c’est une source de pièces au sein du groupe qui contribue à la disponibilité du parc.' },
@@ -1691,7 +1691,7 @@ export default {
           type: 'prose',
           title: 'Qui sommes-nous',
           paragraphs: [
-            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien, dont le siège social est à Ghardaïa, avec un parc matériel à Djelfa et une station de concassage à Oued Seddeur, à environ 25 km au sud de Djelfa. Son parc a été constitué pour construire des routes, et l’entreprise a réalisé des projets routiers dans de nombreuses régions d’Algérie. Elle fournit aujourd’hui aussi des granulats fins de qualité, loue ses engins en courte et longue durée, démarre de nouveaux projets avec ses engins et fore des puits d’eau.',
+            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien, dont le siège social est à Ghardaïa, avec un parc matériel à Djelfa et une station de concassage à Oued Seddeur, à environ 25 km au sud de Djelfa. Son parc a été constitué pour construire des routes, et l’entreprise a réalisé des projets routiers dans de nombreuses régions d’Algérie. Elle fournit aujourd’hui aussi des granulats fins de qualité, loue ses engins en courte et longue durée, démarre de nouveaux projets avec ses engins et fore des puits d’eau.',
           ],
         },
         {

@@ -33,7 +33,8 @@ Algeria. Secondary audience: Algerian public and private project owners.
   Sahara (M'zab valley); Djelfa is on the High Plateaus, at the transition between
   the steppe and the Sahara, on the main north–south axis (RN1) linking Algiers to
   the Sahara. This positions ETAHG between the north and the south of the country.
-- **Contact:** phone/WhatsApp +213 558 96 10 49 (group number, confirmed by the owner).
+- **Contact:** phone/WhatsApp +213 558 96 10 49 (group number, confirmed by the owner);
+  email **amar@etahg.com** (company mailbox on the etahg.com domain, confirmed by the owner).
 - **Domain:** www.etahg.com (being registered by the owner).
 - **Languages of the website:** English (default), French, Arabic, and **Simplified
   Chinese** — the foreign company the owner is approaching is Chinese.
@@ -77,7 +78,7 @@ Algeria. Secondary audience: Algerian public and private project owners.
 
 ## Fields still to be supplied by the owner (see `site.config.json`)
 
-Email, full street addresses + map links, registry numbers (RC, NIF, NIS, AI),
+Full street addresses + map links, registry numbers (RC, NIF, NIS, AI),
 founding year, fleet counts, crushing capacity, regions/wilayas where roads were
 built, project list, certifications, social links, real photos, confirmed
 Arabic/Chinese spelling of Oued Seddeur.
