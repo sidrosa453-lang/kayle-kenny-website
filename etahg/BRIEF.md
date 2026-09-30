@@ -34,7 +34,7 @@ Algeria. Secondary audience: Algerian public and private project owners.
   the steppe and the Sahara, on the main north–south axis (RN1) linking Algiers to
   the Sahara. This positions ETAHG between the north and the south of the country.
 - **Contact:** phone/WhatsApp +213 558 96 10 49 (group number, confirmed by the owner);
-  email **amar@etahg.com** (company mailbox on the etahg.com domain, confirmed by the owner).
+  email **contact@etahg.com** (company mailbox on the etahg.com domain, confirmed by the owner; do not publish personal aliases).
 - **Domain:** www.etahg.com (being registered by the owner).
 - **Languages of the website:** English (default), French, Arabic, and **Simplified
   Chinese** — the foreign company the owner is approaching is Chinese.

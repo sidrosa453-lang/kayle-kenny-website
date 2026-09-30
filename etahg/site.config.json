@@ -9,7 +9,8 @@
   "contact": {
     "phone": "+213 558 96 10 49",
     "whatsapp": "213558961049",
-    "email": "amar@etahg.com",
+    "email": "contact@etahg.com",
+    "wechat": "",
     "address": {
       "street": "",
       "locality": "Ghardaïa",
@@ -77,13 +78,22 @@
   },
   "crushingCapacityTonnesPerHour": null,
 
+  "spokenLanguages": [],
+
   "regions": [],
   "projects": [],
   "certifications": [],
 
   "social": {
     "linkedin": "",
-    "facebook": ""
+    "facebook": "",
+    "googleBusinessProfile": ""
+  },
+
+  "verification": {
+    "google": "",
+    "bing": "",
+    "baidu": ""
   },
 
   "photos": {},
@@ -94,7 +104,11 @@
       "url": "https://www.kaylekenny.com",
       "activity": "Heavy-duty diesel engine spare parts (Cummins-compatible), stock in Algiers",
       "phone": "+213 558 96 10 49",
-      "locality": "Mohammadia, Algiers"
+      "locality": "Mohammadia, Algiers",
+      "jsonldId": "https://www.kaylekenny.com/#store",
+      "street": "El Djenina 200 Logts Social Participatif, Lido",
+      "addressLocality": "Mohammadia",
+      "addressRegion": "Alger"
     }
   ]
 }
