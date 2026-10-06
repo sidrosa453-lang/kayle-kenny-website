@@ -90,6 +90,9 @@
       'about.title': 'About Kayle Kenny',
       'about.body': 'EURL Kayle Kenny imports and distributes diesel engine parts for trucks, machinery and industrial engines: crankshafts, cylinder heads, injectors, bearings, pistons, gasket sets, pumps and more.',
       'about.cta': "Can't find your reference? Contact us — we check compatibility and order the part for you.",
+      'about.group': 'EURL Kayle Kenny is part of the SARL ETAHG group — aggregates, heavy equipment rental, road construction and water well drilling in Ghardaïa and Djelfa, Algeria.',
+      'about.groupLink': 'Visit etahg.com →',
+      'footer.group': 'Part of the SARL ETAHG group —',
       'footer.disclaimer': 'Independent supplier. Not affiliated with or endorsed by Cummins Inc. All trademarks belong to their respective owners and are used for identification purposes only.',
       'unit.pc': 'pc', 'unit.set': 'set', 'unit.kit': 'kit',
     },
@@ -146,6 +149,9 @@
       'about.title': 'À propos de Kayle Kenny',
       'about.body': 'EURL Kayle Kenny importe et distribue des pièces de moteurs diesel pour camions, engins et moteurs industriels : vilebrequins, culasses, injecteurs, coussinets, pistons, pochettes de joints, pompes et plus encore.',
       'about.cta': 'Vous ne trouvez pas votre référence ? Contactez-nous — nous vérifions la compatibilité et commandons la pièce pour vous.',
+      'about.group': 'EURL Kayle Kenny fait partie du groupe SARL ETAHG — granulats, location d’engins de travaux publics, travaux routiers et forage de puits d’eau à Ghardaïa et Djelfa.',
+      'about.groupLink': 'Découvrir etahg.com →',
+      'footer.group': 'Membre du groupe SARL ETAHG —',
       'footer.disclaimer': "Fournisseur indépendant. Non affilié à Cummins Inc. ni approuvé par elle. Toutes les marques appartiennent à leurs propriétaires respectifs et sont utilisées à des fins d'identification uniquement.",
       'unit.pc': 'pièce', 'unit.set': 'jeu', 'unit.kit': 'kit',
     },
@@ -206,6 +212,9 @@
       'about.title': 'عن Kayle Kenny',
       'about.body': 'تستورد EURL Kayle Kenny وتوزع قطع غيار محركات الديزل للشاحنات والآليات والمحركات الصناعية: أعمدة مرفقية، رؤوس محركات، حاقنات، محامل، مكابس، أطقم حشيات، مضخات وغيرها.',
       'about.cta': 'لم تجد مرجعك؟ اتصل بنا — نتحقق من التوافق ونطلب القطعة لك.',
+      'about.group': 'EURL Kayle Kenny جزء من مجموعة SARL ETAHG — الركام، كراء آليات الأشغال العمومية، إنجاز الطرق وحفر آبار المياه في غرداية والجلفة.',
+      'about.groupLink': 'زوروا etahg.com ←',
+      'footer.group': 'عضو في مجموعة SARL ETAHG —',
       'footer.disclaimer': 'مورّد مستقل. غير تابع لشركة Cummins وغير معتمد منها. جميع العلامات التجارية ملك لأصحابها وتُستخدم للتعريف فقط.',
       'unit.pc': 'قطعة', 'unit.set': 'طقم', 'unit.kit': 'كيت',
     },
@@ -556,6 +565,9 @@
       b.classList.toggle('active', b.dataset.lang === lang);
       b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
     });
+    // Group website in the visitor's language (ETAHG serves en at /, fr at /fr/, ar at /ar/).
+    const groupPath = lang === 'en' ? '' : `${lang}/`;
+    document.querySelectorAll('a.group-link').forEach((a) => { a.href = `https://www.etahg.com/${groupPath}`; });
     renderHintChips();
     renderCategoryChips();
     if (!viewDetail.hidden) route();
