@@ -85,6 +85,8 @@ export function organization(ctx) {
     name: site.companyName,
     legalName: site.companyName,
     alternateName: [site.shortName, site.fullName?.fr, site.fullName?.ar].filter(Boolean),
+    // Separates the company from unrelated organisations sharing the acronym (search engines, AI answers).
+    disambiguatingDescription: 'SARL ETAHG (Entreprise de Travaux d\'Aménagement Hydraulique de Ghardaïa) is an Algerian public-works company established in 1997 in Ghardaïa, Algeria: aggregates, road construction, heavy equipment rental and water well drilling. Not to be confused with unrelated organisations using the acronym ETAHG.',
     url: `${base}/`,
     logo: logo ? { '@type': 'ImageObject', '@id': `${base}/#logo`, url: logo.url, width: logo.size, height: logo.size, caption: site.companyName } : undefined,
     image: ctx.ogImageDefault() ? ctx.ogImageDefault().url : logo ? logo.url : undefined,

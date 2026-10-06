@@ -143,6 +143,7 @@ ${headMeta(ctx)}
 ${Object.entries({ 'google-site-verification': ctx.site.verification?.google, 'msvalidate.01': ctx.site.verification?.bing, 'baidu-site-verification': ctx.site.verification?.baidu }).filter(([, v]) => v).map(([k, v]) => html`<meta name="${k}" content="${v}">
 `)}
 ${ctx.hasFile('favicon.ico') && html`<link rel="icon" href="${ctx.asset('favicon.ico')}" sizes="48x48">`}
+${ctx.hasFile('icon-192.png') && html`<link rel="icon" href="${ctx.asset('icon-192.png')}" type="image/png" sizes="192x192">`}
 <link rel="icon" href="${ctx.asset('favicon.svg')}" type="image/svg+xml">
 ${ctx.hasFile('apple-touch-icon.png') && html`<link rel="apple-touch-icon" href="${ctx.asset('apple-touch-icon.png')}">`}
 <link rel="manifest" href="${ctx.asset('site.webmanifest')}">
