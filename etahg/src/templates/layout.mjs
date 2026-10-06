@@ -1,5 +1,5 @@
 import { html, raw, attrs } from './html.mjs';
-import { icon, whatsappIcon } from './icons.mjs';
+import { icon, whatsappIcon, sprite } from './icons.mjs';
 
 // Screen-reader note for links that open a new tab or an external app (WCAG G201).
 export const newTab = (ctx) => (ctx.ui.openExternal ? html`<span class="sr-only"> ${ctx.ui.openExternal}</span>` : '');
@@ -15,10 +15,13 @@ export function breadcrumbs(ctx) {
       : html`<li><a href="${ctx.href(c.id)}">${c.name}</a></li>`)}</ol></nav>`;
 }
 
+// Brand link: accessible name is computed from its visible text ("ETAHG, Home"); the
+// caption and the mark are decorative, so no aria-label (axe label-content-name-mismatch).
 function brand(ctx) {
-  return html`<a class="brand" href="${ctx.href('home')}" aria-label="${ctx.ui.brandAria || `${ctx.site.companyName}${ctx.P.comma}${ctx.ui.homeLabel}`}">
+  return html`<a class="brand" href="${ctx.href('home')}">
 <span class="brand-mark" aria-hidden="true">${ctx.logoSvg()}</span>
-<span class="brand-text" aria-hidden="true"><span class="brand-word">${ctx.site.shortName}</span><span class="brand-cap">${ctx.ui.logoCaption}</span></span>
+<span class="brand-text"><span class="brand-word">${ctx.site.shortName}</span><span class="brand-cap" aria-hidden="true">${ctx.ui.logoCaption}</span></span>
+<span class="sr-only">${ctx.P.comma}${ctx.ui.homeLabel}</span>
 </a>`;
 }
 
@@ -37,6 +40,7 @@ function langSwitch(ctx, cls = '') {
 function header(ctx) {
   const cur = ctx.pageId;
   const isSvc = cur === 'services' || SERVICE_PAGES.includes(cur);
+  const active = (id) => cur === id || (id === 'insights' && ctx.isArticle) || (id === 'locations' && ctx.isLocation);
   const navItem = (id) => {
     if (!ctx.hasPage(id)) return '';
     if (id === 'services') {
@@ -49,7 +53,7 @@ ${SERVICE_PAGES.filter((s) => ctx.hasPage(s)).map((s) => html`<li><a href="${ctx
 </ul></div>
 </li>`;
     }
-    return html`<li class="nav-item${cur === id ? ' is-active' : ''}"><a class="nav-link" href="${ctx.href(id)}"${attrs({ 'aria-current': cur === id ? 'page' : null })}>${ctx.pageNav(id)}</a></li>`;
+    return html`<li class="nav-item${active(id) ? ' is-active' : ''}"><a class="nav-link" href="${ctx.href(id)}"${attrs({ 'aria-current': cur === id ? 'page' : null })}>${ctx.pageNav(id)}</a></li>`;
   };
   // Mail-first header shortcut where WhatsApp is not usable (ui.headerChannel = 'email', e.g. Chinese pages).
   const mailFirst = ctx.ui.headerChannel === 'email' && ctx.mailUrl();
@@ -129,36 +133,56 @@ ${ctx.hasPage('legal') && html`<a href="${ctx.href('legal')}">${ctx.pageNav('leg
 </footer>`;
 }
 
+// Search-engine verification tags, rendered only when a code is filled in site.config.json.
+function verificationTags(ctx) {
+  const v = ctx.site.verification || {};
+  return Object.entries({ 'google-site-verification': v.google, 'msvalidate.01': v.bing, 'baidu-site-verification': v.baidu, 'yandex-verification': v.yandex })
+    .filter(([, val]) => typeof val === 'string' && val.trim())
+    .map(([k, val]) => html`<meta name="${k}" content="${val.trim()}">
+`);
+}
+
 export function documentShell(ctx, mainHtml) {
   const L = ctx.L;
+  const head = html`${headMeta(ctx)}`; // rendered first so icons used in <head> never matter
+  const bodyHtml = html`${header(ctx)}
+<main id="main" tabindex="-1">
+${mainHtml}
+</main>
+${footer(ctx)}`;
+  const zh = ctx.lang === 'zh';
   return html`<!doctype html>
 <html lang="${L.htmlLang}" dir="${L.dir}" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.className='js'</script>
-${headMeta(ctx)}
+${head}
 <meta name="theme-color" content="#0F1318">
+<meta name="color-scheme" content="light">
 <meta name="format-detection" content="telephone=no">
-${Object.entries({ 'google-site-verification': ctx.site.verification?.google, 'msvalidate.01': ctx.site.verification?.bing, 'baidu-site-verification': ctx.site.verification?.baidu }).filter(([, v]) => v).map(([k, v]) => html`<meta name="${k}" content="${v}">
-`)}
-${ctx.hasFile('favicon.ico') && html`<link rel="icon" href="${ctx.asset('favicon.ico')}" sizes="48x48">`}
-${ctx.hasFile('icon-192.png') && html`<link rel="icon" href="${ctx.asset('icon-192.png')}" type="image/png" sizes="192x192">`}
-<link rel="icon" href="${ctx.asset('favicon.svg')}" type="image/svg+xml">
+${zh && html`<meta name="applicable-device" content="pc,mobile">
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+`}${verificationTags(ctx)}${ctx.hasFile('favicon.ico') && html`<link rel="icon" href="${ctx.asset('favicon.ico')}" sizes="48x48">
+`}${ctx.hasFile('favicon-96.png') && html`<link rel="icon" href="${ctx.asset('favicon-96.png')}" type="image/png" sizes="96x96">
+`}${ctx.hasFile('icon-192.png') && html`<link rel="icon" href="${ctx.asset('icon-192.png')}" type="image/png" sizes="192x192">
+`}<link rel="icon" href="${ctx.asset('favicon.svg')}" type="image/svg+xml">
 ${ctx.hasFile('apple-touch-icon.png') && html`<link rel="apple-touch-icon" href="${ctx.asset('apple-touch-icon.png')}">`}
 <link rel="manifest" href="${ctx.asset('site.webmanifest')}">
 ${ctx.fontPreloads().map((f) => html`<link rel="preload" href="${f}" as="font" type="font/woff2" crossorigin>
-`)}<link rel="stylesheet" href="${ctx.asset(ctx.cssFile)}">
+`)}${ctx.lcpPreload && html`<link rel="preload" href="${ctx.asset(ctx.lcpPreload)}" as="image" type="image/svg+xml" fetchpriority="high">
+`}<style>${raw(ctx.criticalCss())}</style>
+<link rel="stylesheet" href="${ctx.asset(ctx.cssFile)}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="${ctx.asset(ctx.cssFile)}"></noscript>
 <script src="${ctx.asset(ctx.jsFile)}" defer></script>
 ${jsonLd(ctx)}
 </head>
 <body class="${`lang-${ctx.lang} page-${ctx.pageId}${ctx.page.layout ? ' layout-' + ctx.page.layout : ''}`}">
 <a class="skip-link" href="#main">${ctx.ui.skip}</a>
-${header(ctx)}
-<main id="main" tabindex="-1">
-${mainHtml}
-</main>
-${footer(ctx)}
+<div class="scroll-sentinel" aria-hidden="true"></div>
+${bodyHtml}
+${sprite()}
 </body>
 </html>
 `;

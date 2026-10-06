@@ -63,14 +63,18 @@ function postal(a, country = 'DZ') {
 // Localized text lives on the per-page WebPage / Service / FAQPage nodes.
 const LANG_NAMES_EN = { ar: 'Arabic', fr: 'French', en: 'English', zh: 'Chinese' };
 
+export const geoNode = (g) => (g && Number.isFinite(g.lat) && Number.isFinite(g.lng) ? { '@type': 'GeoCoordinates', latitude: g.lat, longitude: g.lng } : undefined);
+
 export function organization(ctx) {
   const { site } = ctx;
   const D = ctx.def; // default-language view
   const c = site.contact || {};
   const base = site.siteUrl;
   const locs = site.locations || [];
-  const nonHq = locs.filter((l) => l.id === 'depot' || l.id === 'quarry');
+  // Operating places of the company itself (the group company is a subOrganization).
+  const own = locs.filter((l) => ['hq', 'depot', 'quarry'].includes(l.id));
   const types = D.ui.locations.types;
+  const typesL = ctx.ui.locations.types;
   const reg = site.registry || {};
   const idents = [['RC', reg.rc], ['NIF', reg.nif], ['NIS', reg.nis], ['AI', reg.ai]]
     .filter(([, v]) => v)
@@ -78,7 +82,9 @@ export function organization(ctx) {
   const social = Object.values(site.social || {}).filter((v) => typeof v === 'string' && /^https?:/.test(v));
   const kk = (site.group || [])[0];
   const logo = ctx.logoPng();
+  // Languages: the owner's confirmed working languages, else the four languages of the website.
   const spoken = (site.spokenLanguages || []).filter(Boolean);
+  const langs = spoken.length ? spoken : ctx.languagesPresent;
   return {
     '@type': ['Organization', 'GeneralContractor'],
     '@id': `${base}/#organization`,
@@ -90,23 +96,25 @@ export function organization(ctx) {
     url: `${base}/`,
     logo: logo ? { '@type': 'ImageObject', '@id': `${base}/#logo`, url: logo.url, width: logo.size, height: logo.size, caption: site.companyName } : undefined,
     image: ctx.ogImageDefault() ? ctx.ogImageDefault().url : logo ? logo.url : undefined,
-    description: plain(D.ui.footer.tagline),
+    // The entity statement, in the language of the page (same sentence in every language).
+    description: plain(ctx.ui.footer.tagline),
     telephone: c.phone,
     email: c.email || undefined,
     address: postal(c.address || {}),
     faxNumber: c.fax || undefined,
-    location: nonHq.map((l) => ({
+    location: own.map((l) => ({
       '@type': 'Place',
-      name: l.name ? `${l.name} (${types[l.id] || l.type}), ${l.locality}` : `${types[l.id] || l.type}, ${l.locality}`,
-      address: postal({ street: l.street, locality: l.locality, region: l.region }),
-      telephone: (l.phones || [])[0] || undefined,
-      faxNumber: l.fax || undefined,
-      hasMap: l.mapsUrl || undefined,
+      '@id': `${base}/#place-${l.id}`,
+      name: l.name ? `${l.name} (${typesL[l.id] || types[l.id] || l.type}), ${ctx.locName(l)}` : `${typesL[l.id] || types[l.id] || l.type}, ${ctx.locName(l)}`,
+      address: postal(l.id === 'hq' ? (c.address || {}) : { street: l.street, locality: l.locality, region: l.region }),
+      telephone: (l.phones || [])[0] || (l.id === 'hq' ? c.phone : undefined),
+      faxNumber: l.fax || (l.id === 'hq' ? c.fax : undefined) || undefined,
+      geo: geoNode(l.geo),
+      hasMap: l.mapsUrl || (l.id === 'hq' ? c.mapsUrl : undefined) || undefined,
     })),
     hasMap: c.mapsUrl || undefined,
     areaServed: { '@type': 'Country', name: 'Algeria', identifier: 'DZ' },
-    // Working languages only once confirmed by the owner (site.config.json spokenLanguages).
-    knowsLanguage: spoken.length ? spoken : undefined,
+    knowsLanguage: langs,
     knowsAbout: [
       'Fine aggregate production', 'Quarrying', 'Stone crushing', 'Crushed sand', 'Road construction',
       'Asphalt paving', 'Bitumen spraying', 'Earthworks',
@@ -115,7 +123,7 @@ export function organization(ctx) {
     ],
     contactPoint: [{
       '@type': 'ContactPoint', telephone: c.phone, email: c.email || undefined, contactType: 'sales',
-      areaServed: 'DZ', availableLanguage: spoken.length ? spoken.map((l) => LANG_NAMES_EN[l] || l) : undefined,
+      areaServed: 'DZ', availableLanguage: langs.map((l) => LANG_NAMES_EN[l] || l),
     }, ...(Array.isArray(c.phones) ? c.phones : []).filter(Boolean).map((n) => ({
       '@type': 'ContactPoint', telephone: n, faxNumber: c.fax || undefined, contactType: 'customer service', areaServed: 'DZ',
     }))],
@@ -163,7 +171,7 @@ export function jsonLd(ctx) {
   });
   const crumbs = ctx.crumbTrail();
   const webPage = {
-    '@type': pageId === 'faq' ? ['WebPage', 'FAQPage'] : pageId === 'about' || pageId === 'profile' ? ['WebPage', 'AboutPage'] : pageId === 'contact' ? ['WebPage', 'ContactPage'] : 'WebPage',
+    '@type': pageId === 'faq' ? ['WebPage', 'FAQPage'] : pageId === 'about' || pageId === 'profile' ? ['WebPage', 'AboutPage'] : pageId === 'contact' ? ['WebPage', 'ContactPage'] : pageId === 'insights' || pageId === 'locations' ? ['WebPage', 'CollectionPage'] : 'WebPage',
     '@id': `${url}#webpage`,
     url,
     name: page.title,
@@ -173,9 +181,58 @@ export function jsonLd(ctx) {
     about: { '@id': `${base}/#organization` },
     primaryImageOfPage: ctx.ogImage() ? { '@type': 'ImageObject', url: ctx.ogImage().url } : undefined,
     breadcrumb: crumbs.length > 1 ? { '@id': `${url}#breadcrumb` } : undefined,
+    datePublished: ctx.isArticle ? page.datePublished : undefined,
     dateModified: ctx.dateModified || ctx.buildDate,
   };
   graph.push(webPage);
+  if (ctx.isArticle) {
+    const img = ctx.ogImage();
+    const serviceAbout = page.service && ctx.hasPage(page.service) ? { '@id': `${ctx.abs(page.service, lang)}#service` } : undefined;
+    graph.push({
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: plain(page.h1 || page.nav).slice(0, 110),
+      description: noBidi(page.description),
+      articleSection: page.eyebrow || undefined,
+      datePublished: page.datePublished,
+      dateModified: page.dateModified || page.datePublished,
+      author: { '@id': `${base}/#organization` },
+      publisher: { '@id': `${base}/#organization` },
+      image: img ? img.url : undefined,
+      inLanguage: ctx.L.hreflang,
+      mainEntityOfPage: { '@id': `${url}#webpage` },
+      isPartOf: { '@id': `${base}/#website` },
+      about: serviceAbout,
+      wordCount: ctx.wordCount(page) || undefined,
+      url,
+    });
+    webPage.mainEntity = { '@id': `${url}#article` };
+  }
+  if (ctx.isLocation) {
+    const l = ctx.location;
+    const c = site.contact || {};
+    const isHq = l.id === 'hq';
+    const types = ctx.ui.locations.types;
+    const node = {
+      '@type': ['LocalBusiness', 'GeneralContractor'],
+      '@id': `${url}#place`,
+      name: `${site.companyName}${ctx.P.comma}${types[l.id] || l.type}${ctx.P.comma}${ctx.locName(l)}`,
+      description: noBidi(page.description),
+      url,
+      image: ctx.ogImage() ? ctx.ogImage().url : undefined,
+      parentOrganization: { '@id': `${base}/#organization` },
+      address: postal(isHq ? (c.address || {}) : { street: l.street, locality: l.locality, region: l.region }),
+      telephone: (l.phones || [])[0] || c.phone,
+      faxNumber: l.fax || (isHq ? c.fax : undefined) || undefined,
+      email: isHq ? c.email || undefined : undefined,
+      geo: geoNode(l.geo),
+      hasMap: l.mapsUrl || (isHq ? c.mapsUrl : undefined) || undefined,
+      areaServed: { '@type': 'Country', name: ctx.ui.facts.countryValue || 'Algeria', identifier: 'DZ' },
+      containedInPlace: { '@type': 'AdministrativeArea', name: ctx.ui.locations.wilaya.replaceAll('{{region}}', ctx.regionName(l)) },
+    };
+    graph.push(node);
+    webPage.about = { '@id': `${url}#place` };
+  }
   if (crumbs.length > 1) {
     graph.push({
       '@type': 'BreadcrumbList',

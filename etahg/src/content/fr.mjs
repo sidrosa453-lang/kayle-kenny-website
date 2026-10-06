@@ -137,6 +137,8 @@ export default {
         parts: 'EURL KAYLE KENNY, la société de pièces de rechange du groupe, avec un stock à Alger.',
       },
       wilaya: '{{region}}',
+      detailsLink: 'Voir ce site',
+      geoLabel: 'GPS',
       // Traductions complètes « Wilaya de … » (élision pour Alger).
       regionNames: {
         Algiers: 'wilaya d’Alger',
@@ -181,6 +183,19 @@ export default {
       year: 'Année',
       client: 'Maître d’ouvrage',
       scope: 'Consistance des travaux',
+    },
+
+    // Articles « Conseils » : signature, sommaire, navigation (dates formatées par langue).
+    article: {
+      by: 'Par',
+      updated: 'Mis à jour le',
+      readingTime: '{{min}} min de lecture',
+      toc: 'Dans cet article',
+      related: 'Services associés',
+      prev: 'Article précédent',
+      next: 'Article suivant',
+      all: 'Tous les conseils',
+      navLabel: 'Autres articles',
     },
 
     notFound: {
@@ -1572,6 +1587,222 @@ export default {
     },
 
     /* ----------------------------------------------------------------------- FAQ */
+    /* ---------------------------------------------------------- IMPLANTATIONS */
+    locations: {
+      slug: 'implantations',
+      nav: 'Implantations',
+      title: 'Implantations à Ghardaïa, Djelfa et Alger | ETAHG',
+      description: 'Où travaille SARL ETAHG : siège social à Bounoura (Ghardaïa), parc matériel à Djelfa, carrière à Oued Sdeur et magasin de pièces du groupe à Alger.',
+      summary: 'Les quatre sites de SARL ETAHG et de son groupe sur l’axe Alger – Djelfa – Ghardaïa, avec une page par base opérationnelle.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Implantations',
+          title: 'Nos sites entre le nord et le sud de l’Algérie',
+          lead: '{{company}} travaille depuis deux bases qui lui sont propres, le siège social de Bounoura (wilaya de Ghardaïa) et le parc matériel de Djelfa, avec sa carrière et sa station de concassage à Oued Sdeur près d’Aïn El Ibel et le magasin de pièces de rechange du groupe à Alger. Les quatre sites se trouvent sur la RN1 ou à proximité, la grande route entre Alger et le Sahara.',
+        },
+        {
+          type: 'locations',
+          label: 'Sites',
+          title: 'Quatre sites le long de l’axe RN1',
+          intro: 'Le parc matériel sur les Hauts Plateaux et le siège dans le nord du Sahara ont chacun leur page : ce qui s’y trouve, les services qui en partent, le terrain alentour et l’accès.',
+        },
+        {
+          type: 'cta',
+          title: 'Quelle base est la plus proche de votre projet ?',
+          text: 'Indiquez-nous où se trouve le chantier. Nous vous dirons depuis quelle base nous mobiliserions et ce que nous pouvons fournir localement.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'loc-djelfa': {
+      slug: 'implantations/djelfa',
+      nav: 'Parc matériel de Djelfa',
+      title: 'Parc matériel de Djelfa, Hauts Plateaux | ETAHG',
+      description: 'Le parc matériel de SARL ETAHG à Djelfa, sur l’axe RN1 : base des engins routiers, location et démarrage de chantiers, près de la carrière d’Oued Sdeur.',
+      summary: 'Le parc matériel de SARL ETAHG à Djelfa : base des engins sur les Hauts Plateaux, point de départ de la location, des mobilisations et des travaux routiers, près de la carrière.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Djelfa, wilaya de Djelfa',
+          title: 'Djelfa : le parc matériel sur l’axe RN1',
+          lead: 'C’est à Djelfa que le parc d’engins de {{company}} est basé et entretenu, et que partent la plupart des mobilisations. La ville se trouve sur les Hauts Plateaux, sur la grande route nord-sud entre Alger et le Sahara, ce qui met les machines à portée des chantiers dans les deux directions.',
+          illustration: 'excavator',
+        },
+        {
+          type: 'place',
+          label: 'Le parc',
+          title: 'Ce qui se trouve au parc de Djelfa',
+          paragraphs: [
+            'Le parc est la base du parc d’engins routiers : pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, finisseur, répandeuse et citernes à bitume, camions et semi-remorques bennes, chariot de foration de carrière et atelier de forage de puits d’eau sur camion. Les machines y sont stationnées, entretenues et préparées au transport entre deux chantiers.',
+            'Le chargement sur semi-remorques, la préparation des convois et la remise des engins loués se font au parc. Les pièces de rechange des moteurs diesel viennent de la société du groupe EURL KAYLE KENNY, à Alger.',
+          ],
+        },
+        {
+          type: 'cards',
+          label: 'Services',
+          title: 'Services assurés depuis Djelfa',
+          intro: 'Tout ce qui nécessite un engin part d’ici. La carrière et la station de concassage d’Oued Sdeur, au sud de la ville, fournissent les granulats.',
+          style: 'compact',
+          items: [
+            { page: 'rental', title: 'Location courte et longue durée', text: 'Pelles, bulldozers, chargeuses, niveleuses, compacteurs, finisseurs, camions et semi-remorques, remis au parc ou livrés sur chantier.' },
+            { page: 'mobilization', title: 'Démarrage de chantier', text: 'Convois d’engins et d’opérateurs pour ouvrir un nouveau site : pistes d’accès, plateformes et premiers terrassements.' },
+            { page: 'roads', title: 'Travaux routiers', text: 'Terrassements, couches de chaussée et enrobés avec le parc complet, en direct ou en sous-traitance.' },
+            { page: 'aggregates', title: 'Granulats fins', text: 'Sable concassé et granulats fins de la station d’Oued Sdeur, transportés par nos propres camions et semi-remorques.' },
+            { page: 'drilling', title: 'Forage de puits d’eau', text: 'L’atelier de forage sur camion est basé au parc et se déplace sur les chantiers des plateaux et du sud.' },
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Terrain',
+          title: 'Les Hauts Plateaux autour de Djelfa',
+          paragraphs: [
+            'Djelfa se trouve sur les Hauts Plateaux, la vaste steppe entre l’Atlas tellien au nord et l’Atlas saharien au sud. Le pays est ouvert, avec de longs alignements droits, des hivers froids, des étés chauds et du vent. Pour les travaux routiers, cela signifie de longs chantiers linéaires, une forte demande en granulats et la nécessité de garder les engins productifs sur la distance ; notre propre carrière au sud de la ville répond directement à la question des granulats.',
+            'L’Atlas saharien tout proche apporte déblais rocheux, remblais et pentes plus fortes, des conditions pour lesquelles le parc a été constitué.',
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Accès',
+          title: 'Accès et logistique',
+          paragraphs: [
+            'Le parc est accessible depuis la RN1, qui relie Alger au nord à Laghouat, Ghardaïa et le Sahara au sud. Les engins partent en semi-remorque le long de cet axe ou à travers les plateaux vers les wilayas voisines. Transport, durée et opérateurs sont convenus pour chaque projet.',
+          ],
+        },
+        {
+          type: 'faq',
+          label: 'FAQ',
+          title: 'Questions sur le parc de Djelfa',
+          items: [
+            { id: 'djelfa-visit', q: 'Peut-on inspecter les engins au parc avant de louer ?', a: 'Oui. Contactez-nous pour organiser une visite ; nous vous montrerons les catégories d’engins adaptées à votre projet et discuterons du transport vers votre chantier.' },
+            { id: 'djelfa-aggregates', q: 'D’où viennent les granulats ?', a: 'De notre propre carrière et station de concassage, la Carrière Djellal El Gharbi à Oued Sdeur près d’Aïn El Ibel, au sud de Djelfa, qui produit des granulats fins pour béton, enrobés et couches de chaussée.' },
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Un projet sur les Hauts Plateaux ou plus au sud ?',
+          text: 'Envoyez-nous le lieu, l’étendue des travaux et les dates. Nous répondrons avec les engins et les matériaux que nous pouvons mobiliser depuis Djelfa.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'loc-ghardaia': {
+      slug: 'implantations/ghardaia',
+      nav: 'Siège social de Ghardaïa',
+      title: 'Siège social de Ghardaïa, Bounoura | ETAHG',
+      description: 'Le siège social de SARL ETAHG à Bounoura, wilaya de Ghardaïa, dans le nord du Sahara : contrats, administration et projets dans le sud du pays.',
+      summary: 'Le siège social de SARL ETAHG à Bounoura, Ghardaïa : là où les contrats sont traités et le point de départ des projets dans le Sahara algérien.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Bounoura, wilaya de Ghardaïa',
+          title: 'Ghardaïa : le siège social dans le nord du Sahara',
+          lead: '{{company}} a été créée à Ghardaïa en 1997 et conserve son siège social à Bounoura, dans la vallée du M’zab. C’est là que l’entreprise est administrée et que ses contrats sont signés, et le point de départ naturel des projets dans le sud du pays.',
+          illustration: 'drill-rig',
+        },
+        {
+          type: 'place',
+          label: 'Le siège',
+          title: 'Ce qui se trouve au siège de Ghardaïa',
+          paragraphs: [
+            'Le siège social traite l’administration de l’entreprise, les contrats, la facturation et les obligations d’une SARL algérienne. Les réunions avec les maîtres d’ouvrage et les partenaires peuvent se tenir ici ou au parc de Djelfa, selon la localisation du projet.',
+            'Ghardaïa ancre aussi l’entreprise dans le sud : d’ici, les engins basés à Djelfa sont envoyés vers le Sahara, et le forage de puits d’eau est organisé pour les chantiers, les exploitations agricoles et les collectivités de la région.',
+          ],
+        },
+        {
+          type: 'cards',
+          label: 'Services',
+          title: 'Services coordonnés depuis Ghardaïa',
+          intro: 'Les engins sont à Djelfa ; le siège organise les projets, en particulier ceux des wilayas sahariennes.',
+          style: 'compact',
+          items: [
+            { page: 'partners', title: 'Partenariat local', text: 'Contrats de sous-traitance, de fourniture et de location avec les entreprises internationales, préparés et signés au siège.' },
+            { page: 'drilling', title: 'Forage de puits d’eau', text: 'Des puits pour les chantiers, l’agriculture et l’industrie dans une région où l’eau est un projet en soi.' },
+            { page: 'mobilization', title: 'Mobilisation vers le sud', text: 'Convois depuis Djelfa par la RN1 vers les chantiers sahariens, le siège étant l’interlocuteur local.' },
+            { page: 'aggregates', title: 'Fourniture de granulats', text: 'Granulats fins de la station d’Oued Sdeur livrés aux projets du sud par nos propres moyens de transport.' },
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Terrain',
+          title: 'Le nord du Sahara autour de Ghardaïa',
+          paragraphs: [
+            'Ghardaïa se trouve dans la vallée du M’zab, dans le nord du Sahara algérien. La région combine plateaux rocheux, oueds et zones sableuses, avec la chaleur, de longues distances et une eau rare. Les travaux doivent y être planifiés en autonomie : carburant, pièces, hébergement et alimentation en eau voyagent avec le chantier, raison pour laquelle le démarrage de chantier et le forage font partie de notre offre.',
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Accès',
+          title: 'Accès et logistique',
+          paragraphs: [
+            'Bounoura fait partie de l’agglomération de Ghardaïa, sur la RN1 au sud de Laghouat et de Djelfa. Les engins rejoignent les chantiers sahariens depuis le parc de Djelfa par la même route. Le siège est l’interlocuteur local pour les projets de la région ; transport et conditions de chantier sont convenus pour chaque projet.',
+          ],
+        },
+        {
+          type: 'faq',
+          label: 'FAQ',
+          title: 'Questions sur le siège de Ghardaïa',
+          items: [
+            { id: 'ghardaia-fleet', q: 'Les engins sont-ils stationnés à Ghardaïa ?', a: 'Non. Le parc est basé à Djelfa ; le bureau de Ghardaïa est le siège social de l’entreprise et coordonne les projets, en particulier dans le sud.' },
+            { id: 'ghardaia-meet', q: 'Peut-on se rencontrer à Ghardaïa ?', a: 'Oui. Contactez-nous pour convenir d’un rendez-vous au siège de Bounoura, au parc de Djelfa ou sur votre chantier.' },
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Un projet dans le Sahara algérien ?',
+          text: 'Dites-nous où et quand. Nous vous dirons ce que nous pouvons fournir, mobiliser ou forer, et depuis quelle base.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    /* --------------------------------------------------------------- CONSEILS */
+    insights: {
+      slug: 'conseils',
+      nav: 'Conseils',
+      title: 'Conseils : granulats, routes et engins en Algérie | ETAHG',
+      description: 'Articles pratiques de SARL ETAHG sur les granulats, les travaux routiers, la location d’engins, le démarrage de chantier et les puits d’eau en Algérie.',
+      summary: 'Articles de SARL ETAHG sur le travail en Algérie : granulats, travaux routiers, location d’engins, mobilisation et forage de puits d’eau.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Conseils',
+          title: 'Savoir-faire pratique pour les projets en Algérie',
+          lead: 'Des articles courts et factuels par ceux qui exploitent la carrière, le parc et les chantiers : comment les granulats sont produits, comment un chantier s’ouvre, ce que les terrains algériens changent pour la route et le forage, et quoi préparer avant de contacter un partenaire local.',
+        },
+        {
+          type: 'articles',
+          label: 'Articles',
+          title: 'Derniers articles',
+          emptyText: 'Des articles sont en préparation. En attendant, consultez nos [services](page:services) et notre [foire aux questions](page:faq).',
+        },
+        {
+          type: 'cta',
+          title: 'Une question à laquelle ces articles ne répondent pas ?',
+          text: 'Posez-la nous directement. Nous répondons avec ce que nous savons de notre propre carrière, de notre parc et de nos chantiers.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'FAQ', page: 'faq', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
     faq: {
       slug: 'faq',
       nav: 'FAQ',
@@ -1809,6 +2040,83 @@ export default {
             'Les textes, illustrations et la conception graphique de ce site sont la propriété de {{company}}, sauf mention contraire. Toute reproduction est soumise à autorisation préalable.',
             'Les informations de ce site sont fournies à titre d’information générale. Elles ne constituent pas une offre contractuelle ; les conditions de toute prestation sont convenues par écrit pour chaque projet. Les explications techniques générales (par exemple sur les granulats, la construction routière ou la géologie) décrivent des pratiques courantes et ne constituent pas une spécification pour un projet particulier.',
             'Les noms de tiers sont cités uniquement à des fins d’identification. EURL KAYLE KENNY est un fournisseur indépendant, non affilié à Cummins Inc. ni agréé par celle-ci.',
+          ],
+        },
+      ],
+    },
+  },
+
+  /* ================================================================ ARTICLES */
+  // Articles « Conseils » (schéma : ARTICLE en tête de en.mjs). Savoir-faire général uniquement.
+  articles: {
+    'mobilization-checklist': {
+      slug: 'mobiliser-engins-nouveau-chantier-algerie',
+      nav: 'Mobiliser des engins pour un nouveau chantier en Algérie',
+      title: 'Mobiliser des engins sur un chantier en Algérie | ETAHG',
+      description: 'À préparer avant de mobiliser des engins lourds sur un nouveau chantier en Algérie : accès, plateformes, eau, granulats et informations à nous envoyer.',
+      summary: 'Une check-list pratique pour les premières semaines d’un chantier en Algérie : accès, plateformes, eau, approvisionnement en granulats et les informations dont un partenaire local a besoin pour planifier le convoi.',
+      eyebrow: 'Démarrage de chantier',
+      h1: 'Mobiliser des engins lourds pour un nouveau chantier en Algérie : check-list pratique',
+      lead: 'Les premières semaines décident du rythme d’un projet. Cette check-list, tirée de la façon dont {{company}} ouvre des chantiers avec ses propres machines, liste ce qui est généralement réglé avant que la première semi-remorque ne quitte le parc.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'mobilization',
+      related: ['mobilization', 'rental', 'aggregates'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Pourquoi la mobilisation mérite son propre plan',
+          paragraphs: [
+            'Sur un nouveau chantier, rien ne produit tant que machines, opérateurs, carburant, eau et matériaux ne sont pas en place. En Algérie, les distances entre un parc et un chantier peuvent être longues, le terrain change de la côte au Sahara, et un site n’a souvent ni piste d’accès, ni plateforme, ni eau le premier jour. Traiter le démarrage comme un projet à part entière, avec une courte séquence convenue par écrit, évite en général les semaines d’immobilisation qui coûtent le plus cher.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'La séquence que nous suivons',
+          intro: 'Six étapes, adaptées à chaque projet et convenues avec le client avant que quoi que ce soit ne bouge.',
+          items: [
+            { title: 'Étude du site et de l’étendue des travaux', text: 'Localisation, accès, terrain, volumes et calendrier sont examinés ensemble, et la liste de ce qui doit être prêt le premier jour est écrite.' },
+            { title: 'Plan engins et ressources', text: 'Les catégories d’engins, les opérateurs et les fournitures sont ajustés à l’étendue des travaux ; les conditions de la mobilisation sont convenues pour chaque projet.' },
+            { title: 'Transport', text: 'Les machines sont chargées sur semi-remorques au parc ou déplacées directement depuis un autre chantier ; les dates de convoi suivent les conditions d’accès.' },
+            { title: 'Ouverture du site', text: 'Débroussaillage, piste d’accès, plateformes pour les engins et les installations, premiers terrassements.' },
+            { title: 'Matériaux et eau', text: 'L’approvisionnement en granulats est organisé et, si le site n’a pas d’eau, un puits peut être foré avec un atelier sur camion.' },
+            { title: 'Production et suivi', text: 'Les machines travaillent selon le plan jusqu’à la réception, ou continuent dans le cadre d’une location ou d’une sous-traitance.' },
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'key',
+          title: 'Ce qu’il faut nous envoyer pour obtenir un plan de mobilisation',
+          list: [
+            'La localisation du chantier (wilaya et, si possible, coordonnées ou lien de carte)',
+            'L’étendue de la première phase : débroussaillage, accès, plateformes, terrassements, granulats, eau',
+            'Les volumes approximatifs et la date de démarrage prévue',
+            'Si les opérateurs, le carburant et l’hébergement sont fournis par le client ou attendus de notre part',
+          ],
+          cta: { label: 'Nous contacter', page: 'contact' },
+        },
+        {
+          type: 'prose',
+          title: 'Le terrain change le plan',
+          paragraphs: [
+            'Un chantier côtier aux sols argileux et pluvieux demande drainage et préparation de la plateforme avant le passage des engins lourds. Un chantier en montagne signifie déblais rocheux, pistes plus raides et convois plus lents. Sur les Hauts Plateaux, les distances sont longues et la demande en granulats élevée. Au Sahara, le sable, la chaleur et l’absence d’eau font de l’autonomie la première exigence : carburant, pièces, eau et hébergement voyagent avec le chantier. Savoir lequel de ces cas s’applique, et le planifier, représente l’essentiel du travail.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'mob-duration', q: 'Combien de temps prend une mobilisation ?', a: 'Cela dépend de la distance depuis le parc, des conditions d’accès et de l’étendue de la première phase. Transport, durée et opérateurs sont convenus pour chaque projet ; nous donnons une date une fois l’étude du site réalisée.' },
+            { id: 'mob-rent', q: 'Les engins peuvent-ils rester en location une fois le site ouvert ?', a: 'Oui. Après la mobilisation, les mêmes machines peuvent continuer dans le cadre d’une location courte ou longue durée, ou les travaux se poursuivre en sous-traitance, selon des conditions convenues pour chaque projet.' },
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Vous ouvrez bientôt un chantier ?',
+          text: 'Envoyez-nous le lieu et l’étendue des travaux. Nous répondrons avec les engins, les matériaux et la séquence que nous pouvons proposer.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Démarrage de chantier', page: 'mobilization', variant: 'secondary' },
           ],
         },
       ],

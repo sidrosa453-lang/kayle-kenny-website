@@ -27,29 +27,35 @@ src/
   content/en.mjs         ALL English text (schema documented at the top of the file)
   content/fr.mjs …       translations (same keys; FR translates slugs)
   templates/
-    structure.mjs        page tree, navigation, language metadata, photo slots
-    layout.mjs           <head>, header, footer, breadcrumbs
-    blocks.mjs           one renderer per content block type
-    seo.mjs              meta tags + JSON-LD @graph
+    structure.mjs        page tree, navigation, language metadata, location pages, photo slots
+    layout.mjs           <head> (inline critical CSS, preloads, verification tags), header, footer, breadcrumbs
+    blocks.mjs           one renderer per content block type (incl. callout, articles, place)
+    article.mjs          Insights article page: byline, table of contents, related services, prev/next
+    seo.mjs              meta tags + JSON-LD @graph (Organization, WebPage, Article, LocalBusiness…)
     map.mjs              schematic Algiers – Djelfa – Ghardaïa corridor map (SVG)
     text.mjs             Markdown rendering for llms-full.txt
     texture.mjs          generated topographic / strata textures
     icons.mjs, html.mjs  icons, escaping helpers
   assets/
-    css/site.css         design system (minified at build)
+    css/site.css         design system; the part above the @@DEFERRED@@ marker is inlined in every
+                         page (critical CSS), the rest ships as a deferred stylesheet
     js/site.js           mobile nav, services dropdown, header state (< 5 KB)
-    illustrations/*.svg  line illustrations (inlined, themed with currentColor/--accent)
+    illustrations/*.svg  line illustrations: inlined above the fold (hero) and on the printable profile,
+                         otherwise written to assets/illus/<name>-<theme>.svg and loaded as lazy <img>
     photos/              optional real photos (see "Real photos")
     fonts/               self-hosted woff2 subsets + fonts.css (made by tools/fetch-fonts.mjs)
     generated/           OG images, PDF profiles, icons (made by tools/render-assets.mjs)
   lastmod.json           per-page content hash + date for sitemap <lastmod> (updated by docs/ builds)
 tools/
-  serve.mjs              local preview server
+  serve.mjs              local preview server (--live: gzip + max-age like GitHub Pages, for Lighthouse)
+  indexnow.mjs           submits sitemap URLs to IndexNow (Bing, Yandex, Naver, Seznam, Yep)
   check.mjs              automated QA (links, SEO tags, hreflang, JSON-LD, sitemap…)
   screenshot.mjs         full-page screenshots (Playwright)
   render-assets.mjs      OG images, company-profile PDFs, logo/favicons (Playwright)
   fetch-fonts.mjs        downloads the font subsets once into src/assets/fonts (curl)
   browser.mjs            shared Playwright helper
+.github/workflows/
+  indexnow.yml           after each push to docs/ (and weekly): live smoke test + IndexNow submission
 docs/                    BUILD OUTPUT, committed, served by the static host
 ```
 
@@ -62,6 +68,8 @@ node tools/check.mjs --dir docs           # QA (exit code 1 on errors)
 node tools/serve.mjs --dir docs           # preview at http://localhost:5544/
 node tools/screenshot.mjs --dir docs --pages /,/contact/ --widths 390,1440 --out .qa/screens/test
 node tools/render-assets.mjs              # regenerate OG images, PDFs and icons, then rebuild
+node tools/serve.mjs --dir docs --live    # preview with gzip + cache headers (Lighthouse numbers ≈ live site)
+node tools/indexnow.mjs                   # submit all sitemap URLs to IndexNow (after deploying docs/)
 ```
 
 `node src/build.mjs --content some/folder --out .qa/x` builds from another content folder (useful to test
@@ -92,7 +100,7 @@ of `src/content/en.mjs`. In short:
 - `pages.<id>` — one object per page: `slug`, `nav`, `title` (≤ 60 display width, ends with
   `| SARL ETAHG`), `description` (110–155 display width; CJK counts 2), `summary`, optional `service`, and `blocks`.
 - Blocks: `hero, pillars, prose, split, cards, features, steps, terrain, equipment, facts,
-  locations, group, faq, records, table, links, contact, download, cta`.
+  locations, group, faq, records, table, links, contact, download, cta, callout, articles, place`.
 - Inline markup inside any text: `**bold**`, `[label](page:about)`, `[label](page:home@zh)`,
   `[label](https://…)`, `[label](tel:)`, `[label](whatsapp:)`, `[label](pdf:)`.
 - Tokens: `{{company}}`, `{{short}}`, `{{phone}}` (rendered with no-break spaces), `{{email}}` (from `contact.email`; never hard-code the address), `{{group}}`, `{{year}}`.
@@ -108,6 +116,37 @@ of `src/content/en.mjs`. In short:
 
 The page tree (which pages exist, parents, menu order) is in `src/templates/structure.mjs`.
 FAQ blocks automatically produce `FAQPage` structured data; service pages produce `Service`.
+
+### Adding an Insights article
+
+Articles live under the `articles` key of each language file (schema: `ARTICLE` at the top of
+`src/content/en.mjs`). The id is shared by all languages, the `slug` is translated in FR
+(`/fr/conseils/<slug>/`) and kept in AR / ZH (`/ar/insights/<slug>/`).
+
+1. Add `articles['my-article']` to `src/content/en.mjs` with `slug, nav, title, description, summary,
+   eyebrow, h1, lead, datePublished, dateModified?, service?, related?, blocks[]`. Use the normal block
+   types (`prose, steps, table, faq, callout, cards, split, cta…`); every block with a `title` becomes an
+   H2 listed in the table of contents. Keep to general know-how: no project names, counts or places worked in.
+2. Mirror it in `fr.mjs`, `ar.mjs`, `zh.mjs` (an article missing in a language is simply not generated there,
+   with a build warning; hreflang only links the languages that have it).
+3. `node src/build.mjs && node tools/check.mjs`. The build adds the page to the sitemap (`lastmod` =
+   `dateModified`), to `llms.txt` ("## Insights") and `llms-full.txt`, computes the reading time and
+   word count, and emits `Article` + `BreadcrumbList` (+ `FAQPage`) JSON-LD. When you update an article,
+   bump `dateModified`.
+
+Keep the cadence low (one or two articles a month) and each piece original: Google's scaled-content
+policies target bulk, templated pages; four faithful translations of one article are fine.
+
+### Adding a location page
+
+Location pages (`/locations/djelfa/`, `/locations/ghardaia/`; FR `/fr/implantations/…`) are ordinary pages
+whose id is mapped to a `site.config.json` location in `src/templates/structure.mjs → LOCATION_PAGES`
+(`'loc-djelfa': 'depot'`). To add one (only for a real, staffed site — never a "road works in <wilaya>"
+page): add the location to `site.config.json` (with `geo` `{lat, lng}` when known), map a new page id
+in `LOCATION_PAGES`, add the id to `PAGES` / `PARENT` (parent `locations`), then write the page in the
+four language files with a `hero`, a `place` block (prose + the address card from config), service
+`cards`, terrain / access `prose`, a `faq` and a `cta`. The build emits a `LocalBusiness` node
+(`parentOrganization` = the company, `geo`, `hasMap`) and links the card on the Locations hub.
 
 ## Filling `site.config.json`
 
@@ -132,7 +171,11 @@ Everything below is optional; the site renders cleanly with it empty and never i
 | `regions` | list of regions on the Experience page (strings or `{ "en": …, "fr": … }`) |
 | `projects` | project table on the Experience page: `[{ "name", "region", "year", "scope" }]` (values may be per-language objects) |
 | `certifications` | facts panel + JSON-LD (only real, current certificates) |
-| `social.linkedin / facebook / googleBusinessProfile` | JSON-LD `sameAs` |
+| `social.linkedin / facebook / instagram / youtube / googleBusinessProfile / kompass / prospecta / wikidata / crunchbase` | JSON-LD `sameAs` (only profiles that exist and link back to www.etahg.com) |
+| `locations[].geo` | `{ "lat", "lng" }`: `GeoCoordinates` on the Organization `location` nodes and the location pages (city-level public coordinates are fine); shown as a GPS line on the location page |
+| `verification.google / bing / baidu / yandex` | `google-site-verification`, `msvalidate.01`, `baidu-site-verification`, `yandex-verification` meta tags, rendered only when filled |
+| `indexNowKey` | 8–128 chars of `[a-zA-Z0-9-]`; the build publishes `docs/<key>.txt` and `tools/indexnow.mjs` / the GitHub workflow submit URLs with it |
+| `spokenLanguages` | until filled, JSON-LD `knowsLanguage` / `ContactPoint.availableLanguage` list the four website languages |
 | `locations[].names` | location names per language (`en`, `fr`, `ar`, `zh`; `en` falls back to `locality`) |
 
 ## Real photos
@@ -177,12 +220,44 @@ English with a build warning; a language whose file is absent is skipped with a 
 
 ## Fonts
 
-`node tools/fetch-fonts.mjs` downloads Archivo and Inter (Latin + Latin Extended) and IBM Plex Sans
-Arabic (Arabic subset) once into `src/assets/fonts/` (SIL Open Font License). The build prepends
-`fonts.css` to the stylesheet, copies the woff2 files to `assets/fonts/` and preloads the Latin faces
-(plus the Arabic 400/700 faces on `/ar/`). Nothing is requested from Google at display time.
+`node tools/fetch-fonts.mjs` downloads Archivo and Inter (variable fonts, Latin + Latin Extended) and IBM
+Plex Sans Arabic Regular + Bold (Arabic subset; weights 500/600 fall back to them) once into
+`src/assets/fonts/` (SIL Open Font License). The build inlines the `@font-face` rules of the page's
+language in the critical CSS, copies the woff2 files to `assets/fonts/` and preloads the two faces the
+first paint needs (`LANG_META[lang].fonts`: Archivo + Inter on Latin pages, Plex 400 + 700 on `/ar/`).
+The language switcher labels use system fonts so Latin pages never download the Arabic font.
+Nothing is requested from Google at display time.
 Chinese pages use the visitor's system fonts (PingFang SC, Microsoft YaHei, Noto Sans CJK SC…);
 only `render-assets` uses Noto Sans SC, to embed it in the Chinese PDF and share image.
+
+## Performance notes (Lighthouse)
+
+- Critical CSS (everything above the `@@DEFERRED@@` marker in `site.css`, plus the page language's
+  `@font-face` rules) is inlined in `<head>`; the rest is one fingerprinted stylesheet loaded with
+  `media="print" onload="this.media='all'"` (+ `<noscript>` fallback), so nothing blocks rendering.
+- The hero texture `assets/topo.svg` (the LCP resource) is preloaded with `fetchpriority="high"`.
+- Illustrations below the fold are external SVG `<img>`s (`assets/illus/`) with width/height and
+  `loading="lazy"`; the hero drawing stays inline. UI icons are one `<symbol>` sprite per page.
+- The header shadow uses an `IntersectionObserver` on a sentinel (no scroll-time layout reads).
+- Measure with `node tools/serve.mjs --dir docs --live` (gzip + `max-age`, like GitHub Pages) and
+  `npx lighthouse http://localhost:5544/ --chrome-flags="--headless=new"`.
+
+## Search engines: verification, IndexNow, Baidu
+
+- **Verification codes**: paste the codes from Google Search Console (HTML tag method), Bing Webmaster
+  Tools (`msvalidate.01`), Baidu 搜索资源平台 and Yandex Webmaster into `site.config.json → verification`,
+  rebuild and deploy. The tags are rendered only when filled, on every page.
+- **IndexNow** (Bing, Yandex, Naver, Seznam, Yep — Google does not take part): `site.config.json →
+  indexNowKey` is published as `docs/<key>.txt`. `.github/workflows/indexnow.yml` runs after every push
+  that changes `docs/` and every Monday: it checks that the live `sitemap.xml` and key file answer 200,
+  then POSTs all sitemap URLs to `https://api.indexnow.org/indexnow` and prints the HTTP status
+  (200/202 = accepted). Manual run: `node tools/indexnow.mjs` (`--urls …` for a few URLs, `--dry-run`
+  to print the payload). Optional: store the same key as the repository secret `INDEXNOW_KEY`.
+- **Google**: there is no ping endpoint any more; submit `sitemap.xml` once in Search Console and keep
+  `<lastmod>` accurate (the build does). Use URL Inspection → Request indexing for new key pages.
+- **Baidu**: `/zh/` pages carry `<meta name="applicable-device" content="pc,mobile">` and
+  `Cache-Control: no-transform / no-siteapp` (Baidu's responsive-site and no-transcoding tags); no
+  hreflang is read by Baidu, so the Chinese pages must stand on their own (they do).
 
 ## Hosting for a Chinese audience (read before choosing a host)
 
@@ -216,8 +291,11 @@ before the domain is connected (only `404.html` uses absolute URLs, by design).
       submit `https://www.etahg.com/sitemap.xml`, request indexing of the home page and the
       `/international-partners/` page.
 - [ ] **Bing Webmaster Tools**: import from Search Console, submit the sitemap. Bing feeds
-      ChatGPT search and Copilot. Enable **IndexNow** (Bing → IndexNow → generate a key, put
-      `<key>.txt` in `docs/`, then ping `https://api.indexnow.org/indexnow?url=…&key=…` after each update).
+      ChatGPT search and Copilot. IndexNow is already wired (key file + GitHub workflow): check the
+      "IndexNow" report in Bing Webmaster Tools after the first deploy.
+- [ ] **Google Business Profile for each real site** (Ghardaïa office, Djelfa depot, Aïn El Ibel quarry):
+      same name / address / phone as the site, link the matching `/locations/…/` page, then paste the
+      Maps URLs into `site.config.json → locations[].mapsUrl` and `social.googleBusinessProfile`.
 - [ ] **Google Business Profile**: create "SARL ETAHG" (category *Construction company* /
       *Heavy equipment rental*) at the Ghardaïa registered office, phone +213 558 96 10 49,
       website `https://www.etahg.com`; add the Djelfa depot as a second location if it receives visitors.
@@ -249,6 +327,12 @@ reciprocal hreflang with `x-default`; `html lang/dir`; JSON-LD parses (Organizat
 WebSite, WebPage, FAQPage matches rendered FAQs); sitemap lists exactly the indexable pages;
 no `TODO`, `undefined`, `null`, `NaN`, `{{ }}` or lorem text, also inside URL-encoded links such as
 WhatsApp `?text=`; every `<img>` has alt and width/height; no duplicate titles/descriptions; each
-language uses its own share image and PDF; no third-party stylesheet, preconnect or script; CSS ≤ 45 KB
-(excluding generated `@font-face` rules), JS ≤ 5 KB; page weights. Title and description lengths are
+language uses its own share image and PDF; no third-party stylesheet, preconnect or script; inline critical
+CSS + deferred CSS ≤ 50 KB (excluding generated `@font-face` rules), JS ≤ 5 KB; page weights. New rules:
+article pages have a `<time datetime>` byline, an `<article>`, resolvable table-of-contents anchors and
+`Article` JSON-LD; location pages have an address card with a `tel:` link and `LocalBusiness` JSON-LD;
+verification tags only when filled; `/zh/` pages carry the Baidu `applicable-device` tag; favicons are
+square PNGs (48/96/192, multiples of 48) linked from every page; `Organization.logo` is a square PNG ≥ 112 px;
+the IndexNow key file exists with the right content; the manifest has 192/512 icons (+ maskable); sitemap
+`<lastmod>` equals each page's `dateModified`; `llms.txt` has Services / Company / Locations / Insights sections. Title and description lengths are
 measured in display width (a CJK character counts 2), so 60–80-character Chinese descriptions pass.

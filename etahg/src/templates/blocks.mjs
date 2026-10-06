@@ -94,7 +94,7 @@ ${b.note && html`<p class="note">${inline(b.note, ctx)}</p>`}
 
 /* ----------------------------------------------------------------- split */
 function split(b, ctx) {
-  const media = ctx.visual(b.illustration, { cls: 'split-visual' });
+  const media = ctx.visual(b.illustration, { cls: 'split-visual', theme: 'ink' });
   const num = b.label ? ctx.nextNumber() : null;
   const tone = b.tone || ctx.nextTone('split');
   const titleId = ctx.uid('h');
@@ -119,7 +119,7 @@ function cards(b, ctx) {
     const href = it.page ? ctx.href(it.page) : it.href || null;
     const ext = it.href && /^https?:/.test(it.href);
     return html`<li class="card">
-${style === 'services' && it.illustration && html`<div class="card-media">${ctx.visual(it.illustration, { cls: 'card-visual' })}</div>`}
+${style === 'services' && it.illustration && html`<div class="card-media">${ctx.visual(it.illustration, { cls: 'card-visual', theme: 'ink' })}</div>`}
 <div class="card-body">
 <span class="card-num">${pad(i + 1)}</span>
 <h3>${href ? html`<a${attrs({ href, rel: ext ? 'noopener' : null, target: ext ? '_blank' : null })} class="card-link">${it.title}${ext && newTab(ctx)}</a>` : it.title}</h3>
@@ -144,7 +144,7 @@ function steps(b, ctx) {
 /* --------------------------------------------------------------- terrain */
 function terrain(b, ctx) {
   return section(b, ctx, html`<ul class="terrain">${b.items.map((it) => html`<li class="terrain-item">
-<div class="terrain-media">${ctx.visual(it.illustration, { cls: 'terrain-visual' })}</div>
+<div class="terrain-media">${ctx.visual(it.illustration, { cls: 'terrain-visual', theme: 'sand' })}</div>
 <h3>${it.title}</h3>
 <p>${inline(it.text, ctx)}</p>
 ${bullets(it.points, ctx, 'tags')}
@@ -157,7 +157,7 @@ function equipment(b, ctx) {
   return section(b, ctx, html`<ul class="equipment">${b.items.map((it) => {
     const n = it.count && Number.isFinite(fleet[it.count]) && fleet[it.count] > 0 ? fleet[it.count] : null;
     return html`<li class="equip">
-<div class="equip-media">${ctx.visual(it.illustration, { cls: 'equip-visual' })}</div>
+<div class="equip-media">${ctx.visual(it.illustration, { cls: 'equip-visual', theme: 'ink' })}</div>
 <div class="equip-body">
 <h3>${it.title}${n !== null && html` <span class="equip-count">${n} ${ctx.ui.fleetLabels.units}</span>`}</h3>
 <p>${inline(it.text, ctx)}</p>
@@ -199,6 +199,7 @@ ${(l.name || l.street || (l.id === 'hq' && ctx.config.contact?.address?.street))
 ${ui.details && ui.details[l.id] && html`<p class="location-text">${inline(ui.details[l.id], ctx)}</p>`}
 ${((l.phones && l.phones.length) || l.fax) && html`<p class="location-tel">${(l.phones || []).length > 0 && html`<span class="location-tel-line"><span class="location-tel-label">${ctx.ui.phonesShort || ctx.ui.phoneLabel}${ctx.P.colon}</span>${l.phones.map((n, j) => html`${j > 0 && ' / '}<a href="${ctx.telUrl(n)}" dir="ltr">${n}</a>`)}</span>`}${l.fax && html`<span class="location-tel-line"><span class="location-tel-label">${ctx.ui.faxLabel}${ctx.P.colon}</span><span dir="ltr">${l.fax}</span></span>`}</p>`}
 ${l.mapsUrl && html`<a class="location-map" href="${l.mapsUrl}" rel="noopener" target="_blank">${icon('pin')}<span>${ui.mapLink || ctx.ui.mapLink}</span>${newTab(ctx)}</a>`}
+${ctx.locationPage(l.id) && ctx.pageId !== ctx.locationPage(l.id) && ctx.pageId !== 'profile' && html`<a class="location-more link-arrow" href="${ctx.href(ctx.locationPage(l.id))}">${ui.detailsLink || ctx.ui.readMore}${icon('arrow', 'icon-dir')}</a>`}
 </li>`)}</ol>`;
   return section(b, ctx, html`<div class="loc-grid${map ? '' : ' no-map'}">${map && html`<div class="loc-map">${map}</div>`}${list}</div>`);
 }
@@ -207,7 +208,7 @@ ${l.mapsUrl && html`<a class="location-map" href="${l.mapsUrl}" rel="noopener" t
 function group(b, ctx) {
   const g = (ctx.config.group || [])[0] || {};
   return section(b, ctx, html`<div class="group">
-<div class="group-media">${ctx.visual(b.illustration || 'spare-parts', { cls: 'group-visual' })}</div>
+<div class="group-media">${ctx.visual(b.illustration || 'spare-parts', { cls: 'group-visual', theme: 'ink' })}</div>
 <div class="group-copy">
 <p class="group-name">${g.name || ''}</p>
 <div class="prose">${paras(b.paragraphs, ctx)}</div>
@@ -232,7 +233,7 @@ function faq(b, ctx) {
 <div class="faq-a"><p>${inline(it.a, ctx)}</p></div>
 </details>`)}</div>
 ${b.more && html`<p class="faq-more"><a class="link-arrow" href="${ctx.href(b.more.page)}">${b.more.label}${icon('arrow', 'icon-dir')}</a></p>`}`;
-  return section(b, ctx, inner, { cls: 'sec-faq' });
+  return section(b, ctx, inner);
 }
 
 /* --------------------------------------------------------------- records */
@@ -325,7 +326,75 @@ ${ctaRow(b.ctas, ctx)}
 </section>`;
 }
 
-export const RENDERERS = { hero, pillars, prose, split, cards, features, steps, terrain, equipment, facts, locations, group, faq, records, table, links, contact, download, cta };
+
+/* --------------------------------------------------------------- callout */
+// Highlighted aside inside an article or a page: variant 'note' (default) | 'tip' | 'warning' | 'key'.
+const CALLOUT_ICON = { note: 'info', tip: 'bulb', warning: 'alert', key: 'check' };
+function callout(b, ctx) {
+  const v = CALLOUT_ICON[b.variant] ? b.variant : 'note';
+  const titleId = b.title ? ctx.uid('h') : null;
+  return html`<div class="section-slim"><div class="wrap"><aside${attrs({ class: `callout callout-${v}`, id: b.id || null, 'aria-labelledby': titleId })}>
+<span class="callout-icon" aria-hidden="true">${icon(CALLOUT_ICON[v])}</span>
+<div class="callout-body">
+${b.title && html`<p class="callout-title" id="${titleId}">${inline(b.title, ctx)}</p>`}
+${b.text && html`<p>${inline(b.text, ctx)}</p>`}
+${paras(b.paragraphs, ctx)}
+${bullets(b.list, ctx)}
+${b.cta && html`<p class="callout-cta">${ctaLink({ ...b.cta, variant: b.cta.variant || 'secondary' }, ctx, 'btn-sm')}</p>`}
+</div>
+</aside></div></div>`;
+}
+
+/* -------------------------------------------------------------- articles */
+// Card list of every article of the language (newest first) for the Insights hub,
+// or `limit` articles elsewhere (e.g. home). Data comes from ctx.articles().
+function articles(b, ctx) {
+  const list = ctx.articles().slice(0, b.limit || undefined);
+  if (!list.length) return b.emptyText ? section(b, ctx, html`<p class="articles-empty">${inline(b.emptyText, ctx)}</p>`) : '';
+  const A = ctx.ui.article;
+  const inner = html`<ul class="articles">${list.map((a) => html`<li class="article-card">
+<p class="article-card-meta"><span class="article-topic">${a.eyebrow}</span><time datetime="${a.dateModified}">${ctx.formatDate(a.dateModified)}</time><span>${A.readingTime.replaceAll('{{min}}', String(a.readingMinutes))}</span></p>
+<h3><a class="card-link" href="${ctx.href(a.id)}">${a.nav}</a></h3>
+<p>${inline(a.summary, ctx)}</p>
+${a.service && ctx.hasPage(a.service) && html`<p class="article-card-tag"><span class="sr-only">${A.related}${ctx.P.colon}</span>${ctx.pageNav(a.service)}</p>`}
+</li>`)}</ul>
+${b.more && html`<p class="faq-more"><a class="link-arrow" href="${ctx.href(b.more.page || 'insights')}">${b.more.label || ctx.ui.article.all}${icon('arrow', 'icon-dir')}</a></p>`}`;
+  return section(b, ctx, inner, { cls: 'sec-articles' });
+}
+
+/* ----------------------------------------------------------------- place */
+// Location page: what is at the site (prose) next to its address card from site.config.json.
+function place(b, ctx) {
+  const l = ctx.location;
+  if (!l) { ctx.warn(`place block on page ${ctx.pageId} without a location`); return ''; }
+  const ui = ctx.ui.locations;
+  const c = ctx.config.contact || {};
+  const isHq = l.id === 'hq';
+  const phones = (l.phones || []).length ? l.phones : isHq ? [c.phone, ...(c.phones || [])].filter(Boolean) : [c.phone].filter(Boolean);
+  const fax = l.fax || (isHq ? c.fax : '');
+  const card = html`<address class="place-card">
+<p class="location-type">${ui.types[l.id] || l.type}</p>
+<p class="place-name">${ctx.site.companyName}</p>
+${l.name && html`<p class="place-line">${l.name}</p>`}
+<p class="place-line">${ctx.addressLine(l)}</p>
+${l.region && html`<p class="place-line place-region">${ui.wilaya.replaceAll('{{region}}', ctx.regionName(l))}</p>`}
+${phones.length > 0 && html`<p class="place-line"><span class="place-label">${ctx.ui.phoneLabel}${ctx.P.colon}</span>${phones.map((n, j) => html`${j > 0 && ' / '}<a href="${ctx.telUrl(n)}" dir="ltr">${n}</a>`)}</p>`}
+${fax && html`<p class="place-line"><span class="place-label">${ctx.ui.faxLabel}${ctx.P.colon}</span><span dir="ltr">${fax}</span></p>`}
+${c.email && html`<p class="place-line"><span class="place-label">${ctx.ui.emailLabel}${ctx.P.colon}</span><a href="${ctx.mailUrl()}">${c.email}</a></p>`}
+${l.geo && Number.isFinite(l.geo.lat) && html`<p class="place-line place-geo"><span class="place-label">${ui.geoLabel || 'GPS'}${ctx.P.colon}</span><span dir="ltr">${l.geo.lat.toFixed(4)}, ${l.geo.lng.toFixed(4)}</span></p>`}
+${l.mapsUrl && html`<a class="location-map" href="${l.mapsUrl}" rel="noopener" target="_blank">${icon('pin')}<span>${ui.mapLink || ctx.ui.mapLink}</span>${newTab(ctx)}</a>`}
+<div class="cta-row cta-stack">
+${ctaLink({ kind: 'whatsapp', label: ctx.ui.whatsappLabel, variant: 'primary' }, ctx)}
+${ctaLink({ kind: 'vcard', label: ctx.ui.vcard, variant: 'secondary' }, ctx)}
+</div>
+</address>`;
+  return section(b, ctx, html`<div class="place">
+<div class="prose">${b.lead && html`<p class="lead-sm">${inline(b.lead, ctx)}</p>`}${paras(b.paragraphs, ctx)}${bullets(b.list, ctx)}${b.note && html`<p class="note">${inline(b.note, ctx)}</p>`}</div>
+${card}
+</div>`);
+}
+
+export const RENDERERS = { hero, pillars, prose, split, cards, features, steps, terrain, equipment, facts, locations, group, faq, records, table, links, contact, download, cta, callout, articles, place };
 
 export function renderBlocks(blocks, ctx) {
   return (blocks || []).map((b) => {

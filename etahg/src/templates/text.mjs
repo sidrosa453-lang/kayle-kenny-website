@@ -96,6 +96,29 @@ export function pageMarkdown(ctx) {
       case 'cta':
         push(`**${plain(b.title)}**${b.text ? ' ' + md(b.text) : ''}`);
         break;
+      case 'callout':
+        push(`> ${b.title ? `**${plain(b.title)}** ` : ''}${[b.text, ...(b.paragraphs || [])].filter(Boolean).map(md).join(' ')}${b.list?.length ? '\n>\n' + b.list.map((i) => `> - ${md(i)}`).join('\n') : ''}`);
+        break;
+      case 'articles': {
+        const list = ctx.articles().slice(0, b.limit || undefined);
+        if (!list.length) break;
+        push(`## ${plain(b.title)}`);
+        if (b.intro) push(md(b.intro));
+        push(list.map((a) => `- [${a.nav}](${ctx.abs(a.id, ctx.lang)}) (${a.dateModified}): ${plain(a.summary)}`).join('\n'));
+        break;
+      }
+      case 'place': {
+        const l = ctx.location;
+        if (!l) break;
+        push(`## ${plain(b.title)}`);
+        if (b.lead) push(md(b.lead));
+        for (const p of b.paragraphs || []) push(md(p));
+        if (b.list?.length) push(list(b.list));
+        const c = ctx.config.contact || {};
+        const phones = (l.phones || []).length ? l.phones : [c.phone].filter(Boolean);
+        push([`- ${ctx.ui.locations.types[l.id] || l.type}: ${l.name ? l.name + ', ' : ''}${ctx.addressLine(l)}`, phones.length && `- ${ctx.ui.phoneLabel}: ${phones.join(' / ')}`, l.geo && `- GPS: ${l.geo.lat}, ${l.geo.lng}`, l.mapsUrl && `- Map: ${l.mapsUrl}`].filter(Boolean).join('\n'));
+        break;
+      }
       default:
         break;
     }

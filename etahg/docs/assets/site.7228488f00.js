@@ -56,11 +56,20 @@
   var onMq = function () { setMenu(false); setSub(false); };
   if (mq.addEventListener) mq.addEventListener('change', onMq); else if (mq.addListener) mq.addListener(onMq);
 
+  // Header shadow once the page is scrolled: observe a 1px sentinel at the top of the page
+  // instead of reading scrollY on every scroll frame (no forced layout).
   if (header) {
-    var ticking = false;
-    var update = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); ticking = false; };
-    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    update();
+    var sentinel = d.querySelector('.scroll-sentinel');
+    if (sentinel && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        header.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+      }, { threshold: 0 }).observe(sentinel);
+    } else {
+      var ticking = false;
+      var update = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); ticking = false; };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      update();
+    }
   }
 
   var p = d.querySelectorAll('[data-print]');

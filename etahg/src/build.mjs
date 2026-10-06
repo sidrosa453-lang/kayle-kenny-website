@@ -9,11 +9,12 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { html, raw, esc, plain } from './templates/html.mjs';
-import { PAGES, PARENT, SERVICE_PAGES, LANG_META, BASE_FONTS, PHOTO_SLOTS } from './templates/structure.mjs';
+import { PAGES, PARENT, SERVICE_PAGES, LOCATION_PAGES, ARTICLE_HUB, LANG_META, PHOTO_SLOTS } from './templates/structure.mjs';
 import { renderBlocks } from './templates/blocks.mjs';
 import { documentShell, breadcrumbs } from './templates/layout.mjs';
+import { articlePage } from './templates/article.mjs';
 import { pageMarkdown } from './templates/text.mjs';
-import { FALLBACK_LOGO } from './templates/icons.mjs';
+import { FALLBACK_LOGO, resetIcons } from './templates/icons.mjs';
 import { topoSvg, strataSvg } from './templates/texture.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -100,6 +101,30 @@ function imageSize(buf) {
 function minifyCss(s) {
   return s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{};,])\s*/g, '$1').replace(/;}/g, '}').trim() + '\n';
 }
+// site.css is split at the "@@DEFERRED@@" marker: everything above is inlined in <head>
+// (first paint: reset, header, hero, section basics), everything below ships as an external
+// stylesheet loaded without blocking rendering.
+const CSS_SPLIT = /\/\*[^*]*@@DEFERRED@@[\s\S]*?\*\//;
+// @font-face rules of fonts.css grouped by family slug (the comment line written by tools/fetch-fonts.mjs).
+function fontFaceByFamily(fontCss) {
+  const out = {};
+  for (const m of fontCss.matchAll(/\/\*\s*([\w-]+)\s+[\w-]+\s+[\d ]+\s*\*\/\s*(@font-face\s*\{[^}]*\})/g)) (out[m[1]] = out[m[1]] || []).push(m[2]);
+  return out;
+}
+// Reading time: ~200 Latin words or ~400 CJK characters per minute.
+function wordCountOf(text, lang) {
+  const t = String(text || '');
+  const cjk = (t.match(/[\u3000-\u9fff\uff00-\uffef]/g) || []).length;
+  const words = t.replace(/[\u3000-\u9fff\uff00-\uffef]/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+  return lang === 'zh' ? Math.round(cjk / 2) + words : words + cjk;
+}
+// All text of an article's blocks (for reading time / wordCount).
+function blocksText(blocks) {
+  const out = [];
+  const walk = (v) => { if (typeof v === 'string') out.push(v); else if (Array.isArray(v)) v.forEach(walk); else if (v && typeof v === 'object') Object.entries(v).forEach(([k, x]) => { if (!['type', 'id', 'illustration', 'page', 'href', 'kind', 'variant', 'from', 'ids', 'tone', 'style', 'size', 'service', 'related', 'more', 'cta', 'ctas'].includes(k)) walk(x); }); };
+  walk(blocks);
+  return plain(out.join(' '));
+}
 
 /* ---------------------------------------------------------- illustrations */
 const illusCache = new Map();
@@ -143,6 +168,20 @@ function inlineSvg(src, uid, cls) {
   s = s.replace(/<title[\s\S]*?<\/title>/gi, '').replace(/<desc[\s\S]*?<\/desc>/gi, '');
   return s;
 }
+
+// Theme an illustration for use as an external <img> (no CSS variables there): the ink
+// colour is baked in, the accent stays amber. Comments / prolog are dropped.
+const THEMES = { ink: '#0F1318', sand: '#E9E3D6' };
+function themedSvg(src, theme) {
+  return src.replace(/<\?xml[\s\S]*?\?>/g, '').replace(/<!--[\s\S]*?-->/g, '').replace(/<metadata[\s\S]*?<\/metadata>/gi, '')
+    .replace(/currentColor/g, THEMES[theme] || THEMES.ink).replace(/var\(--accent[^)]*\)/g, '#E2A21B').trim();
+}
+const svgSize = (src) => {
+  const vb = (src.match(/viewBox="([^"]+)"/) || [])[1];
+  if (!vb) return null;
+  const [, , w, h] = vb.split(/[\s,]+/).map(Number);
+  return w && h ? { w: Math.round(w), h: Math.round(h) } : null;
+};
 
 function placeholderSvg(cls) {
   return `<svg viewBox="0 0 400 300" class="${cls} illus-placeholder" aria-hidden="true" focusable="false"><rect x="1" y="1" width="398" height="298" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="3 6"/><g fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="1.5"><path d="M20 230 C90 205 150 245 220 222 S330 200 380 214"/><path d="M20 250 C100 228 160 262 230 244 S320 226 380 238"/><path d="M20 270 C110 252 170 280 240 266 S330 252 380 262"/></g><path d="M170 150 l30 -40 l30 40 z" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2"/><rect x="186" y="170" width="28" height="4" fill="var(--accent,#E2A21B)"/></svg>`;
@@ -190,18 +229,47 @@ async function main() {
     content[lang].ui = deepMerge(content[DEF].ui, content[lang].ui || {}, missing);
     if (missing.length) warn(`${lang}: ${missing.length} ui string(s) missing, English used: ${missing.slice(0, 5).join(', ')}${missing.length > 5 ? '…' : ''}`);
     for (const id of PAGES) if (!content[lang].pages?.[id]) warn(`${lang}: page "${id}" missing, not generated`);
+    for (const id of Object.keys(content[DEF].articles || {})) if (!content[lang].articles?.[id]) warn(`${lang}: article "${id}" missing, not generated in this language`);
   }
   const langMeta = (l) => ({ ...LANG_META[l], ...(content[l]?.meta || {}) });
-  const hasPage = (id, l) => !!content[l]?.pages?.[id];
+  // Articles (content `articles`): dynamic pages under the Insights hub, newest first.
+  // An article exists in a language only when that language file has it (no fallback page).
+  const isArticleId = (id) => !!content[DEF].articles?.[id];
+  const ARTICLE_IDS = Object.keys(content[DEF].articles || {}).sort((a, b) => {
+    const A = content[DEF].articles[a], B = content[DEF].articles[b];
+    return String(B.dateModified || B.datePublished).localeCompare(String(A.dateModified || A.datePublished)) || a.localeCompare(b);
+  });
+  for (const lang of langs) for (const id of Object.keys(content[lang].articles || {})) if (!isArticleId(id)) warn(`${lang}: article "${id}" has no English original, not generated`);
+  for (const id of ARTICLE_IDS) {
+    const a = content[DEF].articles[id];
+    for (const k of ['slug', 'nav', 'title', 'description', 'summary', 'eyebrow', 'lead', 'datePublished', 'blocks']) if (a[k] === undefined) warn(`article "${id}": missing field "${k}"`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(a.datePublished))) warn(`article "${id}": datePublished must be YYYY-MM-DD`);
+    if (a.dateModified && !/^\d{4}-\d{2}-\d{2}$/.test(String(a.dateModified))) warn(`article "${id}": dateModified must be YYYY-MM-DD`);
+    if (a.dateModified && a.dateModified < a.datePublished) warn(`article "${id}": dateModified is before datePublished`);
+    if (a.service && !content[DEF].pages[a.service]) warn(`article "${id}": unknown service "${a.service}"`);
+  }
+  // Canonical page order: structure PAGES with the articles inserted after their hub.
+  const ALL_PAGES = PAGES.flatMap((id) => (id === ARTICLE_HUB ? [id, ...ARTICLE_IDS] : [id]));
+  const pageOf = (id, l) => content[l]?.pages?.[id] || (isArticleId(id) ? content[l]?.articles?.[id] : undefined);
+  const parentOf = (id) => (isArticleId(id) ? ARTICLE_HUB : PARENT[id] ?? null);
+  const hasPage = (id, l) => !!pageOf(id, l) && (!isArticleId(id) || hasPage(ARTICLE_HUB, l));
   const slugOf = (id, l) => {
-    const p = content[l]?.pages?.[id];
-    const s = p && typeof p.slug === 'string' ? p.slug : content[DEF].pages[id]?.slug ?? id;
-    return s.replace(/^\/+|\/+$/g, '');
+    const p = pageOf(id, l);
+    let s = p && typeof p.slug === 'string' ? p.slug : pageOf(id, DEF)?.slug ?? id;
+    s = s.replace(/^\/+|\/+$/g, '');
+    if (isArticleId(id)) {
+      if (!s || /\//.test(s)) { warn(`article "${id}" (${l}): slug must be a single path segment`); s = s.replace(/\//g, '-') || id; }
+      s = `${slugOf(ARTICLE_HUB, l)}/${s}`;
+    }
+    return s;
   };
   const pagePath = (id, l) => {
     const s = slugOf(id, l);
     return (l === DEF ? '' : `${l}/`) + (s ? `${s}/` : '');
   };
+  const locationOf = (id) => (site.locations || []).find((l) => l.id === LOCATION_PAGES[id]) || null;
+  const pageOfLocation = (locId) => Object.keys(LOCATION_PAGES).find((pid) => LOCATION_PAGES[pid] === locId) || null;
+  for (const [pid, lid] of Object.entries(LOCATION_PAGES)) if (!locationOf(pid)) warn(`location page "${pid}" refers to unknown location "${lid}" in site.config.json`);
 
   /* ------------------------------------------------------------- output */
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -221,15 +289,41 @@ async function main() {
   const fontCss = fs.existsSync(fontCssFile) ? fs.readFileSync(fontCssFile, 'utf8') : (warn('src/assets/fonts/fonts.css missing (run: node tools/fetch-fonts.mjs); system fonts used'), '');
   const fontFiles = fs.existsSync(FONT_DIR) ? fs.readdirSync(FONT_DIR).filter((f) => f.endsWith('.woff2')) : [];
   for (const f of fontFiles) copy(path.join(FONT_DIR, f), `assets/fonts/${f}`);
-  const css = Buffer.from(fontCss + '\n' + fs.readFileSync(path.join(SRC, 'assets', 'css', 'site.css'), 'utf8'));
+  const siteCss = fs.readFileSync(path.join(SRC, 'assets', 'css', 'site.css'), 'utf8');
+  const [cssCritical, cssDeferred = ''] = siteCss.split(CSS_SPLIT);
+  if (!cssDeferred) warn('src/assets/css/site.css has no /* @@DEFERRED@@ */ marker: the whole stylesheet is inlined');
+  const fontFaces = fontFaceByFamily(fontCss);
+  const criticalMin = minifyCss(cssCritical);
+  const deferredMin = Buffer.from(minifyCss(cssDeferred) || '/* no deferred css */\n');
   const js = fs.readFileSync(path.join(SRC, 'assets', 'js', 'site.js'));
-  const cssMin = Buffer.from(minifyCss(css.toString('utf8')));
-  const cssFile = `assets/site.${hash(cssMin)}.css`;
+  const cssFile = `assets/site.${hash(deferredMin)}.css`;
   const jsFile = `assets/site.${hash(js)}.js`;
-  write(cssFile, cssMin);
+  write(cssFile, deferredMin);
   write(jsFile, js);
   write('assets/topo.svg', topoSvg());
   write('assets/strata.svg', strataSvg());
+  // Inline critical CSS for a page: that language's @font-face rules + the critical half of
+  // site.css, with asset urls rewritten relative to the page (inline styles resolve against the document).
+  const cssSize = { critical: Buffer.byteLength(criticalMin), deferred: deferredMin.length };
+  const criticalCssFor = (lang, toUrl) => {
+    const fams = (langMeta(lang).fontFamilies || Object.keys(fontFaces)).flatMap((f) => fontFaces[f] || []);
+    return (minifyCss(fams.join('\n')) + criticalMin)
+      .replace(/url\("fonts\//g, `url("${toUrl('assets/fonts/')}`)
+      .replace(/url\("(topo|strata)\.svg"\)/g, (m, n) => `url("${toUrl(`assets/${n}.svg`)}")`);
+  };
+  // Externalised illustrations (below-the-fold <img>), written on first use per theme.
+  const illusFiles = new Map();
+  const illusFile = (name, theme) => {
+    const key = `${name}-${theme}`;
+    if (illusFiles.has(key)) return illusFiles.get(key);
+    const src = loadIllustration(name);
+    if (!src) return null;
+    const rel = `assets/illus/${key}.svg`;
+    write(rel, themedSvg(src, theme));
+    const info = { rel, ...(svgSize(src) || { w: 480, h: 320 }) };
+    illusFiles.set(key, info);
+    return info;
+  };
 
   // Logo.
   const logoSrc = loadIllustration('logo-mark') || (warn('using temporary built-in logo mark'), FALLBACK_LOGO);
@@ -245,7 +339,9 @@ async function main() {
 
   // Generated binaries (tools/render-assets.mjs).
   const gen = (n) => { const f = path.join(GEN_DIR, n); return fs.existsSync(f) ? f : null; };
-  for (const [src, dst] of [['logo-512.png', 'icon-512.png'], ['logo-192.png', 'icon-192.png'], ['apple-touch-icon.png', 'apple-touch-icon.png'], ['favicon-48.png', 'favicon-48.png']]) {
+  // Favicons (48 / 96 / 192 PNG + ICO + SVG), manifest icons and the Organization logo
+  // (logo-512.png: the mark on a light background, as Google wants logos to read on white).
+  for (const [src, dst] of [['logo-512.png', 'icon-512.png'], ['logo-192.png', 'icon-192.png'], ['logo-light-512.png', 'logo-512.png'], ['apple-touch-icon.png', 'apple-touch-icon.png'], ['favicon-48.png', 'favicon-48.png'], ['favicon-96.png', 'favicon-96.png']]) {
     const f = gen(src);
     if (f) copy(f, dst); else warn(`src/assets/generated/${src} missing (run: node tools/render-assets.mjs)`);
   }
@@ -306,9 +402,30 @@ async function main() {
     let tone = 0, num = 0, uidN = 0;
     const usedIds = new Set();
     const c = site.contact;
+    resetIcons();
+    const isArticle = isArticleId(pageId);
+    const location = locationOf(pageId);
+    const dateFmt = new Intl.DateTimeFormat(L.dateLocale || 'en-GB', { year: 'numeric', month: 'long', day: 'numeric', numberingSystem: 'latn' });
     const ctx = {
       site, config: site, lang, L, t, ui, page, pageId, buildDate, noindex: !!opts.noindex,
       dateModified: buildDate,
+      isArticle, isLocation: !!location, location,
+      lcpPreload: absolute ? null : 'assets/topo.svg',
+      criticalCss: () => criticalCssFor(lang, toUrl),
+      locationPage: (locId) => { const pid = pageOfLocation(locId); return pid && hasPage(pid, lang) ? pid : null; },
+      formatDate: (iso) => { const [y, m, d] = String(iso).split('-').map(Number); return y && m && d ? dateFmt.format(new Date(Date.UTC(y, m - 1, d))) : String(iso); },
+      wordCount: (a) => wordCountOf(`${a.lead || ''} ${blocksText(a.blocks)}`, lang),
+      readingMinutes: (a) => Math.max(1, Math.round(ctx.wordCount(a) / 200)),
+      // Articles present in this language, newest first (hub cards, prev/next, llms).
+      articles: () => ARTICLE_IDS.filter((id) => hasPage(id, lang)).map((id) => {
+        const a = content[lang].articles[id];
+        return { id, ...a, dateModified: a.dateModified || a.datePublished, readingMinutes: ctx.readingMinutes(a) };
+      }),
+      articleNeighbours() {
+        const list = ctx.articles();
+        const i = list.findIndex((a) => a.id === pageId);
+        return { prev: i > 0 ? list[i - 1] : null, next: i >= 0 && i < list.length - 1 ? list[i + 1] : null };
+      },
       // Default-language view used for the language-neutral Organization node (identical on every page).
       def: {
         ui: content[DEF].ui,
@@ -323,7 +440,7 @@ async function main() {
       langMeta,
       hasPage: (id, l = lang) => hasPage(id, l),
       hasFile: (p) => files.has(p),
-      pageNav: (id, l = lang) => (content[l].pages[id] || content[DEF].pages[id])?.nav || id,
+      pageNav: (id, l = lang) => (pageOf(id, l) || pageOf(id, DEF))?.nav || id,
       href(id, l = lang, hashFrag) {
         const target = hasPage(id, l) ? l : hasPage(id, lang) ? lang : DEF;
         return toUrl(pagePath(id, target)) + (hashFrag ? `#${hashFrag}` : '');
@@ -336,7 +453,7 @@ async function main() {
       }),
       crumbTrail() {
         const trail = [];
-        for (let id = pageId; id; id = PARENT[id]) trail.unshift({ id, name: id === 'home' ? ui.homeLabel : ctx.pageNav(id) });
+        for (let id = pageId; id; id = parentOf(id)) trail.unshift({ id, name: id === 'home' ? ui.homeLabel : ctx.pageNav(id) });
         return trail;
       },
       breadcrumbs: () => breadcrumbs(ctx),
@@ -345,7 +462,7 @@ async function main() {
           const [idPart, frag] = target.slice(5).split('#');
           const [id, l] = idPart.split('@');
           if (l && !hasPage(id, l)) return null;
-          if (!content[DEF].pages[id]) { warn(`link to unknown page "${id}"`); return null; }
+          if (!pageOf(id, DEF)) { warn(`link to unknown page "${id}"`); return null; }
           return { href: ctx.href(id, l || lang, frag) };
         }
         if (target === 'tel:') return { href: ctx.telUrl() };
@@ -383,11 +500,11 @@ async function main() {
       pdfAbs() { const rel = pdfFor[lang] || pdfFor[DEF]; return rel ? `${site.siteUrl}/${rel}` : abs('profile', lang); },
       ogImage() { const rel = ogFor[lang] || ogFor[DEF]; return rel ? { url: `${site.siteUrl}/${rel}` } : files.has('icon-512.png') ? { url: `${site.siteUrl}/icon-512.png` } : null; },
       ogImageDefault() { const rel = ogFor[DEF]; return rel ? { url: `${site.siteUrl}/${rel}` } : null; },
-      logoPng: () => (files.has('icon-512.png') ? { url: `${site.siteUrl}/icon-512.png`, size: 512 } : null),
+      logoPng: () => (files.has('logo-512.png') ? { url: `${site.siteUrl}/logo-512.png`, size: 512 } : files.has('icon-512.png') ? { url: `${site.siteUrl}/icon-512.png`, size: 512 } : null),
       logoSvg,
-      // Self-hosted font files worth preloading on this page (latin faces + the language's own).
+      // The two font files the first paint of this language needs (LANG_META[lang].fonts).
       fontPreloads() {
-        return [...BASE_FONTS, ...(L.fonts || [])].filter((f) => fontFiles.includes(f)).map((f) => toUrl(`assets/fonts/${f}`));
+        return (L.fonts || []).filter((f) => fontFiles.includes(f)).map((f) => toUrl(`assets/fonts/${f}`));
       },
       P: { colon: ': ', comma: ', ', list: '; ', enum: ', ', open: ' (', close: ')', ...(ui.punct || {}) },
       visual(name, o = {}) {
@@ -400,7 +517,12 @@ async function main() {
         }
         if (!name) return '';
         const src = loadIllustration(name);
-        return raw(`<div class="${esc(cls)}${src ? '' : ' is-placeholder'}">${src ? inlineSvg(src, ctx.uid('i'), 'illus-svg') : placeholderSvg('illus-svg')}</div>`);
+        // Above the fold (hero) and on the printable profile the SVG is inlined; elsewhere it is an
+        // external, cached, lazily loaded <img> with its theme colours baked in (lighter HTML and DOM).
+        const inlineIt = o.eager || page.layout === 'profile' || !o.theme || !src;
+        if (inlineIt) return raw(`<div class="${esc(cls)}${src ? '' : ' is-placeholder'}">${src ? inlineSvg(src, ctx.uid('i'), 'illus-svg') : placeholderSvg('illus-svg')}</div>`);
+        const f = illusFile(name, o.theme);
+        return html`<div class="${cls}"><img class="illus-svg" src="${toUrl(f.rel)}" width="${f.w}" height="${f.h}" alt="" loading="lazy" decoding="async"></div>`;
       },
       localize(v) { if (v == null) return ''; if (typeof v === 'string' || typeof v === 'number') return String(v); return v[lang] || v[DEF] || ''; },
       locName: (l) => l.names?.[lang] || l.locality,
@@ -530,15 +652,18 @@ async function main() {
     return date;
   };
   for (const lang of langs) {
-    for (const id of PAGES) {
+    for (const id of ALL_PAGES) {
       if (!hasPage(id, lang)) continue;
-      const page = content[lang].pages[id];
+      const page = pageOf(id, lang);
+      if (isArticleId(id)) page.layout = 'article';
+      else if (LOCATION_PAGES[id]) page.layout = page.layout || 'location';
       const ctx = makeContext(lang, id, page);
-      let main = renderBlocks(page.blocks, ctx);
+      let main = isArticleId(id) ? articlePage(ctx) : renderBlocks(page.blocks, ctx);
       if (page.layout === 'profile') {
         main = html`<div class="print-head" aria-hidden="true"><span class="brand-mark">${logoSvg()}</span><span class="print-head-name">${site.companyName}</span><span class="print-head-meta">${site.siteUrl.replace(/^https?:\/\//, '')} · <span dir="ltr">${site.contact.phone}</span>${site.contact.email ? ` · ${site.contact.email}` : ''}</span></div>${main}`;
       }
-      const lastmod = lastmodOf(`${lang}:${id}`, String(main));
+      // Articles carry their own dates; other pages take the content-hash date.
+      const lastmod = isArticleId(id) ? String(page.dateModified || page.datePublished) : lastmodOf(`${lang}:${id}`, String(main));
       ctx.dateModified = lastmod;
       write(path.join(pagePath(id, lang), 'index.html'), String(documentShell(ctx, main)));
       sitemapEntries.push({ id, lang, lastmod });
@@ -572,9 +697,10 @@ async function main() {
     }
     const nfScript = `<script>(function(){var d=${JSON.stringify(nfData).replace(/</g, '\\u003c')};var m=location.pathname.match(/^\\/(${Object.keys(nfData).join('|') || 'x'})\\//);if(!m)return;var t=d[m[1]],h=document.documentElement;h.lang=t.lang;h.dir=t.dir;document.title=t.title;document.addEventListener('DOMContentLoaded',function(){var q=function(s){return document.querySelector(s)};var h1=q('#page-title');if(h1)h1.textContent=t.heading;var p=q('.hero .lead');if(p)p.textContent=t.text;var b=document.querySelectorAll('.hero .cta-row a');if(b[0]){b[0].href=t.homeUrl;b[0].querySelector('span').textContent=t.home}if(b[1]){b[1].href=t.contactUrl;b[1].querySelector('span').textContent=t.contact}});})();</script>`;
     out = out.replace('</head>', `${nfScript}\n</head>`);
-    // Self-contained styling: 404.html is served for any missing path, so inline the CSS.
-    const inlineCss = cssMin.toString('utf8').replace(/url\("(topo|strata)\.svg"\)/g, `url("${site.siteUrl}/assets/$1.svg")`).replace(/url\("fonts\//g, `url("${site.siteUrl}/assets/fonts/`);
-    out = out.replace(/<link rel="stylesheet" href="[^"]*assets\/site\.[\w]+\.css">/, () => `<style>${inlineCss}</style>`);
+    // Self-contained styling: 404.html is served for any missing path, so the deferred CSS is inlined too
+    // (the critical part is already inline with absolute asset URLs).
+    const inlineDeferred = deferredMin.toString('utf8').replace(/url\("(topo|strata)\.svg"\)/g, `url("${site.siteUrl}/assets/$1.svg")`).replace(/url\("fonts\//g, `url("${site.siteUrl}/assets/fonts/`);
+    out = out.replace(/<link rel="stylesheet" href="[^"]*assets\/site\.[\w]+\.css" media="print" onload="this\.media='all'">\n<noscript><link rel="stylesheet" href="[^"]*"><\/noscript>/, () => `<style>${inlineDeferred}</style>`);
     write('404.html', out);
   }
 
@@ -584,14 +710,35 @@ async function main() {
   if (!/\.github\.io$/i.test(host)) write('CNAME', `${host}\n`);
 
   // robots.txt
-  const bots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Googlebot', 'Bingbot', 'Applebot', 'Applebot-Extended', 'CCBot', 'meta-externalagent', 'Amazonbot', 'DuckAssistBot', 'YandexBot', 'Baiduspider', 'Bytespider', 'YisouSpider', 'Sogou web spider', '360Spider', 'PetalBot'];
+  // Every crawler is welcome: "User-agent: *" already covers them; the named groups document
+  // the decision for each AI / search agent (training, search index and user-fetch agents alike).
+  const bots = [
+    // Google (Search, AI Overviews / AI Mode use Googlebot; Google-Extended = Gemini training/grounding token)
+    'Googlebot', 'Googlebot-Image', 'Google-Extended', 'Google-CloudVertexBot', 'Google-InspectionTool',
+    // Microsoft / OpenAI
+    'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User',
+    // Anthropic
+    'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'anthropic-ai',
+    // Perplexity, Mistral, Cohere, Apple, Amazon, Meta, DuckDuckGo
+    'PerplexityBot', 'Perplexity-User', 'MistralAI-User', 'cohere-ai', 'Applebot', 'Applebot-Extended', 'Amazonbot',
+    'meta-externalagent', 'meta-externalfetcher', 'FacebookBot', 'DuckAssistBot', 'DuckDuckBot',
+    // Common Crawl (feeds many training sets), ByteDance, Huawei
+    'CCBot', 'Bytespider', 'PetalBot',
+    // Yandex, Naver, Seznam, Baidu and other Chinese engines
+    'YandexBot', 'Yeti', 'SeznamBot', 'Baiduspider', 'YisouSpider', 'Sogou web spider', '360Spider',
+  ];
   write('robots.txt', [
     `# robots.txt for ${site.siteUrl}`,
-    '# All search engines and AI assistants are welcome to crawl and cite this site.',
+    '# All search engines and AI assistants (search, answer and training agents) are welcome to crawl and cite this site.',
     '', 'User-agent: *', 'Allow: /', '',
     ...bots.flatMap((b) => [`User-agent: ${b}`, 'Allow: /', '']),
     `Sitemap: ${site.siteUrl}/sitemap.xml`, '',
   ].join('\n'));
+  // IndexNow key file (tools/indexnow.mjs and .github/workflows/indexnow.yml submit changed URLs).
+  if (site.indexNowKey) {
+    if (!/^[A-Za-z0-9-]{8,128}$/.test(site.indexNowKey)) warn('indexNowKey must be 8-128 characters of [a-zA-Z0-9-]');
+    else write(`${site.indexNowKey}.txt`, site.indexNowKey);
+  }
 
   // sitemap.xml
   const sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
@@ -599,7 +746,7 @@ async function main() {
     sm.push('  <url>', `    <loc>${esc(abs(id, lang))}</loc>`, `    <lastmod>${lastmod}</lastmod>`);
     for (const l of langs) if (hasPage(id, l)) sm.push(`    <xhtml:link rel="alternate" hreflang="${langMeta(l).hreflang}" href="${esc(abs(id, l))}"/>`);
     sm.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${esc(abs(id, DEF))}"/>`);
-    sm.push(`    <priority>${id === 'home' ? '1.0' : SERVICE_PAGES.includes(id) || id === 'partners' ? '0.9' : id === 'legal' ? '0.3' : '0.7'}</priority>`, '  </url>');
+    sm.push(`    <priority>${id === 'home' ? '1.0' : SERVICE_PAGES.includes(id) || id === 'partners' ? '0.9' : id === 'legal' ? '0.3' : isArticleId(id) ? '0.6' : '0.7'}</priority>`, '  </url>');
   }
   sm.push('</urlset>', '');
   write('sitemap.xml', sm.join('\n'));
@@ -607,7 +754,7 @@ async function main() {
 
   // llms.txt + llms-full.txt (English).
   const en = content[DEF];
-  const enCtx = (id) => makeContext(DEF, id, en.pages[id]);
+  const enCtx = (id) => makeContext(DEF, id, pageOf(id, DEF));
   const homeCtx = enCtx('home');
   const facts = homeCtx.facts('full');
   // The canonical entity statement (same sentence as JSON-LD, vCard and manifest).
@@ -630,6 +777,8 @@ async function main() {
     '## Services', '', ...['services', ...SERVICE_PAGES].filter((i) => hasPage(i, DEF)).map(linkLine), '',
     '## Company', '', ...['about', 'fleet', 'experience', 'partners', 'faq', 'contact', 'profile'].filter((i) => hasPage(i, DEF)).map(linkLine),
     ...(pdfFor[DEF] ? [`- [Company profile (PDF)](${site.siteUrl}/${pdfFor[DEF]}): printable company profile`] : []), '',
+    ...(hasPage('locations', DEF) ? ['## Locations', '', ...['locations', ...Object.keys(LOCATION_PAGES)].filter((i) => hasPage(i, DEF)).map(linkLine), ''] : []),
+    ...(hasPage(ARTICLE_HUB, DEF) ? ['## Insights', '', linkLine(ARTICLE_HUB), ...homeCtx.articles().map((a) => `- [${a.nav}](${abs(a.id, DEF)}): ${plain(a.summary)} (updated ${a.dateModified})`), ''] : []),
     '## Other languages', '', ...langs.filter((l) => l !== DEF).map((l) => `- [${langMeta(l).name}](${abs('home', l)}): ${langMeta(l).englishName || langMeta(l).name} version of the site`),
     ...(hasPage('home', 'zh') ? [
       `- [SARL ETAHG 中文首页](${abs('home', 'zh')}): home page in Simplified Chinese, for Chinese contractors and companies`,
@@ -642,9 +791,12 @@ async function main() {
   ].join('\n');
   write('llms.txt', llms);
   const full = [`# ${site.companyName}: full website text (English)`, '', `> ${summary}`, '', `Source: ${site.siteUrl}/ · Generated ${buildDate}`, ''];
-  for (const id of PAGES) {
+  for (const id of ALL_PAGES) {
     if (!hasPage(id, DEF)) continue;
-    full.push('---', '', `URL: ${abs(id, DEF)}`, '', pageMarkdown(enCtx(id)).replace(/^# /, '# '), '');
+    const c = makeContext(DEF, id, pageOf(id, DEF));
+    const a = isArticleId(id) ? pageOf(id, DEF) : null;
+    const head = a ? [`# ${plain(a.h1 || a.nav)}`, '', `Published ${a.datePublished}${a.dateModified ? `, updated ${a.dateModified}` : ''} · ${site.companyName}`, '', a.lead ? plain(a.lead) : '', ''] : [];
+    full.push('---', '', `URL: ${abs(id, DEF)}`, '', ...head, pageMarkdown(c), '');
   }
   write('llms-full.txt', full.join('\n').replace(/\n{3,}/g, '\n\n'));
 
@@ -665,10 +817,12 @@ async function main() {
   write('site.webmanifest', JSON.stringify({
     name: site.companyName, short_name: site.shortName, description: plain(en.ui.footer.tagline),
     start_url: './', scope: './', display: 'browser', background_color: '#F6F4EF', theme_color: '#0F1318',
+    // icon-512 keeps the mark inside the central 80 % safe zone, so it also serves as the maskable icon.
     icons: [
-      files.has('icon-192.png') && { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
-      files.has('icon-512.png') && { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
-      { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml' },
+      files.has('icon-192.png') && { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      files.has('icon-512.png') && { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      files.has('icon-512.png') && { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+      { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
     ].filter(Boolean),
   }, null, 2));
 
@@ -678,7 +832,8 @@ async function main() {
     '  Standards: HTML5, CSS3, schema.org JSON-LD', '  Components: none (static, zero-dependency generator)', '  Privacy: no cookies, no tracking', '',
   ].join('\n'));
 
-  console.log(`  ${pageCount} pages in ${langs.length} language(s) [${langs.join(', ')}], ${files.size} files written, ${warnings.length} warning(s).`);
+  console.log(`  ${pageCount} pages in ${langs.length} language(s) [${langs.join(', ')}] incl. ${ARTICLE_IDS.length} article(s), ${files.size} files written, ${warnings.length} warning(s).`);
+  console.log(`  CSS: ${(cssSize.critical / 1024).toFixed(1)} KB inlined per page (+ @font-face), ${(cssSize.deferred / 1024).toFixed(1)} KB deferred.`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

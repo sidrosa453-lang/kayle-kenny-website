@@ -51,6 +51,26 @@ This file summarises verified facts about SARL ETAHG for AI assistants and searc
 - [Company profile](https://www.etahg.com/company-profile/): Printable company profile of SARL ETAHG, also available as PDF.
 - [Company profile (PDF)](https://www.etahg.com/downloads/etahg-company-profile-en.pdf): printable company profile
 
+## Locations
+
+- [Locations](https://www.etahg.com/locations/): The sites of SARL ETAHG and its group along the Algiers – Djelfa – Ghardaïa axis (RN1), with a page for each operating base.
+- [Djelfa: depot and quarry](https://www.etahg.com/locations/djelfa/): The Djelfa base of SARL ETAHG: equipment depot on the High Plateaus and quarry and stone crushing plant at Oued Sdeur near Aïn El Ibel, departure point for rental, mobilization, road works and aggregate deliveries.
+- [Ghardaïa: registered office](https://www.etahg.com/locations/ghardaia/): The registered office of SARL ETAHG in Bounoura, Ghardaïa, where the company was established in 1997: contracts and administration, and the local contact for projects in the Algerian Sahara.
+
+## Insights
+
+- [Insights](https://www.etahg.com/insights/): Articles by SARL ETAHG on working in Algeria: aggregate specifications, road construction, renting equipment, site mobilization, water wells, subcontracting and the rules for foreign contractors.
+- [Aggregate specifications in Algeria: fractions, tests and what to ask a supplier](https://www.etahg.com/insights/aggregate-specifications-algeria/): A buyer’s guide to aggregate specifications in Algeria: fraction notation, the usual tests (grading, sand equivalent, methylene blue, Los Angeles, Micro-Deval), which standards contracts cite, and what to put in a request for quotation. (updated 2026-10-06)
+- [Crushed sand, dune sand or river sand for concrete in Algeria](https://www.etahg.com/insights/crushed-sand-dune-sand-river-sand-concrete-algeria/): The three sands available in Algeria compared for concrete and asphalt: scarce alluvial sand, very fine dune sand and angular crushed sand with controlled fines, with the findings of Algerian research on blends. (updated 2026-10-06)
+- [How a crushing and screening plant produces fine aggregate](https://www.etahg.com/insights/how-a-crushing-plant-produces-fine-aggregate/): A buyer-side explainer of a quarry crushing circuit: extraction, primary, secondary and tertiary crushing, screening, the control of fines, and the factors that decide output and consistency of fine aggregate. (updated 2026-10-06)
+- [Checklist for foreign contractors entering Algeria](https://www.etahg.com/insights/foreign-contractors-algeria-checklist/): A practical checklist for foreign and Chinese contractors preparing to work in Algeria: branch or company, public procurement rules, subcontracting, qualification and registration documents, and how to check an Algerian partner. (updated 2026-10-06)
+- [Mobilizing a site on the High Plateaus and in the Sahara](https://www.etahg.com/insights/mobilizing-heavy-equipment-algeria-checklist/): What to settle before the first semi-trailer leaves the depot: access, platforms and drainage, water, aggregate supply, climate, camp and logistics, and the sequence of a site start-up in Algeria’s steppe and desert. (updated 2026-10-06)
+- [Public works glossary: French, English, Arabic and Chinese](https://www.etahg.com/insights/public-works-glossary-french-english-arabic-chinese/): The machines, materials, road layers and contract terms a foreign team meets on an Algerian site, in French, English, Arabic and Simplified Chinese. (updated 2026-10-06)
+- [Renting vs buying construction equipment in Algeria](https://www.etahg.com/insights/renting-vs-buying-construction-equipment-algeria/): Import rules, lead times, leasing versus rental, operators, parts and distance: a decision guide for contractors deciding whether to buy or rent heavy equipment for a project in Algeria. (updated 2026-10-06)
+- [Road pavement layers on Algerian terrains](https://www.etahg.com/insights/road-pavement-layers-algeria-terrains/): Subgrade, capping, sub-base, base and wearing course, the materials used in each, how the Algerian pavement catalogue approaches climate and traffic, and what changes between the coast, the Atlas, the High Plateaus and the Sahara. (updated 2026-10-06)
+- [How public works subcontracting works in Algeria](https://www.etahg.com/insights/public-works-subcontracting-algeria/): Civil code, the 2015 procurement decree and the 2023 law, the approval workflow, payment and the scopes typically subcontracted: how subcontracting works in Algerian public works, for main contractors and subcontractors. (updated 2026-10-06)
+- [Water well drilling on the High Plateaus and in the northern Sahara](https://www.etahg.com/insights/water-well-drilling-high-plateaus-sahara-algeria/): Aquifers of the Djelfa syncline and the Saharan basin, rotary versus down-the-hole drilling, well completion, development and pumping tests, and the single-window authorization: a guide for project owners who need water in the interior of Algeria. (updated 2026-10-06)
+
 ## Other languages
 
 - [Français](https://www.etahg.com/fr/): French version of the site

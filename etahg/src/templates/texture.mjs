@@ -8,9 +8,11 @@ function rng(seed) {
 }
 
 // Closed smooth path through points (Catmull-Rom -> cubic Bézier).
+// Coordinates are rounded to integers: the textures are drawn at 9 % opacity, where a
+// sub-pixel difference is invisible, and the file is the hero's LCP resource.
 function closedPath(pts) {
   const n = pts.length;
-  const f = (v) => Math.round(v * 10) / 10;
+  const f = (v) => Math.round(v);
   let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
   for (let i = 0; i < n; i++) {
     const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
@@ -46,7 +48,7 @@ export function topoSvg() {
     const harm = Array.from({ length: 4 }, (_, j) => ({ a: (0.16 / (j + 1)) * (0.6 + r()), p: r() * Math.PI * 2, k: j + 2 }));
     for (let k = 1; k <= c.rings; k++) {
       const pts = [];
-      const N = 40;
+      const N = 28;
       const drift = k * 0.08;
       for (let i = 0; i < N; i++) {
         const t = (i / N) * Math.PI * 2;

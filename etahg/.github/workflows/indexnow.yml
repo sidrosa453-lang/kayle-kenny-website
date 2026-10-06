@@ -1,0 +1,54 @@
+# Submits the site's URLs to IndexNow (Bing, Yandex, Naver, Seznam, Yep) after each deploy of docs/
+# and once a week, after a smoke test of the live sitemap. Google does not use IndexNow: submit
+# sitemap.xml in Search Console instead.
+# The key is read from site.config.json (indexNowKey); docs/<key>.txt is written by the build.
+# Optional: a repository secret INDEXNOW_KEY overrides it (keep it equal to the committed key file).
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+  schedule:
+    - cron: '17 6 * * 1'   # Mondays 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Site URL
+        id: site
+        run: echo "url=$(node -p "JSON.parse(require('fs').readFileSync('site.config.json','utf8')).siteUrl.replace(/\/+$/,'')")" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for GitHub Pages to publish
+        if: github.event_name == 'push'
+        run: sleep 90
+
+      - name: Deployment smoke test (live sitemap and key file must answer 200)
+        env:
+          SITE: ${{ steps.site.outputs.url }}
+        run: |
+          set -e
+          KEY=$(node -p "process.env.INDEXNOW_KEY || JSON.parse(require('fs').readFileSync('site.config.json','utf8')).indexNowKey")
+          for p in /sitemap.xml /$KEY.txt / ; do
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --max-time 30 "$SITE$p")
+            echo "$SITE$p -> HTTP $code"
+            case "$code" in 2*) ;; *) echo "::error::$SITE$p answered $code"; exit 1;; esac
+          done
+          if ! curl -sS --max-time 30 "$SITE/sitemap.xml" | grep -q '<loc>'; then echo '::error::live sitemap has no <loc>'; exit 1; fi
+
+      - name: Submit sitemap URLs to IndexNow
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: node tools/indexnow.mjs --sitemap docs/sitemap.xml

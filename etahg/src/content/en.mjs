@@ -23,9 +23,12 @@
  *   [label](tel:)   [label](whatsapp:)   [label](mailto:)   [label](pdf:)  (company-profile PDF)
  *
  * TOP LEVEL
- *   meta   optional overrides of src/templates/structure.mjs LANG_META (label, dir, ogLocale…)
- *   ui     interface strings (header, footer, facts panel, locations, map, 404…)
- *   pages  one object per page id (see structure.mjs PAGES)
+ *   meta      optional overrides of src/templates/structure.mjs LANG_META (label, dir, ogLocale…)
+ *   ui        interface strings (header, footer, facts panel, locations, map, article, 404…)
+ *   pages     one object per page id (see structure.mjs PAGES), incl. the 'insights' hub,
+ *             the 'locations' hub and the location pages 'loc-djelfa' / 'loc-ghardaia'
+ *   articles  one object per ARTICLE id (Insights articles, see ARTICLE below); an article
+ *             exists in a language only when that language file has it
  *
  * PAGE
  *   slug         URL path without leading/trailing slash ('' = home). FR translates it;
@@ -36,9 +39,28 @@
  *   summary      one sentence used in llms.txt and link lists
  *   service      (service pages) { name, serviceType } → schema.org Service
  *   whatsapp     optional prefilled WhatsApp message for this page (else ui.whatsappMessage)
- *   layout       optional: 'profile' (printable company profile)
+ *   layout       optional: 'profile' (printable company profile); 'location' is set automatically
+ *                on location pages (structure.mjs LOCATION_PAGES: page id -> site.config.json location id)
  *   blocks       ordered array of blocks (below). `label` = small numbered section label.
  *                Any block may set `id` (anchor) and `tone`: 'light' | 'sand' | 'ink'.
+ *
+ * ARTICLE (articles.<id>; the id is shared by all languages, the slug is translated)
+ *   slug          URL leaf under the Insights hub: /insights/<slug>/ (FR: /fr/conseils/<slug>/)
+ *   nav           short title (hub card, breadcrumb, prev/next)
+ *   title         <title>, max 60 width, ends with "| ETAHG"
+ *   description   meta description, 110–155 width
+ *   summary       one or two sentences for the hub card and llms.txt
+ *   eyebrow       topic shown above the H1 (also schema.org articleSection)
+ *   h1            the H1 (defaults to nav)
+ *   lead          standfirst under the H1
+ *   datePublished YYYY-MM-DD   dateModified? YYYY-MM-DD (sitemap lastmod, byline "Updated", Article JSON-LD)
+ *   service?      service page id the article is about (byline tag, Article.about, "Related services")
+ *   related?      page ids listed under "Related services" (default: [service])
+ *   blocks        prose, steps, table, faq, cta, split, cards, features, links, callout…
+ *                 Every block with a `title` becomes an H2 with an anchor listed in the table of contents.
+ *                 Keep H2 titles short (they are the TOC). FAQ blocks use their own items (FAQPage markup).
+ *   Reading time, word count, prev/next and the byline are generated. Articles never add facts
+ *   outside BRIEF.md: general know-how only, no project names, counts or places worked in.
  *
  * BLOCK TYPES (fields; [] = array; ? = optional)
  *   hero      size ('home'|'page'|'profile'), eyebrow, title (the page H1), lead,
@@ -65,6 +87,12 @@
  *             quoteMessage (prefilled WhatsApp text, \n allowed)
  *   download  title, text, label                                    (company-profile PDF)
  *   cta       title, text?, ctas[]
+ *   callout   title?, text? or paragraphs[]?, list[]?, variant? ('note'|'tip'|'warning'|'key'), cta?
+ *             (highlighted aside; no H2, not in the table of contents)
+ *   articles  label?, title, intro?, limit?, more? {label, page}, emptyText?
+ *             (cards of this language's articles, newest first; the Insights hub uses it without limit)
+ *   place     label?, title, intro?, lead?, paragraphs[], list[]?, note?
+ *             (location pages only: prose next to the site's address card from site.config.json)
  *
  * CTA  { label, page?, href?, kind? ('whatsapp'|'tel'|'mailto'|'pdf'|'vcard'), variant? ('primary'|'secondary') }
  */
@@ -190,6 +218,8 @@ export default {
         parts: 'EURL KAYLE KENNY, the group’s spare parts company, with stock in Algiers.',
       },
       wilaya: 'Wilaya of {{region}}',
+      detailsLink: 'About this site',
+      geoLabel: 'GPS',
       // Optional translations of region names used in "Wilaya of …" (e.g. { Algiers: 'Alger' }).
       regionNames: {},
       map: {
@@ -231,6 +261,19 @@ export default {
       scope: 'Scope',
     },
 
+    // Insights articles: byline, table of contents, previous / next (dates formatted per language).
+    article: {
+      by: 'By',
+      updated: 'Updated',
+      readingTime: '{{min}} min read',
+      toc: 'In this article',
+      related: 'Related services',
+      prev: 'Previous article',
+      next: 'Next article',
+      all: 'All insights',
+      navLabel: 'More articles',
+    },
+
     notFound: {
       title: 'Page not found | ETAHG',
       heading: 'This page could not be found',
@@ -249,8 +292,8 @@ export default {
     home: {
       slug: '',
       nav: 'Home',
-      title: 'SARL ETAHG | Aggregates, Heavy Equipment & Roads, Algeria',
-      description: 'SARL ETAHG, established in 1997, is an Algerian company for fine aggregates, road construction, equipment rental, site mobilization and water wells.',
+      title: 'SARL ETAHG | Aggregates, Roads & Rental, Ghardaïa · Djelfa',
+      description: 'SARL ETAHG (Ghardaïa, Djelfa), established in 1997: fine aggregates, road construction, equipment rental, site mobilization and water wells in Algeria.',
       summary: 'Overview of SARL ETAHG, an Algerian company specialized in fine aggregates, road construction, equipment rental and leasing, mobilization and water wells.',
       blocks: [
         {
@@ -395,8 +438,8 @@ export default {
     services: {
       slug: 'services',
       nav: 'Services',
-      title: 'Civil Works & Construction Services in Algeria | ETAHG',
-      description: 'SARL ETAHG services in Algeria: crushed fine aggregates, road construction, heavy equipment rental and leasing, site mobilization and water well drilling.',
+      title: 'Civil Works Services, Djelfa & Ghardaïa, Algeria | ETAHG',
+      description: 'SARL ETAHG services from Djelfa and Ghardaïa, Algeria: crushed fine aggregates, road construction, equipment rental, site mobilization and water wells.',
       summary: 'Overview of the services of SARL ETAHG and how they combine on one project.',
       blocks: [
         {
@@ -482,7 +525,7 @@ export default {
     aggregates: {
       slug: 'services/aggregate-production',
       nav: 'Aggregate production',
-      title: 'Fine Aggregate Supplier in Djelfa, Algeria | ETAHG',
+      title: 'Fine Aggregates & Crushing Plant, Djelfa, Algeria | ETAHG',
       description: 'Crushed fine aggregates (manufactured sand) from SARL ETAHG’s plant near Djelfa, Algeria, for concrete, asphalt and roads at high production rates.',
       summary: 'High-quality crushed fine aggregates from SARL ETAHG’s own quarry and stone crushing plant at Oued Sdeur, near Aïn El Ibel (Djelfa), suited to high production rates.',
       service: { name: 'Fine aggregate production and supply', serviceType: 'Crushed fine aggregate (manufactured sand) production' },
@@ -492,7 +535,7 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Aggregate production',
-          title: 'Crushed fine aggregates for high-volume projects in Algeria',
+          title: 'Crushed fine aggregates from our own quarry and crushing plant in Djelfa, for high-volume projects',
           lead: '{{company}} produces high-quality crushed fine aggregates, also called manufactured sand, at its own quarry and stone crushing plant, Carrière Djellal El Gharbi, at Oued Sdeur near Aïn El Ibel, south of Djelfa. The company extracts the rock itself, with its own drilling and loading equipment, and crushes it on the same site, so it controls the raw material as well as the process. The plant’s crushing and grinding machines are especially suited to projects that require high production rates, such as road programmes, concrete production and large infrastructure sites.',
           ctas: [
             { label: 'Request aggregate supply', kind: 'whatsapp', variant: 'primary' },
@@ -633,7 +676,7 @@ export default {
     rental: {
       slug: 'services/equipment-rental',
       nav: 'Equipment rental',
-      title: 'Heavy Equipment Rental & Leasing in Algeria | ETAHG',
+      title: 'Excavator, Bulldozer & Grader Rental in Algeria | ETAHG',
       description: 'Rent or lease heavy equipment in Algeria from SARL ETAHG: excavators, bulldozers, loaders, graders, rollers, pavers and trucks, terms agreed per project.',
       summary: 'Rental and leasing of SARL ETAHG’s own heavy equipment fleet in Algeria, dispatched from Djelfa.',
       service: { name: 'Heavy equipment rental and leasing', serviceType: 'Heavy equipment rental' },
@@ -643,7 +686,7 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Equipment rental and leasing',
-          title: 'Heavy equipment for rent and lease, from a road builder’s own fleet',
+          title: 'Excavators, bulldozers, graders, rollers and pavers for rent and lease from our Djelfa depot',
           lead: '{{company}} rents and leases its own heavy equipment to contractors and project owners in Algeria: hydraulic excavators, bulldozers, wheel loaders, motor graders, vibratory rollers, asphalt pavers, bitumen trucks, trucks and semi-trailers. The machines were assembled to build roads and are dispatched from our equipment depot in Djelfa, on the RN1 axis. Duration, operators, transport and maintenance are agreed for each project.',
           ctas: [
             { label: 'Request equipment', kind: 'whatsapp', variant: 'primary' },
@@ -768,7 +811,7 @@ export default {
     mobilization: {
       slug: 'services/project-mobilization',
       nav: 'Project mobilization',
-      title: 'Project Mobilization & Site Start-up in Algeria | ETAHG',
+      title: 'Site Mobilization & Earthworks in Algeria | ETAHG',
       description: 'SARL ETAHG starts up projects in Algeria: equipment mobilization, site clearing, access tracks, platforms, earthworks, aggregate supply and water wells.',
       summary: 'Project initialization and site start-up in Algeria with SARL ETAHG’s own heavy equipment.',
       service: { name: 'Project mobilization and site start-up', serviceType: 'Construction site mobilization' },
@@ -895,7 +938,7 @@ export default {
     roads: {
       slug: 'services/road-construction',
       nav: 'Road construction',
-      title: 'Road Construction Contractor in Algeria | ETAHG',
+      title: 'Road Contractor & Subcontractor in Algeria | ETAHG',
       description: 'SARL ETAHG builds roads in Algeria with its own complete fleet: earthworks, grading, compaction, bitumen spraying and asphalt paving, in many regions.',
       summary: 'Road construction, SARL ETAHG’s original activity, carried out with its own fleet and aggregates.',
       service: { name: 'Road construction', serviceType: 'Road construction and earthworks' },
@@ -905,7 +948,7 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Road construction',
-          title: 'Road construction across Algeria, from earthworks to asphalt',
+          title: 'Road construction contractor and subcontractor across Algeria, from earthworks to asphalt',
           lead: 'Road construction is the original activity of {{company}}. The company’s fleet of excavators, bulldozers, wheel loaders, motor graders, vibratory rollers, bitumen distributor and tankers, asphalt pavers and trucks was assembled mainly to build roads, and ETAHG has completed road projects in many regions of Algeria. It can take on a complete road scope or work as a subcontractor for earthworks, pavement layers, paving and aggregate supply.',
           ctas: [
             { label: 'Discuss a road project', kind: 'whatsapp', variant: 'primary' },
@@ -1016,7 +1059,7 @@ export default {
       slug: 'services/water-well-drilling',
       nav: 'Water well drilling',
       title: 'Water Well & Borehole Drilling in Algeria | ETAHG',
-      description: 'SARL ETAHG drills water wells in Algeria with its own rigs, for construction sites and for agricultural, industrial and community needs, on request.',
+      description: 'SARL ETAHG drills water wells (forages) in Algeria with its own truck-mounted rig, from Djelfa and Ghardaïa, for sites, farms, industry and communities.',
       summary: 'Water well drilling in Algeria with SARL ETAHG’s own drilling rigs, for sites, farms, industry and communities.',
       service: { name: 'Water well drilling', serviceType: 'Water well drilling' },
       whatsapp: 'Hello SARL ETAHG, I would like information about drilling a water well (location, use of the water).',
@@ -1407,6 +1450,7 @@ export default {
           paragraphs: [
             'Algeria’s roads, railways, dams, housing and industrial plants are delivered by Algerian companies and by international contractors, among them many Chinese, Turkish and European groups. International contractors bring engineering, financing and the management of large projects. What they often need locally is equipment that is already in the country, a secure supply of materials, subcontractors for earthworks and road layers, and a partner who knows the ground and the practical conditions of working in the country (see our [road-building experience](page:experience)).',
             '{{company}} is organized to fill that role. It can take on a defined scope under your contract, supply machines and aggregates to your site, or open the site for you while your own organization is being set up. Because it owns its equipment and its crushing plant, it commits its own resources rather than coordinating third parties on your behalf.',
+            'The framework also favours it: Algeria’s 2023 public procurement law grants a 25 percent preference margin to Algerian-majority companies and asks foreign bidders in international tenders to commit to a partnership with one, while the procurement regulation caps subcontracting at 40 percent of a contract and requires prior approval of each subcontractor. Our [checklist for foreign contractors](page:foreign-contractor-checklist) and the article on [how subcontracting works in Algeria](page:subcontracting-algeria) explain these rules in general terms.',
           ],
         },
         {
@@ -1551,7 +1595,7 @@ export default {
           label: 'Profile',
           title: 'Company profile',
           paragraphs: [
-            '{{company}} is a limited liability company (SARL) under Algerian law, established in 1997, with its registered office at Cité 400 Logements, Sidi Abbaz, Bounoura, in the wilaya of Ghardaïa. Its equipment depot is in Djelfa. Its own quarry and stone crushing plant, Carrière Djellal El Gharbi, is at Oued Sdeur, near Aïn El Ibel, south of Djelfa: the company extracts the rock and crushes it into high-quality fine aggregates. The short name ETAHG is used in all languages.',
+            '{{company}} is a limited liability company (SARL) under Algerian law, established in 1997, with its registered office at Cité 400 Logements, Sidi Abbaz, Bounoura, in the wilaya of Ghardaïa. Its equipment depot is in Djelfa. Its own quarry and stone crushing plant, Carrière Djellal El Gharbi, is at Oued Sdeur, near Aïn El Ibel, south of Djelfa: the company extracts the rock and crushes it into high-quality fine aggregates. The short name ETAHG is used in all languages; it stands for Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa and is not related to any other company with similar initials.',
             'The company built its fleet of excavators, bulldozers, wheel loaders, motor graders, vibratory rollers, asphalt pavers, bitumen distributor and tankers, trucks and semi-trailers to build roads, and has completed road projects in many regions of Algeria. It has since opened this fleet to other companies through rental and leasing, offers the initialization of new projects with its machines, and drills water wells with its own truck-mounted rig.',
             'The group also includes EURL KAYLE KENNY, a heavy-duty spare parts company with a store and parts depot in Mohammadia, Algiers.',
           ],
@@ -1620,6 +1664,246 @@ export default {
     },
 
     /* ------------------------------------------------------------------- FAQ */
+    locations: {
+      slug: 'locations',
+      nav: 'Locations',
+      title: 'Locations: Ghardaïa, Djelfa & Algiers | ETAHG',
+      description: 'Where SARL ETAHG works from: registered office in Bounoura (Ghardaïa), equipment depot in Djelfa, quarry at Oued Sdeur and group parts store in Algiers.',
+      summary: 'The sites of SARL ETAHG and its group along the Algiers – Djelfa – Ghardaïa axis (RN1), with a page for each operating base.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Locations',
+          title: 'Our sites between the north and the south of Algeria',
+          lead: '{{company}} works from two bases of its own on the RN1, the main road between Algiers and the Sahara: the registered office in Bounoura, wilaya of Ghardaïa, in the northern Sahara, and the equipment depot in Djelfa, on the High Plateaus, with the company’s quarry and stone crushing plant at Oued Sdeur near Aïn El Ibel, south of Djelfa. The group spare-parts company EURL KAYLE KENNY is in Mohammadia, Algiers.',
+        },
+        {
+          type: 'locations',
+          label: 'Sites',
+          title: 'Four sites along the RN1 corridor',
+          intro: 'The depot on the High Plateaus and the office in the northern Sahara each have their own page: what is there, which services start from there, the terrain around, how to reach us and whom to call.',
+        },
+        {
+          type: 'prose',
+          label: 'Why it matters',
+          title: 'A footprint on the road to the south',
+          paragraphs: [
+            'The RN1 runs from Algiers over the Tell Atlas, across the High Plateaus through Djelfa and Laghouat, and down into the Sahara through Ghardaïa towards El Menia and the deep south. Djelfa, at roughly 300 km from the capital, is where the fleet is kept and maintained and where most convoys start; Ghardaïa, a further 300 km or so to the south, is where the company was established in 1997 and where it is administered. A project in the north is reached from Djelfa by driving up the same road; a project in the Sahara is reached by driving down it, with the office in Ghardaïa as the local contact. Aggregates come from the company’s own plant between the two, and spare parts for the engines from Algiers.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Which base is closest to your project?',
+          text: 'Tell us where the site is. We will say which base we would mobilize from and what we can supply locally.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'loc-djelfa': {
+      slug: 'locations/djelfa',
+      nav: 'Djelfa: depot and quarry',
+      title: 'Djelfa Equipment Depot & Quarry, Aïn El Ibel | ETAHG',
+      description: 'The SARL ETAHG equipment depot in Djelfa and its quarry and crushing plant at Oued Sdeur, Aïn El Ibel: fleet base on the RN1, rental, aggregates, drilling.',
+      summary: 'The Djelfa base of SARL ETAHG: equipment depot on the High Plateaus and quarry and stone crushing plant at Oued Sdeur near Aïn El Ibel, departure point for rental, mobilization, road works and aggregate deliveries.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Djelfa, wilaya of Djelfa',
+          title: 'Djelfa: the equipment depot and the quarry on the RN1 axis',
+          lead: '{{company}} keeps its heavy equipment at a depot in Djelfa and produces its fine aggregates at its own quarry and stone crushing plant, Carrière Djellal El Gharbi at Oued Sdeur near Aïn El Ibel, south of the city. Djelfa sits on the High Plateaus at around 1,100 metres, on the RN1 roughly 300 km south of Algiers, which puts the machines and the material within reach of projects to the north and to the south.',
+          illustration: 'excavator',
+        },
+        {
+          type: 'place',
+          label: 'The depot',
+          title: 'What is at the Djelfa depot',
+          paragraphs: [
+            'The depot is the home base of the road-building fleet: hydraulic excavators, bulldozers, wheel loaders, motor graders, vibratory rollers, the asphalt paver, the bitumen distributor and bitumen tankers, trucks and tipper semi-trailers, the surface rock drill used at the quarry and the truck-mounted water well drilling rig. Machines are parked, serviced and prepared for transport here between projects; loading on semi-trailers, convoy preparation and the hand-over of rented machines also take place at the depot.',
+            'Spare parts for the heavy-duty diesel engines come from the group company EURL KAYLE KENNY in Algiers, so that a machine leaving Djelfa is supported from inside the group. Visits to inspect the categories of equipment before a rental or a subcontract can be arranged on request.',
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'The quarry',
+          title: 'The quarry and crushing plant at Oued Sdeur, Aïn El Ibel',
+          paragraphs: [
+            'South of the city of Djelfa, in the commune of Aïn El Ibel, {{company}} operates its own quarry and stone crushing plant, Carrière Djellal El Gharbi at Oued Sdeur. The plant’s crushing and grinding machines produce high-quality fine aggregates for concrete, asphalt and the granular layers of roads and platforms, and are especially suited to projects that require high production rates. Material is loaded onto the company’s own trucks and tipper semi-trailers for delivery, or collected at the plant by arrangement.',
+            'The quarry has its own telephone lines, +213 660 36 75 50 and +213 660 36 75 51, and a fax, +213 27 90 46 13, for supply enquiries and deliveries; the group number {{phone}} and {{email}} reach the company for everything else.',
+          ],
+        },
+        {
+          type: 'cards',
+          label: 'Services',
+          title: 'Services delivered from Djelfa',
+          intro: 'Everything that needs a machine leaves from the depot; everything that needs stone leaves from the quarry.',
+          style: 'compact',
+          items: [
+            { page: 'rental', title: 'Equipment rental and leasing', text: 'Excavators, bulldozers, loaders, graders, rollers, paver, bitumen trucks, trucks and semi-trailers, handed over at the depot or delivered to the site on terms agreed per project.' },
+            { page: 'aggregates', title: 'Fine aggregates', text: 'Crushed sand and fine aggregates from the Oued Sdeur plant, with test requirements agreed before supply and haulage by the company’s own trucks.' },
+            { page: 'mobilization', title: 'Project mobilization', text: 'Convoys of machines and operators to open a new site: access tracks, platforms, first earthworks and aggregate supply.' },
+            { page: 'roads', title: 'Road construction', text: 'Earthworks, pavement layers and asphalt surfacing with the complete fleet, in direct contract or as a subcontractor.' },
+            { page: 'drilling', title: 'Water well drilling', text: 'The truck-mounted rig is based at the depot and travels to sites on the plateaus and in the south.' },
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Terrain',
+          title: 'The High Plateaus around Djelfa',
+          paragraphs: [
+            'The wilaya of Djelfa lies on the High Plateaus, the wide steppe between the Tell Atlas to the north and the Saharan Atlas to the south, with the Ouled Naïl range rising around the city. The country is open, with long straight alignments, cold winters with frost and occasional snow, hot dry summers and wind. For road works this means long linear sites, a strong demand for aggregates and a short season for bituminous layers; for drilling it means a syncline whose aquifers supply most of the wells of the steppe. The company’s own quarry south of the city answers the aggregate question directly, and the Saharan Atlas nearby brings the rock cuts, embankments and gradients the fleet was assembled for.',
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Access',
+          title: 'Access and logistics on the RN1',
+          paragraphs: [
+            'The depot is reached from the RN1, which links Algiers and the Tell to the north with Laghouat, Ghardaïa and the Sahara to the south; the quarry at Oued Sdeur lies off the same road south of the city, towards Aïn El Ibel. Heavy equipment leaves on semi-trailers along this axis, or across the plateaus on the roads towards M’Sila, Biskra, Tiaret and Bou Saâda. Sites on the High Plateaus and in the northern Sahara are generally within a day’s haul. Transport, duration and operators are agreed per project.',
+            'To visit, contact us first: we arrange a time at the depot or at the quarry, and can combine the visit with a meeting on your project.',
+          ],
+        },
+        {
+          type: 'faq',
+          label: 'FAQ',
+          title: 'Questions about the Djelfa base',
+          items: [
+            { id: 'djelfa-depot', q: 'Does ETAHG have a depot in Djelfa?', a: 'Yes. SARL ETAHG keeps its heavy equipment fleet at an equipment depot in Djelfa, wilaya of Djelfa, on the RN1 axis between Algiers and the Sahara; the machines are serviced there and dispatched from there for rental, mobilization and road works.' },
+            { id: 'djelfa-quarry', q: 'Where is the ETAHG quarry?', a: 'The quarry and stone crushing plant of SARL ETAHG, Carrière Djellal El Gharbi, is at Oued Sdeur near Aïn El Ibel, in the wilaya of Djelfa, south of the city of Djelfa; it produces fine aggregates for concrete, asphalt and road layers and can be reached on +213 660 36 75 50 / 51.' },
+            { id: 'djelfa-collect', q: 'Can we collect aggregates at the quarry with our own trucks?', a: 'Collection at the plant can be arranged, as can delivery by the company’s own trucks and tipper semi-trailers; fractions, quantities, loading times and the method of acceptance are agreed before supply starts.' },
+            { id: 'djelfa-deliver', q: 'Does ETAHG deliver aggregates to Hassi Bahbah, Laghouat or other towns?', a: 'Delivery to sites in the wilaya of Djelfa and in neighbouring wilayas is quoted per project, based on the distance from the plant at Oued Sdeur, the quantities and the delivery rhythm; send the site location and the fractions needed for a delivered price.' },
+            { id: 'djelfa-visit', q: 'Can we inspect the machines at the depot before renting?', a: 'Yes. Contact us to arrange a visit to the Djelfa depot; we show the categories of equipment that fit your project and discuss transport to your site and the terms.' },
+            { id: 'djelfa-regions', q: 'Which regions does the Djelfa base serve?', a: 'From Djelfa, SARL ETAHG mobilizes along the RN1 towards the north and the Sahara and across the High Plateaus; the company has built roads in many regions of Algeria, and availability for a specific location is confirmed on request.' },
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'A project on the High Plateaus or further south?',
+          text: 'Send us the location, the scope and the dates. We will answer with the machines and materials we can mobilize from Djelfa.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'loc-ghardaia': {
+      slug: 'locations/ghardaia',
+      nav: 'Ghardaïa: registered office',
+      title: 'Ghardaïa Registered Office, Bounoura | ETAHG',
+      description: 'The registered office of SARL ETAHG at Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya of Ghardaïa: contracts, administration and projects in the Sahara.',
+      summary: 'The registered office of SARL ETAHG in Bounoura, Ghardaïa, where the company was established in 1997: contracts and administration, and the local contact for projects in the Algerian Sahara.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Bounoura, wilaya of Ghardaïa',
+          title: 'Ghardaïa: the registered office in the northern Sahara',
+          lead: '{{company}} was established by notarial deed in Ghardaïa in 1997 and keeps its registered office at Cité 400 Logements, Sidi Abbaz, in Bounoura, in the M’zab valley. The “G” of ETAHG stands for Ghardaïa. This is where the company is administered and where its contracts are signed, and the natural starting point for projects in the south of the country.',
+          illustration: 'drill-rig',
+        },
+        {
+          type: 'place',
+          label: 'The office',
+          title: 'What is at the Ghardaïa office',
+          paragraphs: [
+            'The registered office handles the company’s administration, contracts, invoicing and the registry obligations of an Algerian SARL: commercial register, tax and social registrations. Meetings with project owners and partners are held here or at the Djelfa depot, depending on where the project is; documents for an approval or due-diligence file are prepared here.',
+            'Ghardaïa also anchors the company in the south. From the office, the machines based in Djelfa are dispatched to Saharan sites along the RN1, aggregates from the Oued Sdeur plant are organized for delivery, and water well drilling is arranged for sites, farms and communities in a region where water is a project in itself.',
+          ],
+        },
+        {
+          type: 'cards',
+          label: 'Services',
+          title: 'Services coordinated from Ghardaïa',
+          intro: 'The machines are in Djelfa; the office organizes the projects, in particular those in the Saharan wilayas.',
+          style: 'compact',
+          items: [
+            { page: 'partners', title: 'Local partnership', text: 'Subcontracting, supply and rental agreements with international contractors, prepared and signed at the registered office.' },
+            { page: 'drilling', title: 'Water well drilling', text: 'Wells for sites, agriculture and industry, with the truck-mounted rig travelling from Djelfa.' },
+            { page: 'mobilization', title: 'Mobilization towards the south', text: 'Convoys from Djelfa along the RN1 to Saharan sites, with the office as the local contact.' },
+            { page: 'aggregates', title: 'Aggregate supply', text: 'Fine aggregates from the Oued Sdeur plant delivered to projects in the south by the company’s own haulage.' },
+            { page: 'roads', title: 'Road works in the south', text: 'Earthworks, platforms and pavement layers for roads, access and industrial sites in Saharan conditions.' },
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Terrain',
+          title: 'The northern Sahara around Ghardaïa',
+          paragraphs: [
+            'Ghardaïa lies in the M’zab valley at about 500 metres, cut into the hamada, the rocky plateau of the northern Sahara. The region combines stony plateaus, wadis that are dry for months and flood in hours, and sandy areas; rain is rare, summers are very hot and winter nights cold. Water comes from deep aquifers. Works here must be planned for self-sufficiency: fuel, spare parts, accommodation and water travel with the site, and aggregates are hauled from where the rock is. That is why mobilization, haulage from the company’s own plant and well drilling are the services most often asked of us in this region.',
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'Access',
+          title: 'Access and logistics on the RN1',
+          paragraphs: [
+            'Bounoura is one of the communes of the Ghardaïa urban area, on the RN1 south of Laghouat and Djelfa. The same road continues south towards El Menia and the deep south, and other national roads lead east towards Ouargla and the oil regions and west towards El Bayadh. Ghardaïa is roughly 600 km from Algiers by road and about 200 km from Laghouat and from Ouargla. Equipment reaches Saharan sites from the Djelfa depot along the RN1; the office is the local point of contact for projects in the region, and transport and site terms are agreed per project.',
+            'To visit, write or call first; we receive partners at the registered office in Bounoura and can accompany them to a site in the region.',
+          ],
+        },
+        {
+          type: 'faq',
+          label: 'FAQ',
+          title: 'Questions about the Ghardaïa office',
+          items: [
+            { id: 'ghardaia-office', q: 'Where is SARL ETAHG’s head office?', a: 'The registered office of SARL ETAHG is at Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya of Ghardaïa, Algeria, where the company was established by notarial deed in 1997; its commercial register and tax identifiers are listed in the company profile and legal notice.' },
+            { id: 'ghardaia-fleet', q: 'Is the equipment kept in Ghardaïa?', a: 'No. The fleet is based at the Djelfa depot; the Ghardaïa office is the registered office of the company and coordinates projects, in particular in the south, with machines dispatched from Djelfa along the RN1.' },
+            { id: 'ghardaia-eptpg', q: 'Is ETAHG related to EPTPG or to ETRHB?', a: 'No. SARL ETAHG, Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa, is an independent private limited liability company established in 1997; it is not related to the public works enterprise EPTPG of Ghardaïa nor to the group known as ETRHB, despite the similar initials.' },
+            { id: 'ghardaia-south', q: 'Does ETAHG work in the Saharan wilayas?', a: 'From its registered office in Ghardaïa and its depot in Djelfa, SARL ETAHG is positioned to mobilize along the RN1 towards the south; the company has built roads in many regions of Algeria, and availability for a specific Saharan location is confirmed on request.' },
+            { id: 'ghardaia-meet', q: 'Can we meet in Ghardaïa?', a: 'Yes. Contact us to arrange a meeting at the registered office in Bounoura, at the Djelfa depot or on your site.' },
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'A project in the Algerian Sahara?',
+          text: 'Tell us where and when. We will say what we can supply, mobilize or drill, and from which base.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'WhatsApp', kind: 'whatsapp', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    insights: {
+      slug: 'insights',
+      nav: 'Insights',
+      title: 'Insights: Working on Projects in Algeria | ETAHG',
+      description: 'Practical articles by SARL ETAHG for contractors in Algeria: aggregates, road layers, equipment rental, site mobilization, water wells and subcontracting.',
+      summary: 'Articles by SARL ETAHG on working in Algeria: aggregate specifications, road construction, renting equipment, site mobilization, water wells, subcontracting and the rules for foreign contractors.',
+      blocks: [
+        {
+          type: 'hero',
+          size: 'page',
+          eyebrow: 'Insights',
+          title: 'Practical know-how for projects in Algeria',
+          lead: '{{company}} runs a quarry, a road-building fleet and a drilling rig from Djelfa and Ghardaïa, and works with foreign contractors and Algerian project owners. These articles put that experience in writing: how aggregates are specified and produced, how a road is layered on each of Algeria’s terrains, when to rent rather than buy, how a site is opened in the steppe or the desert, how a well is drilled and authorized, and how subcontracting and public procurement work for a newcomer. General know-how only, written to be useful on its own.',
+        },
+        {
+          type: 'articles',
+          label: 'Articles',
+          title: 'All articles',
+          emptyText: 'Articles are in preparation. In the meantime, see our [services](page:services) and [frequently asked questions](page:faq).',
+        },
+        {
+          type: 'cta',
+          title: 'A question these articles do not answer?',
+          text: 'Ask us directly. We reply with what we know from our own quarry, fleet and sites.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'FAQ', page: 'faq', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
     faq: {
       slug: 'faq',
       nav: 'FAQ',
@@ -1640,7 +1924,7 @@ export default {
           title: 'About the company',
           items: [
             { id: 'what-is-etahg', q: 'Who is SARL ETAHG?', a: 'SARL ETAHG is an Algerian company specialized in fine aggregate production, road construction, heavy equipment rental and leasing, project mobilization and water well drilling. Established in 1997, it is a limited liability company (SARL) registered in Bounoura, wilaya of Ghardaïa, with an equipment depot in Djelfa and its own quarry and stone crushing plant at Oued Sdeur, near Aïn El Ibel, south of Djelfa. Its group includes EURL KAYLE KENNY, a heavy-duty spare parts company in Algiers.' },
-            { id: 'etahg-meaning', q: 'What does ETAHG stand for?', a: 'ETAHG stands for “Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa”; the company’s official Arabic name is شركة الأشغال لتهيئة الري بغرداية. SARL ETAHG was established in Ghardaïa in 1997 and is registered there.' },
+            { id: 'etahg-meaning', q: 'What does ETAHG stand for?', a: 'ETAHG stands for “Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa”; the company’s official Arabic name is شركة الأشغال لتهيئة الري بغرداية. SARL ETAHG was established in Ghardaïa in 1997 and is registered there. It is an independent private company, not related to the public enterprise EPTPG of Ghardaïa nor to the group known as ETRHB, despite the similar initials.' },
             { id: 'what-does-etahg-do', q: 'What does ETAHG do?', a: 'SARL ETAHG produces fine aggregates, builds roads, rents and leases heavy equipment, mobilizes new project sites and drills water wells in Algeria. It does this with its own quarry and stone crushing plant and its own fleet of excavators, bulldozers, loaders, graders, rollers, pavers, bitumen trucks, trucks, semi-trailers and a water well drilling rig, while its group company EURL KAYLE KENNY supplies heavy-duty spare parts.' },
             { id: 'where', q: 'Where is SARL ETAHG located?', a: 'SARL ETAHG’s registered office is at Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya of Ghardaïa, Algeria, and its equipment depot is in Djelfa, on the High Plateaus. Its own quarry and stone crushing plant is at Oued Sdeur, near Aïn El Ibel, south of Djelfa, and its group company EURL KAYLE KENNY has a store and parts depot in Mohammadia, Algiers. Djelfa lies on the RN1, the main north–south road between Algiers and the Sahara.' },
             { id: 'legal-form', q: 'What kind of company is SARL ETAHG?', a: 'SARL ETAHG is a société à responsabilité limitée (SARL), the Algerian form of limited liability company. It was established in 1997. Its commercial register (RC) and tax identification numbers (NIF, NIS, AI) are listed in the company profile and the legal notice of this website.' },
@@ -1857,6 +2141,1081 @@ export default {
             'The texts, illustrations and design of this website are the property of {{company}} unless stated otherwise. Reproduction requires prior permission.',
             'The information on this website is provided for general information. It does not constitute a contractual offer; the terms of any service are agreed in writing for each project. General technical explanations (for example on aggregates, road building or geology) describe common practice and are not a specification for any particular project.',
             'Third-party names are used only for identification. EURL KAYLE KENNY is an independent supplier, not affiliated with or endorsed by Cummins Inc.',
+          ],
+        },
+      ],
+    },
+  },
+
+  /* ================================================================ ARTICLES */
+  // Insights articles (schema: ARTICLE at the top of this file). General know-how only.
+  articles: {
+    'aggregate-specifications': {
+      slug: 'aggregate-specifications-algeria',
+      nav: 'Aggregate specifications in Algeria: fractions, tests and what to ask a supplier',
+      title: 'Aggregate Specifications in Algeria: Tests & Sizes | ETAHG',
+      description: 'How aggregates are specified in Algeria: d/D fractions, the EN 12620 / 13242 / 13043 references, the usual tests and what to put in a quotation request.',
+      summary: 'A buyer’s guide to aggregate specifications in Algeria: fraction notation, the usual tests (grading, sand equivalent, methylene blue, Los Angeles, Micro-Deval), which standards contracts cite, and what to put in a request for quotation.',
+      eyebrow: 'Aggregates',
+      h1: 'Aggregate specifications in Algeria: fractions, tests and what to ask a supplier',
+      lead: 'Concrete, asphalt and road layers each ask something different of the stone that goes into them. This guide from {{company}}, which produces fine aggregates at its own quarry and crushing plant in the wilaya of Djelfa, explains how aggregates are described in Algerian specifications and how to ask a supplier the right questions.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'aggregates',
+      related: ['aggregates', 'roads'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'How a fraction is written: the d/D notation',
+          paragraphs: [
+            'Aggregates are designated by the smallest and largest sieve sizes between which most of the material falls, written d/D in millimetres. A 0/3 is a sand whose grains pass a 3 mm sieve; a 3/8 is a fine gravel (gravillon) retained on 3 mm and passing 8 mm; a 0/31.5 is an all-in graded material from fines to 31.5 mm. The notation does not promise that every grain is inside the range: the standards allow a defined percentage of oversize and undersize, which is why a grading curve, not the name alone, is what a laboratory checks.',
+            'In Algeria the fractions most often requested for building and road works are, in general, sands in the 0/3 to 0/5 range, gravels such as 3/8, 8/15 and 15/25 for concrete, and all-in graded materials such as 0/20 and 0/31.5 for unbound pavement layers. Asphalt mixes use their own set of fractions, typically a 0/2 or 0/3 crushed sand combined with 2/6, 6/10 and 10/14 gravels. The exact sizes are fixed by the project specification (the CCTP), not by the supplier.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Which standards Algerian contracts refer to',
+          paragraphs: [
+            'Most Algerian project specifications describe aggregates with the vocabulary of the European standards, either directly or through the Algerian NA standards published by IANOR, which are largely aligned with them. Three texts cover the three main uses: EN 12620 for aggregates for concrete, EN 13242 for unbound and hydraulically bound materials used in road layers, and EN 13043 for aggregates for bituminous mixtures. The French complement NF P 18-545, which groups the requirements into codes (A, B, C, D) per use, is also widely cited, and older specifications may still refer to the former French P 18 series.',
+            'For a buyer, the practical consequence is simple: the specification will name a category for each property (for example a grading category, a fines category, a resistance category), and the supplier’s test certificates should state the result for each one. When a contract cites a standard without categories, it is worth asking the engineer which values apply before ordering, so that both sides test against the same thresholds.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'The tests you will see on a certificate',
+          intro: 'The names below are those used in Algerian laboratories and specifications; the European test standards are given for reference.',
+          caption: 'Common aggregate tests, what they measure and why they matter',
+          head: ['Test', 'What it measures', 'Why it matters'],
+          rows: [
+            ['Grading (granulométrie, EN 933-1)', 'The sieve curve of the material', 'Workability of concrete, compaction of road layers, asphalt mix design'],
+            ['Sand equivalent (équivalent de sable, EN 933-8)', 'Cleanliness of a sand: proportion of clay-like fines', 'Clayey fines weaken concrete and asphalt; values in the 60–70 range are typically required for concrete sand'],
+            ['Methylene blue (bleu de méthylène, EN 933-9)', 'The activity of the clay in the fines', 'Complements the sand equivalent for crushed sands with many fines'],
+            ['Los Angeles (EN 1097-2)', 'Resistance to fragmentation by impact', 'Base layers, asphalt surfacing and concrete under heavy traffic'],
+            ['Micro-Deval (EN 1097-1)', 'Resistance to wear in the presence of water', 'Surface courses, unbound layers exposed to traffic and moisture'],
+            ['Flakiness (coefficient d’aplatissement, EN 933-3)', 'Proportion of flat grains', 'Flat grains compact badly and break in asphalt'],
+            ['Density and water absorption (EN 1097-6)', 'Particle density and open porosity', 'Mix design, water demand of concrete and asphalt'],
+            ['Fineness modulus', 'A single number summarizing the sand curve', 'Sands around 2.2–2.8 are generally preferred for concrete; dune sand is far finer'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Crushed, alluvial or dune sand',
+          paragraphs: [
+            'Northern Algeria has little natural sand left to extract: the dredging of wadis has been restricted for years, and the dune sands of the south are very fine, which gives them a low fineness modulus and a high water demand in concrete. Crushed sand, produced from quarried limestone or other hard rock in a crushing and screening plant, has therefore become the common answer. It is angular, which helps the strength of the mix, and its fines content is controlled at the plant rather than left to the river.',
+            'Research at Algerian universities has examined conventional concretes made with crushed sand carrying fines contents of roughly 5 to 20 percent and found them workable without loss of strength or durability when the fines are clean, which is why the methylene blue test matters as much as the sand equivalent for this material. Blending crushed and dune sand to correct the curve is also well documented. In practice, the project laboratory decides the mix; the supplier’s job is to deliver a sand whose curve and cleanliness stay stable from one truck to the next.',
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'key',
+          title: 'What a request for quotation should contain',
+          list: [
+            'The fractions needed (d/D) and the use of each: concrete, asphalt, base layer, sub-base, backfill',
+            'The standard or the categories the specification cites, or a copy of the relevant CCTP page',
+            'Approximate total quantities and the monthly or weekly rate of delivery',
+            'The site location (wilaya and nearest town) and whether delivery or collection at the plant is intended',
+            'Whether the client’s laboratory will test at the plant, on delivery or both',
+          ],
+          cta: { label: 'Request a quotation', page: 'contact' },
+        },
+        {
+          type: 'prose',
+          title: 'Reading a supplier’s answer',
+          paragraphs: [
+            'A credible answer names the quarry and plant the material comes from, attaches recent test results for the fractions offered, and says how production and stock are organized to hold the delivery rate. It also states what is not covered: a supplier cannot promise that a sand will suit a concrete formula before the project laboratory has run its trial mixes, and it should say so. Test requirements, sampling frequency and the method of acceptance are best written into the supply agreement before the first delivery.',
+            'Ask also about haulage. Aggregates are heavy and cheap per tonne, so transport distance often weighs more than the price at the plant. A supplier with its own trucks and semi-trailers can give a delivered price per tonne for your location and commit to a rhythm; one who depends on third-party hauliers may not.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'agg-what-is-0-3', q: 'What does 0/3 or 3/8 mean for aggregates?', a: 'A 0/3 is a sand whose grains pass a 3 mm sieve, and a 3/8 is a fine gravel retained on a 3 mm sieve and passing an 8 mm sieve. The two numbers are the lower and upper sieve sizes of the fraction in millimetres, with a tolerance for oversize and undersize defined by the standard.' },
+            { id: 'agg-standard', q: 'Which standard applies to aggregates for concrete in Algeria?', a: 'Algerian specifications generally use EN 12620 for concrete aggregates, either directly, through the aligned Algerian NA standards of IANOR, or alongside the French NF P 18-545, and name categories for grading, fines and resistance. The contract specification (CCTP) for each project states which text and which categories apply.' },
+            { id: 'agg-sand-equivalent', q: 'What is a good sand equivalent value?', a: 'A sand equivalent above about 60 generally indicates a clean sand, and concrete specifications in Algeria typically require values in the 60–70 range depending on the exposure class. For crushed sands with a high fines content, the methylene blue test is used in addition to judge whether the fines are harmful.' },
+            { id: 'agg-crushed-sand-concrete', q: 'Can crushed sand be used in concrete?', a: 'Yes. Crushed sand (manufactured sand) is widely used in concrete in Algeria because natural sand is scarce, and research on Algerian crushed sands has shown that fines contents of up to roughly 20 percent can be acceptable when the fines are clean. The project laboratory confirms the formula with trial mixes.' },
+            { id: 'agg-tests-who', q: 'Who tests the aggregates, the supplier or the client?', a: 'In general both: the producer tests at the plant to control production, and the client’s laboratory tests on delivery against the categories in the specification. Sampling frequency and acceptance rules are typically written into the supply agreement before deliveries start.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} produces high-quality fine aggregates at its own quarry and stone crushing plant, Carrière Djellal El Gharbi at Oued Sdeur near Aïn El Ibel, in the wilaya of Djelfa, with crushing and grinding machines suited to projects that require high production rates. Test requirements are agreed with the client before supply, and the company hauls with its own trucks and tipper semi-trailers. See the [fine aggregate production](page:aggregates) page for the uses and the way supply is organized, or the [road construction](page:roads) page for how the same material goes into pavement layers.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Need aggregates for a project in Algeria?',
+          text: 'Send us the fractions, the quantities and the site location. We reply with what the plant can supply and how.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'Fine aggregate production', page: 'aggregates', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'rent-or-buy-equipment': {
+      slug: 'renting-vs-buying-construction-equipment-algeria',
+      nav: 'Renting vs buying construction equipment in Algeria',
+      title: 'Renting vs Buying Construction Equipment in Algeria | ETAHG',
+      description: 'Decision guide for contractors in Algeria: importing or buying machines, bank leasing (crédit-bail) versus rental, operators, parts and distance.',
+      summary: 'Import rules, lead times, leasing versus rental, operators, parts and distance: a decision guide for contractors deciding whether to buy or rent heavy equipment for a project in Algeria.',
+      eyebrow: 'Equipment rental',
+      h1: 'Renting vs buying construction equipment in Algeria: a decision guide',
+      lead: 'Every contractor arriving in Algeria asks the same question in the first month: bring machines, buy them locally, or rent. {{company}}, which rents and leases its own road-building fleet from its depot in Djelfa, sets out the factors that usually decide it.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'rental',
+      related: ['rental', 'parts', 'mobilization'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Why the question is different in Algeria',
+          paragraphs: [
+            'In many countries the choice between owning and renting is a matter of utilization rate and cash. In Algeria three more factors weigh in. Imports of machinery are regulated and the rules move: for years the import of used equipment was restricted, and even for new machines the licensing, the foreign-exchange formalities and the customs clearance add weeks or months before a machine can work. Second, the distances are long and the terrain varied, so a machine bought for one project may be far from the next one. Third, the after-sales network is uneven outside the big cities, so parts and service matter as much as the purchase price.',
+            'None of this makes buying wrong. It means the decision should be taken on the project calendar, not only on the spreadsheet.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Importing or buying new: lead time and formalities',
+          paragraphs: [
+            'A machine imported for a project typically needs a purchase through an approved channel, a bank domiciliation of the import, shipping to an Algerian port, customs clearance and transport to the site. Allow for a lead time of several months in the plan and for the possibility that a rule changes between order and delivery. Temporary admission regimes exist for equipment brought in for a specific contract, but they come with their own paperwork and re-export obligations, and they are best checked with a customs broker before the project is priced.',
+            'Buying new from a dealer in Algeria avoids the import step but not the waiting list, and the price in dinars reflects duties and the exchange rate. For a long project in one place, with a workshop and a parts stock, owning still makes sense; for a short or scattered scope it rarely does.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Bank leasing (crédit-bail) is not rental',
+          paragraphs: [
+            'The word leasing is used in Algeria for two different things. Crédit-bail is a financing product regulated since the 1996 ordinance on leasing: a bank or an approved leasing company such as the public SNL or MLA buys the machine and lets it to the client over several years with a purchase option at the end. It is a way to finance ownership, open in practice to companies registered in Algeria with the usual banking file, and it leaves operation, maintenance and insurance with the lessee.',
+            'Operational rental, what {{company}} offers, is a service: the owner of the machine makes it available for a period, with or without operator, with transport, maintenance and fuel allocated as agreed per project, and takes it back at the end. The machine never appears on the client’s balance sheet and the client never has to sell it. For a foreign contractor whose Algerian presence lasts one contract, this difference is often decisive.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'A decision table by project profile',
+          intro: 'Indicative only; each project has its own numbers.',
+          caption: 'Typical fit of buying, leasing and renting with the duration and nature of the work',
+          head: ['Project profile', 'Buy or import', 'Crédit-bail', 'Operational rental'],
+          rows: [
+            ['Short scope, a few weeks to a few months', 'Rarely justified: lead time exceeds the work', 'Not suited', 'Usual choice, with operator if the crew is not yet local'],
+            ['One site, one to three years, own workshop', 'Possible for core machines', 'Possible for a registered company', 'Peaks, specialist machines, start-up phase'],
+            ['Several sites in different regions', 'Transport between sites adds cost', 'Same constraint', 'Rent near each site from a local depot'],
+            ['Start-up phase before own fleet arrives', 'Not available in time', 'Not available in time', 'Bridge until the imported fleet is cleared'],
+            ['Long programme in one region', 'Usually the economic choice for the core fleet', 'Financing option', 'Complement for peaks and breakdowns'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'With or without operator',
+          paragraphs: [
+            'Renting with operator is common in Algeria and worth considering even for contractors who bring their own crews. An operator who knows the machine and the terrain shortens the learning curve, keeps the machine in the condition the owner expects, and is already registered with the Algerian social security system. Without operator, the client takes over the daily checks and the responsibility for how the machine is used. Which option applies, and how transport, maintenance, fuel and insurance are split, is agreed per project and written into the rental contract; there is no fixed Algerian standard form.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Parts, maintenance and distance',
+          paragraphs: [
+            'An owned machine is only as productive as its parts supply. Before buying, find out where filters, engine parts and wear parts for that model are stocked in Algeria and how long a non-stock part takes to arrive. Within the ETAHG group, EURL KAYLE KENNY in Algiers supplies heavy-duty diesel engine spare parts, including Cummins-compatible parts, as an independent supplier, not affiliated with or endorsed by Cummins Inc. For rented machines the question largely disappears: maintenance stays with the owner unless agreed otherwise.',
+            'Distance matters in the other direction too. A depot on the RN1 in Djelfa is on the road between Algiers and the Sahara, so a rented machine reaches the High Plateaus and the northern Sahara in a day’s haul on a semi-trailer, and returns the same way when the scope ends. Transport is agreed per project, but the geography is what makes rental practical for sites far from the coast.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'rb-import-used', q: 'Can a foreign contractor import used construction equipment into Algeria?', a: 'In general the import of used machinery into Algeria has been restricted for years, and the rules change with successive finance laws, so the current position must be checked with a customs broker before a project is priced. Temporary admission for a specific contract is a separate regime with re-export obligations.' },
+            { id: 'rb-leasing-vs-rental', q: 'What is the difference between leasing and rental in Algeria?', a: 'In Algeria, leasing usually means crédit-bail, a bank financing product in which an approved leasing company buys the machine and lets it to the client for several years with a purchase option, while rental means an owner making a machine available for a period as a service. Crédit-bail finances ownership; rental avoids it.' },
+            { id: 'rb-with-operator', q: 'Is heavy equipment rented with an operator in Algeria?', a: 'Yes, rental with operator is common in Algeria and is often the practical choice for a contractor whose local crews are not yet in place. Whether a machine comes with an operator, and how transport, fuel and maintenance are split, is agreed per project in the rental contract.' },
+            { id: 'rb-how-fast', q: 'How quickly can rented equipment reach a site in Algeria?', a: 'It depends on the distance from the depot, the access to the site and the availability of the machine category; transport is agreed per project. From a depot on the RN1 in Djelfa, sites on the High Plateaus and in the northern Sahara are generally within a day’s haul by semi-trailer.' },
+            { id: 'rb-long-term', q: 'Can equipment be rented long term in Algeria?', a: 'Yes. Long-term operational rental, sometimes called leasing in everyday language, is offered by equipment owners such as SARL ETAHG on terms agreed per project, including duration, operators, transport and maintenance; it remains a service contract, distinct from bank crédit-bail.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} rents and leases its own fleet of hydraulic excavators, bulldozers, wheel loaders, motor graders, vibratory rollers, asphalt paver, bitumen distributor and tankers, trucks and tipper semi-trailers from its equipment depot in Djelfa, with duration, operators, transport and maintenance agreed per project. See [equipment rental and leasing](page:rental) for the categories and the way a request is handled, [project mobilization](page:mobilization) for the start-up phase, and the [spare parts](page:parts) page for engine parts through EURL KAYLE KENNY.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Weighing up rental for a project in Algeria?',
+          text: 'Tell us the machine categories, the location and the dates. We answer with availability and the terms we can propose.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'Equipment rental', page: 'rental', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'mobilization-checklist': {
+      slug: 'mobilizing-heavy-equipment-algeria-checklist',
+      nav: 'Mobilizing a site on the High Plateaus and in the Sahara',
+      title: 'Mobilizing a Site on the High Plateaus & Sahara | ETAHG',
+      description: 'Opening a site on Algeria’s High Plateaus or in the Sahara: access tracks, platforms, flash floods, water, aggregates, climate and RN1 logistics.',
+      summary: 'What to settle before the first semi-trailer leaves the depot: access, platforms and drainage, water, aggregate supply, climate, camp and logistics, and the sequence of a site start-up in Algeria’s steppe and desert.',
+      eyebrow: 'Project mobilization',
+      h1: 'Mobilizing a construction site on the High Plateaus and in the Sahara: a checklist',
+      lead: 'The first weeks decide the rhythm of a project. This checklist, drawn from how {{company}} opens sites with its own machines from its depot in Djelfa, lists what is typically settled before the first semi-trailer leaves, with the particular conditions of Algeria’s steppe and desert in mind.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'mobilization',
+      related: ['mobilization', 'rental', 'aggregates', 'drilling'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Why mobilization deserves its own plan',
+          paragraphs: [
+            'On a new site nothing produces until machines, operators, fuel, water and materials are in place. In the interior of Algeria the distance between a depot and a site can be several hundred kilometres, a site often has no access road, no platform and no water on day one, and the climate is harder than on the coast. Treating the start-up as a project of its own, with a short written sequence agreed with the client, generally avoids the idle weeks that cost the most.',
+            'The two landscapes this article covers are the High Plateaus, the wide steppe at roughly 1,000 metres between the Tell Atlas and the Saharan Atlas, where Djelfa lies, and the northern Sahara beyond the Saharan Atlas, where Ghardaïa lies at about 500 metres in the M’zab valley. They share long distances and scarce water but differ in almost everything else.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Access tracks',
+          paragraphs: [
+            'Most sites in the interior are reached from a national road such as the RN1 by a track that has to be built or improved before heavy traffic can use it. On the plateaus the natural ground is often firm enough for a graded and compacted track of local material; the problems are crossings of small wadis and the softening of fine soils after winter rain. In the Sahara the problems are sand, whether loose dune sand that needs a stabilized layer or a hard hamada surface that is drivable but rough on tyres, and the width needed for semi-trailers to turn.',
+            'The access track is the first job of the bulldozer and the grader on arrival, and its cost should be in the start-up budget rather than discovered later.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Platforms, drainage and the wadi question',
+          paragraphs: [
+            'A platform for the camp, the workshop, the stockpiles and the plant is built by stripping, levelling, filling and compacting; a layer of crushed material on top keeps it usable in all weather. The one point that catches newcomers is drainage: both the steppe and the Sahara receive rare but violent rain, and dry wadis fill within hours. A platform set in or beside a wadi bed, however dry it looks in summer, is at risk. Check the signs of past floods, keep installations above them, and give the platform a fall and a ditch.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Water',
+          paragraphs: [
+            'Water is needed for compaction, for concrete, for dust control and for the camp, and in these regions it is rarely available from a network at the site. The usual solutions are tankering from the nearest town or a well drilled on or near the site, with storage in tanks or a basin. A well needs an authorization: since late 2021 applications in Algeria go through a single window that involves the national hydraulic resources agency and the integrated water management agency before the wali signs the order, with a target processing time of one month and an 18-month window for the works, extendable once. The application should therefore be filed early, and tankering planned for the gap. The nature of the ground decides the drilling method and the depth, which vary strongly between the Djelfa syncline and the Saharan aquifers.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Aggregates and the supply radius',
+          paragraphs: [
+            'Aggregates are the heaviest material a site consumes, so the distance to the nearest plant drives the cost of every cubic metre of concrete and every layer of road. On the plateaus around Djelfa, quarries in limestone are relatively close; in the Sahara the nearest crushing plant may be far away and the first truck should be on the road before the site needs it. Settle the fractions, the quantities and the delivery rhythm with the supplier in the mobilization phase, and reserve space on the platform for stockpiles sized to the haulage distance.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Climate: what changes between the two regions',
+          intro: 'Orders of magnitude from public climate data; check the local station for a specific site.',
+          caption: 'Working conditions on the High Plateaus and in the northern Sahara',
+          head: ['Factor', 'High Plateaus (Djelfa area)', 'Northern Sahara (Ghardaïa area)'],
+          rows: [
+            ['Altitude', 'Around 1,100 m', 'Around 500 m'],
+            ['Winter', 'Cold, frost and occasional snow; frozen ground in the morning', 'Cool nights, mild days'],
+            ['Summer', 'Hot, dry', 'Very hot; work hours shift to early morning and evening'],
+            ['Rain', 'A few hundred millimetres a year, mostly in winter and spring, sometimes violent', 'Very low annual totals but rare storms that flood wadis'],
+            ['Wind and dust', 'Strong winds on open steppe', 'Sand, dust, visibility and abrasion of machines'],
+            ['Consequences', 'Winter working days lost; bitumen and concrete temperature limits', 'Heat limits for asphalt and concrete; water storage; filters and cooling'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Camp, fuel and logistics on the RN1',
+          paragraphs: [
+            'The RN1 is the backbone of the interior, running from Algiers through Djelfa and Laghouat to Ghardaïa and on into the deep south. Fuel, food, accommodation and parts for a site east or west of it come along it, then over local roads or tracks. A mobilization plan names the nearest town for fuel and supplies, decides whether operators lodge in town or on site, provides for a workshop container and a first stock of filters and wear parts, and fixes who handles accommodation and meals. On remote sites the camp is itself a construction job, with water, sanitation, power and shade to build before the crew arrives.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'The sequence we follow',
+          intro: 'Six steps, adapted to each project and agreed with the client before anything moves.',
+          items: [
+            { title: 'Site and scope review', text: 'Location, access, terrain, water, volumes and schedule are reviewed together, and the list of what must be ready on day one is written down.' },
+            { title: 'Equipment and resource plan', text: 'Machine categories, operators and supplies are matched to the scope; the terms of the mobilization are agreed per project.' },
+            { title: 'Transport', text: 'Machines are loaded on semi-trailers at the depot or moved from another site; convoy dates follow the access conditions and the road permits for exceptional loads.' },
+            { title: 'Site opening', text: 'Clearing, the access track, platforms for equipment and installations, drainage and the first earthworks.' },
+            { title: 'Materials and water', text: 'Aggregate supply starts, water is tankered and, where needed, a well is drilled with a truck-mounted rig once the authorization is in hand.' },
+            { title: 'Production and follow-up', text: 'The machines work to plan until hand-over, or continue under a rental or subcontract agreement.' },
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'key',
+          title: 'What to send us to get a mobilization plan',
+          list: [
+            'Location of the site (wilaya and, if possible, coordinates or a map link)',
+            'The scope of the first phase: clearing, access, platforms, earthworks, aggregates, water',
+            'Approximate volumes and the planned start date',
+            'Whether operators, fuel and accommodation are provided by the client or expected from us',
+          ],
+          cta: { label: 'Contact us', page: 'contact' },
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'mob-duration', q: 'How long does it take to mobilize equipment to a site in Algeria?', a: 'It depends on the distance from the depot, the access conditions and the scope of the first phase; transport, duration and operators are agreed per project. From Djelfa, sites on the High Plateaus and in the northern Sahara are generally reached by semi-trailer within a day once the convoy is ready.' },
+            { id: 'mob-water', q: 'How is water supplied to a construction site in the Sahara?', a: 'Usually by tankering from the nearest town until a well on or near the site is drilled and equipped, with storage in tanks or a basin. Drilling a well in Algeria requires an authorization issued by the wali after review through the single window created in 2021, so the application is filed as early as possible.' },
+            { id: 'mob-floods', q: 'Are flash floods a real risk on desert construction sites?', a: 'Yes. Both the steppe and the Sahara receive rare but intense rain, and dry wadis can fill within hours, so camps, stockpiles and plant are placed above the marks of past floods and platforms are given a fall and a ditch.' },
+            { id: 'mob-winter', q: 'Can road works continue in winter on the High Plateaus?', a: 'Partly. At around 1,100 metres, Djelfa has frost and occasional snow in winter, which stops asphalt paving and slows earthworks on frozen or saturated ground, so programmes on the plateaus generally plan the bituminous layers outside the cold months.' },
+            { id: 'mob-rent', q: 'Can the machines stay on rental after the site is opened?', a: 'Yes. After mobilization the same machines can continue under a rental or leasing agreement, or the works can go on as a subcontract, on terms agreed per project.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} mobilizes its own machines from its depot in Djelfa to open new sites: clearing, access tracks, platforms, first earthworks, aggregate supply from its own quarry and crushing plant at Oued Sdeur near Aïn El Ibel, and water wells with its truck-mounted rig. See [project mobilization](page:mobilization) for the service, [equipment rental and leasing](page:rental) for what can stay on site afterwards, [fine aggregate production](page:aggregates) and [water well drilling](page:drilling).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Opening a site soon?',
+          text: 'Send us the location and the scope. We will reply with the machines, materials and sequence we can offer.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'Project mobilization', page: 'mobilization', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'water-well-drilling-guide': {
+      slug: 'water-well-drilling-high-plateaus-sahara-algeria',
+      nav: 'Water well drilling on the High Plateaus and in the northern Sahara',
+      title: 'Water Well Drilling in Algeria: Aquifers & Permits | ETAHG',
+      description: 'Water wells around Djelfa and Ghardaïa: the aquifers, rotary and DTH drilling, well completion, pumping tests and the Algerian authorization procedure.',
+      summary: 'Aquifers of the Djelfa syncline and the Saharan basin, rotary versus down-the-hole drilling, well completion, development and pumping tests, and the single-window authorization: a guide for project owners who need water in the interior of Algeria.',
+      eyebrow: 'Water well drilling',
+      h1: 'Water well drilling on the High Plateaus and in the northern Sahara: aquifers, methods and authorization',
+      lead: 'A site, a farm or a plant in the interior of Algeria usually has to find its own water. {{company}}, which owns a truck-mounted water well drilling rig and works from Djelfa and Ghardaïa, explains what lies underground in these regions, how a well is drilled and completed, and what the authorization procedure involves.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'drilling',
+      related: ['drilling', 'mobilization'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Two very different undergrounds',
+          paragraphs: [
+            'Around Djelfa, on the High Plateaus, hydrogeological studies describe a syncline whose upper aquifer, in Mio-Plio-Quaternary deposits, is reported to be some hundreds of metres thick on average and is the one most used by wells and boreholes for drinking water and irrigation across the steppe. Below it lie older sandstone and limestone formations of the Albian and Barremian, also water-bearing, reached by deeper boreholes. Water levels and yields vary along the syncline, and the shallow aquifer depends on the rain that falls on the surrounding ranges.',
+            'Around Ghardaïa, in the northern Sahara, the picture is the one of the whole Saharan basin: the Continental Intercalaire, a vast sandstone aquifer of Albo-Barremian age, overlain by the Complexe Terminal. Boreholes into the Continental Intercalaire in this region are deep, in some cases beyond a thousand metres, and are completed with successive cemented casing strings and screens; the water comes up warm because of the depth. Shallower wells in the valley floor and the Complexe Terminal serve many local needs but with more variable quality.',
+            'The practical lesson is that the same word, well, covers a shallow water-table well of a few tens of metres and a deep artesian borehole, and that the local hydrogeological data, where available from the water authorities or from the studies of nearby boreholes, is the starting point of any project.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Rotary or down-the-hole hammer',
+          paragraphs: [
+            'Two drilling methods cover most water wells. Mud rotary drilling turns a bit on hollow rods while a drilling fluid is pumped down the rods and back up the annulus, carrying the cuttings and supporting the hole; it suits soft and unconsolidated formations and allows large diameters. Down-the-hole (DTH) hammer drilling uses compressed air to drive a piston that strikes the bit at the bottom of the hole; it is fast in hard rock such as limestone and sandstone and lifts the cuttings with the air. Many rigs can do both, and a well may be started with one and finished with the other as the formations change. The choice is made from the expected geology, the target depth and diameter, and the water available for mud.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'From the borehole to a working well',
+          intro: 'The usual sequence; each step is sized to the aquifer and the intended use.',
+          items: [
+            { title: 'Siting and design', text: 'Review of existing boreholes, geology and the authorization file; choice of target depth, diameters and method.' },
+            { title: 'Drilling', text: 'Rotary or DTH drilling in one or more diameters, with a log of formations and water strikes.' },
+            { title: 'Casing and screen', text: 'A casing string protects the hole and a screen is set against the water-bearing zone; a gravel pack around the screen filters fine sand.' },
+            { title: 'Cementing', text: 'The annulus above the screen is sealed to keep surface water and unwanted layers out, and the wellhead is protected.' },
+            { title: 'Development', text: 'Air-lifting, surging or pumping clears the drilling fluid and fines until the water runs clean.' },
+            { title: 'Pumping test', text: 'A step or constant-rate test measures the yield and the drawdown, which fixes the pump size and the sustainable flow.' },
+            { title: 'Equipment', text: 'Pump, riser, cable, wellhead and the connection to the storage; water quality is analysed before use.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'The authorization procedure in brief',
+          paragraphs: [
+            'Drilling a water well in Algeria requires an authorization for the use of water resources. Since the 2021 reform, applications are examined through a single window that brings together the national hydraulic resources agency (ANRH), the national agency for integrated water management (AGIRE) and representatives of the environment, agriculture and irrigation sectors; the file is then sent to the wilaya, and the authorization is granted by order of the wali. The regulation sets a target of one month for processing a complete file. The works must in general be carried out within eighteen months of notification, a period that can be extended once by six months on justified grounds.',
+            'The file typically describes the applicant, the land, the intended use and volumes, and the characteristics of the planned well. Public reporting indicates that the number of favourable opinions issued each year has grown strongly since the reform. The practical advice is simple: file early, keep the authorization on site, and have the well drilled by a company that records depths, formations and test results for the final report.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'What to expect from a well in each region',
+          intro: 'General tendencies reported in regional studies; a specific site can differ.',
+          caption: 'Indicative comparison of water wells on the High Plateaus and in the northern Sahara',
+          head: ['Aspect', 'High Plateaus (Djelfa syncline)', 'Northern Sahara (Ghardaïa area)'],
+          rows: [
+            ['Main aquifers', 'Mio-Plio-Quaternary; Albian and Barremian sandstones below', 'Complexe Terminal; Continental Intercalaire at depth'],
+            ['Typical depths', 'From tens of metres to a few hundred metres', 'From tens of metres to several hundred; over a thousand for the deep aquifer'],
+            ['Formations', 'Alluvium, clays, sandstones, limestones', 'Sands, sandstones, limestones, clays'],
+            ['Water', 'Generally cooler, quality varies with the layer', 'Warm at depth; mineralization varies'],
+            ['Method', 'Rotary in soft ground, DTH in rock', 'Rotary with mud for deep wells; DTH possible in hard layers'],
+            ['Recharge', 'Rain on the surrounding ranges', 'Very slow; essentially a stored resource'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Water quality and temperature',
+          paragraphs: [
+            'Water from the deep Saharan aquifer is often warm and may carry a mineral load that calls for cooling or treatment before certain uses; water from shallow aquifers can be affected by what happens at the surface. For a construction site this matters for concrete, where sulphates and chlorides are limited by the specification, and for the camp, where drinking water must be analysed. A laboratory analysis after development, before the pump is installed, is standard practice.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'ww-permit', q: 'Do you need a permit to drill a water well in Algeria?', a: 'Yes. A water well in Algeria requires an authorization for the use of water resources, granted by order of the wali after the file has been examined through the single window created in 2021 that involves the ANRH and AGIRE agencies, with a one-month target for processing a complete application.' },
+            { id: 'ww-depth', q: 'How deep are water wells around Djelfa and Ghardaïa?', a: 'It varies strongly with the aquifer targeted: wells into the shallow aquifers can be a few tens to a few hundred metres deep, while boreholes into the Continental Intercalaire of the Saharan basin around Ghardaïa are reported to exceed a thousand metres in some cases. Local borehole data and the intended use decide the design.' },
+            { id: 'ww-method', q: 'What is the difference between rotary and DTH drilling?', a: 'Rotary drilling cuts the rock with a rotating bit and lifts the cuttings with a circulating fluid, which suits soft and loose formations, while a down-the-hole (DTH) hammer breaks hard rock with air-driven percussion at the bottom of the hole and is faster in limestone and sandstone. Many wells combine both as the formations change.' },
+            { id: 'ww-time', q: 'How long does it take to drill a water well?', a: 'A shallow well can be drilled and completed in days, while a deep borehole with several casing strings takes weeks; the authorization procedure, which should be started as early as possible, is often the longest part of the calendar.' },
+            { id: 'ww-site-use', q: 'Can a well supply a construction site?', a: 'Yes. A well drilled on or near the site, with storage in a basin or tanks, is a common way to supply compaction water, concrete and the camp in the interior of Algeria, where no network is available; the water is analysed before use in concrete or for drinking.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} owns a truck-mounted water well drilling rig with its accessories, recently acquired new, and drills wells for construction sites, agriculture, industry and communities, with its registered office in Bounoura, wilaya of Ghardaïa, and its equipment depot in Djelfa. Depth capacity, method and schedule are discussed per project. See [water well drilling](page:drilling) for the service and [project mobilization](page:mobilization) for how a well fits into a site start-up.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Need water on a site, a farm or a plant?',
+          text: 'Send us the location, the intended use and what you know of nearby boreholes. We will tell you what we can drill and how to prepare the file.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'Water well drilling', page: 'drilling', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'foreign-contractor-checklist': {
+      slug: 'foreign-contractors-algeria-checklist',
+      nav: 'Checklist for foreign contractors entering Algeria',
+      title: 'Foreign Contractors in Algeria: Entry Checklist | ETAHG',
+      description: 'Branch or company, the 2023 procurement law, preference margin, subcontracting limits, qualification certificate and how to vet an Algerian partner.',
+      summary: 'A practical checklist for foreign and Chinese contractors preparing to work in Algeria: branch or company, public procurement rules, subcontracting, qualification and registration documents, and how to check an Algerian partner.',
+      eyebrow: 'Working in Algeria',
+      h1: 'Checklist for foreign contractors entering Algeria',
+      lead: 'Foreign contractors, among them many Chinese companies, have built a large share of Algeria’s recent infrastructure, almost always with Algerian partners, subcontractors and suppliers alongside. {{company}} works with such contractors from its bases in Djelfa and Ghardaïa. This checklist summarizes the framework a newcomer should know, in general terms; it is not legal advice, and the texts evolve.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'roads',
+      related: ['partners', 'roads', 'rental', 'aggregates'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Forms of presence',
+          paragraphs: [
+            'A foreign contractor can be present in Algeria in several ways. A liaison office can represent the parent company but may not trade. A branch (succursale) registered in the commercial register is the usual vehicle for executing a specific contract: it is treated as a foreign investment, must be registered with the National Centre of the Commercial Register (CNRC) and carries its own tax and social registrations. A company under Algerian law, typically a SARL or SPA, is the vehicle for a lasting presence; since the 2020 finance laws, the requirement that Algerian partners hold 51 percent of the capital no longer applies to non-strategic sectors, but it remains in force for strategic activities and, under the 2025 mining law, still applies to quarry operation.',
+            'Which form fits depends on the contract and the horizon. Many contractors use a branch for a first project and create a company once a pipeline exists.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Public procurement: Law 23-12 and the preference margin',
+          paragraphs: [
+            'Public works in Algeria are awarded under the law of 5 August 2023 on public procurement (Law 23-12), which replaced the 2015 regulation’s principles while implementing decrees were being prepared; the 2015 presidential decree 15-247 continued to govern detailed procedures in the meantime, and a national electronic procurement portal was launched under the new law in 2026. Two provisions concern foreign bidders directly. A margin of preference of 25 percent is granted to products of Algerian origin and to companies under Algerian law whose capital is majority held by resident nationals. And in international tenders, foreign bidders must commit to invest in a partnership, in the same field of activity, with such an Algerian company, with sanctions if the commitment is not honoured after award.',
+            'For a foreign contractor the consequence is that a credible, qualified Algerian partner is not only useful on site; it is part of the bid.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Subcontracting: the 40 percent ceiling and prior approval',
+          paragraphs: [
+            'Under the 2015 regulation, subcontracting in a public contract may not exceed 40 percent of the contract amount, the subcontractor must be approved by the contracting authority before starting, a copy of the subcontract is filed, and the subcontractor must declare its presence on site. Bidders also identify in their offer the share they intend to subcontract to companies under Algerian law. Earlier texts went further and required foreign bidders submitting alone to subcontract a minimum share to Algerian companies. Whatever the exact figures in the texts applicable to a given tender, the direction is constant: Algerian subcontracting is expected, declared and capped.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'The qualification certificate',
+          paragraphs: [
+            'Any company executing building, public works or hydraulic works under a public contract must hold a certificate of professional qualification and classification, created by executive decree 93-289 of 1993 and renewed since. The certificate states the fields of activity and the category of the company, which depends on its technical staff, equipment and financial capacity, and sets which contract sizes it may bid for. A subcontractor working on a public contract is in general expected to hold one for its field. It is the single most useful document to ask an Algerian partner for, because it summarizes what the state has verified about the company.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Documents a foreign contractor will be asked for, and will ask for',
+          intro: 'The usual Algerian file; names are given in French as they appear on the documents.',
+          caption: 'Registrations and clearances in an Algerian contractor’s file',
+          head: ['Document', 'Issued by', 'What it shows'],
+          rows: [
+            ['Extrait du registre de commerce (RC)', 'CNRC, consultable through the Sidjilcom portal', 'Legal existence, activities, registered office, managers'],
+            ['Numéro d’identification fiscale (NIF)', 'Tax administration', 'Tax registration; appears on every invoice'],
+            ['Extrait de rôle', 'Tax administration', 'Tax situation up to date (or a payment schedule)'],
+            ['Attestations de mise à jour CNAS / CASNOS', 'Social security funds', 'Social contributions paid for employees / managers'],
+            ['Certificat de qualification et classification', 'Ministry or wilaya commission', 'Fields and category for public works'],
+            ['Statuts and NIS', 'Notary; national statistics office', 'Legal form, capital, statistical identifier'],
+            ['Casier judiciaire of the manager', 'Ministry of Justice', 'Required in most public tender files'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How to vet an Algerian partner',
+          paragraphs: [
+            'Ask for the documents above and check what can be checked: the commercial register extract against the CNRC records, the tax and social clearances for their dates, the qualification certificate for its fields and validity. Then look at what no certificate shows. Does the company own the equipment it describes, and where is it kept? Can you visit the depot, the quarry or the plant? Does it know the terrain of the region where your project is, and can it explain how it would mobilize there? Is there a parts and maintenance organization behind the machines? Are contracts, correspondence and site documents available in a language your team reads? The answers to these questions separate a partner from a letterhead.',
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'note',
+          title: 'Practical points often discovered late',
+          list: [
+            'Payments in Algeria are made in dinars through Algerian banks; the transferable share of a contract is defined in the contract itself',
+            'Site staff need work permits; social security registration of local employees is checked on site',
+            'Importing equipment, even temporarily, takes months and the rules change; renting locally bridges the gap',
+            'Public contracts are executed under a French-language documentation; a bilingual site team saves weeks',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'fc-51-49', q: 'Does the 51/49 rule still apply to foreign contractors in Algeria?', a: 'In general no longer for construction and public works: the 2020 finance laws removed the requirement that Algerian partners hold 51 percent of the capital for non-strategic sectors, while keeping it for strategic activities, and the 2025 mining law keeps it for quarry operation. A foreign contractor can therefore own a construction company in Algeria, but public procurement still rewards Algerian-majority companies through the preference margin and the partnership commitment.' },
+            { id: 'fc-preference', q: 'What is the national preference margin in Algerian public procurement?', a: 'It is a 25 percent margin of preference, under Law 23-12 of 2023, granted to products of Algerian origin and to companies under Algerian law whose capital is majority held by resident nationals, applied when offers are compared.' },
+            { id: 'fc-subcontract-limit', q: 'How much of a public contract can be subcontracted in Algeria?', a: 'Under the 2015 public procurement regulation, subcontracting may not exceed 40 percent of the contract amount, and each subcontractor must be approved in advance by the contracting authority; the implementing texts of the 2023 law should be checked for the tender concerned.' },
+            { id: 'fc-qualification', q: 'What is the certificat de qualification et classification?', a: 'It is the certificate, created by decree 93-289 of 1993, that every company executing public building, public works or hydraulic works must hold; it states the company’s fields of activity and its category, which depends on its staff, equipment and financial capacity, and it is the first document to ask an Algerian partner for.' },
+            { id: 'fc-check-partner', q: 'How can a foreign company verify an Algerian company?', a: 'By obtaining its commercial register extract (RC), tax identification (NIF), tax and social security clearances and qualification certificate, checking them against the issuing bodies such as the CNRC, and then visiting its depot, quarry or plant to confirm that the equipment and organization described actually exist.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} is an Algerian SARL established in 1997, registered in Bounoura, wilaya of Ghardaïa, with its own fleet at its depot in Djelfa and its own quarry and crushing plant at Oued Sdeur near Aïn El Ibel. It works with international contractors as subcontractor, equipment and aggregate supplier, site start-up partner or local partner, and makes its registration documents and company profile available to partners. See [local partner for international contractors](page:partners), [road construction](page:roads), [equipment rental](page:rental) and [fine aggregates](page:aggregates).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Preparing a bid or a project in Algeria?',
+          text: 'Write to us in English, French, Arabic or Chinese with a short description of the project. We reply with what we can bring to it.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'International partners', page: 'partners', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'road-pavement-layers': {
+      slug: 'road-pavement-layers-algeria-terrains',
+      nav: 'Road pavement layers on Algerian terrains',
+      title: 'Road Pavement Layers on Algerian Terrains | ETAHG',
+      description: 'How roads are built from the Tell to the Sahara: subgrade, sub-base, base and surfacing, the CTTP catalogue, tuf, frost on the plateaus, heat in the south.',
+      summary: 'Subgrade, capping, sub-base, base and wearing course, the materials used in each, how the Algerian pavement catalogue approaches climate and traffic, and what changes between the coast, the Atlas, the High Plateaus and the Sahara.',
+      eyebrow: 'Road construction',
+      h1: 'Road pavement layers on Algerian terrains: from the Tell to the Sahara',
+      lead: 'A road is a stack of layers, each with a job, and the stack changes with the ground, the climate and the traffic. {{company}} built its fleet to construct roads and has done so in many regions of Algeria; this article describes the layers, the materials and the way the four great terrains of the country change the design.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'roads',
+      related: ['roads', 'aggregates', 'rental'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'The stack, from the ground up',
+          paragraphs: [
+            'Below everything is the subgrade (plate-forme), the natural or filled ground after earthworks, whose bearing capacity is classified from the soil tests. Where the ground is weak, a capping layer (couche de forme) of selected material raises it to the class the design needs. Then come the pavement layers proper: a sub-base (couche de fondation) and a base (couche de base), which spread the wheel loads, and the surfacing (couche de roulement), which carries the traffic, sheds water and gives grip. Between the base and the surfacing a tack coat or a binder course may be added, and the whole is drained by shoulders and ditches, without which no stack lasts.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Layers and typical materials',
+          intro: 'Thicknesses are indicative ranges for ordinary roads; the design office fixes them for each project.',
+          caption: 'Pavement layers, their function and the materials usually specified in Algeria',
+          head: ['Layer', 'Function', 'Typical materials', 'Indicative thickness'],
+          rows: [
+            ['Subgrade / capping', 'Bearing platform, protection against frost and water', 'Selected fill, tuf, treated soil', 'Variable, by soil class'],
+            ['Sub-base (fondation)', 'Spreads loads to the ground', 'Unbound graded aggregate (GNT 0/31.5, 0/40), tuf in the south', 'About 20–30 cm'],
+            ['Base', 'Main structural layer', 'Crushed graded aggregate, or bituminous base (grave-bitume)', 'About 15–25 cm unbound, 10–15 cm bituminous'],
+            ['Binder / wearing course', 'Traffic, waterproofing, grip', 'Hot-mix asphalt (béton bitumineux 0/10 or 0/14), surface dressing on light roads', 'About 5–8 cm asphalt; 1–2 cm surface dressing'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How the Algerian catalogue approaches design',
+          paragraphs: [
+            'Algerian road design relies in large part on the catalogue of structures for new pavements issued by the public works technical control body (CTTP), together with soil and material tests by the national laboratories. The catalogue method classifies the traffic (by heavy vehicles per day and the design period), the bearing capacity of the subgrade, and the climatic zone of the site, then proposes structures for each combination and type of network. Engineers also use the CBR method and the French catalogue as references. The point for a contractor or an owner is that a structure is not improvised on site: the layers, the materials and their thicknesses come from the study, and the contractor’s skill lies in producing and compacting them to the specified density and evenness.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Materials: crushed aggregate, tuf and bitumen',
+          paragraphs: [
+            'Unbound layers use graded crushed aggregate (grave non traitée, GNT) with a controlled curve such as 0/31.5, compacted at the right moisture content; its quality depends on the hardness of the rock (Los Angeles and Micro-Deval tests) and the cleanliness of the fines. In the southern and Saharan zones, gypsum-limestone crusts known as tuf are a traditional first-choice material for sub-base and base, with their own design rules because they behave differently from standard GNT: they gain cohesion when compacted dry but can degrade with water and fatigue, which is why their use is specified with care.',
+            'Bituminous layers are produced in a hot-mix plant from crushed aggregates, crushed sand and road bitumen; the 40/50 penetration grade is the one most commonly used in Algeria, with 35/50 also met in specifications, both suited to a hot climate. Laying follows the paver, the compactors and the temperature windows of the mix, and stops when the air is too cold or the wind cools the mat too fast.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'What each terrain changes',
+          paragraphs: [
+            'On the coastal Tell, rain, clay soils and high water tables put the emphasis on drainage, capping layers and the protection of the subgrade; cuttings in marl and the stability of embankments are the engineering problems. In the Atlas ranges, the alignment itself is the challenge: rock cuts, high embankments, retaining structures and steep gradients, with a short paving season at altitude.',
+            'On the High Plateaus, at around a thousand metres, winters bring frost and occasional snow, so the design guards against frost penetration and the saturation of fine soils in spring, and the programme places the bituminous works in the warm months. Aggregate demand is high because the alignments are long, which makes a nearby quarry the deciding factor in the cost of the unbound layers. In the Sahara, the problems invert: heat, which limits the hours for asphalt and concrete and raises the choice of bitumen grade; wind-blown sand, which encroaches on the road and abrades the surface; the scarcity of water for compaction; and the use of local tuf and crushed material where good rock is far away. Flash floods in wadis dictate the hydraulic structures and the height of the embankments.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Compaction, water and logistics',
+          paragraphs: [
+            'Whatever the terrain, the layers only perform if compacted to the specified density at the right moisture content, which is why vibratory rollers, water tankers and a laboratory on site are as important as the paver. In the interior of Algeria the water for compaction is itself a logistical question, answered by tankering or by a well on the alignment. The haulage of aggregates from the quarry to the site, with trucks and tipper semi-trailers, and the supply of bitumen in insulated tankers complete the picture: a road project in these regions is a logistics project as much as a construction one.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'rp-layers', q: 'What are the layers of a road?', a: 'From the bottom up: the subgrade (the prepared natural or filled ground), an optional capping layer, the sub-base, the base and the surfacing or wearing course, sometimes with a binder course between base and surfacing; each layer spreads the loads to the one below and the surfacing provides grip and waterproofing.' },
+            { id: 'rp-thickness', q: 'How thick are road layers in Algeria?', a: 'For an ordinary road, orders of magnitude are about 20–30 cm of unbound sub-base, 15–25 cm of unbound base or 10–15 cm of bituminous base, and 5–8 cm of hot-mix asphalt surfacing, but the actual thicknesses are fixed by the design study from the traffic, the subgrade class and the climatic zone, following the Algerian CTTP catalogue.' },
+            { id: 'rp-tuf', q: 'What is tuf in Algerian road construction?', a: 'Tuf is the name given to the gypsum-limestone crusts of the southern and Saharan zones of Algeria, widely used as a sub-base and base material because good rock is far away; it has its own design rules because it gains cohesion when compacted but can degrade with water and fatigue.' },
+            { id: 'rp-bitumen', q: 'Which bitumen grade is used in Algeria?', a: 'The 40/50 penetration grade road bitumen is the one most commonly used in Algeria, with 35/50 also found in specifications; both are hard grades suited to a hot climate and are used for hot-mix asphalt surfacing and bituminous base layers.' },
+            { id: 'rp-winter', q: 'Can asphalt be laid in winter on the High Plateaus?', a: 'Generally not during the cold months: at around a thousand metres, frost, wind and occasional snow cool the mat too quickly for compaction, so bituminous layers on the High Plateaus are programmed for the warm season while earthworks and unbound layers continue when the ground allows.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} builds roads with its own complete fleet, from earthworks and grading to compaction, bitumen spraying and asphalt paving, in direct contract or as a subcontractor, and supplies the crushed fine aggregates from its own quarry and crushing plant at Oued Sdeur near Aïn El Ibel in the wilaya of Djelfa. Established in 1997, it has completed road projects in many regions of Algeria. See [road construction](page:roads), [fine aggregate production](page:aggregates) and [equipment rental](page:rental).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'A road, platform or access scope to price?',
+          text: 'Send us the alignment, the layers specified and the location. We answer with what we can build, supply or rent for it.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'Road construction', page: 'roads', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'crushed-sand-vs-dune-sand': {
+      slug: 'crushed-sand-dune-sand-river-sand-concrete-algeria',
+      nav: 'Crushed sand, dune sand or river sand for concrete in Algeria',
+      title: 'Crushed, Dune or River Sand for Concrete in Algeria | ETAHG',
+      description: 'Why natural sand is scarce in Algeria, what dune sand does in concrete, how crushed sand differs, what research says about fines, and the sand for asphalt.',
+      summary: 'The three sands available in Algeria compared for concrete and asphalt: scarce alluvial sand, very fine dune sand and angular crushed sand with controlled fines, with the findings of Algerian research on blends.',
+      eyebrow: 'Aggregates',
+      h1: 'Crushed sand, dune sand or river sand: which sand for concrete in Algeria?',
+      lead: 'Sand is the ingredient of concrete and asphalt that Algeria has the most of and the least of at the same time: the south is covered in it, and the north cannot get enough of the right kind. {{company}}, which produces crushed fine aggregates at its own plant in the wilaya of Djelfa, compares the three sands a project can use.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'aggregates',
+      related: ['aggregates', 'roads'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Why natural sand is scarce in the north',
+          paragraphs: [
+            'For decades, concrete in northern Algeria was made with alluvial sand dredged from wadis. That resource is finite, its extraction damages riverbeds and water tables, and it has been restricted and policed for years. The result is a market in which clean alluvial sand with a good curve is expensive and uncertain, especially far from the few authorized sources, and in which contractors look to the two alternatives the country has in abundance: the dune sands of the Sahara and the crushed sand of limestone quarries.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Dune sand: abundant but very fine',
+          paragraphs: [
+            'Dune sand is rounded, clean and remarkably uniform, which is the problem. Its grains are nearly all in a narrow band of fine sizes, so its fineness modulus is far below the range that concrete standards prefer; a concrete made with it alone needs more water and cement to be workable, shrinks more and tends to lower strength. Algerian research has nevertheless studied it extensively, because it is free and everywhere in the south: used as a corrector blended with a coarser sand, in some cases with fines or additions to complete the curve, it gives acceptable concretes, and it is widely used in mortars and in sand-based materials for roads in the Sahara. The rule of thumb is that dune sand corrects a curve; it rarely makes one on its own.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Crushed sand: angular, with fines to control',
+          paragraphs: [
+            'Crushed sand, also called manufactured sand, is the 0/3 to 0/5 fraction that comes out of a crushing and screening plant, in Algeria mostly from limestone. Its grains are angular and rough, which improves the bond with the cement paste and the mechanical strength of the mix but demands a little more water or admixture for the same workability. Its curve is continuous and can be adjusted at the plant, and it contains a share of fines, the dust of fracture, which is both its weakness and its asset: too many clayey fines harm the concrete, but clean limestone fines fill the voids and improve cohesion.',
+            'This is why the methylene blue test, which measures the activity of the clay in the fines, matters as much as the sand equivalent for crushed sand. Algerian studies of conventional concretes made with crushed sand carrying fines contents in the range of roughly 5 to 20 percent have found that strength and durability can be maintained when those fines are limestone dust rather than clay. A plant can also wash or air-classify the sand to bring the fines content to the figure the specification asks for.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'The three sands side by side',
+          intro: 'General tendencies; test results for a given source govern.',
+          caption: 'Comparison of alluvial, dune and crushed sand for concrete and asphalt in Algeria',
+          head: ['Property', 'Alluvial (river) sand', 'Dune sand', 'Crushed sand'],
+          rows: [
+            ['Availability', 'Scarce, regulated extraction', 'Abundant in the south', 'Produced on demand at quarries'],
+            ['Grain shape', 'Rounded', 'Rounded', 'Angular'],
+            ['Grading', 'Variable by source', 'Very fine, uniform', 'Continuous, adjustable at the plant'],
+            ['Fines', 'Often clayey', 'Few', 'Limestone dust, to control'],
+            ['Water demand', 'Low', 'High', 'Moderate'],
+            ['Strength of concrete', 'Good with a good curve', 'Lower alone; usable in blends', 'Good; angularity helps'],
+            ['Consistency', 'Depends on the river', 'High', 'High when production is controlled'],
+            ['Asphalt mixes', 'Possible', 'Not alone', 'Preferred: angular grains resist deformation'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'What it means for asphalt and road layers',
+          paragraphs: [
+            'For hot-mix asphalt the answer is less ambiguous than for concrete: crushed sand is preferred because its angular grains interlock and resist rutting under heavy traffic in hot weather, which is exactly the Algerian condition; rounded sands make a mix that is easier to lay but deforms sooner. In unbound road layers the sand fraction of a graded aggregate comes from the same crusher as the gravel, so the question rarely arises, whereas in the Sahara sand-based stabilized layers use dune sand by necessity.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Choosing in practice',
+          paragraphs: [
+            'The project laboratory makes the choice, with trial mixes, from the sands actually available within an economic distance of the site. What a supplier can do is deliver a sand whose curve, fines content and cleanliness stay the same from the first truck to the last, and provide test results for each delivery period. For a project owner, the useful questions are where the sand comes from, how its fines are controlled, what its sand equivalent and methylene blue values are, and whether supply can hold the rate the site needs.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'ds-dune-concrete', q: 'Can dune sand be used in concrete?', a: 'Dune sand can be used in concrete mainly as a corrector blended with a coarser sand, because alone it is too fine and uniform, raising water demand and shrinkage and lowering strength; Algerian research documents acceptable concretes with blends and with additions that complete the curve.' },
+            { id: 'ds-crushed-vs-river', q: 'Is crushed sand better than river sand for concrete?', a: 'It is different rather than better: crushed sand is angular, which improves bond and strength, and its curve can be controlled at the plant, but it needs a little more water or admixture and its fines must be clean; river sand is rounded and workable but scarce and variable in Algeria. With a proper mix design, crushed sand produces concrete of equal quality.' },
+            { id: 'ds-fines', q: 'How much fines can a crushed sand contain?', a: 'It depends on the specification and on the nature of the fines: Algerian studies on crushed limestone sands report that fines contents of up to roughly 20 percent can be acceptable in conventional concrete when the fines are limestone dust rather than clay, which the methylene blue test verifies.' },
+            { id: 'ds-why-scarce', q: 'Why is river sand scarce in Algeria?', a: 'Because the extraction of alluvial sand from wadis has been restricted for years to protect riverbeds and water tables, so the authorized sources are few and far from most sites, which makes crushed sand the usual alternative in the north and dune sand blends the alternative in the south.' },
+            { id: 'ds-asphalt', q: 'Which sand is used in asphalt?', a: 'Crushed sand is generally preferred for hot-mix asphalt because its angular grains interlock and resist rutting under heavy traffic in hot weather, whereas rounded sands produce a mix that deforms sooner.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} produces high-quality crushed fine aggregates at its own quarry and stone crushing plant at Oued Sdeur near Aïn El Ibel, in the wilaya of Djelfa, with machines suited to projects that require high production rates, and delivers with its own trucks and semi-trailers. Test requirements are agreed before supply. See [fine aggregate production](page:aggregates) and, for the use of the same material in pavements, [road construction](page:roads).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Looking for a reliable sand source?',
+          text: 'Send us the fractions, the quantities and the site. We reply with test results and a delivered proposal.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'Fine aggregate production', page: 'aggregates', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'public-works-glossary': {
+      slug: 'public-works-glossary-french-english-arabic-chinese',
+      nav: 'Public works glossary: French, English, Arabic and Chinese',
+      title: 'Public Works Glossary: FR, EN, AR, ZH Terms | ETAHG',
+      description: 'Public works terms used on Algerian sites in French, English, Arabic and Chinese: machines, aggregates, road layers, drilling and contract vocabulary.',
+      summary: 'The machines, materials, road layers and contract terms a foreign team meets on an Algerian site, in French, English, Arabic and Simplified Chinese.',
+      eyebrow: 'Working in Algeria',
+      h1: 'Public works glossary: French, English, Arabic and Chinese terms used on Algerian sites',
+      lead: 'Algerian site documents are in French, the crews speak Arabic, and more and more of the engineers reading the drawings speak Chinese or English. {{company}}, which works with international contractors from its bases in Djelfa and Ghardaïa, has compiled the terms that come up most often.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'rental',
+      related: ['fleet', 'rental', 'roads', 'partners'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'How to use this glossary',
+          paragraphs: [
+            'The French column is the one that appears in Algerian specifications, bills of quantities and site reports; the Arabic column gives the standard written term, with the word commonly heard on site in brackets where it differs; the Chinese column uses the mainland engineering term. Terms are grouped by theme. Where several words exist, the most common one on Algerian sites is given.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Earthmoving and paving machines',
+          caption: 'Machine names in the four languages',
+          head: ['French', 'English', 'Arabic', 'Chinese'],
+          rows: [
+            ['pelle hydraulique', 'hydraulic excavator', 'حفّارة هيدروليكية', '液压挖掘机'],
+            ['bouteur (bulldozer)', 'bulldozer', 'جرّافة (بلدوزر)', '推土机'],
+            ['chargeuse sur pneus', 'wheel loader', 'محمّلة بعجلات (شارجور)', '轮式装载机'],
+            ['niveleuse', 'motor grader', 'آلة تسوية (نيفلوز)', '平地机'],
+            ['finisseur', 'asphalt paver', 'فرّاشة الإسفلت (فينيسور)', '沥青摊铺机'],
+            ['compacteur vibrant', 'vibratory roller', 'مدحلة اهتزازية', '振动压路机'],
+            ['camion-benne', 'tipper truck, dump truck', 'شاحنة قلاّبة', '自卸卡车'],
+            ['semi-remorque benne', 'tipper semi-trailer', 'نصف مقطورة قلاّبة', '自卸半挂车'],
+            ['répandeuse de bitume', 'bitumen distributor', 'رشّاشة القار', '沥青洒布车'],
+            ['citerne à bitume', 'bitumen tanker', 'صهريج القار', '沥青运输罐车'],
+            ['chariot de forage (carrière)', 'surface rock drill', 'آلة حفر الصخور', '露天钻机'],
+            ['atelier de forage sur camion', 'truck-mounted drilling rig', 'جهاز حفر محمول على شاحنة', '车载钻机'],
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Aggregates and the crushing plant',
+          caption: 'Aggregate and plant vocabulary in the four languages',
+          head: ['French', 'English', 'Arabic', 'Chinese'],
+          rows: [
+            ['carrière', 'quarry', 'محجرة', '采石场'],
+            ['station de concassage', 'crushing plant', 'محطة تكسير (كسّارة)', '破碎站'],
+            ['concasseur à mâchoires', 'jaw crusher', 'كسّارة فكّية', '颚式破碎机'],
+            ['concasseur à cône', 'cone crusher', 'كسّارة مخروطية', '圆锥破碎机'],
+            ['concasseur à percussion', 'impact crusher', 'كسّارة صدمية', '反击式破碎机'],
+            ['crible', 'screen', 'غربال', '筛分机'],
+            ['granulats', 'aggregates', 'ركام (حصى)', '骨料'],
+            ['sable concassé', 'crushed sand, manufactured sand', 'رمل مكسّر', '机制砂'],
+            ['gravillon', 'fine gravel, chippings', 'حصى صغير (غرافييه)', '碎石'],
+            ['grave non traitée (GNT)', 'unbound graded aggregate', 'حصى مدرّج غير معالج', '级配碎石'],
+            ['fines', 'fines', 'الدقائق (الغبار)', '石粉'],
+            ['équivalent de sable', 'sand equivalent', 'مكافئ الرمل', '砂当量'],
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Roads and earthworks',
+          caption: 'Road construction terms in the four languages',
+          head: ['French', 'English', 'Arabic', 'Chinese'],
+          rows: [
+            ['terrassement', 'earthworks', 'أشغال ترابية', '土方工程'],
+            ['déblai / remblai', 'cut / fill', 'حفر / ردم', '挖方 / 填方'],
+            ['plate-forme', 'subgrade, platform', 'أرضية (الطبقة الحاملة)', '路基'],
+            ['couche de forme', 'capping layer', 'طبقة التشكيل', '路床'],
+            ['couche de fondation', 'sub-base', 'طبقة الأساس', '底基层'],
+            ['couche de base', 'base course', 'الطبقة القاعدية', '基层'],
+            ['couche de roulement', 'wearing course', 'طبقة السطح', '面层'],
+            ['béton bitumineux (enrobé à chaud)', 'hot-mix asphalt', 'خرسانة إسفلتية', '热拌沥青混合料'],
+            ['grave-bitume', 'bituminous base', 'حصى مقيّر', '沥青稳定碎石'],
+            ['couche d’accrochage', 'tack coat', 'طبقة التثبيت', '粘层'],
+            ['compactage', 'compaction', 'دكّ (رصّ)', '压实'],
+            ['piste d’accès', 'access track', 'مسلك الدخول', '施工便道'],
+            ['installation de chantier', 'site mobilization, site set-up', 'تجهيز الورشة', '施工进场 (三通一平)'],
+            ['forage d’eau (puits)', 'water well', 'بئر (فوراج)', '水井'],
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Contracts and site documents',
+          caption: 'Contract and administrative vocabulary in the four languages',
+          head: ['French', 'English', 'Arabic', 'Chinese'],
+          rows: [
+            ['maître d’ouvrage (service contractant)', 'project owner, contracting authority', 'صاحب المشروع (المصلحة المتعاقدة)', '业主（发包方）'],
+            ['maître d’œuvre', 'engineer, supervising consultant', 'صاحب العمل (مكتب الدراسات)', '监理/设计单位'],
+            ['entreprise titulaire', 'main contractor', 'المقاول الرئيسي', '总承包商'],
+            ['sous-traitance / sous-traitant', 'subcontracting / subcontractor', 'المناولة / المناول', '分包 / 分包商'],
+            ['marché public', 'public contract', 'صفقة عمومية', '公共采购合同'],
+            ['CCTP (cahier des clauses techniques particulières)', 'technical specification', 'دفتر الشروط التقنية الخاصة', '技术规范'],
+            ['bordereau des prix unitaires', 'schedule of unit prices', 'جدول الأسعار الوحدوية', '单价表'],
+            ['devis quantitatif et estimatif', 'bill of quantities', 'الكشف الكمي والتقديري', '工程量清单'],
+            ['ordre de service (ODS)', 'notice to proceed', 'أمر بالخدمة', '开工令'],
+            ['PV de réception', 'acceptance report', 'محضر الاستلام', '验收记录'],
+            ['attachement', 'measurement sheet', 'كشف الأشغال المنجزة', '计量单'],
+            ['situation de travaux', 'progress payment statement', 'وضعية الأشغال', '进度款报表'],
+            ['location avec opérateur', 'rental with operator', 'كراء مع سائق', '带操作手租赁'],
+            ['registre de commerce (RC)', 'commercial register extract', 'السجل التجاري', '商业登记证'],
+            ['certificat de qualification et classification', 'qualification and classification certificate', 'شهادة التأهيل والتصنيف المهنيين', '资质等级证书'],
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'tip',
+          title: 'Three words that cause confusion',
+          paragraphs: [
+            '“Leasing” in Algeria usually means bank crédit-bail, not operational rental. “Forage” means a drilled well, not just the act of drilling. “Attachement” is the measurement record signed on site, not an attachment to an email.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'gl-language', q: 'What language are construction contracts in Algeria written in?', a: 'Public contracts, specifications and site documents in Algeria are in general written in French, with Arabic used in administration and on site; a bilingual site team, or a local partner working in both, saves a foreign contractor considerable time.' },
+            { id: 'gl-finisseur', q: 'What is a finisseur?', a: 'A finisseur is the French word for an asphalt paver, the machine that lays hot-mix asphalt in an even layer ahead of the rollers; in Arabic it is فرّاشة الإسفلت and in Chinese 沥青摊铺机.' },
+            { id: 'gl-attachement', q: 'What is an attachement on an Algerian site?', a: 'An attachement is the measurement sheet, signed by the contractor and the supervising engineer, that records the quantities of work executed during a period and forms the basis of the progress payment statement (situation de travaux).' },
+            { id: 'gl-gnt', q: 'What does GNT mean in a road specification?', a: 'GNT stands for grave non traitée, an unbound graded crushed aggregate such as a 0/31.5 used for sub-base and base layers; in English it is called unbound graded aggregate and in Chinese 级配碎石.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} works in French and Arabic on site and corresponds with partners in English and Chinese; this website and the company profile exist in all four languages. The machines in the first table are the categories of its own [fleet](page:fleet), offered for [rental and leasing](page:rental); the road terms describe its [road construction](page:roads) work; and the [international partners](page:partners) page explains how cooperation with a foreign contractor starts.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Missing a term?',
+          text: 'Tell us which word you need in which language and we will add it.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'International partners', page: 'partners', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'subcontracting-algeria': {
+      slug: 'public-works-subcontracting-algeria',
+      nav: 'How public works subcontracting works in Algeria',
+      title: 'Public Works Subcontracting in Algeria Explained | ETAHG',
+      description: 'Subcontracting in Algerian public works: legal basis, the 40 percent ceiling, prior approval by the contracting authority, payment and typical scopes.',
+      summary: 'Civil code, the 2015 procurement decree and the 2023 law, the approval workflow, payment and the scopes typically subcontracted: how subcontracting works in Algerian public works, for main contractors and subcontractors.',
+      eyebrow: 'Working in Algeria',
+      h1: 'How public works subcontracting works in Algeria',
+      lead: 'Most large projects in Algeria are delivered by a main contractor and a ring of Algerian subcontractors doing the earthworks, the haulage, the aggregates, the wells and the finishing. {{company}} has worked on both sides of that relationship. Here is how it is framed by the texts and how it works in practice, in general terms.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'roads',
+      related: ['roads', 'partners', 'mobilization'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'The legal basis',
+          paragraphs: [
+            'Three layers of text frame subcontracting in Algeria. The civil code allows a contractor to subcontract all or part of the work unless the contract forbids it, while remaining fully responsible towards the owner for the subcontractor’s work. The public procurement regulation, the presidential decree 15-247 of 2015 and the law 23-12 of 2023 that is replacing its principles while implementing texts are issued, adds the conditions specific to public contracts: a ceiling, a prior approval and declarations. And the contract itself, through its special conditions, may restrict subcontracting further or require the subcontractors to be named in the bid.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'The 40 percent ceiling and what cannot be subcontracted',
+          paragraphs: [
+            'Under the 2015 regulation, the part of a public contract that is subcontracted may not exceed 40 percent of its total amount. Current supplies contracts cannot be subcontracted at all. The bidder states in its offer the amount of the transferable share of the contract that corresponds to services subcontracted to companies under Algerian law, a point of particular interest to foreign bidders, since it connects subcontracting to the share of the contract that may be paid in foreign currency. The implementing decrees of the 2023 law may adjust these figures; the texts applicable to a given tender are those stated in its documents.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'The approval workflow',
+          intro: 'The sequence usually followed on a public contract; private contracts are freer but often copy it.',
+          items: [
+            { title: 'Identification', text: 'The main contractor identifies the scope to subcontract and the Algerian company it intends to use, ideally already in the bid.' },
+            { title: 'File', text: 'The subcontractor provides its commercial register extract, tax and social clearances, qualification certificate and a description of its means.' },
+            { title: 'Request for approval', text: 'The main contractor submits the subcontractor and the draft subcontract to the contracting authority for prior approval.' },
+            { title: 'Approval and contract', text: 'Once approved, the subcontract is signed with the mandatory mentions required by the regulation, and a copy is filed with the contracting authority.' },
+            { title: 'Declaration on site', text: 'The subcontractor declares its presence to the contracting authority when it starts, and its staff are registered with social security.' },
+            { title: 'Execution and payment', text: 'Work is measured in the main contractor’s attachements; the subcontractor is paid by the main contractor, or directly by the contracting authority when the contract provides for it.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Payment',
+          paragraphs: [
+            'In the general case the main contractor pays the subcontractor from the progress payments it receives, under the terms of the subcontract. The regulation also provides for direct payment of an approved subcontractor by the contracting authority when the contract allows it, a protection worth negotiating for a subcontractor whose scope is large. Either way, the cash flow of a subcontractor follows the rhythm of the main contract’s situations de travaux, with the delays that public accounting can involve; the subcontract should say what happens when the main contractor is paid late. Payments are made in dinars through Algerian banks.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'What a main contractor checks before approving a subcontractor',
+          paragraphs: [
+            'The file is the first filter: a valid commercial register entry in the right activity, up-to-date tax and social certificates, and a qualification certificate in the field concerned. The second filter is capacity: does the subcontractor own, or have reliable access to, the machines the scope needs, and where are they? Can it mobilize to the site in the time available, and does it know the terrain? The third is organization: a site manager who can read the drawings, laboratory follow-up, safety practice, and someone who answers the phone. Main contractors who skip the second and third filters tend to discover them in the first month of works.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Scopes most often subcontracted',
+          intro: 'Typical packages on Algerian infrastructure projects and what the subcontractor must bring.',
+          caption: 'Common subcontracted scopes and the means they require',
+          head: ['Scope', 'What is expected', 'Typical means'],
+          rows: [
+            ['Earthworks and platforms', 'Cut and fill to the drawings, compaction to density', 'Excavators, bulldozers, graders, rollers, water tankers'],
+            ['Road layers', 'Sub-base, base and sometimes asphalt to the specification', 'Graders, rollers, paver, bitumen distributor, laboratory follow-up'],
+            ['Aggregate supply and haulage', 'Fractions to the specification, at the delivery rate', 'Quarry and crushing plant, trucks and semi-trailers'],
+            ['Site start-up', 'Access tracks, platforms, first earthworks, water', 'Mobilized fleet, drilling rig'],
+            ['Water wells', 'Authorized borehole, completed and tested', 'Drilling rig, pumping test equipment'],
+            ['Equipment with operator', 'Machines available on site for the main contractor', 'Fleet, operators, maintenance support'],
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'sc-limit', q: 'What is the subcontracting limit in Algerian public contracts?', a: 'Under the 2015 public procurement regulation (decree 15-247), subcontracting may not exceed 40 percent of the total amount of a public contract, and current supplies contracts may not be subcontracted at all; the implementing texts of the 2023 law should be checked for the tender concerned.' },
+            { id: 'sc-approval', q: 'Does a subcontractor need to be approved in Algeria?', a: 'Yes. On a public contract the subcontractor must be approved in advance by the contracting authority, a copy of the subcontract is filed with it, and the subcontractor declares its presence on site when it starts.' },
+            { id: 'sc-foreign', q: 'Can a foreign main contractor subcontract to an Algerian company?', a: 'Yes, and it is expected: bidders identify in their offer the share of the contract subcontracted to companies under Algerian law, foreign bidders in international tenders must commit to a partnership with an Algerian-majority company under the 2023 law, and local subcontracting is the usual way to supply earthworks, haulage, aggregates and wells.' },
+            { id: 'sc-payment', q: 'Who pays the subcontractor on an Algerian public contract?', a: 'In general the main contractor pays the subcontractor from its own progress payments under the terms of the subcontract, but the regulation also allows direct payment of an approved subcontractor by the contracting authority when the contract provides for it.' },
+            { id: 'sc-documents', q: 'What documents does a subcontractor need in Algeria?', a: 'Typically a commercial register extract in the relevant activity, the tax identification number and an up-to-date tax statement, up-to-date social security certificates (CNAS and CASNOS), the qualification and classification certificate for its field, and a description of its equipment and staff.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}}, an Algerian SARL established in 1997, works as a subcontractor on defined scopes such as earthworks, road layers, asphalt paving, site preparation, aggregate supply and water wells, using its own fleet based in Djelfa and its own quarry and crushing plant at Oued Sdeur near Aïn El Ibel. Its registration documents are available to main contractors preparing an approval file. See [road construction](page:roads), [local partner for international contractors](page:partners) and [project mobilization](page:mobilization).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Looking for an approved-ready subcontractor?',
+          text: 'Send us the scope, the location and the schedule. We reply with our capacity and the documents for your approval file.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'International partners', page: 'partners', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'crushing-plant-explained': {
+      slug: 'how-a-crushing-plant-produces-fine-aggregate',
+      nav: 'How a crushing and screening plant produces fine aggregate',
+      title: 'How a Crushing Plant Produces Fine Aggregate | ETAHG',
+      description: 'From blasting to the stockpile: jaw, cone and vertical shaft impact crushers, screens, fines control and what decides a plant’s output of crushed sand.',
+      summary: 'A buyer-side explainer of a quarry crushing circuit: extraction, primary, secondary and tertiary crushing, screening, the control of fines, and the factors that decide output and consistency of fine aggregate.',
+      eyebrow: 'Aggregates',
+      h1: 'How a crushing and screening plant produces fine aggregate',
+      lead: 'A crushing plant turns blasted rock into graded, consistent material through a sequence of machines that each reduce the size a little further and sort what comes out. {{company}}, which operates its own quarry and stone crushing plant in the wilaya of Djelfa, explains the circuit for the buyers of its product rather than for the people who build such plants.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'aggregates',
+      related: ['aggregates', 'fleet'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'It starts at the rock face',
+          paragraphs: [
+            'A quarry is a bench cut into a deposit of rock, in Algeria most often limestone, under a mining title issued by the national mining agency and renewed under the 2025 mining law. A surface rock drill bores a pattern of holes into the bench, explosives are placed and fired by a licensed team, and the blast brings down a pile of fragmented rock, the muck pile, whose size distribution depends on the drilling pattern and the charge. A loader or an excavator feeds this rock into trucks or directly into the primary crusher. The quality of the final sand is already being decided here: a hard, clean, unweathered rock gives strong, clean aggregates; a rock with clay seams gives harmful fines that the plant will have to remove.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'The circuit, stage by stage',
+          intro: 'A typical three-stage circuit for fine aggregate; plants differ in detail.',
+          items: [
+            { title: 'Feeding and scalping', text: 'A hopper and a vibrating feeder meter the rock into the circuit; a grizzly or scalping screen takes out the natural fines and soil before they enter the crusher.' },
+            { title: 'Primary crushing: the jaw crusher', text: 'Two jaws, one fixed and one moving, squeeze the rock until it breaks and falls through the gap; the primary reduces blocks of several hundred millimetres to a product of roughly 100 to 200 mm.' },
+            { title: 'Secondary crushing: cone or impact crusher', text: 'A cone crusher squeezes the rock between a rotating mantle and a bowl; an impact crusher throws it against plates. Both bring the material down to a few tens of millimetres and begin to shape the grains.' },
+            { title: 'Tertiary crushing: the vertical shaft impactor', text: 'A VSI accelerates the stones in a rotor and throws them against an anvil ring or a bed of rock, breaking them on their weak planes; this is the stage that produces cubical grains and most of the crushed sand.' },
+            { title: 'Screening', text: 'Multi-deck vibrating screens split the stream into the fractions sold, 0/3, 3/8, 8/15 and so on, and send oversize back to the crusher it came from; this closed circuit is what gives a controlled curve.' },
+            { title: 'Fines control and stockpiling', text: 'Dust is captured by spraying or extraction, and the fines content of the sand is adjusted by screening, air classification or washing; conveyors build the stockpiles the trucks load from.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Why the tertiary stage decides sand quality',
+          paragraphs: [
+            'Jaw and cone crushers work by compression and leave flaky, elongated grains, which is acceptable for a sub-base but not ideal for concrete and asphalt. Impact crushing, and especially the vertical shaft impactor, breaks the rock along its natural planes and rounds the corners, giving a more cubical, better-graded product and generating the sand fraction in quantity. A plant that sells fine aggregate for concrete and asphalt therefore lives by its tertiary stage: its rotor speed, the wear of its parts and the feed it receives set the curve and the shape of the sand. This is also where grinding and milling machines come in for the finest products.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'What decides the output of a plant',
+          intro: 'The factors a buyer should ask about when a project needs a high and steady rate of supply.',
+          caption: 'Factors influencing the capacity and consistency of a crushing plant',
+          head: ['Factor', 'Effect', 'What to ask the supplier'],
+          rows: [
+            ['Rock hardness and abrasiveness', 'Harder rock means slower crushing and faster wear', 'Which rock, and what are its Los Angeles and Micro-Deval values'],
+            ['Feed size and blasting', 'Well-fragmented feed keeps the primary flowing', 'How is the quarry face worked'],
+            ['Crusher settings and wear parts', 'The closed-side setting and the wear of liners move the curve', 'How often are settings and liners checked'],
+            ['Screen area and decks', 'Screening is often the bottleneck', 'Which fractions can be produced simultaneously'],
+            ['Closed circuit', 'Oversize returned to the crusher stabilizes the product', 'Is the circuit closed on the sand fraction'],
+            ['Moisture and fines', 'Wet or clayey feed blinds the screens', 'How are fines controlled; is the sand washed or classified'],
+            ['Stock and haulage', 'Stockpiles absorb peaks; trucks set the delivered rate', 'Stock on the ground; own trucks or hired'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Consistency is the product',
+          paragraphs: [
+            'For the buyer, the value of a plant is not its peak tonnage but the sameness of its sand from week to week: the same curve, the same fines, the same cleanliness. That consistency comes from a steady feed, from maintenance of the crushers and screens, and from testing at the plant, with grading and sand equivalent run on production samples and recorded. Projects that need high production rates, such as a large concrete pour programme or the layers of a long road, should ask to see those records and visit the plant; the stockpiles, the state of the screens and the dust control say a great deal in ten minutes.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Frequently asked questions',
+          items: [
+            { id: 'cp-stages', q: 'What are the stages of a crushing plant?', a: 'A typical plant has a primary stage (a jaw crusher that breaks blasted rock to roughly 100–200 mm), a secondary stage (a cone or impact crusher that brings it to a few tens of millimetres), a tertiary stage (often a vertical shaft impactor that shapes the grains and produces sand) and screens that sort the fractions and return oversize to the crushers.' },
+            { id: 'cp-jaw-vs-cone', q: 'What is the difference between a jaw crusher and a cone crusher?', a: 'A jaw crusher breaks large blocks by squeezing them between a fixed and a moving jaw and is used as the primary crusher, while a cone crusher squeezes already-reduced rock between a rotating mantle and a bowl and is used as a secondary or tertiary crusher for finer, more uniform products.' },
+            { id: 'cp-vsi', q: 'What is a VSI crusher used for?', a: 'A vertical shaft impactor (VSI) throws stones at high speed against an anvil ring or a rock bed so that they break along their natural planes; it is used in the tertiary stage to produce cubical grains and crushed sand for concrete and asphalt.' },
+            { id: 'cp-fines', q: 'How are fines controlled in crushed sand?', a: 'By screening, by air classification or by washing, after dust has been limited at source with water sprays and extraction; the target fines content is the one the project specification asks for, and the methylene blue test checks that the remaining fines are not clayey.' },
+            { id: 'cp-capacity', q: 'How much aggregate can a crushing plant produce?', a: 'It depends on the size of the crushers and screens, the hardness of the rock, the fractions produced at the same time and the organization of the quarry and haulage; rather than a headline tonnage, a buyer should ask for the sustained rate the plant can hold for the fractions it needs and the stock available.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'How ETAHG can help',
+          paragraphs: [
+            '{{company}} operates its own quarry and stone crushing plant, Carrière Djellal El Gharbi at Oued Sdeur near Aïn El Ibel in the wilaya of Djelfa, with crushing and grinding machines that produce high-quality fine aggregates and are especially suited to projects requiring high production rates, and it hauls with its own trucks and tipper semi-trailers. Visits to the plant can be arranged. See [fine aggregate production](page:aggregates) and the [fleet](page:fleet) page.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'A project with a high aggregate demand?',
+          text: 'Tell us the fractions, the rate and the location. We reply with what the plant can hold and how deliveries would run.',
+          ctas: [
+            { label: 'Contact us', page: 'contact', variant: 'primary' },
+            { label: 'Fine aggregate production', page: 'aggregates', variant: 'secondary' },
           ],
         },
       ],

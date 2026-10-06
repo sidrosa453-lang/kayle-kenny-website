@@ -1,258 +1,322 @@
 {
  "ar:about": {
-  "hash": "13908f7452",
-  "date": "2026-09-30"
+  "hash": "d3fd9a0df3",
+  "date": "2026-10-06"
  },
  "ar:aggregates": {
-  "hash": "c618ea8d47",
-  "date": "2026-09-30"
+  "hash": "3bfb01be80",
+  "date": "2026-10-06"
  },
  "ar:contact": {
-  "hash": "c441d4aa9f",
-  "date": "2026-09-30"
+  "hash": "e9e1f26fba",
+  "date": "2026-10-06"
  },
  "ar:drilling": {
-  "hash": "39bb79a705",
-  "date": "2026-09-30"
+  "hash": "e70498b873",
+  "date": "2026-10-06"
  },
  "ar:experience": {
-  "hash": "61d1f06e2a",
-  "date": "2026-09-30"
+  "hash": "8d83d35441",
+  "date": "2026-10-06"
  },
  "ar:faq": {
-  "hash": "0089176d02",
-  "date": "2026-09-30"
+  "hash": "d23d4ddd78",
+  "date": "2026-10-06"
  },
  "ar:fleet": {
-  "hash": "cd6ed3dc75",
-  "date": "2026-09-30"
+  "hash": "e0a96bd14c",
+  "date": "2026-10-06"
  },
  "ar:home": {
-  "hash": "ad9fb80a1a",
-  "date": "2026-09-30"
+  "hash": "e7a6df1288",
+  "date": "2026-10-06"
+ },
+ "ar:insights": {
+  "hash": "b52d41a096",
+  "date": "2026-10-06"
  },
  "ar:legal": {
   "hash": "0d47f03ab0",
   "date": "2026-09-30"
  },
+ "ar:loc-djelfa": {
+  "hash": "472e9b2f82",
+  "date": "2026-10-06"
+ },
+ "ar:loc-ghardaia": {
+  "hash": "0ad8e4a16b",
+  "date": "2026-10-06"
+ },
+ "ar:locations": {
+  "hash": "6055816f05",
+  "date": "2026-10-06"
+ },
  "ar:mobilization": {
-  "hash": "c832b2a552",
-  "date": "2026-09-30"
+  "hash": "f870702890",
+  "date": "2026-10-06"
  },
  "ar:partners": {
-  "hash": "4678e16804",
-  "date": "2026-09-30"
+  "hash": "a472fd7f8d",
+  "date": "2026-10-06"
  },
  "ar:parts": {
-  "hash": "dc21d719f1",
-  "date": "2026-09-30"
+  "hash": "01ff43b776",
+  "date": "2026-10-06"
  },
  "ar:profile": {
-  "hash": "1e4d7594eb",
-  "date": "2026-09-30"
+  "hash": "1ab2bc8b69",
+  "date": "2026-10-06"
  },
  "ar:rental": {
-  "hash": "13e0834028",
-  "date": "2026-09-30"
+  "hash": "7a12e3e0fb",
+  "date": "2026-10-06"
  },
  "ar:roads": {
-  "hash": "35ba532779",
-  "date": "2026-09-30"
+  "hash": "9576415f2a",
+  "date": "2026-10-06"
  },
  "ar:services": {
-  "hash": "ea03279119",
-  "date": "2026-09-30"
+  "hash": "1db97240a1",
+  "date": "2026-10-06"
  },
  "en:about": {
-  "hash": "af17e3a563",
-  "date": "2026-09-30"
+  "hash": "c52af0cafd",
+  "date": "2026-10-06"
  },
  "en:aggregates": {
-  "hash": "a663db58f9",
-  "date": "2026-09-30"
+  "hash": "5ec0346dd5",
+  "date": "2026-10-06"
  },
  "en:contact": {
-  "hash": "18bc74536d",
-  "date": "2026-09-30"
+  "hash": "feefa4d5e3",
+  "date": "2026-10-06"
  },
  "en:drilling": {
-  "hash": "83dabab7bd",
-  "date": "2026-09-30"
+  "hash": "cf485b168c",
+  "date": "2026-10-06"
  },
  "en:experience": {
-  "hash": "f25ca211eb",
-  "date": "2026-09-30"
+  "hash": "8313647f1f",
+  "date": "2026-10-06"
  },
  "en:faq": {
-  "hash": "2a595950b2",
-  "date": "2026-09-30"
+  "hash": "9caf1d8e53",
+  "date": "2026-10-06"
  },
  "en:fleet": {
-  "hash": "9c0586bcb4",
-  "date": "2026-09-30"
+  "hash": "89c770701e",
+  "date": "2026-10-06"
  },
  "en:home": {
-  "hash": "46396223c7",
-  "date": "2026-09-30"
+  "hash": "47abd94624",
+  "date": "2026-10-06"
+ },
+ "en:insights": {
+  "hash": "6a16b3619d",
+  "date": "2026-10-06"
  },
  "en:legal": {
   "hash": "a75eb998ff",
   "date": "2026-09-30"
  },
+ "en:loc-djelfa": {
+  "hash": "e7a179b869",
+  "date": "2026-10-06"
+ },
+ "en:loc-ghardaia": {
+  "hash": "cf7190d0cc",
+  "date": "2026-10-06"
+ },
+ "en:locations": {
+  "hash": "bf948a4c6b",
+  "date": "2026-10-06"
+ },
  "en:mobilization": {
-  "hash": "f4ac63b023",
-  "date": "2026-09-30"
+  "hash": "5175689f1e",
+  "date": "2026-10-06"
  },
  "en:partners": {
-  "hash": "24760bfc9e",
-  "date": "2026-09-30"
+  "hash": "8ea8ccefe7",
+  "date": "2026-10-06"
  },
  "en:parts": {
-  "hash": "0506ef234c",
-  "date": "2026-09-30"
+  "hash": "01d7589f91",
+  "date": "2026-10-06"
  },
  "en:profile": {
-  "hash": "ea5d1f29d6",
-  "date": "2026-09-30"
+  "hash": "6551a975ce",
+  "date": "2026-10-06"
  },
  "en:rental": {
-  "hash": "fdb629aac1",
-  "date": "2026-09-30"
+  "hash": "b0b5b42158",
+  "date": "2026-10-06"
  },
  "en:roads": {
-  "hash": "02230e200c",
-  "date": "2026-09-30"
+  "hash": "f862562791",
+  "date": "2026-10-06"
  },
  "en:services": {
-  "hash": "c4167e372c",
-  "date": "2026-09-30"
+  "hash": "254871551d",
+  "date": "2026-10-06"
  },
  "fr:about": {
-  "hash": "7461813244",
-  "date": "2026-09-30"
+  "hash": "e5e8e578f5",
+  "date": "2026-10-06"
  },
  "fr:aggregates": {
-  "hash": "5c63444711",
-  "date": "2026-09-30"
+  "hash": "2118abf980",
+  "date": "2026-10-06"
  },
  "fr:contact": {
-  "hash": "eaa3206907",
-  "date": "2026-09-30"
+  "hash": "1f3d74daa2",
+  "date": "2026-10-06"
  },
  "fr:drilling": {
-  "hash": "ba35bcdcfe",
-  "date": "2026-09-30"
+  "hash": "1519a24e19",
+  "date": "2026-10-06"
  },
  "fr:experience": {
-  "hash": "a0e89c42d5",
-  "date": "2026-09-30"
+  "hash": "3346d3fb6e",
+  "date": "2026-10-06"
  },
  "fr:faq": {
-  "hash": "b4b6b5c205",
-  "date": "2026-09-30"
+  "hash": "02ddd849d3",
+  "date": "2026-10-06"
  },
  "fr:fleet": {
-  "hash": "0e0991e887",
-  "date": "2026-09-30"
+  "hash": "c677a4ae91",
+  "date": "2026-10-06"
  },
  "fr:home": {
-  "hash": "20a3826d9d",
-  "date": "2026-09-30"
+  "hash": "67b6352a6e",
+  "date": "2026-10-06"
+ },
+ "fr:insights": {
+  "hash": "7f9a6ecd34",
+  "date": "2026-10-06"
  },
  "fr:legal": {
   "hash": "0c817a0a40",
   "date": "2026-09-30"
  },
+ "fr:loc-djelfa": {
+  "hash": "59856b611b",
+  "date": "2026-10-06"
+ },
+ "fr:loc-ghardaia": {
+  "hash": "a5d0db1cbb",
+  "date": "2026-10-06"
+ },
+ "fr:locations": {
+  "hash": "c561665ca3",
+  "date": "2026-10-06"
+ },
  "fr:mobilization": {
-  "hash": "4191468d73",
-  "date": "2026-09-30"
+  "hash": "bdad5a7c14",
+  "date": "2026-10-06"
  },
  "fr:partners": {
-  "hash": "c242e2d5a0",
-  "date": "2026-09-30"
+  "hash": "ac63e6e0b4",
+  "date": "2026-10-06"
  },
  "fr:parts": {
-  "hash": "90a64edb12",
-  "date": "2026-09-30"
+  "hash": "c0006de38f",
+  "date": "2026-10-06"
  },
  "fr:profile": {
-  "hash": "c40b68f979",
-  "date": "2026-09-30"
+  "hash": "7169b1d640",
+  "date": "2026-10-06"
  },
  "fr:rental": {
-  "hash": "927f5c9ef1",
-  "date": "2026-09-30"
+  "hash": "e907c02415",
+  "date": "2026-10-06"
  },
  "fr:roads": {
-  "hash": "3a21a65481",
-  "date": "2026-09-30"
+  "hash": "75d2edf17c",
+  "date": "2026-10-06"
  },
  "fr:services": {
-  "hash": "0a516e4236",
-  "date": "2026-09-30"
+  "hash": "1e9b02b231",
+  "date": "2026-10-06"
  },
  "zh:about": {
-  "hash": "f24a97e706",
-  "date": "2026-09-30"
+  "hash": "0a4f498d5b",
+  "date": "2026-10-06"
  },
  "zh:aggregates": {
-  "hash": "ac07ce91a1",
-  "date": "2026-09-30"
+  "hash": "a0a8272993",
+  "date": "2026-10-06"
  },
  "zh:contact": {
-  "hash": "91344cb63d",
-  "date": "2026-09-30"
+  "hash": "223884d878",
+  "date": "2026-10-06"
  },
  "zh:drilling": {
-  "hash": "2c7c5af9a0",
-  "date": "2026-09-30"
+  "hash": "1deb83fe38",
+  "date": "2026-10-06"
  },
  "zh:experience": {
-  "hash": "f93e0034b4",
-  "date": "2026-09-30"
+  "hash": "ae28ffd613",
+  "date": "2026-10-06"
  },
  "zh:faq": {
-  "hash": "1427685958",
-  "date": "2026-09-30"
+  "hash": "abd2ebabb5",
+  "date": "2026-10-06"
  },
  "zh:fleet": {
-  "hash": "f13670ae70",
-  "date": "2026-09-30"
+  "hash": "a14b8d092d",
+  "date": "2026-10-06"
  },
  "zh:home": {
-  "hash": "4b41265b2b",
-  "date": "2026-09-30"
+  "hash": "2b0dcb6cf3",
+  "date": "2026-10-06"
+ },
+ "zh:insights": {
+  "hash": "43669b9c45",
+  "date": "2026-10-06"
  },
  "zh:legal": {
   "hash": "2c2ccb3ddd",
   "date": "2026-09-30"
  },
+ "zh:loc-djelfa": {
+  "hash": "ca7e99cac5",
+  "date": "2026-10-06"
+ },
+ "zh:loc-ghardaia": {
+  "hash": "2ac8c04e6a",
+  "date": "2026-10-06"
+ },
+ "zh:locations": {
+  "hash": "bcb9602b1f",
+  "date": "2026-10-06"
+ },
  "zh:mobilization": {
-  "hash": "558631fa6c",
-  "date": "2026-09-30"
+  "hash": "adb22012c3",
+  "date": "2026-10-06"
  },
  "zh:partners": {
-  "hash": "4047f1acbe",
-  "date": "2026-09-30"
+  "hash": "742e25238c",
+  "date": "2026-10-06"
  },
  "zh:parts": {
-  "hash": "8cc42d2876",
-  "date": "2026-09-30"
+  "hash": "be9143a75c",
+  "date": "2026-10-06"
  },
  "zh:profile": {
-  "hash": "045ae9ce8b",
-  "date": "2026-09-30"
+  "hash": "0a47a7cd13",
+  "date": "2026-10-06"
  },
  "zh:rental": {
-  "hash": "c5af2baa9d",
-  "date": "2026-09-30"
+  "hash": "3e080ca5d8",
+  "date": "2026-10-06"
  },
  "zh:roads": {
-  "hash": "f34f249dd9",
-  "date": "2026-09-30"
+  "hash": "f52701958d",
+  "date": "2026-10-06"
  },
  "zh:services": {
-  "hash": "0729b11b45",
-  "date": "2026-09-30"
+  "hash": "d864e15995",
+  "date": "2026-10-06"
  }
 }

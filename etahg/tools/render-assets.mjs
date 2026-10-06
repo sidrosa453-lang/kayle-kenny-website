@@ -2,7 +2,8 @@
 // Renders the generated binaries that build.mjs copies into the site:
 //   src/assets/generated/og-<lang>.png                     Open Graph images 1200x630
 //   src/assets/generated/etahg-company-profile-<lang>.pdf  company profile (A4 PDF)
-//   src/assets/generated/logo-512.png, logo-192.png, apple-touch-icon.png (180), favicon-48.png
+//   src/assets/generated/logo-512.png, logo-192.png, apple-touch-icon.png (180), favicon-96.png, favicon-48.png
+//   src/assets/generated/logo-light-512.png  (mark on the light brand background: schema.org Organization.logo)
 // Usage: node tools/render-assets.mjs [--only og,pdf,icons]
 // Re-run whenever the logo, the company-profile content or the OG texts change,
 // then run the normal build. The build itself never needs Playwright.
@@ -108,11 +109,13 @@ ${pano ? `<div class="pano">${pano}</div>` : `<div class="art">${art}</div>`}
 </body></html>`;
 }
 
-function iconHtml(size) {
+// Icon tile: the mark inside the central 80 % (18 % inset), so the same PNG passes as a maskable
+// icon; small favicons use a 10 % inset for legibility. light = paper background + ink mark (logo).
+function iconHtml(size, light = false) {
   const padPct = size <= 48 ? 10 : 18;
   return `<!doctype html><html><head><meta charset="utf-8"><style>
-html, body { margin: 0; width: ${size}px; height: ${size}px; overflow: hidden; background: #0F1318; }
-.m { position: absolute; inset: ${padPct}%; color: #F6F4EF; }
+html, body { margin: 0; width: ${size}px; height: ${size}px; overflow: hidden; background: ${light ? '#F6F4EF' : '#0F1318'}; }
+.m { position: absolute; inset: ${padPct}%; color: ${light ? '#0F1318' : '#F6F4EF'}; }
 .m svg { width: 100%; height: 100%; display: block; }
 </style></head><body><div class="m">${logo}</div></body></html>`;
 }
@@ -123,9 +126,9 @@ try {
   if (only.has('icons')) {
     const ctx = await browser.newContext({ deviceScaleFactor: 1 });
     const page = await ctx.newPage();
-    for (const [name, size] of [['logo-512.png', 512], ['logo-192.png', 192], ['apple-touch-icon.png', 180], ['favicon-48.png', 48]]) {
+    for (const [name, size, light] of [['logo-512.png', 512], ['logo-light-512.png', 512, true], ['logo-192.png', 192], ['apple-touch-icon.png', 180], ['favicon-96.png', 96], ['favicon-48.png', 48]]) {
       await page.setViewportSize({ width: size, height: size });
-      await page.setContent(iconHtml(size));
+      await page.setContent(iconHtml(size, light));
       await page.screenshot({ path: path.join(GEN, name), omitBackground: false });
       console.log(`  icon  src/assets/generated/${name}`);
     }

@@ -42,7 +42,11 @@
         "zh": "盖尔达耶省布努拉"
       },
       "mapsUrl": "",
-      "street": "Cité 400 Logements, Sidi Abbaz"
+      "street": "Cité 400 Logements, Sidi Abbaz",
+      "geo": {
+        "lat": 32.4595,
+        "lng": 3.6958
+      }
     },
     {
       "id": "depot",
@@ -54,7 +58,11 @@
         "ar": "الجلفة",
         "zh": "杰勒法"
       },
-      "mapsUrl": ""
+      "mapsUrl": "",
+      "geo": {
+        "lat": 34.6728,
+        "lng": 3.263
+      }
     },
     {
       "id": "quarry",
@@ -75,7 +83,11 @@
         "+213 660 36 75 50",
         "+213 660 36 75 51"
       ],
-      "fax": "+213 27 90 46 13"
+      "fax": "+213 27 90 46 13",
+      "geo": {
+        "lat": 34.3486,
+        "lng": 3.2235
+      }
     },
     {
       "id": "parts",
@@ -114,12 +126,19 @@
   "social": {
     "linkedin": "",
     "facebook": "",
-    "googleBusinessProfile": ""
+    "instagram": "",
+    "youtube": "",
+    "googleBusinessProfile": "",
+    "kompass": "",
+    "prospecta": "",
+    "wikidata": "",
+    "crunchbase": ""
   },
   "verification": {
     "google": "",
     "bing": "",
-    "baidu": ""
+    "baidu": "",
+    "yandex": ""
   },
   "photos": {},
   "group": [
@@ -138,5 +157,6 @@
   "fullName": {
     "fr": "Entreprise de Travaux d'Aménagement Hydraulique de Ghardaïa",
     "ar": "شركة الأشغال لتهيئة الري بغرداية"
-  }
+  },
+  "indexNowKey": "177925fe626ea5f16fd9ecdcaa55e505"
 }
