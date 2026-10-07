@@ -17,8 +17,11 @@ export function headMeta(ctx) {
 ${!ctx.noindex && html`<link rel="canonical" href="${ctx.abs(ctx.pageId, lang)}">
 ${alts.map((a) => html`<link rel="alternate" hreflang="${a.hreflang}" href="${a.url}">
 `)}<link rel="alternate" hreflang="x-default" href="${ctx.abs(ctx.pageId, site.defaultLanguage)}">`}
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="${site.companyName}">
+<meta property="og:type" content="${ctx.isArticle ? 'article' : 'website'}">
+${ctx.isArticle && html`<meta property="article:published_time" content="${page.datePublished}">
+<meta property="article:modified_time" content="${page.dateModified || page.datePublished}">
+${page.eyebrow && html`<meta property="article:section" content="${page.eyebrow}">
+`}`}<meta property="og:site_name" content="${site.companyName}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${noBidi(page.description)}">
 <meta property="og:url" content="${ctx.abs(ctx.pageId, lang)}">
@@ -63,6 +66,8 @@ function postal(a, country = 'DZ') {
 // Localized text lives on the per-page WebPage / Service / FAQPage nodes.
 const LANG_NAMES_EN = { ar: 'Arabic', fr: 'French', en: 'English', zh: 'Chinese' };
 
+// Coordinates are published only once the owner has confirmed them (location.geoConfirmed in
+// site.config.json): a wrong pin on the quarry would be copied by every map aggregator.
 export const geoNode = (g) => (g && Number.isFinite(g.lat) && Number.isFinite(g.lng) ? { '@type': 'GeoCoordinates', latitude: g.lat, longitude: g.lng } : undefined);
 
 export function organization(ctx) {
@@ -101,15 +106,16 @@ export function organization(ctx) {
     telephone: c.phone,
     email: c.email || undefined,
     address: postal(c.address || {}),
-    faxNumber: c.fax || undefined,
+    // No organisation-level fax: contact.fax is the quarry's line (on its Place node and contactPoint).
     location: own.map((l) => ({
       '@type': 'Place',
       '@id': `${base}/#place-${l.id}`,
-      name: l.name ? `${l.name} (${typesL[l.id] || types[l.id] || l.type}), ${ctx.locName(l)}` : `${typesL[l.id] || types[l.id] || l.type}, ${ctx.locName(l)}`,
+      name: l.name ? `${l.name}${ctx.P.open}${typesL[l.id] || types[l.id] || l.type}${ctx.P.close}${ctx.P.comma}${ctx.locName(l)}` : `${typesL[l.id] || types[l.id] || l.type}${ctx.P.comma}${ctx.locName(l)}`,
       address: postal(l.id === 'hq' ? (c.address || {}) : { street: l.street, locality: l.locality, region: l.region }),
+      // contact.phones / contact.fax are the quarry's lines (BRIEF.md): never attached to the office.
       telephone: (l.phones || [])[0] || (l.id === 'hq' ? c.phone : undefined),
-      faxNumber: l.fax || (l.id === 'hq' ? c.fax : undefined) || undefined,
-      geo: geoNode(l.geo),
+      faxNumber: l.fax || undefined,
+      geo: geoNode(l.geoConfirmed ? l.geo : null),
       hasMap: l.mapsUrl || (l.id === 'hq' ? c.mapsUrl : undefined) || undefined,
     })),
     hasMap: c.mapsUrl || undefined,
@@ -196,8 +202,10 @@ export function jsonLd(ctx) {
       articleSection: page.eyebrow || undefined,
       datePublished: page.datePublished,
       dateModified: page.dateModified || page.datePublished,
-      author: { '@id': `${base}/#organization` },
-      publisher: { '@id': `${base}/#organization` },
+      // Full nodes (same @id as the Organization, so they merge): validators that read the
+      // Article in isolation still see an author / publisher with a type, a name and a logo.
+      author: { '@type': 'Organization', '@id': `${base}/#organization`, name: site.companyName, url: `${base}/` },
+      publisher: { '@type': 'Organization', '@id': `${base}/#organization`, name: site.companyName, logo: org.logo ? { '@id': `${base}/#logo` } : undefined },
       image: img ? img.url : undefined,
       inLanguage: ctx.L.hreflang,
       mainEntityOfPage: { '@id': `${url}#webpage` },
@@ -213,25 +221,29 @@ export function jsonLd(ctx) {
     const c = site.contact || {};
     const isHq = l.id === 'hq';
     const types = ctx.ui.locations.types;
+    // Same @id as the Place in Organization.location (LocalBusiness is a Place subtype), so a
+    // location exists once in the graph instead of as two unlinked nodes.
+    const placeId = `${base}/#place-${l.id}`;
     const node = {
       '@type': ['LocalBusiness', 'GeneralContractor'],
-      '@id': `${url}#place`,
+      '@id': placeId,
       name: `${site.companyName}${ctx.P.comma}${types[l.id] || l.type}${ctx.P.comma}${ctx.locName(l)}`,
       description: noBidi(page.description),
       url,
+      mainEntityOfPage: { '@id': `${url}#webpage` },
       image: ctx.ogImage() ? ctx.ogImage().url : undefined,
       parentOrganization: { '@id': `${base}/#organization` },
       address: postal(isHq ? (c.address || {}) : { street: l.street, locality: l.locality, region: l.region }),
       telephone: (l.phones || [])[0] || c.phone,
-      faxNumber: l.fax || (isHq ? c.fax : undefined) || undefined,
+      faxNumber: l.fax || undefined,
       email: isHq ? c.email || undefined : undefined,
-      geo: geoNode(l.geo),
+      geo: geoNode(l.geoConfirmed ? l.geo : null),
       hasMap: l.mapsUrl || (isHq ? c.mapsUrl : undefined) || undefined,
       areaServed: { '@type': 'Country', name: ctx.ui.facts.countryValue || 'Algeria', identifier: 'DZ' },
       containedInPlace: { '@type': 'AdministrativeArea', name: ctx.ui.locations.wilaya.replaceAll('{{region}}', ctx.regionName(l)) },
     };
     graph.push(node);
-    webPage.about = { '@id': `${url}#place` };
+    webPage.about = { '@id': placeId };
   }
   if (crumbs.length > 1) {
     graph.push({
@@ -240,7 +252,9 @@ export function jsonLd(ctx) {
       itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: ctx.abs(c.id, lang) })),
     });
   }
-  if (page.service) {
+  // Service pages only: on articles `page.service` is the id of the service page the article is
+  // about (Article.about points to that page's #service node), not a service definition.
+  if (page.service && typeof page.service === 'object' && !ctx.isArticle) {
     graph.push({
       '@type': 'Service',
       '@id': `${url}#service`,

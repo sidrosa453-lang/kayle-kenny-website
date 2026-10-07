@@ -361,9 +361,11 @@ async function main() {
     if (o) { copy(o, `assets/og-${l}.png`); ogFor[l] = `assets/og-${l}.png`; } else { missingAssets.push(`og-${l}.png`); warn(`src/assets/generated/og-${l}.png missing (run: node tools/render-assets.mjs)`); }
     const p = gen(`etahg-company-profile-${l}.pdf`);
     if (p) { copy(p, `downloads/etahg-company-profile-${l}.pdf`); pdfFor[l] = `downloads/etahg-company-profile-${l}.pdf`; } else { missingAssets.push(`etahg-company-profile-${l}.pdf`); warn(`src/assets/generated/etahg-company-profile-${l}.pdf missing (run: node tools/render-assets.mjs)`); }
-    // A stale PDF (older than the content it prints) is worth a warning.
+    // A stale PDF or share image (older than the content it prints) is worth a warning.
     const cf = path.join(args.content, `${l}.mjs`);
-    if (p && fs.existsSync(cf) && fs.statSync(cf).mtimeMs > fs.statSync(p).mtimeMs) warn(`etahg-company-profile-${l}.pdf is older than src/content/${l}.mjs (re-run: node tools/render-assets.mjs)`);
+    const stale = (f) => f && fs.existsSync(cf) && fs.statSync(cf).mtimeMs > fs.statSync(f).mtimeMs;
+    if (stale(p)) warn(`etahg-company-profile-${l}.pdf is older than src/content/${l}.mjs (re-run: node tools/render-assets.mjs)`);
+    if (stale(o)) warn(`og-${l}.png is older than src/content/${l}.mjs (re-run: node tools/render-assets.mjs)`);
   }
   if (STRICT && missingAssets.length) {
     throw new Error(`production build refused: missing localized assets in src/assets/generated/: ${missingAssets.join(', ')}.\n  Run: node tools/render-assets.mjs   (or build elsewhere / pass --no-strict for a draft build)`);
@@ -421,6 +423,12 @@ async function main() {
         const a = content[lang].articles[id];
         return { id, ...a, dateModified: a.dateModified || a.datePublished, readingMinutes: ctx.readingMinutes(a) };
       }),
+      // Articles for an `articles` block: all, the first `limit`, or those about one service page.
+      articlesFor(b) {
+        let list = ctx.articles();
+        if (b.forService) list = list.filter((a) => a.service === b.forService || (a.related || []).includes(b.forService));
+        return list.slice(0, b.limit || undefined);
+      },
       articleNeighbours() {
         const list = ctx.articles();
         const i = list.findIndex((a) => a.id === pageId);
@@ -622,7 +630,9 @@ async function main() {
       // FAQPage structured data: a page marks up only its own questions; questions reused
       // from the FAQ page (from/ids) are marked up once, on the FAQ page itself.
       pageFaqs() { return (page.blocks || []).filter((b) => b.type === 'faq' && (!b.from || pageId === b.from)).flatMap((b) => ctx.faqItems(b)); },
-      nextTone(type) { if (type === 'terrain') return 'ink'; return ['paper', 'stone'][tone++ % 2]; },
+      // Articles: running text stays on one continuous paper background; tables and FAQs are stone
+      // panels. Other pages alternate paper / stone bands.
+      nextTone(type) { if (type === 'terrain') return 'ink'; if (isArticle) return ['table', 'faq'].includes(type) ? 'stone' : 'paper'; return ['paper', 'stone'][tone++ % 2]; },
       nextNumber: () => ++num,
       uid: (p = 'u') => `${p}${++uidN}`,
       slugId(label) {
@@ -657,6 +667,17 @@ async function main() {
       const page = pageOf(id, lang);
       if (isArticleId(id)) page.layout = 'article';
       else if (LOCATION_PAGES[id]) page.layout = page.layout || 'location';
+      // Service pages link back to the Insights articles written about them ("Related insights",
+      // before the closing CTA): every article gets inbound links from a page other than its hub.
+      if (SERVICE_PAGES.includes(id) && !(page.blocks || []).some((b) => b.type === 'articles')) {
+        const about = ARTICLE_IDS.filter((a) => hasPage(a, lang) && (content[lang].articles[a].service === id || (content[lang].articles[a].related || []).includes(id)));
+        if (about.length) {
+          const A = content[lang].ui.article;
+          const block = { type: 'articles', forService: id, label: A.insightsLabel, title: A.forService, more: { page: ARTICLE_HUB, label: A.all } };
+          const at = page.blocks.findIndex((b) => b.type === 'cta');
+          if (at >= 0) page.blocks.splice(at, 0, block); else page.blocks.push(block);
+        }
+      }
       const ctx = makeContext(lang, id, page);
       let main = isArticleId(id) ? articlePage(ctx) : renderBlocks(page.blocks, ctx);
       if (page.layout === 'profile') {

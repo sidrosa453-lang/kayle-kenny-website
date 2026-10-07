@@ -13,8 +13,11 @@ function section(block, ctx, inner, { cls = '', headCls = '', tone } = {}) {
   const t = tone || block.tone || ctx.nextTone(block.type);
   const num = block.label ? ctx.nextNumber() : null;
   const id = block.id || (block.label ? ctx.slugId(block.label) : null);
-  const titleId = block.title ? ctx.uid('h') : null;
-  return html`<section${attrs({ class: `section tone-${t} sec-${block.type}${cls ? ' ' + cls : ''}`, id, 'aria-labelledby': titleId })}>
+  // Articles: the readable anchor (TOC href, deep links) is the heading itself; the section is
+  // labelled by it. Other pages keep the anchor on the section (page:ID#anchor links).
+  const anchorOnHeading = !!(ctx.isArticle && block.title && id);
+  const titleId = block.title ? (anchorOnHeading ? id : ctx.uid('h')) : null;
+  return html`<section${attrs({ class: `section tone-${t} sec-${block.type}${cls ? ' ' + cls : ''}`, id: anchorOnHeading ? null : id, 'aria-labelledby': titleId })}>
 <div class="wrap">
 ${(block.label || block.title || block.intro) && html`<header class="section-head${headCls ? ' ' + headCls : ''}">
 ${block.label && html`<p class="label"><span class="label-num">${pad(num)}</span><span class="label-text">${block.label}</span></p>`}
@@ -251,12 +254,13 @@ ${projects.length > 0 && html`<h3 class="sub-title">${b.projectsTitle}</h3><div 
 /* ----------------------------------------------------------------- table */
 function table(b, ctx) {
   // The scroll container is focusable and labelled so keyboard users can scroll wide tables.
+  // The caption sits OUTSIDE the scroll box (figcaption), so it is never clipped on phones.
   const capId = ctx.uid('cap');
-  return section(b, ctx, html`<div${attrs({ class: 'table-wrap', tabindex: '0', role: 'region', 'aria-labelledby': b.caption ? capId : null, 'aria-label': b.caption ? null : plainTitle(b) })}><table class="table">
-${b.caption && html`<caption id="${capId}">${b.caption}</caption>`}
+  const wrap = html`<div${attrs({ class: 'table-wrap', tabindex: '0', role: 'region', 'aria-labelledby': b.caption ? capId : null, 'aria-label': b.caption ? null : plainTitle(b) })}><table class="table">
 <thead><tr>${b.head.map((h) => html`<th scope="col">${h}</th>`)}</tr></thead>
 <tbody>${b.rows.map((row) => html`<tr>${row.map((c, i) => (i === 0 ? html`<th scope="row">${inline(c, ctx)}</th>` : html`<td>${inline(c, ctx)}</td>`))}</tr>`)}</tbody>
-</table></div>`);
+</table></div>`;
+  return section(b, ctx, b.caption ? html`<figure class="table-figure">${wrap}<figcaption id="${capId}">${b.caption}</figcaption></figure>` : wrap);
 }
 
 const plainTitle = (b) => String(b.title || '').replace(/\*\*|\[|\]\([^)]*\)/g, '');
@@ -347,9 +351,10 @@ ${b.cta && html`<p class="callout-cta">${ctaLink({ ...b.cta, variant: b.cta.vari
 
 /* -------------------------------------------------------------- articles */
 // Card list of every article of the language (newest first) for the Insights hub,
-// or `limit` articles elsewhere (e.g. home). Data comes from ctx.articles().
+// `limit` articles elsewhere (e.g. home), or the articles about one service (`forService`,
+// the block build.mjs appends to every service page). Data comes from ctx.articlesFor().
 function articles(b, ctx) {
-  const list = ctx.articles().slice(0, b.limit || undefined);
+  const list = ctx.articlesFor(b);
   if (!list.length) return b.emptyText ? section(b, ctx, html`<p class="articles-empty">${inline(b.emptyText, ctx)}</p>`) : '';
   const A = ctx.ui.article;
   const inner = html`<ul class="articles">${list.map((a) => html`<li class="article-card">
@@ -369,9 +374,10 @@ function place(b, ctx) {
   if (!l) { ctx.warn(`place block on page ${ctx.pageId} without a location`); return ''; }
   const ui = ctx.ui.locations;
   const c = ctx.config.contact || {};
-  const isHq = l.id === 'hq';
-  const phones = (l.phones || []).length ? l.phones : isHq ? [c.phone, ...(c.phones || [])].filter(Boolean) : [c.phone].filter(Boolean);
-  const fax = l.fax || (isHq ? c.fax : '');
+  // Only the location's own lines (site.config.json locations[].phones / fax), else the group
+  // number: contact.phones and contact.fax are the quarry's, never the registered office's (BRIEF.md).
+  const phones = (l.phones || []).length ? l.phones : [c.phone].filter(Boolean);
+  const fax = l.fax || '';
   const card = html`<address class="place-card">
 <p class="location-type">${ui.types[l.id] || l.type}</p>
 <p class="place-name">${ctx.site.companyName}</p>
@@ -381,7 +387,7 @@ ${l.region && html`<p class="place-line place-region">${ui.wilaya.replaceAll('{{
 ${phones.length > 0 && html`<p class="place-line"><span class="place-label">${ctx.ui.phoneLabel}${ctx.P.colon}</span>${phones.map((n, j) => html`${j > 0 && ' / '}<a href="${ctx.telUrl(n)}" dir="ltr">${n}</a>`)}</p>`}
 ${fax && html`<p class="place-line"><span class="place-label">${ctx.ui.faxLabel}${ctx.P.colon}</span><span dir="ltr">${fax}</span></p>`}
 ${c.email && html`<p class="place-line"><span class="place-label">${ctx.ui.emailLabel}${ctx.P.colon}</span><a href="${ctx.mailUrl()}">${c.email}</a></p>`}
-${l.geo && Number.isFinite(l.geo.lat) && html`<p class="place-line place-geo"><span class="place-label">${ui.geoLabel || 'GPS'}${ctx.P.colon}</span><span dir="ltr">${l.geo.lat.toFixed(4)}, ${l.geo.lng.toFixed(4)}</span></p>`}
+${l.geoConfirmed && l.geo && Number.isFinite(l.geo.lat) && html`<p class="place-line place-geo"><span class="place-label">${ui.geoLabel || 'GPS'}${ctx.P.colon}</span><span dir="ltr">${l.geo.lat.toFixed(4)}, ${l.geo.lng.toFixed(4)}</span></p>`}
 ${l.mapsUrl && html`<a class="location-map" href="${l.mapsUrl}" rel="noopener" target="_blank">${icon('pin')}<span>${ui.mapLink || ctx.ui.mapLink}</span>${newTab(ctx)}</a>`}
 <div class="cta-row cta-stack">
 ${ctaLink({ kind: 'whatsapp', label: ctx.ui.whatsappLabel, variant: 'primary' }, ctx)}

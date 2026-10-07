@@ -31,9 +31,21 @@ jobs:
         id: site
         run: echo "url=$(node -p "JSON.parse(require('fs').readFileSync('site.config.json','utf8')).siteUrl.replace(/\/+$/,'')")" >> "$GITHUB_OUTPUT"
 
-      - name: Wait for GitHub Pages to publish
+      # A fixed wait races the Pages deployment: the smoke test would pass against the PREVIOUS
+      # deployment and new URLs would be submitted before they are served (404 on first crawl).
+      # Poll until the live sitemap contains the last <loc> of the committed one (up to ~6 min).
+      - name: Wait for GitHub Pages to serve the committed sitemap
         if: github.event_name == 'push'
-        run: sleep 90
+        env:
+          SITE: ${{ steps.site.outputs.url }}
+        run: |
+          LAST=$(grep -o '<loc>[^<]*</loc>' docs/sitemap.xml | tail -1)
+          echo "waiting for $LAST"
+          for i in $(seq 1 24); do
+            if curl -sS --max-time 30 "$SITE/sitemap.xml" | grep -qF "$LAST"; then echo "live after $((i*15)) s"; exit 0; fi
+            sleep 15
+          done
+          echo "::error::$SITE/sitemap.xml still does not contain $LAST after 6 minutes"; exit 1
 
       - name: Deployment smoke test (live sitemap and key file must answer 200)
         env:

@@ -100,7 +100,7 @@ export function pageMarkdown(ctx) {
         push(`> ${b.title ? `**${plain(b.title)}** ` : ''}${[b.text, ...(b.paragraphs || [])].filter(Boolean).map(md).join(' ')}${b.list?.length ? '\n>\n' + b.list.map((i) => `> - ${md(i)}`).join('\n') : ''}`);
         break;
       case 'articles': {
-        const list = ctx.articles().slice(0, b.limit || undefined);
+        const list = ctx.articlesFor(b);
         if (!list.length) break;
         push(`## ${plain(b.title)}`);
         if (b.intro) push(md(b.intro));

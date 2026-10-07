@@ -78,7 +78,7 @@ draft translations). `BUILD_DATE=2026-10-01 node src/build.mjs` sets the build d
 **Production build is strict.** A build into `docs/` (or with `--strict`) *fails* if any language lacks
 its own company-profile PDF or share image in `src/assets/generated/` — a Chinese visitor must never
 receive the English PDF. Builds elsewhere only warn (`--no-strict` forces a draft build into docs/).
-The build also warns when a PDF is older than its content file (re-run `render-assets`).
+The build also warns when a PDF or a share image (`og-<lang>.png`) is older than its content file (re-run `render-assets`).
 
 **Sitemap `lastmod`** changes only when a page's rendered main content changes: the build hashes each
 page's `<main>` and keeps `{hash, date}` in `src/lastmod.json` (commit it). Only `docs/` builds update
@@ -131,8 +131,17 @@ Articles live under the `articles` key of each language file (schema: `ARTICLE` 
    with a build warning; hreflang only links the languages that have it).
 3. `node src/build.mjs && node tools/check.mjs`. The build adds the page to the sitemap (`lastmod` =
    `dateModified`), to `llms.txt` ("## Insights") and `llms-full.txt`, computes the reading time and
-   word count, and emits `Article` + `BreadcrumbList` (+ `FAQPage`) JSON-LD. When you update an article,
-   bump `dateModified`.
+   word count, and emits `Article` + `BreadcrumbList` (+ `FAQPage`) JSON-LD (`og:type` = `article` with
+   `article:published_time / modified_time / section`). When you update an article, bump `dateModified`.
+4. Nothing to add on the service pages: the build appends a "Related insights" `articles` block (before the
+   closing CTA) to every service page listing the articles whose `service` or `related` names it, and the home
+   page shows the three latest. Set `service` / `related` on the article accordingly.
+
+Article pages render the running text (`prose`) on one continuous background and tables / FAQs as stone
+panels; from 1100 px the table of contents becomes a sticky sidebar next to the text column, and `cta`
+blocks are rendered full-width below the body. H2 anchors are readable slugs on the headings themselves.
+Tables are `<figure>`s: the caption sits under the scroll box (never clipped on phones) and the scroll
+box shows edge shadows while columns are hidden.
 
 Keep the cadence low (one or two articles a month) and each piece original: Google's scaled-content
 policies target bulk, templated pages; four faithful translations of one article are fine.
@@ -146,7 +155,9 @@ page): add the location to `site.config.json` (with `geo` `{lat, lng}` when know
 in `LOCATION_PAGES`, add the id to `PAGES` / `PARENT` (parent `locations`), then write the page in the
 four language files with a `hero`, a `place` block (prose + the address card from config), service
 `cards`, terrain / access `prose`, a `faq` and a `cta`. The build emits a `LocalBusiness` node
-(`parentOrganization` = the company, `geo`, `hasMap`) and links the card on the Locations hub.
+(same `@id` as the Organization's `location` Place node, `parentOrganization` = the company, `geo`, `hasMap`)
+and links the card on the Locations hub. The address card shows only the location's own `phones` / `fax`
+(else the group number): `contact.phones` and `contact.fax` are the quarry's lines (BRIEF.md), never the office's.
 
 ## Filling `site.config.json`
 
@@ -172,7 +183,7 @@ Everything below is optional; the site renders cleanly with it empty and never i
 | `projects` | project table on the Experience page: `[{ "name", "region", "year", "scope" }]` (values may be per-language objects) |
 | `certifications` | facts panel + JSON-LD (only real, current certificates) |
 | `social.linkedin / facebook / instagram / youtube / googleBusinessProfile / kompass / prospecta / wikidata / crunchbase` | JSON-LD `sameAs` (only profiles that exist and link back to www.etahg.com) |
-| `locations[].geo` | `{ "lat", "lng" }`: `GeoCoordinates` on the Organization `location` nodes and the location pages (city-level public coordinates are fine); shown as a GPS line on the location page |
+| `locations[].geo` + `geoConfirmed` | `{ "lat", "lng" }`: `GeoCoordinates` on the Organization `location` nodes and the location pages, and a GPS line on the location page — emitted **only when `geoConfirmed` is `true`** (the owner has checked the pin). The values currently in the file are approximate and stay unpublished until then |
 | `verification.google / bing / baidu / yandex` | `google-site-verification`, `msvalidate.01`, `baidu-site-verification`, `yandex-verification` meta tags, rendered only when filled |
 | `indexNowKey` | 8–128 chars of `[a-zA-Z0-9-]`; the build publishes `docs/<key>.txt` and `tools/indexnow.mjs` / the GitHub workflow submit URLs with it |
 | `spokenLanguages` | until filled, JSON-LD `knowsLanguage` / `ContactPoint.availableLanguage` list the four website languages |
@@ -249,7 +260,9 @@ only `render-assets` uses Noto Sans SC, to embed it in the Chinese PDF and share
   rebuild and deploy. The tags are rendered only when filled, on every page.
 - **IndexNow** (Bing, Yandex, Naver, Seznam, Yep — Google does not take part): `site.config.json →
   indexNowKey` is published as `docs/<key>.txt`. `.github/workflows/indexnow.yml` runs after every push
-  that changes `docs/` and every Monday: it checks that the live `sitemap.xml` and key file answer 200,
+  that changes `docs/` and every Monday: on a push it first polls (up to 6 min) until the live `sitemap.xml`
+  contains the last URL of the committed one, so new pages are never submitted before Pages serves them;
+  it then checks that the live `sitemap.xml` and key file answer 200,
   then POSTs all sitemap URLs to `https://api.indexnow.org/indexnow` and prints the HTTP status
   (200/202 = accepted). Manual run: `node tools/indexnow.mjs` (`--urls …` for a few URLs, `--dry-run`
   to print the payload). Optional: store the same key as the repository secret `INDEXNOW_KEY`.

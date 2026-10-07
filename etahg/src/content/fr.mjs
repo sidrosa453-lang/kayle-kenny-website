@@ -11,7 +11,8 @@
  *   « SARL ETAHG est une entreprise algérienne spécialisée dans la production de
  *     granulats fins, les travaux routiers, la location courte et longue durée
  *     d’engins de travaux publics, le démarrage de chantiers et le forage de puits d’eau. »
- * « ETAHG » s’écrit toujours en capitales latines ; ne jamais développer le sigle.
+ * « ETAHG » s’écrit toujours en capitales latines. Le sigle est développé une fois (À propos, FAQ, siège de Ghardaïa) :
+ * Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa.
  *
  * Terminologie retenue (usage BTP en Algérie) :
  *   fine aggregates = granulats fins / sable concassé ; crushing plant = station de
@@ -41,7 +42,7 @@ export default {
     whatsappNote: '',
     subMenuLabel: 'Afficher le sous-menu Services',
     phoneLabel: 'Téléphone',
-    phonesLabel: 'Lignes bureau / carrière',
+    phonesLabel: 'Lignes carrière',
     phonesShort: 'Tél.',
     faxLabel: 'Fax',
     emailLabel: 'E-mail',
@@ -103,7 +104,7 @@ export default {
       capacityUnit: 'tonnes par heure',
       certifications: 'Certifications',
       phone: 'Téléphone / WhatsApp',
-      phones: 'Lignes bureau / carrière',
+      phones: 'Lignes carrière',
       fax: 'Fax',
       email: 'E-mail',
       website: 'Site internet',
@@ -196,6 +197,8 @@ export default {
       next: 'Article suivant',
       all: 'Tous les conseils',
       navLabel: 'Autres articles',
+      insightsLabel: 'Conseils',
+      forService: 'Conseils liés à ce service',
     },
 
     notFound: {
@@ -216,8 +219,8 @@ export default {
     home: {
       slug: '',
       nav: 'Accueil',
-      title: 'SARL ETAHG | Granulats, engins et travaux routiers, Algérie',
-      description: 'SARL ETAHG, entreprise algérienne depuis 1997 : sable concassé et granulats, travaux routiers, location d’engins, démarrage de chantier, forage d’eau.',
+      title: 'SARL ETAHG | Granulats, routes et engins, Ghardaïa · Djelfa',
+      description: 'SARL ETAHG (Ghardaïa, Djelfa), créée en 1997 : granulats fins, travaux routiers, location d’engins, démarrage de chantier et forage d’eau en Algérie.',
       summary: 'Présentation de SARL ETAHG, entreprise algérienne spécialisée dans les granulats fins, les travaux routiers, la location d’engins, le démarrage de chantiers et le forage de puits d’eau.',
       blocks: [
         {
@@ -346,6 +349,14 @@ export default {
           more: { label: 'Toutes les questions et réponses', page: 'faq' },
         },
         {
+          type: 'articles',
+          label: 'Conseils',
+          title: 'Du savoir-faire pratique pour les projets en Algérie',
+          intro: 'Des articles écrits depuis notre carrière, notre parc et nos chantiers : spécifications des granulats, couches de chaussée selon le terrain, louer ou acheter les engins, ouvrir un chantier dans la steppe ou le désert, forer et autoriser un puits, sous-traitance et marchés publics pour un nouvel arrivant.',
+          limit: 3,
+          more: { label: 'Tous les conseils', page: 'insights' },
+        },
+        {
           type: 'cta',
           title: 'Un projet en Algérie ?',
           text: 'Indiquez-nous le lieu, la nature des travaux et les délais. Nous vous répondrons avec les engins, les matériaux et le plan de mobilisation que nous pouvons proposer.',
@@ -362,8 +373,8 @@ export default {
     services: {
       slug: 'services',
       nav: 'Services',
-      title: 'Nos services de travaux publics en Algérie | ETAHG',
-      description: 'Services de SARL ETAHG en Algérie : sable concassé et granulats fins, travaux routiers, location d’engins de TP, démarrage de chantier, forage de puits.',
+      title: 'Services de travaux publics, Djelfa et Ghardaïa | ETAHG',
+      description: 'Services de SARL ETAHG depuis Djelfa et Ghardaïa : sable concassé et granulats fins, travaux routiers, location d’engins, démarrage de chantier, forages.',
       summary: 'Vue d’ensemble des services de SARL ETAHG et de la manière de les combiner sur un même projet.',
       blocks: [
         {
@@ -449,7 +460,7 @@ export default {
     aggregates: {
       slug: 'services/production-de-granulats',
       nav: 'Production de granulats',
-      title: 'Sable concassé et granulats, Djelfa (Algérie) | ETAHG',
+      title: 'Granulats fins et station de concassage, Djelfa | ETAHG',
       description: 'Sable concassé et granulats fins produits par SARL ETAHG près de Djelfa (Algérie), pour bétons, enrobés et chaussées, à fortes cadences de production.',
       summary: 'Granulats fins concassés de qualité issus de la carrière et de la station de concassage de SARL ETAHG à Oued Sdeur, près d’Aïn El Ibel (Djelfa), adaptés aux fortes cadences de production.',
       service: { name: 'Production et fourniture de granulats fins', serviceType: 'Production de granulats fins concassés (sable de concassage)' },
@@ -459,7 +470,7 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Production de granulats',
-          title: 'Sable concassé et granulats fins pour les grands chantiers en Algérie',
+          title: 'Granulats fins concassés de notre propre carrière et station de concassage à Djelfa, pour les grands chantiers',
           lead: '{{company}} produit des granulats fins concassés de qualité, appelés aussi sable de concassage ou sable manufacturé, dans sa propre carrière et station de concassage, la Carrière Djellal El Gharbi, à Oued Sdeur près d’Aïn El Ibel, au sud de Djelfa. L’entreprise extrait elle-même la roche, avec ses propres moyens de forage et de chargement, et la concasse sur le même site : elle maîtrise ainsi la matière première autant que le procédé. Les concasseurs et broyeurs de la station sont particulièrement adaptés aux projets qui exigent de fortes cadences de production : programmes routiers, production de béton et grands chantiers d’infrastructure.',
           ctas: [
             { label: 'Demander une fourniture', kind: 'whatsapp', variant: 'primary' },
@@ -600,7 +611,7 @@ export default {
     rental: {
       slug: 'services/location-engins',
       nav: 'Location d’engins',
-      title: 'Location d’engins de travaux publics, Algérie | ETAHG',
+      title: 'Location pelles, bulldozers, niveleuses · Algérie | ETAHG',
       description: 'SARL ETAHG loue ses engins de TP en Algérie : pelles, bulldozers, chargeuses, niveleuses, compacteurs, finisseurs et camions, selon chaque projet.',
       summary: 'Location courte et longue durée du parc d’engins de travaux publics de SARL ETAHG en Algérie, au départ de Djelfa.',
       service: { name: 'Location courte et longue durée d’engins de travaux publics', serviceType: 'Location d’engins de travaux publics' },
@@ -610,7 +621,7 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Location d’engins',
-          title: 'Location d’engins de travaux publics issus du parc d’une entreprise routière',
+          title: 'Pelles, bulldozers, niveleuses, compacteurs et finisseurs en location courte et longue durée depuis notre parc de Djelfa',
           lead: '{{company}} loue son propre parc d’engins de travaux publics, en courte ou en longue durée, aux entreprises et aux maîtres d’ouvrage en Algérie : pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, finisseurs, matériel de répandage de bitume, camions et semi-remorques. Ces engins ont été réunis pour construire des routes et partent de notre parc matériel de Djelfa, sur l’axe de la RN1. Durée, conducteurs, transport et entretien sont convenus pour chaque projet.',
           ctas: [
             { label: 'Demander des engins', kind: 'whatsapp', variant: 'primary' },
@@ -711,7 +722,7 @@ export default {
           label: 'FAQ',
           title: 'Questions sur la location d’engins',
           items: [
-            { id: 'rent-what', q: 'ETAHG loue-t-elle des engins de travaux publics en Algérie ?', a: 'Oui. SARL ETAHG loue en courte et en longue durée son propre parc d’engins de travaux publics en Algérie : pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, finisseurs, matériel bitume, camions et semi-remorques. Les engins partent de son parc matériel de Djelfa, et les conditions sont fixées pour chaque projet.' },
+            { id: 'rent-what', q: 'Quels engins peut-on louer auprès d’ETAHG en Algérie ?', a: 'SARL ETAHG loue en courte et en longue durée son propre parc d’engins de travaux publics en Algérie : pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, finisseurs, matériel bitume, camions et semi-remorques. Les engins partent de son parc matériel de Djelfa, et les conditions sont fixées pour chaque projet.' },
             { id: 'rent-operators', q: 'Les conducteurs sont-ils compris dans la location ?', a: 'SARL ETAHG convient pour chaque projet de la mise à disposition ou non de conducteurs, ainsi que de la durée, du transport et de l’entretien, et inscrit ces conditions au contrat.' },
             { id: 'rent-lease', q: 'ETAHG propose-t-elle la location longue durée d’engins ?', a: 'Oui. En plus de la location pour une phase de travaux, SARL ETAHG met ses engins à disposition sur de longues périodes, par exemple pendant toute la durée d’un projet. Il s’agit d’un contrat direct avec ETAHG, propriétaire du matériel, et non d’un crédit-bail bancaire.' },
             { id: 'rent-where', q: 'Où les engins d’ETAHG peuvent-ils intervenir ?', a: 'Le parc de SARL ETAHG est basé dans son parc matériel de Djelfa, sur l’axe nord-sud de la RN1, et a construit des routes dans de nombreuses régions d’Algérie. La disponibilité pour un lieu donné est confirmée à réception des informations sur votre projet.' },
@@ -735,7 +746,7 @@ export default {
     mobilization: {
       slug: 'services/demarrage-de-chantier',
       nav: 'Démarrage de chantier',
-      title: 'Installation et démarrage de chantier, Algérie | ETAHG',
+      title: 'Démarrage de chantier et terrassements en Algérie | ETAHG',
       description: 'SARL ETAHG démarre vos chantiers en Algérie : mobilisation d’engins, débroussaillage, pistes d’accès, plateformes, terrassements, granulats et eau.',
       summary: 'Lancement de projets et démarrage de chantiers en Algérie avec les engins de SARL ETAHG.',
       service: { name: 'Installation et démarrage de chantier', serviceType: 'Mobilisation de chantier' },
@@ -862,7 +873,7 @@ export default {
     roads: {
       slug: 'services/travaux-routiers',
       nav: 'Travaux routiers',
-      title: 'Entreprise de travaux routiers en Algérie | ETAHG',
+      title: 'Entreprise et sous-traitant routier en Algérie | ETAHG',
       description: 'SARL ETAHG réalise des routes en Algérie avec son propre parc complet : terrassements, réglage, compactage, répandage de bitume et revêtement en enrobés.',
       summary: 'Les travaux routiers, métier d’origine de SARL ETAHG, réalisés avec son propre parc et ses propres granulats.',
       service: { name: 'Travaux routiers', serviceType: 'Construction de routes et terrassements' },
@@ -872,7 +883,7 @@ export default {
           type: 'hero',
           size: 'page',
           eyebrow: 'Travaux routiers',
-          title: 'Travaux routiers en Algérie, des terrassements aux enrobés',
+          title: 'Entreprise de travaux routiers et sous-traitant dans toute l’Algérie, des terrassements aux enrobés',
           lead: 'Les travaux routiers sont le métier d’origine de {{company}}. Le parc de l’entreprise (pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, répandeuse et citernes à bitume, finisseurs et camions) a été constitué principalement pour construire des routes, et ETAHG a réalisé des projets routiers dans de nombreuses régions d’Algérie. Elle peut prendre en charge un lot routier complet ou intervenir en sous-traitance pour les terrassements, le corps de chaussée, la mise en œuvre des enrobés et la fourniture de granulats.',
           ctas: [
             { label: 'Parler d’un projet routier', kind: 'whatsapp', variant: 'primary' },
@@ -983,7 +994,7 @@ export default {
       slug: 'services/forage-puits-eau',
       nav: 'Forage de puits d’eau',
       title: 'Forage de puits d’eau, Djelfa et Ghardaïa | ETAHG',
-      description: 'SARL ETAHG fore des puits d’eau en Algérie avec ses propres ateliers, pour chantiers et besoins agricoles, industriels et collectifs, sur demande.',
+      description: 'SARL ETAHG réalise des forages d’eau en Algérie avec son atelier sur camion, depuis Djelfa et Ghardaïa : chantiers, agriculture, industrie, collectivités.',
       summary: 'Forage de puits d’eau en Algérie avec les ateliers de forage de SARL ETAHG, pour chantiers, exploitations agricoles, industrie et collectivités.',
       service: { name: 'Forage de puits d’eau', serviceType: 'Forage de puits d’eau' },
       whatsapp: 'Bonjour SARL ETAHG, je souhaite des informations sur le forage d’un puits d’eau (lieu, usage de l’eau).',
@@ -1151,7 +1162,7 @@ export default {
           label: 'FAQ',
           title: 'Questions sur les pièces de rechange',
           items: [
-            { id: 'parts-link', q: 'Quel est le lien entre SARL ETAHG et EURL KAYLE KENNY ?', a: 'EURL KAYLE KENNY fait partie du portefeuille de SARL ETAHG. C’est la société de pièces de rechange du groupe pour les engins lourds, implantée à Mohammadia, à Alger.' },
+            { id: 'parts-link', q: 'Comment EURL KAYLE KENNY est-elle rattachée à SARL ETAHG ?', a: 'EURL KAYLE KENNY fait partie du portefeuille de SARL ETAHG. C’est la société de pièces de rechange du groupe pour les engins lourds, implantée à Mohammadia, à Alger.' },
             { id: 'parts-what', q: 'Quelles pièces EURL KAYLE KENNY fournit-elle ?', a: 'EURL KAYLE KENNY fournit des pièces de rechange pour moteurs diesel d’engins lourds, dont des pièces compatibles Cummins. C’est un fournisseur indépendant, non affilié à Cummins Inc. ni agréé par celle-ci.' },
             { id: 'parts-how', q: 'Comment vérifier la disponibilité d’une pièce ?', a: 'Recherchez la référence de la pièce sur www.kaylekenny.com ou envoyez-la par WhatsApp au +213 558 96 10 49, le numéro du groupe commun à SARL ETAHG et à EURL KAYLE KENNY.' },
             { id: 'parts-fleet', q: 'La société de pièces du groupe soutient-elle le parc de location d’ETAHG ?', a: 'Oui. EURL KAYLE KENNY, la société de pièces de rechange du groupe SARL ETAHG à Alger, fournit des pièces pour moteurs diesel d’engins lourds qui contribuent à la disponibilité du parc utilisé en location et sur les projets.' },
@@ -1374,6 +1385,7 @@ export default {
           paragraphs: [
             'Les routes, voies ferrées, barrages, logements et usines d’Algérie sont réalisés par des entreprises algériennes et par des entreprises internationales, parmi lesquelles de nombreux groupes chinois, turcs et européens. Les entreprises internationales apportent l’ingénierie, le financement et la conduite de grands projets. Ce dont elles ont souvent besoin sur place : des engins déjà présents dans le pays, un approvisionnement sûr en matériaux, des sous-traitants pour les terrassements et les couches de chaussée, et un partenaire qui connaît le terrain et les conditions pratiques du travail dans le pays (voir notre [expérience des travaux routiers](page:experience)).',
             '{{company}} est organisée pour tenir ce rôle. Elle peut prendre en charge un lot défini dans le cadre de votre marché, fournir engins et granulats à votre chantier, ou ouvrir le site pour vous pendant que votre propre organisation se met en place. Comme elle possède ses engins et sa station de concassage, elle engage ses propres moyens au lieu de coordonner des tiers pour votre compte.',
+            'Le cadre réglementaire joue aussi en sa faveur : la loi algérienne de 2023 sur les marchés publics accorde une marge de préférence de 25 % aux sociétés à capitaux majoritairement algériens et demande, pour les projets désignés, aux soumissionnaires étrangers des appels d’offres internationaux de s’engager dans un partenariat avec l’une d’elles, tandis que la réglementation des marchés plafonne la sous-traitance à 40 % du marché et impose l’agrément préalable de chaque sous-traitant. Notre [check-list pour les entreprises étrangères](page:foreign-contractor-checklist) et l’article sur [le fonctionnement de la sous-traitance en Algérie](page:subcontracting-algeria) exposent ces règles en termes généraux.',
           ],
         },
         {
@@ -1518,7 +1530,7 @@ export default {
           label: 'Profil',
           title: 'Présentation de l’entreprise',
           paragraphs: [
-            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien, créée en 1997, dont le siège social est situé Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya de Ghardaïa. Son parc matériel est à Djelfa. Sa propre carrière et station de concassage, la Carrière Djellal El Gharbi, se trouve à Oued Sdeur, près d’Aïn El Ibel, au sud de Djelfa : l’entreprise y extrait la roche et la concasse en granulats fins de qualité. Le nom court ETAHG est utilisé dans toutes les langues.',
+            '{{company}} est une société à responsabilité limitée (SARL) de droit algérien, créée en 1997, dont le siège social est situé Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya de Ghardaïa. Son parc matériel est à Djelfa. Sa propre carrière et station de concassage, la Carrière Djellal El Gharbi, se trouve à Oued Sdeur, près d’Aïn El Ibel, au sud de Djelfa : l’entreprise y extrait la roche et la concasse en granulats fins de qualité. Le nom court ETAHG est utilisé dans toutes les langues ; il signifie Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa et n’a aucun lien avec d’autres entreprises aux initiales voisines.',
             'L’entreprise a constitué son parc de pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, finisseurs, répandeuse et citernes à bitume, camions et semi-remorques pour construire des routes, et a réalisé des projets routiers dans de nombreuses régions d’Algérie. Elle a depuis ouvert ce parc à d’autres entreprises en location courte et longue durée, propose le démarrage de nouveaux projets avec ses engins et fore des puits d’eau avec son propre atelier de forage sur camion.',
             'Le groupe comprend également EURL KAYLE KENNY, société de pièces de rechange pour engins lourds disposant d’un magasin et d’un dépôt de pièces à Mohammadia, à Alger.',
           ],
@@ -1591,26 +1603,34 @@ export default {
     locations: {
       slug: 'implantations',
       nav: 'Implantations',
-      title: 'Implantations à Ghardaïa, Djelfa et Alger | ETAHG',
-      description: 'Où travaille SARL ETAHG : siège social à Bounoura (Ghardaïa), parc matériel à Djelfa, carrière à Oued Sdeur et magasin de pièces du groupe à Alger.',
-      summary: 'Les quatre sites de SARL ETAHG et de son groupe sur l’axe Alger – Djelfa – Ghardaïa, avec une page par base opérationnelle.',
+      title: 'Implantations : Ghardaïa, Djelfa et Alger | ETAHG',
+      description: 'Où travaille SARL ETAHG : siège social à Bounoura (Ghardaïa), parc matériel à Djelfa, carrière à Oued Sdeur et magasin de pièces du groupe à Alger.',
+      summary: 'Les sites de SARL ETAHG et de son groupe sur l’axe Alger – Djelfa – Ghardaïa (RN1), avec une page par base opérationnelle.',
       blocks: [
         {
           type: 'hero',
           size: 'page',
           eyebrow: 'Implantations',
           title: 'Nos sites entre le nord et le sud de l’Algérie',
-          lead: '{{company}} travaille depuis deux bases qui lui sont propres, le siège social de Bounoura (wilaya de Ghardaïa) et le parc matériel de Djelfa, avec sa carrière et sa station de concassage à Oued Sdeur près d’Aïn El Ibel et le magasin de pièces de rechange du groupe à Alger. Les quatre sites se trouvent sur la RN1 ou à proximité, la grande route entre Alger et le Sahara.',
+          lead: '{{company}} travaille depuis deux bases qui lui sont propres, sur la RN1, la grande route entre Alger et le Sahara : le siège social à Bounoura, wilaya de Ghardaïa, dans le nord du Sahara, et le parc matériel à Djelfa, sur les Hauts Plateaux, avec la carrière et la station de concassage de l’entreprise à Oued Sdeur près d’Aïn El Ibel, au sud de Djelfa. La société de pièces de rechange du groupe, EURL KAYLE KENNY, est à Mohammadia, Alger.',
         },
         {
           type: 'locations',
           label: 'Sites',
-          title: 'Quatre sites le long de l’axe RN1',
-          intro: 'Le parc matériel sur les Hauts Plateaux et le siège dans le nord du Sahara ont chacun leur page : ce qui s’y trouve, les services qui en partent, le terrain alentour et l’accès.',
+          title: 'Quatre sites le long du corridor de la RN1',
+          intro: 'Le parc matériel sur les Hauts Plateaux et le siège dans le nord du Sahara ont chacun leur page : ce qui s’y trouve, les services qui en partent, le terrain alentour, comment nous rejoindre et qui appeler.',
+        },
+        {
+          type: 'prose',
+          label: 'Pourquoi c’est important',
+          title: 'Une implantation sur la route du sud',
+          paragraphs: [
+            'La RN1 part d’Alger, franchit l’Atlas tellien, traverse les Hauts Plateaux par Djelfa et Laghouat, puis descend dans le Sahara par Ghardaïa vers El Menia et le grand sud. Djelfa, à environ 300 km de la capitale, est l’endroit où le parc est stationné et entretenu et d’où partent la plupart des convois ; Ghardaïa, quelque 300 km plus au sud, est la ville où l’entreprise a été créée en 1997 et où elle est administrée. Un projet dans le nord se rejoint depuis Djelfa en remontant la même route ; un projet au Sahara se rejoint en la descendant, avec le siège de Ghardaïa comme interlocuteur local. Les granulats viennent de la station de l’entreprise, entre les deux, et les pièces de rechange des moteurs, d’Alger.',
+          ],
         },
         {
           type: 'cta',
-          title: 'Quelle base est la plus proche de votre projet ?',
+          title: 'Quelle base est la plus proche de votre projet ?',
           text: 'Indiquez-nous où se trouve le chantier. Nous vous dirons depuis quelle base nous mobiliserions et ce que nous pouvons fournir localement.',
           ctas: [
             { label: 'Nous contacter', page: 'contact', variant: 'primary' },
@@ -1622,17 +1642,17 @@ export default {
 
     'loc-djelfa': {
       slug: 'implantations/djelfa',
-      nav: 'Parc matériel de Djelfa',
-      title: 'Parc matériel de Djelfa, Hauts Plateaux | ETAHG',
-      description: 'Le parc matériel de SARL ETAHG à Djelfa, sur l’axe RN1 : base des engins routiers, location et démarrage de chantiers, près de la carrière d’Oued Sdeur.',
-      summary: 'Le parc matériel de SARL ETAHG à Djelfa : base des engins sur les Hauts Plateaux, point de départ de la location, des mobilisations et des travaux routiers, près de la carrière.',
+      nav: 'Djelfa : parc matériel et carrière',
+      title: 'Parc matériel et carrière de Djelfa, Aïn El Ibel | ETAHG',
+      description: 'Parc matériel de SARL ETAHG à Djelfa et carrière et station de concassage à Oued Sdeur (Aïn El Ibel) : engins sur la RN1, location, granulats, forage.',
+      summary: 'La base de Djelfa de SARL ETAHG : parc matériel sur les Hauts Plateaux et carrière et station de concassage à Oued Sdeur près d’Aïn El Ibel, point de départ de la location, des mobilisations, des travaux routiers et des livraisons de granulats.',
       blocks: [
         {
           type: 'hero',
           size: 'page',
           eyebrow: 'Djelfa, wilaya de Djelfa',
-          title: 'Djelfa : le parc matériel sur l’axe RN1',
-          lead: 'C’est à Djelfa que le parc d’engins de {{company}} est basé et entretenu, et que partent la plupart des mobilisations. La ville se trouve sur les Hauts Plateaux, sur la grande route nord-sud entre Alger et le Sahara, ce qui met les machines à portée des chantiers dans les deux directions.',
+          title: 'Djelfa : le parc matériel et la carrière sur l’axe de la RN1',
+          lead: '{{company}} stationne ses engins de travaux publics dans un parc matériel à Djelfa et produit ses granulats fins dans sa propre carrière et station de concassage, la Carrière Djellal El Gharbi à Oued Sdeur près d’Aïn El Ibel, au sud de la ville. Djelfa se trouve sur les Hauts Plateaux, à environ 1 100 mètres d’altitude, sur la RN1, à quelque 300 km au sud d’Alger, ce qui met les machines et les matériaux à portée des chantiers du nord comme du sud.',
           illustration: 'excavator',
         },
         {
@@ -1640,22 +1660,31 @@ export default {
           label: 'Le parc',
           title: 'Ce qui se trouve au parc de Djelfa',
           paragraphs: [
-            'Le parc est la base du parc d’engins routiers : pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, finisseur, répandeuse et citernes à bitume, camions et semi-remorques bennes, chariot de foration de carrière et atelier de forage de puits d’eau sur camion. Les machines y sont stationnées, entretenues et préparées au transport entre deux chantiers.',
-            'Le chargement sur semi-remorques, la préparation des convois et la remise des engins loués se font au parc. Les pièces de rechange des moteurs diesel viennent de la société du groupe EURL KAYLE KENNY, à Alger.',
+            'Le parc matériel est la base de la flotte d’engins routiers : pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, le finisseur, la répandeuse et les citernes à bitume, les camions et semi-remorques bennes, le chariot de foration utilisé à la carrière et l’atelier de forage de puits d’eau sur camion. Entre deux chantiers, les machines y sont stationnées, entretenues et préparées au transport ; le chargement sur semi-remorques, la préparation des convois et la remise des engins loués se font également au parc.',
+            'Les pièces de rechange des moteurs diesel viennent de la société du groupe EURL KAYLE KENNY, à Alger, de sorte qu’une machine qui quitte Djelfa est soutenue depuis l’intérieur du groupe. Des visites pour voir les catégories d’engins peuvent être discutées lorsqu’une location ou une sous-traitance se prépare.',
+          ],
+        },
+        {
+          type: 'prose',
+          label: 'La carrière',
+          title: 'La carrière et la station de concassage d’Oued Sdeur, Aïn El Ibel',
+          paragraphs: [
+            'Au sud de la ville de Djelfa, dans la commune d’Aïn El Ibel, {{company}} exploite sa propre carrière et station de concassage, la Carrière Djellal El Gharbi à Oued Sdeur. Les concasseurs et broyeurs de la station produisent des granulats fins de qualité pour le béton, les enrobés et les couches granulaires des routes et des plateformes, et sont particulièrement adaptés aux projets qui exigent de fortes cadences de production. Les matériaux sont chargés sur les camions et semi-remorques bennes de l’entreprise pour la livraison ; livraison ou enlèvement à la station sont convenus pour chaque projet.',
+            'La carrière dispose de ses propres lignes téléphoniques, +213 660 36 75 50 et +213 660 36 75 51, et d’un fax, +213 27 90 46 13, pour les demandes de fourniture et les livraisons ; le numéro du groupe {{phone}} et {{email}} joignent l’entreprise pour tout le reste.',
           ],
         },
         {
           type: 'cards',
           label: 'Services',
           title: 'Services assurés depuis Djelfa',
-          intro: 'Tout ce qui nécessite un engin part d’ici. La carrière et la station de concassage d’Oued Sdeur, au sud de la ville, fournissent les granulats.',
+          intro: 'Tout ce qui nécessite un engin part du parc ; tout ce qui nécessite de la pierre part de la carrière.',
           style: 'compact',
           items: [
-            { page: 'rental', title: 'Location courte et longue durée', text: 'Pelles, bulldozers, chargeuses, niveleuses, compacteurs, finisseurs, camions et semi-remorques, remis au parc ou livrés sur chantier.' },
-            { page: 'mobilization', title: 'Démarrage de chantier', text: 'Convois d’engins et d’opérateurs pour ouvrir un nouveau site : pistes d’accès, plateformes et premiers terrassements.' },
-            { page: 'roads', title: 'Travaux routiers', text: 'Terrassements, couches de chaussée et enrobés avec le parc complet, en direct ou en sous-traitance.' },
-            { page: 'aggregates', title: 'Granulats fins', text: 'Sable concassé et granulats fins de la station d’Oued Sdeur, transportés par nos propres camions et semi-remorques.' },
-            { page: 'drilling', title: 'Forage de puits d’eau', text: 'L’atelier de forage sur camion est basé au parc et se déplace sur les chantiers des plateaux et du sud.' },
+            { page: 'rental', title: 'Location courte et longue durée', text: 'Pelles, bulldozers, chargeuses, niveleuses, compacteurs, finisseur, matériel à bitume, camions et semi-remorques, remis au parc ou livrés sur chantier selon des conditions convenues pour chaque projet.' },
+            { page: 'aggregates', title: 'Granulats fins', text: 'Sable concassé et granulats fins de la station d’Oued Sdeur, avec des exigences d’essais convenues avant la fourniture et un transport par les camions de l’entreprise.' },
+            { page: 'mobilization', title: 'Démarrage de chantier', text: 'Convois d’engins et de conducteurs pour ouvrir un nouveau site : pistes d’accès, plateformes, premiers terrassements et approvisionnement en granulats.' },
+            { page: 'roads', title: 'Travaux routiers', text: 'Terrassements, couches de chaussée et revêtement en enrobés avec le parc complet, en marché direct ou en sous-traitance.' },
+            { page: 'drilling', title: 'Forage de puits d’eau', text: 'L’atelier de forage sur camion se déplace sur les chantiers des plateaux et du sud.' },
           ],
         },
         {
@@ -1663,30 +1692,34 @@ export default {
           label: 'Terrain',
           title: 'Les Hauts Plateaux autour de Djelfa',
           paragraphs: [
-            'Djelfa se trouve sur les Hauts Plateaux, la vaste steppe entre l’Atlas tellien au nord et l’Atlas saharien au sud. Le pays est ouvert, avec de longs alignements droits, des hivers froids, des étés chauds et du vent. Pour les travaux routiers, cela signifie de longs chantiers linéaires, une forte demande en granulats et la nécessité de garder les engins productifs sur la distance ; notre propre carrière au sud de la ville répond directement à la question des granulats.',
-            'L’Atlas saharien tout proche apporte déblais rocheux, remblais et pentes plus fortes, des conditions pour lesquelles le parc a été constitué.',
+            'La wilaya de Djelfa s’étend sur les Hauts Plateaux, la vaste steppe entre l’Atlas tellien au nord et l’Atlas saharien au sud, avec les monts des Ouled Naïl qui s’élèvent autour de la ville. Le pays est ouvert, avec de longs alignements droits, des hivers froids avec gel et neige occasionnelle, des étés chauds et secs et du vent. Pour les travaux routiers, cela signifie de longs chantiers linéaires, une forte demande en granulats et une saison courte pour les couches bitumineuses ; pour le forage, un synclinal dont les nappes alimentent la plupart des puits de la steppe. La carrière de l’entreprise au sud de la ville répond directement à la question des granulats, et l’Atlas saharien tout proche apporte les déblais rocheux, les remblais et les pentes que comporte la construction routière dans cette région.',
           ],
         },
         {
           type: 'prose',
           label: 'Accès',
-          title: 'Accès et logistique',
+          title: 'Accès et logistique sur la RN1',
           paragraphs: [
-            'Le parc est accessible depuis la RN1, qui relie Alger au nord à Laghouat, Ghardaïa et le Sahara au sud. Les engins partent en semi-remorque le long de cet axe ou à travers les plateaux vers les wilayas voisines. Transport, durée et opérateurs sont convenus pour chaque projet.',
+            'Le parc est accessible depuis la RN1, qui relie Alger et le Tell au nord à Laghouat, Ghardaïa et le Sahara au sud ; la carrière d’Oued Sdeur se trouve en retrait de la même route, au sud de la ville, en direction d’Aïn El Ibel. Les engins partent en semi-remorque le long de cet axe, ou à travers les plateaux par les routes vers M’Sila, Biskra, Tiaret et Bou Saâda. Les chantiers des Hauts Plateaux et du nord du Sahara sont en général à une journée de transport. Transport, durée et conducteurs sont convenus pour chaque projet.',
+            'Pour une visite, contactez-nous d’abord : nous fixons un créneau au parc ou à la carrière, et pouvons combiner la visite avec une réunion sur votre projet.',
           ],
         },
         {
           type: 'faq',
           label: 'FAQ',
-          title: 'Questions sur le parc de Djelfa',
+          title: 'Questions sur la base de Djelfa',
           items: [
-            { id: 'djelfa-visit', q: 'Peut-on inspecter les engins au parc avant de louer ?', a: 'Oui. Contactez-nous pour organiser une visite ; nous vous montrerons les catégories d’engins adaptées à votre projet et discuterons du transport vers votre chantier.' },
-            { id: 'djelfa-aggregates', q: 'D’où viennent les granulats ?', a: 'De notre propre carrière et station de concassage, la Carrière Djellal El Gharbi à Oued Sdeur près d’Aïn El Ibel, au sud de Djelfa, qui produit des granulats fins pour béton, enrobés et couches de chaussée.' },
+            { id: 'djelfa-depot', q: 'ETAHG a-t-elle un parc matériel à Djelfa ?', a: 'Oui. SARL ETAHG stationne son parc d’engins de travaux publics dans un parc matériel à Djelfa, wilaya de Djelfa, sur l’axe de la RN1 entre Alger et le Sahara ; les machines y sont entretenues et en partent pour la location, les mobilisations et les travaux routiers.' },
+            { id: 'djelfa-quarry', q: 'Où se trouve la carrière d’ETAHG ?', a: 'La carrière et station de concassage de SARL ETAHG, la Carrière Djellal El Gharbi, se trouve à Oued Sdeur près d’Aïn El Ibel, dans la wilaya de Djelfa, au sud de la ville de Djelfa ; elle produit des granulats fins pour le béton, les enrobés et les couches de chaussée et se joint au +213 660 36 75 50 / 51.' },
+            { id: 'djelfa-collect', q: 'Peut-on enlever les granulats à la carrière avec nos propres camions ?', a: 'L’enlèvement à la station peut être organisé, de même que la livraison par les camions et semi-remorques bennes de l’entreprise ; fractions, quantités, horaires de chargement et modalités de réception sont convenus avant le début de la fourniture.' },
+            { id: 'djelfa-deliver', q: 'ETAHG livre-t-elle des granulats à Hassi Bahbah, Laghouat ou dans d’autres villes ?', a: 'La livraison sur les chantiers de la wilaya de Djelfa et des wilayas voisines est chiffrée pour chaque projet, en fonction de la distance depuis la station d’Oued Sdeur, des quantités et du rythme de livraison ; envoyez la localisation du chantier et les fractions nécessaires pour obtenir un prix rendu.' },
+            { id: 'djelfa-visit', q: 'Peut-on inspecter les engins au parc avant de louer ?', a: 'Oui. Contactez-nous pour organiser une visite du parc de Djelfa ; nous vous montrons les catégories d’engins adaptées à votre projet et discutons du transport vers votre chantier et des conditions.' },
+            { id: 'djelfa-regions', q: 'Quelles régions la base de Djelfa dessert-elle ?', a: 'Depuis Djelfa, SARL ETAHG mobilise le long de la RN1 vers le nord et vers le Sahara, et à travers les Hauts Plateaux ; l’entreprise a construit des routes dans de nombreuses régions d’Algérie, et la disponibilité pour un lieu précis est confirmée sur demande.' },
           ],
         },
         {
           type: 'cta',
-          title: 'Un projet sur les Hauts Plateaux ou plus au sud ?',
+          title: 'Un projet sur les Hauts Plateaux ou plus au sud ?',
           text: 'Envoyez-nous le lieu, l’étendue des travaux et les dates. Nous répondrons avec les engins et les matériaux que nous pouvons mobiliser depuis Djelfa.',
           ctas: [
             { label: 'Nous contacter', page: 'contact', variant: 'primary' },
@@ -1698,17 +1731,17 @@ export default {
 
     'loc-ghardaia': {
       slug: 'implantations/ghardaia',
-      nav: 'Siège social de Ghardaïa',
+      nav: 'Ghardaïa : siège social',
       title: 'Siège social de Ghardaïa, Bounoura | ETAHG',
-      description: 'Le siège social de SARL ETAHG à Bounoura, wilaya de Ghardaïa, dans le nord du Sahara : contrats, administration et projets dans le sud du pays.',
-      summary: 'Le siège social de SARL ETAHG à Bounoura, Ghardaïa : là où les contrats sont traités et le point de départ des projets dans le Sahara algérien.',
+      description: 'Le siège social de SARL ETAHG, Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya de Ghardaïa : contrats, administration et projets dans le Sahara algérien.',
+      summary: 'Le siège social de SARL ETAHG à Bounoura, Ghardaïa, où l’entreprise a été créée en 1997 : contrats et administration, et interlocuteur local pour les projets dans le Sahara algérien.',
       blocks: [
         {
           type: 'hero',
           size: 'page',
           eyebrow: 'Bounoura, wilaya de Ghardaïa',
-          title: 'Ghardaïa : le siège social dans le nord du Sahara',
-          lead: '{{company}} a été créée à Ghardaïa en 1997 et conserve son siège social à Bounoura, dans la vallée du M’zab. C’est là que l’entreprise est administrée et que ses contrats sont signés, et le point de départ naturel des projets dans le sud du pays.',
+          title: 'Ghardaïa : le siège social dans le nord du Sahara',
+          lead: '{{company}} a été créée par acte notarié à Ghardaïa en 1997 et conserve son siège social Cité 400 Logements, Sidi Abbaz, à Bounoura, dans la vallée du M’zab. Le « G » d’ETAHG, c’est Ghardaïa. C’est là que l’entreprise est administrée, et le point de départ naturel des projets dans le sud du pays.',
           illustration: 'drill-rig',
         },
         {
@@ -1716,21 +1749,22 @@ export default {
           label: 'Le siège',
           title: 'Ce qui se trouve au siège de Ghardaïa',
           paragraphs: [
-            'Le siège social traite l’administration de l’entreprise, les contrats, la facturation et les obligations d’une SARL algérienne. Les réunions avec les maîtres d’ouvrage et les partenaires peuvent se tenir ici ou au parc de Djelfa, selon la localisation du projet.',
-            'Ghardaïa ancre aussi l’entreprise dans le sud : d’ici, les engins basés à Djelfa sont envoyés vers le Sahara, et le forage de puits d’eau est organisé pour les chantiers, les exploitations agricoles et les collectivités de la région.',
+            'Le siège social traite l’administration de l’entreprise, les contrats, la facturation et les obligations d’une SARL algérienne vis-à-vis des registres : registre du commerce, immatriculations fiscales et sociales. Les réunions avec les maîtres d’ouvrage et les partenaires se tiennent ici ou au parc de Djelfa, selon la localisation du projet ; les documents d’un dossier d’agrément ou de due diligence sont préparés ici.',
+            'Ghardaïa ancre aussi l’entreprise dans le sud. Depuis le siège, les engins basés à Djelfa sont envoyés vers les chantiers sahariens par la RN1, la livraison des granulats de la station d’Oued Sdeur est organisée, et le forage de puits d’eau est programmé pour les chantiers, les exploitations agricoles et les collectivités d’une région où l’eau est un projet en soi.',
           ],
         },
         {
           type: 'cards',
           label: 'Services',
           title: 'Services coordonnés depuis Ghardaïa',
-          intro: 'Les engins sont à Djelfa ; le siège organise les projets, en particulier ceux des wilayas sahariennes.',
+          intro: 'Les engins sont à Djelfa ; le siège organise les projets, en particulier ceux des wilayas sahariennes.',
           style: 'compact',
           items: [
-            { page: 'partners', title: 'Partenariat local', text: 'Contrats de sous-traitance, de fourniture et de location avec les entreprises internationales, préparés et signés au siège.' },
-            { page: 'drilling', title: 'Forage de puits d’eau', text: 'Des puits pour les chantiers, l’agriculture et l’industrie dans une région où l’eau est un projet en soi.' },
+            { page: 'partners', title: 'Partenariat local', text: 'Contrats de sous-traitance, de fourniture et de location avec les entreprises internationales, préparés et signés au siège social.' },
+            { page: 'drilling', title: 'Forage de puits d’eau', text: 'Des puits pour les chantiers, l’agriculture et l’industrie, avec l’atelier de forage sur camion qui se déplace depuis Djelfa.' },
             { page: 'mobilization', title: 'Mobilisation vers le sud', text: 'Convois depuis Djelfa par la RN1 vers les chantiers sahariens, le siège étant l’interlocuteur local.' },
-            { page: 'aggregates', title: 'Fourniture de granulats', text: 'Granulats fins de la station d’Oued Sdeur livrés aux projets du sud par nos propres moyens de transport.' },
+            { page: 'aggregates', title: 'Fourniture de granulats', text: 'Granulats fins de la station d’Oued Sdeur livrés aux projets du sud par les moyens de transport de l’entreprise.' },
+            { page: 'roads', title: 'Travaux routiers dans le sud', text: 'Terrassements, plateformes et couches de chaussée pour les routes, les accès et les sites industriels en conditions sahariennes.' },
           ],
         },
         {
@@ -1738,15 +1772,16 @@ export default {
           label: 'Terrain',
           title: 'Le nord du Sahara autour de Ghardaïa',
           paragraphs: [
-            'Ghardaïa se trouve dans la vallée du M’zab, dans le nord du Sahara algérien. La région combine plateaux rocheux, oueds et zones sableuses, avec la chaleur, de longues distances et une eau rare. Les travaux doivent y être planifiés en autonomie : carburant, pièces, hébergement et alimentation en eau voyagent avec le chantier, raison pour laquelle le démarrage de chantier et le forage font partie de notre offre.',
+            'Ghardaïa se trouve dans la vallée du M’zab, à environ 500 mètres d’altitude, entaillée dans la hamada, le plateau rocheux du nord du Sahara. La région combine plateaux pierreux, oueds à sec pendant des mois et en crue en quelques heures, et zones sableuses ; la pluie est rare, les étés très chauds et les nuits d’hiver froides. L’eau vient de nappes profondes. Les travaux doivent y être planifiés en autonomie : carburant, pièces de rechange, hébergement et eau voyagent avec le chantier, et les granulats sont transportés depuis là où se trouve la roche. C’est pourquoi la mobilisation, le transport depuis la station de l’entreprise et le forage de puits sont les services qu’on nous demande le plus souvent dans cette région.',
           ],
         },
         {
           type: 'prose',
           label: 'Accès',
-          title: 'Accès et logistique',
+          title: 'Accès et logistique sur la RN1',
           paragraphs: [
-            'Bounoura fait partie de l’agglomération de Ghardaïa, sur la RN1 au sud de Laghouat et de Djelfa. Les engins rejoignent les chantiers sahariens depuis le parc de Djelfa par la même route. Le siège est l’interlocuteur local pour les projets de la région ; transport et conditions de chantier sont convenus pour chaque projet.',
+            'Bounoura est l’une des communes de l’agglomération de Ghardaïa, sur la RN1 au sud de Laghouat et de Djelfa. La même route continue vers le sud en direction d’El Menia et du grand sud, et d’autres routes nationales mènent à l’est vers Ouargla et les régions pétrolières, à l’ouest vers El Bayadh. Ghardaïa est à environ 600 km d’Alger par la route et à quelque 200 km de Laghouat et d’Ouargla. Les engins rejoignent les chantiers sahariens depuis le parc de Djelfa par la RN1 ; le siège est l’interlocuteur local pour les projets de la région, et les conditions de transport et de chantier sont convenues pour chaque projet.',
+            'Pour une visite, écrivez-nous ou appelez d’abord ; nous recevons les partenaires au siège social de Bounoura et pouvons les accompagner sur un site de la région.',
           ],
         },
         {
@@ -1754,13 +1789,16 @@ export default {
           label: 'FAQ',
           title: 'Questions sur le siège de Ghardaïa',
           items: [
-            { id: 'ghardaia-fleet', q: 'Les engins sont-ils stationnés à Ghardaïa ?', a: 'Non. Le parc est basé à Djelfa ; le bureau de Ghardaïa est le siège social de l’entreprise et coordonne les projets, en particulier dans le sud.' },
-            { id: 'ghardaia-meet', q: 'Peut-on se rencontrer à Ghardaïa ?', a: 'Oui. Contactez-nous pour convenir d’un rendez-vous au siège de Bounoura, au parc de Djelfa ou sur votre chantier.' },
+            { id: 'ghardaia-office', q: 'Où se trouve le siège social de SARL ETAHG ?', a: 'Le siège social de SARL ETAHG est situé Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya de Ghardaïa, Algérie, où l’entreprise a été créée par acte notarié en 1997 ; son registre du commerce et ses identifiants fiscaux figurent dans la présentation de l’entreprise et les mentions légales.' },
+            { id: 'ghardaia-fleet', q: 'Les engins sont-ils stationnés à Ghardaïa ?', a: 'Non. Le parc est basé au parc matériel de Djelfa ; le bureau de Ghardaïa est le siège social de l’entreprise et coordonne les projets, en particulier dans le sud, les engins étant envoyés depuis Djelfa par la RN1.' },
+            { id: 'ghardaia-eptpg', q: 'ETAHG fait-elle partie d’une entreprise publique ou d’un groupe ?', a: 'Non. SARL ETAHG, Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa, est une société à responsabilité limitée privée et indépendante créée en 1997 ; elle n’est la filiale d’aucune entreprise publique ni d’aucun groupe dont le sigle ressemblerait à ETAHG, et n’a aucun lien avec eux.' },
+            { id: 'ghardaia-south', q: 'ETAHG travaille-t-elle dans les wilayas sahariennes ?', a: 'Depuis son siège social de Ghardaïa et son parc de Djelfa, SARL ETAHG est positionnée pour mobiliser le long de la RN1 vers le sud ; l’entreprise a construit des routes dans de nombreuses régions d’Algérie, et la disponibilité pour un lieu saharien précis est confirmée sur demande.' },
+            { id: 'ghardaia-meet', q: 'Peut-on se rencontrer à Ghardaïa ?', a: 'Oui. Contactez-nous pour convenir d’un rendez-vous au siège social de Bounoura, au parc de Djelfa ou sur votre chantier.' },
           ],
         },
         {
           type: 'cta',
-          title: 'Un projet dans le Sahara algérien ?',
+          title: 'Un projet dans le Sahara algérien ?',
           text: 'Dites-nous où et quand. Nous vous dirons ce que nous pouvons fournir, mobiliser ou forer, et depuis quelle base.',
           ctas: [
             { label: 'Nous contacter', page: 'contact', variant: 'primary' },
@@ -1774,27 +1812,27 @@ export default {
     insights: {
       slug: 'conseils',
       nav: 'Conseils',
-      title: 'Conseils : granulats, routes et engins en Algérie | ETAHG',
-      description: 'Articles pratiques de SARL ETAHG sur les granulats, les travaux routiers, la location d’engins, le démarrage de chantier et les puits d’eau en Algérie.',
-      summary: 'Articles de SARL ETAHG sur le travail en Algérie : granulats, travaux routiers, location d’engins, mobilisation et forage de puits d’eau.',
+      title: 'Conseils : travailler sur des projets en Algérie | ETAHG',
+      description: 'Articles pratiques de SARL ETAHG pour les chantiers en Algérie : granulats, chaussées, location d’engins, mobilisation, puits d’eau, sous-traitance.',
+      summary: 'Articles de SARL ETAHG sur le travail en Algérie : spécifications des granulats, travaux routiers, location d’engins, démarrage de chantier, puits d’eau, sous-traitance et règles applicables aux entreprises étrangères.',
       blocks: [
         {
           type: 'hero',
           size: 'page',
           eyebrow: 'Conseils',
           title: 'Savoir-faire pratique pour les projets en Algérie',
-          lead: 'Des articles courts et factuels par ceux qui exploitent la carrière, le parc et les chantiers : comment les granulats sont produits, comment un chantier s’ouvre, ce que les terrains algériens changent pour la route et le forage, et quoi préparer avant de contacter un partenaire local.',
+          lead: '{{company}} exploite une carrière, un parc d’engins routiers et un atelier de forage depuis Djelfa et Ghardaïa, et propose ses services aux entreprises étrangères et aux maîtres d’ouvrage algériens. Ces articles mettent cette expérience par écrit : comment les granulats sont spécifiés et produits, comment une route se compose sur chacun des terrains algériens, quand louer plutôt qu’acheter, comment un chantier s’ouvre dans la steppe ou le désert, comment un puits se fore et s’autorise, et comment la sous-traitance et les marchés publics fonctionnent pour un nouvel arrivant. Du savoir-faire général uniquement, rédigé pour être utile en soi.',
         },
         {
           type: 'articles',
           label: 'Articles',
-          title: 'Derniers articles',
+          title: 'Tous les articles',
           emptyText: 'Des articles sont en préparation. En attendant, consultez nos [services](page:services) et notre [foire aux questions](page:faq).',
         },
         {
           type: 'cta',
-          title: 'Une question à laquelle ces articles ne répondent pas ?',
-          text: 'Posez-la nous directement. Nous répondons avec ce que nous savons de notre propre carrière, de notre parc et de nos chantiers.',
+          title: 'Une question à laquelle ces articles ne répondent pas ?',
+          text: 'Posez-la-nous directement. Nous répondons avec ce que nous savons de notre propre carrière, de notre parc et de nos chantiers.',
           ctas: [
             { label: 'Nous contacter', page: 'contact', variant: 'primary' },
             { label: 'FAQ', page: 'faq', variant: 'secondary' },
@@ -1823,7 +1861,7 @@ export default {
           title: 'L’entreprise',
           items: [
             { id: 'what-is-etahg', q: 'Qui est SARL ETAHG ?', a: 'SARL ETAHG est une entreprise algérienne spécialisée dans la production de granulats fins, les travaux routiers, la location courte et longue durée d’engins de travaux publics, le démarrage de chantiers et le forage de puits d’eau. Créée en 1997, c’est une société à responsabilité limitée (SARL) dont le siège social est à Bounoura, wilaya de Ghardaïa, avec un parc matériel à Djelfa et sa propre carrière et station de concassage à Oued Sdeur, près d’Aïn El Ibel, au sud de Djelfa. Son groupe comprend EURL KAYLE KENNY, société de pièces de rechange pour engins lourds implantée à Alger.' },
-            { id: 'etahg-meaning', q: 'Que signifie ETAHG ?', a: 'ETAHG signifie « Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa » ; la dénomination officielle en arabe est شركة الأشغال لتهيئة الري بغرداية. SARL ETAHG a été créée à Ghardaïa en 1997, où elle est immatriculée.' },
+            { id: 'etahg-meaning', q: 'Que signifie ETAHG ?', a: 'ETAHG signifie « Entreprise de Travaux d’Aménagement Hydraulique de Ghardaïa » ; la dénomination officielle en arabe est شركة الأشغال لتهيئة الري بغرداية. SARL ETAHG a été créée à Ghardaïa en 1997, où elle est immatriculée. C’est une entreprise privée indépendante, qui n’est la filiale d’aucune entreprise publique ni d’aucun groupe dont le sigle ressemblerait à ETAHG, et qui n’a aucun lien avec eux.' },
             { id: 'what-does-etahg-do', q: 'Que fait ETAHG ?', a: 'SARL ETAHG produit des granulats fins, construit des routes, loue ses engins de travaux publics en courte et longue durée, démarre de nouveaux chantiers et fore des puits d’eau en Algérie. Elle s’appuie pour cela sur sa propre carrière et station de concassage et sur son propre parc de pelles, bulldozers, chargeuses, niveleuses, compacteurs, finisseurs, matériel bitume, camions, semi-remorques et atelier de forage de puits, tandis que sa société de groupe EURL KAYLE KENNY fournit des pièces de rechange pour engins lourds.' },
             { id: 'where', q: 'Où se trouve SARL ETAHG ?', a: 'Le siège social de SARL ETAHG est situé Cité 400 Logements, Sidi Abbaz, Bounoura, wilaya de Ghardaïa (Algérie), et son parc matériel à Djelfa, sur les Hauts Plateaux. Sa propre carrière et station de concassage se trouve à Oued Sdeur, près d’Aïn El Ibel, au sud de Djelfa, et sa société de groupe EURL KAYLE KENNY dispose d’un magasin et d’un dépôt de pièces à Mohammadia, à Alger. Djelfa est située sur la RN1, le grand axe nord-sud entre Alger et le Sahara.' },
             { id: 'legal-form', q: 'Quelle est la forme juridique de SARL ETAHG ?', a: 'SARL ETAHG est une société à responsabilité limitée (SARL) de droit algérien. Elle a été créée en 1997. Ses numéros au registre du commerce (RC) et ses identifiants fiscaux (NIF, NIS, AI) figurent dans la présentation de l’entreprise et dans les mentions légales de ce site.' },
@@ -2047,27 +2085,282 @@ export default {
   },
 
   /* ================================================================ ARTICLES */
-  // Articles « Conseils » (schéma : ARTICLE en tête de en.mjs). Savoir-faire général uniquement.
+  // Articles « Conseils » (schéma : ARTICLE en tête de en.mjs). Savoir-faire général uniquement.
   articles: {
+    'aggregate-specifications': {
+      slug: 'specifications-granulats-algerie',
+      nav: 'Spécifications des granulats en Algérie : fractions, essais et questions à poser au fournisseur',
+      title: 'Spécifications des granulats en Algérie : essais | ETAHG',
+      description: 'Comment les granulats sont spécifiés en Algérie : fractions d/D, références EN 12620 / 13242 / 13043, essais courants et contenu d’une demande de prix.',
+      summary: 'Guide de l’acheteur pour les spécifications de granulats en Algérie : notation des fractions, essais courants (granulométrie, équivalent de sable, bleu de méthylène, Los Angeles, Micro-Deval), normes citées par les marchés et contenu d’une demande de prix.',
+      eyebrow: 'Granulats',
+      h1: 'Spécifications des granulats en Algérie : fractions, essais et questions à poser au fournisseur',
+      lead: 'Béton, enrobés et couches de chaussée demandent chacun autre chose à la pierre qui les compose. Ce guide de {{company}}, qui produit des granulats fins dans sa propre carrière et station de concassage dans la wilaya de Djelfa, explique comment les granulats sont décrits dans les spécifications algériennes et comment poser les bonnes questions à un fournisseur.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'aggregates',
+      related: ['aggregates', 'roads'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Comment s’écrit une fraction : la notation d/D',
+          paragraphs: [
+            'Les granulats sont désignés par les plus petite et plus grande ouvertures de tamis entre lesquelles se situe l’essentiel du matériau, écrites d/D en millimètres. Un 0/3 est un sable dont les grains passent au tamis de 3 mm ; un 3/8 est un gravillon retenu à 3 mm et passant à 8 mm ; un 0/31,5 est une grave, un matériau tout-venant gradué des fines jusqu’à 31,5 mm. La notation ne garantit pas que chaque grain soit dans la plage : les normes admettent un pourcentage défini de refus et de passant, et c’est pourquoi un laboratoire vérifie une courbe granulométrique, et non le seul nom du produit.',
+            'En Algérie, les fractions le plus souvent demandées pour le bâtiment et les travaux routiers sont, en général, des sables de 0/3 à 0/5, des gravillons tels que 3/8, 8/15 et 15/25 pour le béton, et des graves telles que 0/20 et 0/31,5 pour les couches de chaussée non liées. Les enrobés utilisent leur propre jeu de fractions, typiquement un sable concassé 0/2 ou 0/3 combiné à des gravillons 2/6, 6/10 et 10/14. Les dimensions exactes sont fixées par la spécification du projet (le CCTP), pas par le fournisseur.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Les normes auxquelles renvoient les marchés algériens',
+          paragraphs: [
+            'La plupart des spécifications de projets algériens décrivent les granulats avec le vocabulaire des normes européennes, soit directement, soit à travers les normes algériennes NA publiées par l’IANOR, qui leur sont largement alignées. Trois textes couvrent les trois usages principaux : l’EN 12620 pour les granulats pour béton, l’EN 13242 pour les matériaux non traités et traités aux liants hydrauliques des couches de chaussée, et l’EN 13043 pour les granulats pour mélanges bitumineux. Le complément français NF P 18-545, qui regroupe les exigences en codes (A, B, C, D) par usage, est lui aussi largement cité, et des spécifications plus anciennes peuvent encore renvoyer à l’ancienne série française P 18.',
+            'Pour un acheteur, la conséquence pratique est simple : la spécification nomme une catégorie pour chaque propriété (par exemple une catégorie de granularité, une catégorie de fines, une catégorie de résistance), et les procès-verbaux d’essais du fournisseur doivent indiquer le résultat pour chacune. Lorsqu’un marché cite une norme sans catégories, il vaut mieux demander à l’ingénieur quelles valeurs s’appliquent avant de commander, afin que les deux parties testent contre les mêmes seuils.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Les essais que vous verrez sur un procès-verbal',
+          intro: 'Les dénominations ci-dessous sont celles des laboratoires et des spécifications algériens ; les normes d’essai européennes sont données pour référence.',
+          caption: 'Essais courants sur granulats, ce qu’ils mesurent et pourquoi ils comptent',
+          head: ['Essai', 'Ce qu’il mesure', 'Pourquoi il compte'],
+          rows: [
+            ['Granulométrie (EN 933-1)', 'La courbe de tamisage du matériau', 'Ouvrabilité du béton, compactage des couches de chaussée, formulation des enrobés'],
+            ['Équivalent de sable (EN 933-8)', 'Propreté d’un sable : proportion de fines argileuses', 'Les fines argileuses affaiblissent béton et enrobés ; des valeurs de 60 à 70 sont typiquement exigées pour un sable à béton'],
+            ['Bleu de méthylène (EN 933-9)', 'L’activité de l’argile contenue dans les fines', 'Complète l’équivalent de sable pour les sables concassés riches en fines'],
+            ['Los Angeles (EN 1097-2)', 'Résistance à la fragmentation par chocs', 'Couches de base, revêtements bitumineux et bétons sous trafic lourd'],
+            ['Micro-Deval (EN 1097-1)', 'Résistance à l’usure en présence d’eau', 'Couches de roulement, couches non liées exposées au trafic et à l’humidité'],
+            ['Coefficient d’aplatissement (EN 933-3)', 'Proportion de grains plats', 'Les grains plats se compactent mal et se brisent dans les enrobés'],
+            ['Masse volumique et absorption d’eau (EN 1097-6)', 'Masse volumique réelle et porosité ouverte', 'Formulation, demande en eau du béton et des enrobés'],
+            ['Module de finesse', 'Un seul chiffre qui résume la courbe du sable', 'Les sables autour de 2,2 à 2,8 sont généralement préférés pour le béton ; le sable de dune est bien plus fin'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Sable concassé, alluvionnaire ou de dune',
+          paragraphs: [
+            'Le nord de l’Algérie n’a plus guère de sable naturel à extraire : le dragage des oueds est restreint depuis des années, et les sables de dune du sud sont très fins, ce qui leur donne un module de finesse bas et une forte demande en eau dans le béton. Le sable concassé, produit à partir de calcaire ou d’une autre roche dure dans une station de concassage-criblage, est donc devenu la réponse courante. Il est anguleux, ce qui sert la résistance du mélange, et sa teneur en fines est maîtrisée à la station plutôt que laissée à la rivière.',
+            'Les recherches algériennes sur les bétons et mortiers ordinaires au sable calcaire concassé trouvent généralement un optimum autour de 10 à 15 % de fines calcaires propres, avec des résultats acceptables jusqu’à environ 20 % dans certaines séries ; les spécifications plafonnent néanmoins les fines d’un sable à béton à une catégorie fixée par la norme, et la station doit livrer à ce chiffre. C’est aussi pourquoi l’essai au bleu de méthylène compte autant que l’équivalent de sable pour ce matériau. Le mélange de sable concassé et de sable de dune pour corriger la courbe est lui aussi bien documenté. En pratique, c’est le laboratoire du projet qui décide de la formule ; le travail du fournisseur est de livrer un sable dont la courbe et la propreté restent stables d’un camion à l’autre.',
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'key',
+          title: 'Ce qu’une demande de prix doit contenir',
+          list: [
+            'Les fractions nécessaires (d/D) et l’usage de chacune : béton, enrobés, couche de base, couche de fondation, remblai',
+            'La norme ou les catégories citées par la spécification, ou une copie de la page du CCTP concernée',
+            'Les quantités totales approximatives et le rythme de livraison mensuel ou hebdomadaire',
+            'La localisation du chantier (wilaya et ville la plus proche) et s’il est prévu une livraison ou un enlèvement à la station',
+            'Si le laboratoire du client fera des essais à la station, à la livraison ou les deux',
+          ],
+          cta: { label: 'Demander un prix', page: 'contact' },
+        },
+        {
+          type: 'prose',
+          title: 'Lire la réponse d’un fournisseur',
+          paragraphs: [
+            'Une réponse crédible nomme la carrière et la station d’où vient le matériau, joint des résultats d’essais récents pour les fractions proposées, et explique comment la production et le stock sont organisés pour tenir le rythme de livraison. Elle précise aussi ce qu’elle ne couvre pas : un fournisseur ne peut pas promettre qu’un sable conviendra à une formule de béton avant que le laboratoire du projet ait réalisé ses gâchées d’essai, et il doit le dire. Exigences d’essais, fréquence d’échantillonnage et modalités de réception gagnent à être écrites dans la convention de fourniture avant la première livraison.',
+            'Interrogez aussi sur le transport. Les granulats sont lourds et peu chers à la tonne, si bien que la distance de transport pèse souvent plus que le prix départ station. Un fournisseur qui possède ses propres camions et semi-remorques peut donner un prix rendu à la tonne pour votre site et s’engager sur un rythme ; celui qui dépend de transporteurs tiers ne le peut pas toujours.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'agg-what-is-0-3', q: 'Que signifie 0/3 ou 3/8 pour des granulats ?', a: 'Un 0/3 est un sable dont les grains passent au tamis de 3 mm, et un 3/8 est un gravillon retenu au tamis de 3 mm et passant au tamis de 8 mm. Les deux nombres sont les ouvertures de tamis inférieure et supérieure de la fraction en millimètres, avec une tolérance de refus et de passant définie par la norme.' },
+            { id: 'agg-standard', q: 'Quelle norme s’applique aux granulats pour béton en Algérie ?', a: 'Les spécifications algériennes utilisent en général l’EN 12620 pour les granulats pour béton, directement, à travers les normes algériennes NA de l’IANOR qui lui sont alignées, ou aux côtés de la norme française NF P 18-545, et nomment des catégories de granularité, de fines et de résistance. Le CCTP de chaque projet précise quel texte et quelles catégories s’appliquent.' },
+            { id: 'agg-sand-equivalent', q: 'Quelle est une bonne valeur d’équivalent de sable ?', a: 'Un équivalent de sable supérieur à environ 60 indique généralement un sable propre, et les spécifications de béton en Algérie exigent typiquement des valeurs de 60 à 70 selon la classe d’exposition. Pour les sables concassés à forte teneur en fines, l’essai au bleu de méthylène est utilisé en complément pour juger si les fines sont nocives.' },
+            { id: 'agg-crushed-sand-concrete', q: 'Peut-on utiliser du sable concassé dans le béton ?', a: 'Oui. Le sable concassé (sable manufacturé) est largement utilisé dans le béton en Algérie parce que le sable naturel est rare, et la recherche algérienne sur les sables calcaires concassés trouve généralement optimales des teneurs en fines d’environ 10 à 15 %, et acceptables jusqu’à environ 20 % dans certaines études, lorsque les fines sont de la poussière calcaire plutôt que de l’argile ; la spécification fixe la catégorie à livrer. Le laboratoire du projet confirme la formule par des gâchées d’essai.' },
+            { id: 'agg-tests-who', q: 'Qui teste les granulats, le fournisseur ou le client ?', a: 'En général les deux : le producteur fait des essais à la station pour contrôler sa production, et le laboratoire du client teste à la livraison contre les catégories de la spécification. La fréquence d’échantillonnage et les règles de réception sont typiquement écrites dans la convention de fourniture avant le début des livraisons.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} produit des granulats fins de qualité dans sa propre carrière et station de concassage, la Carrière Djellal El Gharbi à Oued Sdeur près d’Aïn El Ibel, dans la wilaya de Djelfa, avec des concasseurs et broyeurs adaptés aux projets qui exigent de fortes cadences de production. Les exigences d’essais sont convenues avec le client avant la fourniture, et l’entreprise transporte avec ses propres camions et semi-remorques bennes. Voir la page [production de granulats fins](page:aggregates) pour les usages et l’organisation de la fourniture, ou la page [travaux routiers](page:roads) pour l’emploi du même matériau dans les couches de chaussée.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Besoin de granulats pour un projet en Algérie ?',
+          text: 'Envoyez-nous les fractions, les quantités et la localisation du chantier. Nous répondons avec ce que la station peut fournir et comment.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Production de granulats fins', page: 'aggregates', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'rent-or-buy-equipment': {
+      slug: 'louer-ou-acheter-engins-tp-algerie',
+      nav: 'Louer ou acheter des engins de travaux publics en Algérie',
+      title: 'Louer ou acheter des engins de TP en Algérie | ETAHG',
+      description: 'Guide de décision pour les entreprises en Algérie : importer ou acheter des engins, crédit-bail bancaire ou location, conducteurs, pièces et distances.',
+      summary: 'Règles d’importation, délais, crédit-bail ou location, conducteurs, pièces et distances : un guide de décision pour les entreprises qui hésitent entre acheter et louer des engins lourds pour un projet en Algérie.',
+      eyebrow: 'Location d’engins',
+      h1: 'Louer ou acheter des engins de travaux publics en Algérie : guide de décision',
+      lead: 'Toute entreprise qui arrive en Algérie se pose la même question dès le premier mois : amener des machines, les acheter sur place ou les louer. {{company}}, qui loue en courte et longue durée son propre parc d’engins routiers depuis son parc matériel de Djelfa, expose les facteurs qui tranchent habituellement.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'rental',
+      related: ['rental', 'parts', 'mobilization'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Pourquoi la question se pose autrement en Algérie',
+          paragraphs: [
+            'Dans beaucoup de pays, le choix entre posséder et louer est affaire de taux d’utilisation et de trésorerie. En Algérie, trois facteurs de plus entrent en jeu. Les importations d’engins sont réglementées et les règles bougent : pendant des années, l’importation de matériel d’occasion a été restreinte, et même pour des machines neuves, les autorisations, les formalités de change et le dédouanement ajoutent des semaines ou des mois avant qu’une machine puisse travailler. Ensuite, les distances sont longues et les terrains variés, si bien qu’une machine achetée pour un projet peut se retrouver loin du suivant. Enfin, le réseau après-vente est inégal hors des grandes villes, et les pièces et le service comptent autant que le prix d’achat.',
+            'Rien de tout cela ne rend l’achat mauvais. Cela signifie que la décision doit être prise sur le calendrier du projet, et pas seulement sur le tableur.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Importer ou acheter neuf : délais et formalités',
+          paragraphs: [
+            'Une machine importée pour un projet suppose typiquement un achat par un canal agréé, une domiciliation bancaire de l’importation, un transport maritime jusqu’à un port algérien, un dédouanement et un acheminement jusqu’au chantier. Prévoyez dans le planning un délai de plusieurs mois et la possibilité qu’une règle change entre la commande et la livraison. Des régimes d’admission temporaire existent pour le matériel introduit pour un marché précis, mais ils ont leurs propres formalités et obligations de réexportation, et il vaut mieux les vérifier auprès d’un commissionnaire en douane avant de chiffrer le projet.',
+            'Acheter neuf chez un concessionnaire en Algérie évite l’étape de l’importation, mais pas la liste d’attente, et le prix en dinars reflète les droits et le taux de change. Pour un long projet en un seul lieu, avec un atelier et un stock de pièces, posséder garde son sens ; pour une prestation courte ou dispersée, c’est rarement le cas.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Le crédit-bail bancaire n’est pas de la location',
+          paragraphs: [
+            'Le mot leasing désigne en Algérie deux choses différentes. Le crédit-bail est un produit de financement réglementé depuis l’ordonnance de 1996 sur le crédit-bail : une banque ou une société de leasing agréée (par exemple la Société Nationale de Leasing, publique, ou des sociétés privées comme Maghreb Leasing Algérie) achète la machine et la loue au client sur plusieurs années avec une option d’achat à la fin. C’est un moyen de financer la propriété, ouvert en pratique aux sociétés immatriculées en Algérie disposant du dossier bancaire habituel, et il laisse l’exploitation, l’entretien et l’assurance au preneur.',
+            'La location opérationnelle, celle que propose {{company}}, est un service : le propriétaire de la machine la met à disposition pour une période, avec ou sans conducteur, le transport, l’entretien et le carburant étant répartis comme convenu pour chaque projet, et la reprend à la fin. La machine n’apparaît jamais au bilan du client, et le client n’a jamais à la revendre. Pour une entreprise étrangère dont la présence en Algérie dure le temps d’un marché, cette différence est souvent décisive.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Un tableau de décision par profil de projet',
+          intro: 'À titre indicatif seulement ; chaque projet a ses propres chiffres.',
+          caption: 'Adéquation typique de l’achat, du crédit-bail et de la location à la durée et à la nature des travaux',
+          head: ['Profil de projet', 'Achat ou importation', 'Crédit-bail', 'Location opérationnelle'],
+          rows: [
+            ['Prestation courte, de quelques semaines à quelques mois', 'Rarement justifié : le délai dépasse les travaux', 'Inadapté', 'Choix habituel, avec conducteur si l’équipe locale n’est pas encore en place'],
+            ['Un seul site, un à trois ans, atelier en propre', 'Possible pour les machines de base', 'Possible pour une société immatriculée', 'Pointes d’activité, machines spécialisées, phase de démarrage'],
+            ['Plusieurs sites dans des régions différentes', 'Le transport entre sites ajoute des coûts', 'Même contrainte', 'Louer près de chaque site auprès d’un parc local'],
+            ['Phase de démarrage avant l’arrivée du parc en propre', 'Pas disponible à temps', 'Pas disponible à temps', 'Relais jusqu’au dédouanement du parc importé'],
+            ['Long programme dans une seule région', 'Généralement le choix économique pour le parc de base', 'Option de financement', 'Complément pour les pointes et les pannes'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Avec ou sans conducteur',
+          paragraphs: [
+            'La location avec conducteur est courante en Algérie et mérite d’être envisagée même par les entreprises qui amènent leurs propres équipes. Un conducteur qui connaît la machine et le terrain raccourcit la courbe d’apprentissage, maintient la machine dans l’état attendu par son propriétaire, et est déjà affilié à la sécurité sociale algérienne. Sans conducteur, le client prend en charge les vérifications quotidiennes et la responsabilité de l’usage de la machine. L’option retenue, et la répartition du transport, de l’entretien, du carburant et de l’assurance, sont convenues pour chaque projet et écrites dans le contrat de location ; il n’existe pas de formulaire type algérien.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Pièces, entretien et distance',
+          paragraphs: [
+            'Une machine en propriété n’est productive qu’à la mesure de son approvisionnement en pièces. Avant d’acheter, renseignez-vous sur l’endroit où les filtres, les pièces moteur et les pièces d’usure de ce modèle sont stockés en Algérie, et sur le délai d’arrivée d’une pièce hors stock. Au sein du groupe ETAHG, EURL KAYLE KENNY à Alger fournit des pièces de rechange pour moteurs diesel d’engins lourds, dont des pièces compatibles Cummins, en tant que fournisseur indépendant, non affilié à Cummins Inc. ni approuvé par elle. Pour les machines louées, la question disparaît en grande partie : l’entretien reste au propriétaire, sauf accord contraire.',
+            'La distance compte aussi dans l’autre sens. Un parc sur la RN1 à Djelfa est sur la route entre Alger et le Sahara ; une machine louée atteint donc les Hauts Plateaux et le nord du Sahara en une journée de transport sur semi-remorque, et revient par le même chemin à la fin de la prestation. Le transport est convenu pour chaque projet, mais c’est la géographie qui rend la location praticable pour les chantiers éloignés du littoral.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'rb-import-used', q: 'Une entreprise étrangère peut-elle importer des engins de TP d’occasion en Algérie ?', a: 'En général, l’importation d’engins d’occasion en Algérie est restreinte depuis des années, et les règles changent au fil des lois de finances ; la situation en vigueur doit être vérifiée auprès d’un commissionnaire en douane avant de chiffrer un projet. L’admission temporaire pour un marché précis est un régime distinct, avec obligation de réexportation.' },
+            { id: 'rb-leasing-vs-rental', q: 'Quelle est la différence entre leasing et location en Algérie ?', a: 'En Algérie, leasing désigne habituellement le crédit-bail, un produit de financement bancaire dans lequel une société de leasing agréée achète la machine et la loue au client plusieurs années avec une option d’achat, tandis que la location désigne un propriétaire qui met une machine à disposition pour une période, à titre de service. Le crédit-bail finance la propriété ; la location l’évite.' },
+            { id: 'rb-with-operator', q: 'Les engins se louent-ils avec conducteur en Algérie ?', a: 'Oui, la location avec conducteur est courante en Algérie et constitue souvent le choix pratique pour une entreprise dont les équipes locales ne sont pas encore en place. La présence d’un conducteur, et la répartition du transport, du carburant et de l’entretien, sont convenues pour chaque projet dans le contrat de location.' },
+            { id: 'rb-how-fast', q: 'En combien de temps un engin loué peut-il arriver sur un chantier en Algérie ?', a: 'Cela dépend de la distance depuis le parc, de l’accès au chantier et de la disponibilité de la catégorie d’engin ; le transport est convenu pour chaque projet. Depuis un parc sur la RN1 à Djelfa, les chantiers des Hauts Plateaux et du nord du Sahara sont en général à une journée de transport en semi-remorque.' },
+            { id: 'rb-long-term', q: 'Peut-on louer des engins en longue durée en Algérie ?', a: 'Oui. La location opérationnelle de longue durée, parfois appelée leasing dans le langage courant, est proposée par des propriétaires d’engins comme SARL ETAHG selon des conditions convenues pour chaque projet, dont la durée, les conducteurs, le transport et l’entretien ; elle reste un contrat de prestation, distinct du crédit-bail bancaire.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} loue en courte et longue durée son propre parc de pelles hydrauliques, bulldozers, chargeuses sur pneus, niveleuses, compacteurs vibrants, finisseur, répandeuse et citernes à bitume, camions et semi-remorques bennes depuis son parc matériel de Djelfa, la durée, les conducteurs, le transport et l’entretien étant convenus pour chaque projet. Voir [location d’engins](page:rental) pour les catégories et le traitement d’une demande, [démarrage de chantier](page:mobilization) pour la phase de lancement, et la page [pièces de rechange](page:parts) pour les pièces moteur via EURL KAYLE KENNY.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Vous pesez le pour et le contre de la location pour un projet en Algérie ?',
+          text: 'Indiquez-nous les catégories d’engins, le lieu et les dates. Nous répondons avec les disponibilités et les conditions que nous pouvons proposer.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Location d’engins', page: 'rental', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
     'mobilization-checklist': {
-      slug: 'mobiliser-engins-nouveau-chantier-algerie',
-      nav: 'Mobiliser des engins pour un nouveau chantier en Algérie',
-      title: 'Mobiliser des engins sur un chantier en Algérie | ETAHG',
-      description: 'À préparer avant de mobiliser des engins lourds sur un nouveau chantier en Algérie : accès, plateformes, eau, granulats et informations à nous envoyer.',
-      summary: 'Une check-list pratique pour les premières semaines d’un chantier en Algérie : accès, plateformes, eau, approvisionnement en granulats et les informations dont un partenaire local a besoin pour planifier le convoi.',
+      slug: 'mobiliser-chantier-hauts-plateaux-sahara-algerie',
+      nav: 'Mobiliser un chantier sur les Hauts Plateaux et au Sahara',
+      title: 'Mobiliser un chantier : Hauts Plateaux et Sahara | ETAHG',
+      description: 'Ouvrir un chantier sur les Hauts Plateaux ou au Sahara : pistes d’accès, plateformes, crues d’oued, eau, granulats, climat et logistique sur la RN1.',
+      summary: 'Ce qu’il faut régler avant que la première semi-remorque ne quitte le parc : accès, plateformes et drainage, eau, approvisionnement en granulats, climat, base vie et logistique, et la séquence d’un démarrage de chantier dans la steppe et le désert algériens.',
       eyebrow: 'Démarrage de chantier',
-      h1: 'Mobiliser des engins lourds pour un nouveau chantier en Algérie : check-list pratique',
-      lead: 'Les premières semaines décident du rythme d’un projet. Cette check-list, tirée de la façon dont {{company}} ouvre des chantiers avec ses propres machines, liste ce qui est généralement réglé avant que la première semi-remorque ne quitte le parc.',
+      h1: 'Mobiliser un chantier sur les Hauts Plateaux et au Sahara : check-list',
+      lead: 'Les premières semaines décident du rythme d’un projet. Cette check-list, tirée de la façon dont {{company}} ouvre des chantiers avec ses propres machines depuis son parc de Djelfa, liste ce qui est typiquement réglé avant que la première semi-remorque ne parte, en gardant à l’esprit les conditions particulières de la steppe et du désert algériens.',
       datePublished: '2026-10-06',
       dateModified: '2026-10-06',
       service: 'mobilization',
-      related: ['mobilization', 'rental', 'aggregates'],
+      related: ['mobilization', 'rental', 'aggregates', 'drilling'],
       blocks: [
         {
           type: 'prose',
           title: 'Pourquoi la mobilisation mérite son propre plan',
           paragraphs: [
-            'Sur un nouveau chantier, rien ne produit tant que machines, opérateurs, carburant, eau et matériaux ne sont pas en place. En Algérie, les distances entre un parc et un chantier peuvent être longues, le terrain change de la côte au Sahara, et un site n’a souvent ni piste d’accès, ni plateforme, ni eau le premier jour. Traiter le démarrage comme un projet à part entière, avec une courte séquence convenue par écrit, évite en général les semaines d’immobilisation qui coûtent le plus cher.',
+            'Sur un nouveau chantier, rien ne produit tant que machines, conducteurs, carburant, eau et matériaux ne sont pas en place. Dans l’intérieur de l’Algérie, la distance entre un parc et un chantier peut atteindre plusieurs centaines de kilomètres, un site n’a souvent ni route d’accès, ni plateforme, ni eau le premier jour, et le climat est plus rude que sur le littoral. Traiter le démarrage comme un projet à part entière, avec une courte séquence écrite convenue avec le client, évite en général les semaines d’immobilisation qui coûtent le plus cher.',
+            'Les deux paysages couverts par cet article sont les Hauts Plateaux, la vaste steppe à environ 1 000 mètres d’altitude entre l’Atlas tellien et l’Atlas saharien, où se trouve Djelfa, et le nord du Sahara au-delà de l’Atlas saharien, où Ghardaïa se situe à environ 500 mètres dans la vallée du M’zab. Ils ont en commun les longues distances et la rareté de l’eau, mais diffèrent par presque tout le reste.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Pistes d’accès',
+          paragraphs: [
+            'La plupart des chantiers de l’intérieur se rejoignent depuis une route nationale comme la RN1 par une piste qu’il faut créer ou améliorer avant qu’un trafic lourd puisse l’emprunter. Sur les plateaux, le terrain naturel est souvent assez ferme pour une piste réglée et compactée en matériau local ; les problèmes sont les franchissements de petits oueds et le ramollissement des sols fins après les pluies d’hiver. Au Sahara, les problèmes sont le sable, qu’il s’agisse de sable de dune meuble qui demande une couche stabilisée ou d’une surface de hamada dure, roulable mais éprouvante pour les pneumatiques, et la largeur nécessaire aux semi-remorques pour tourner.',
+            'La piste d’accès est la première tâche du bulldozer et de la niveleuse à l’arrivée, et son coût doit figurer dans le budget de démarrage plutôt que d’être découvert plus tard.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Plateformes, drainage et la question des oueds',
+          paragraphs: [
+            'Une plateforme pour la base vie, l’atelier, les stocks et les installations se construit par décapage, nivellement, remblaiement et compactage ; une couche de matériau concassé par-dessus la garde praticable par tous les temps. Le point qui surprend les nouveaux venus est le drainage : la steppe comme le Sahara reçoivent des pluies rares mais violentes, et les oueds à sec se remplissent en quelques heures. Une plateforme installée dans ou à côté d’un lit d’oued, si sec qu’il paraisse en été, est en danger. Repérez les traces des crues passées, maintenez les installations au-dessus, et donnez à la plateforme une pente et un fossé.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'L’eau',
+          paragraphs: [
+            'L’eau est nécessaire au compactage, au béton, à l’arrosage contre la poussière et à la base vie, et dans ces régions elle est rarement disponible par un réseau sur le site. Les solutions habituelles sont l’approvisionnement par camions-citernes depuis la ville la plus proche ou un puits foré sur le site ou à proximité, avec un stockage en cuves ou en bassin. Un puits nécessite une autorisation : depuis la mi-2021, les demandes en Algérie passent par un guichet unique associant l’agence nationale des ressources hydrauliques et l’agence de gestion intégrée des ressources en eau avant que le wali ne signe l’arrêté, avec un délai cible d’instruction d’un mois et une validité de dix-huit mois pour les travaux, que la réglementation permet de proroger pour motif justifié. La demande doit donc être déposée tôt, et le citernage planifié pour l’intervalle. La nature du terrain décide de la méthode de forage et de la profondeur, qui varient fortement entre le synclinal de Djelfa et les nappes sahariennes.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Granulats et rayon d’approvisionnement',
+          paragraphs: [
+            'Les granulats sont le matériau le plus lourd que consomme un chantier ; la distance à la station la plus proche conditionne donc le coût de chaque mètre cube de béton et de chaque couche de route. Sur les plateaux autour de Djelfa, les carrières de calcaire sont relativement proches ; au Sahara, la station de concassage la plus proche peut être très éloignée, et le premier camion doit être en route avant que le chantier n’en ait besoin. Réglez les fractions, les quantités et le rythme de livraison avec le fournisseur dès la phase de mobilisation, et réservez sur la plateforme de la place pour des stocks dimensionnés à la distance de transport.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Climat : ce qui change entre les deux régions',
+          intro: 'Ordres de grandeur tirés de données climatiques publiques ; vérifiez la station locale pour un site précis.',
+          caption: 'Conditions de travail sur les Hauts Plateaux et dans le nord du Sahara',
+          head: ['Facteur', 'Hauts Plateaux (région de Djelfa)', 'Nord du Sahara (région de Ghardaïa)'],
+          rows: [
+            ['Altitude', 'Environ 1 100 m', 'Environ 500 m'],
+            ['Hiver', 'Froid, gel et neige occasionnelle ; sol gelé le matin', 'Nuits fraîches, journées douces'],
+            ['Été', 'Chaud, sec', 'Très chaud ; les horaires de travail se déplacent tôt le matin et en soirée'],
+            ['Pluie', 'Quelques centaines de millimètres par an, surtout en hiver et au printemps, parfois violente', 'Totaux annuels très faibles mais orages rares qui mettent les oueds en crue'],
+            ['Vent et poussière', 'Vents forts sur la steppe ouverte', 'Sable, poussière, visibilité et abrasion des machines'],
+            ['Conséquences', 'Journées de travail perdues en hiver ; limites de température pour le bitume et le béton', 'Limites de chaleur pour les enrobés et le béton ; stockage d’eau ; filtres et refroidissement'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Base vie, carburant et logistique sur la RN1',
+          paragraphs: [
+            'La RN1 est la colonne vertébrale de l’intérieur : elle va d’Alger à Ghardaïa par Djelfa et Laghouat, puis continue vers le grand sud. Carburant, nourriture, hébergement et pièces pour un chantier à l’est ou à l’ouest de cet axe l’empruntent, puis prennent les routes locales ou les pistes. Un plan de mobilisation nomme la ville la plus proche pour le carburant et les approvisionnements, décide si les conducteurs logent en ville ou sur le site, prévoit un conteneur-atelier et un premier stock de filtres et de pièces d’usure, et fixe qui prend en charge l’hébergement et les repas. Sur les sites isolés, la base vie est elle-même un chantier, avec eau, assainissement, électricité et ombre à réaliser avant l’arrivée des équipes.',
           ],
         },
         {
@@ -2075,11 +2368,11 @@ export default {
           title: 'La séquence que nous suivons',
           intro: 'Six étapes, adaptées à chaque projet et convenues avec le client avant que quoi que ce soit ne bouge.',
           items: [
-            { title: 'Étude du site et de l’étendue des travaux', text: 'Localisation, accès, terrain, volumes et calendrier sont examinés ensemble, et la liste de ce qui doit être prêt le premier jour est écrite.' },
-            { title: 'Plan engins et ressources', text: 'Les catégories d’engins, les opérateurs et les fournitures sont ajustés à l’étendue des travaux ; les conditions de la mobilisation sont convenues pour chaque projet.' },
-            { title: 'Transport', text: 'Les machines sont chargées sur semi-remorques au parc ou déplacées directement depuis un autre chantier ; les dates de convoi suivent les conditions d’accès.' },
-            { title: 'Ouverture du site', text: 'Débroussaillage, piste d’accès, plateformes pour les engins et les installations, premiers terrassements.' },
-            { title: 'Matériaux et eau', text: 'L’approvisionnement en granulats est organisé et, si le site n’a pas d’eau, un puits peut être foré avec un atelier sur camion.' },
+            { title: 'Étude du site et de l’étendue des travaux', text: 'Localisation, accès, terrain, eau, volumes et calendrier sont examinés ensemble, et la liste de ce qui doit être prêt le premier jour est écrite.' },
+            { title: 'Plan engins et ressources', text: 'Les catégories d’engins, les conducteurs et les fournitures sont ajustés à l’étendue des travaux ; les conditions de la mobilisation sont convenues pour chaque projet.' },
+            { title: 'Transport', text: 'Les machines sont chargées sur semi-remorques au parc ou déplacées depuis un autre chantier ; les dates de convoi suivent les conditions d’accès et les autorisations de circulation pour les convois exceptionnels.' },
+            { title: 'Ouverture du site', text: 'Débroussaillage, piste d’accès, plateformes pour les engins et les installations, drainage et premiers terrassements.' },
+            { title: 'Matériaux et eau', text: 'L’approvisionnement en granulats démarre, l’eau est acheminée par citernes et, si nécessaire, un puits est foré avec un atelier sur camion une fois l’autorisation obtenue.' },
             { title: 'Production et suivi', text: 'Les machines travaillent selon le plan jusqu’à la réception, ou continuent dans le cadre d’une location ou d’une sous-traitance.' },
           ],
         },
@@ -2089,34 +2382,777 @@ export default {
           title: 'Ce qu’il faut nous envoyer pour obtenir un plan de mobilisation',
           list: [
             'La localisation du chantier (wilaya et, si possible, coordonnées ou lien de carte)',
-            'L’étendue de la première phase : débroussaillage, accès, plateformes, terrassements, granulats, eau',
+            'L’étendue de la première phase : débroussaillage, accès, plateformes, terrassements, granulats, eau',
             'Les volumes approximatifs et la date de démarrage prévue',
-            'Si les opérateurs, le carburant et l’hébergement sont fournis par le client ou attendus de notre part',
+            'Si les conducteurs, le carburant et l’hébergement sont fournis par le client ou attendus de notre part',
           ],
           cta: { label: 'Nous contacter', page: 'contact' },
         },
         {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'mob-duration', q: 'Combien de temps faut-il pour mobiliser des engins sur un chantier en Algérie ?', a: 'Cela dépend de la distance depuis le parc, des conditions d’accès et de l’étendue de la première phase ; transport, durée et conducteurs sont convenus pour chaque projet. Depuis Djelfa, les chantiers des Hauts Plateaux et du nord du Sahara sont en général atteints en semi-remorque dans la journée une fois le convoi prêt.' },
+            { id: 'mob-water', q: 'Comment un chantier au Sahara est-il alimenté en eau ?', a: 'Habituellement par camions-citernes depuis la ville la plus proche, jusqu’à ce qu’un puits sur le site ou à proximité soit foré et équipé, avec un stockage en cuves ou en bassin. Forer un puits en Algérie nécessite une autorisation délivrée par arrêté du wali après instruction par le guichet unique créé en 2021 ; la demande est donc déposée le plus tôt possible.' },
+            { id: 'mob-floods', q: 'Les crues soudaines sont-elles un vrai risque sur les chantiers en zone désertique ?', a: 'Oui. La steppe comme le Sahara reçoivent des pluies rares mais intenses, et les oueds à sec peuvent se remplir en quelques heures ; les bases vie, les stocks et les installations sont donc placés au-dessus des traces des crues passées, et les plateformes reçoivent une pente et un fossé.' },
+            { id: 'mob-winter', q: 'Les travaux routiers peuvent-ils continuer en hiver sur les Hauts Plateaux ?', a: 'En partie. À environ 1 100 mètres d’altitude, Djelfa connaît le gel et des chutes de neige occasionnelles en hiver, ce qui arrête la mise en œuvre des enrobés et ralentit les terrassements sur sol gelé ou saturé ; les programmes sur les plateaux prévoient donc en général les couches bitumineuses en dehors des mois froids.' },
+            { id: 'mob-rent', q: 'Les engins peuvent-ils rester en location une fois le site ouvert ?', a: 'Oui. Après la mobilisation, les mêmes machines peuvent continuer dans le cadre d’une location courte ou longue durée, ou les travaux se poursuivre en sous-traitance, selon des conditions convenues pour chaque projet.' },
+          ],
+        },
+        {
           type: 'prose',
-          title: 'Le terrain change le plan',
+          title: 'Comment ETAHG peut aider',
           paragraphs: [
-            'Un chantier côtier aux sols argileux et pluvieux demande drainage et préparation de la plateforme avant le passage des engins lourds. Un chantier en montagne signifie déblais rocheux, pistes plus raides et convois plus lents. Sur les Hauts Plateaux, les distances sont longues et la demande en granulats élevée. Au Sahara, le sable, la chaleur et l’absence d’eau font de l’autonomie la première exigence : carburant, pièces, eau et hébergement voyagent avec le chantier. Savoir lequel de ces cas s’applique, et le planifier, représente l’essentiel du travail.',
+            '{{company}} mobilise ses propres machines depuis son parc de Djelfa pour ouvrir de nouveaux chantiers : débroussaillage, pistes d’accès, plateformes, premiers terrassements, approvisionnement en granulats depuis sa propre carrière et station de concassage à Oued Sdeur près d’Aïn El Ibel, et puits d’eau avec son atelier de forage sur camion. Voir [démarrage de chantier](page:mobilization) pour le service, [location d’engins](page:rental) pour ce qui peut rester sur le site ensuite, [production de granulats fins](page:aggregates) et [forage de puits d’eau](page:drilling).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Vous ouvrez bientôt un chantier ?',
+          text: 'Envoyez-nous le lieu et l’étendue des travaux. Nous répondrons avec les engins, les matériaux et la séquence que nous pouvons proposer.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Démarrage de chantier', page: 'mobilization', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'water-well-drilling-guide': {
+      slug: 'forage-puits-eau-hauts-plateaux-sahara-algerie',
+      nav: 'Forage de puits d’eau sur les Hauts Plateaux et dans le nord du Sahara',
+      title: 'Forage de puits d’eau en Algérie : nappes, permis | ETAHG',
+      description: 'Puits d’eau autour de Djelfa et Ghardaïa : nappes, forage rotary ou marteau fond de trou, équipement, essais de pompage et autorisation en Algérie.',
+      summary: 'Nappes du synclinal de Djelfa et du bassin saharien, rotary ou marteau fond de trou, équipement, développement et essais de pompage du puits, et autorisation par le guichet unique : un guide pour les maîtres d’ouvrage qui ont besoin d’eau dans l’intérieur de l’Algérie.',
+      eyebrow: 'Forage de puits d’eau',
+      h1: 'Forage de puits d’eau sur les Hauts Plateaux et dans le nord du Sahara : nappes, méthodes et autorisation',
+      lead: 'Un chantier, une exploitation agricole ou une usine dans l’intérieur de l’Algérie doit généralement trouver sa propre eau. {{company}}, qui possède un atelier de forage de puits d’eau sur camion et travaille depuis Djelfa et Ghardaïa, explique ce qui se trouve sous terre dans ces régions, comment un puits se fore et s’équipe, et ce que comporte la procédure d’autorisation.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'drilling',
+      related: ['drilling', 'mobilization'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Deux sous-sols très différents',
+          paragraphs: [
+            'Autour de Djelfa, sur les Hauts Plateaux, les études hydrogéologiques décrivent un synclinal dont la nappe supérieure, dans les dépôts du Mio-Plio-Quaternaire, est donnée pour une épaisseur moyenne de quelques centaines de mètres et constitue celle que sollicitent le plus les puits et forages d’eau potable et d’irrigation à travers la steppe. En dessous se trouvent des formations gréseuses et calcaires plus anciennes, de l’Albien et du Barrémien, aquifères elles aussi, atteintes par des forages plus profonds. Niveaux d’eau et débits varient le long du synclinal, et la nappe superficielle dépend de la pluie qui tombe sur les reliefs voisins.',
+            'Autour de Ghardaïa, dans le nord du Sahara, le tableau est celui de tout le bassin saharien : le Continental Intercalaire, vaste aquifère gréseux d’âge albo-barrémien, surmonté du Complexe Terminal. Les forages dans le Continental Intercalaire y sont profonds, dans certains cas au-delà de mille mètres, et sont équipés de colonnes de tubage cimentées successives et de crépines ; l’eau remonte chaude en raison de la profondeur. Des puits moins profonds dans le fond de la vallée et dans le Complexe Terminal couvrent beaucoup de besoins locaux, mais avec une qualité plus variable.',
+            'La leçon pratique est que le même mot, puits, recouvre aussi bien un puits de nappe phréatique de quelques dizaines de mètres qu’un forage artésien profond, et que les données hydrogéologiques locales, lorsqu’elles sont disponibles auprès des services de l’hydraulique ou dans les études des forages voisins, sont le point de départ de tout projet.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Rotary ou marteau fond de trou',
+          paragraphs: [
+            'Deux méthodes de forage couvrent la plupart des puits d’eau. Le forage rotary à la boue fait tourner un outil au bout de tiges creuses pendant qu’un fluide de forage est pompé dans les tiges et remonte par l’espace annulaire, en emportant les déblais et en soutenant le trou ; il convient aux formations tendres et non consolidées et permet de grands diamètres. Le forage au marteau fond de trou (MFT) utilise l’air comprimé pour animer un piston qui frappe le taillant au fond du trou ; il est rapide dans les roches dures telles que calcaires et grès, et remonte les déblais avec l’air. Beaucoup d’ateliers font les deux, et un puits peut être commencé avec l’une et terminé avec l’autre au fil des formations. Le choix se fait d’après la géologie attendue, la profondeur et le diamètre visés, et l’eau disponible pour la boue.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'Du trou de forage au puits en service',
+          intro: 'La séquence habituelle ; chaque étape est dimensionnée selon la nappe et l’usage prévu.',
+          items: [
+            { title: 'Implantation et conception', text: 'Examen des forages existants, de la géologie et du dossier d’autorisation ; choix de la profondeur cible, des diamètres et de la méthode.' },
+            { title: 'Forage', text: 'Forage rotary ou MFT en un ou plusieurs diamètres, avec un relevé des formations et des venues d’eau.' },
+            { title: 'Tubage et crépine', text: 'Une colonne de tubage protège le trou et une crépine est placée en face de la zone aquifère ; un massif filtrant de gravier autour de la crépine retient le sable fin.' },
+            { title: 'Cimentation', text: 'L’espace annulaire au-dessus de la crépine est scellé pour tenir à l’écart les eaux de surface et les couches indésirables, et la tête de puits est protégée.' },
+            { title: 'Développement', text: 'Soufflage à l’air lift, pistonnage ou pompage éliminent le fluide de forage et les fines jusqu’à ce que l’eau sorte claire.' },
+            { title: 'Essai de pompage', text: 'Un essai par paliers ou à débit constant mesure le débit et le rabattement, ce qui fixe la taille de la pompe et le débit exploitable durablement.' },
+            { title: 'Équipement', text: 'Pompe, colonne montante, câble, tête de puits et raccordement au stockage ; la qualité de l’eau est analysée avant utilisation.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'La procédure d’autorisation en bref',
+          paragraphs: [
+            'Forer un puits d’eau en Algérie nécessite une autorisation d’utilisation des ressources en eau. Depuis la réforme de 2021, les demandes sont instruites par un guichet unique qui réunit l’Agence nationale des ressources hydrauliques (ANRH), l’Agence nationale de gestion intégrée des ressources en eau (AGIRE) et des représentants des secteurs de l’environnement, de l’agriculture et de l’irrigation ; le dossier est ensuite transmis à la wilaya, et l’autorisation est accordée par arrêté du wali. La réglementation fixe un objectif d’un mois pour l’instruction d’un dossier complet. Les travaux doivent en général être réalisés dans les dix-huit mois suivant la notification, délai que la réglementation permet de proroger pour motif justifié.',
+            'Le dossier décrit typiquement le demandeur, le terrain, l’usage et les volumes prévus, et les caractéristiques du puits projeté. Le conseil pratique est simple : déposer tôt, garder l’autorisation sur le site, et faire forer par une entreprise qui consigne profondeurs, formations et résultats d’essais pour le rapport final.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'À quoi s’attendre d’un puits dans chaque région',
+          intro: 'Tendances générales rapportées par les études régionales ; un site précis peut différer.',
+          caption: 'Comparaison indicative des puits d’eau sur les Hauts Plateaux et dans le nord du Sahara',
+          head: ['Aspect', 'Hauts Plateaux (synclinal de Djelfa)', 'Nord du Sahara (région de Ghardaïa)'],
+          rows: [
+            ['Nappes principales', 'Mio-Plio-Quaternaire ; grès de l’Albien et du Barrémien en dessous', 'Complexe Terminal ; Continental Intercalaire en profondeur'],
+            ['Profondeurs typiques', 'De quelques dizaines à quelques centaines de mètres', 'De quelques dizaines à plusieurs centaines de mètres ; plus de mille pour la nappe profonde'],
+            ['Formations', 'Alluvions, argiles, grès, calcaires', 'Sables, grès, calcaires, argiles'],
+            ['Eau', 'Généralement plus fraîche, qualité variable selon la couche', 'Chaude en profondeur ; minéralisation variable'],
+            ['Méthode', 'Rotary en terrain tendre, MFT dans la roche', 'Rotary à la boue pour les puits profonds ; MFT possible dans les couches dures'],
+            ['Recharge', 'Pluie sur les reliefs voisins', 'Très lente ; pour l’essentiel une ressource stockée'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Qualité et température de l’eau',
+          paragraphs: [
+            'L’eau de la nappe saharienne profonde est souvent chaude et peut porter une charge minérale qui appelle un refroidissement ou un traitement avant certains usages ; l’eau des nappes superficielles peut être affectée par ce qui se passe en surface. Pour un chantier, cela compte pour le béton, où sulfates et chlorures sont limités par la spécification, et pour la base vie, où l’eau de boisson doit être analysée. Une analyse en laboratoire après le développement, avant la pose de la pompe, est la pratique courante.',
           ],
         },
         {
           type: 'faq',
           title: 'Questions fréquentes',
           items: [
-            { id: 'mob-duration', q: 'Combien de temps prend une mobilisation ?', a: 'Cela dépend de la distance depuis le parc, des conditions d’accès et de l’étendue de la première phase. Transport, durée et opérateurs sont convenus pour chaque projet ; nous donnons une date une fois l’étude du site réalisée.' },
-            { id: 'mob-rent', q: 'Les engins peuvent-ils rester en location une fois le site ouvert ?', a: 'Oui. Après la mobilisation, les mêmes machines peuvent continuer dans le cadre d’une location courte ou longue durée, ou les travaux se poursuivre en sous-traitance, selon des conditions convenues pour chaque projet.' },
+            { id: 'ww-permit', q: 'Une autorisation est-elle nécessaire pour forer un puits d’eau en Algérie ?', a: 'Oui. Un puits d’eau en Algérie nécessite une autorisation d’utilisation des ressources en eau, accordée par arrêté du wali après instruction du dossier par le guichet unique créé en 2021, qui associe les agences ANRH et AGIRE, avec un objectif d’un mois pour l’instruction d’une demande complète.' },
+            { id: 'ww-depth', q: 'Quelle est la profondeur des puits d’eau autour de Djelfa et de Ghardaïa ?', a: 'Elle varie fortement selon la nappe visée : les puits dans les nappes superficielles peuvent aller de quelques dizaines à quelques centaines de mètres, tandis que les forages dans le Continental Intercalaire du bassin saharien autour de Ghardaïa dépassent, selon les sources, mille mètres dans certains cas. Les données des forages voisins et l’usage prévu décident de la conception.' },
+            { id: 'ww-method', q: 'Quelle est la différence entre le forage rotary et le marteau fond de trou ?', a: 'Le forage rotary coupe la roche avec un outil en rotation et remonte les déblais avec un fluide en circulation, ce qui convient aux formations tendres et meubles, tandis que le marteau fond de trou (MFT) casse la roche dure par percussion à l’air comprimé au fond du trou et va plus vite dans les calcaires et les grès. Beaucoup de puits combinent les deux au fil des formations.' },
+            { id: 'ww-time', q: 'Combien de temps faut-il pour forer un puits d’eau ?', a: 'Un puits peu profond peut être foré et équipé en quelques jours, tandis qu’un forage profond avec plusieurs colonnes de tubage prend des semaines ; la procédure d’autorisation, à lancer le plus tôt possible, est souvent la partie la plus longue du calendrier.' },
+            { id: 'ww-site-use', q: 'Un puits peut-il alimenter un chantier ?', a: 'Oui. Un puits foré sur le site ou à proximité, avec un stockage en bassin ou en cuves, est un moyen courant d’alimenter en eau le compactage, le béton et la base vie dans l’intérieur de l’Algérie, où aucun réseau n’est disponible ; l’eau est analysée avant son emploi dans le béton ou pour la boisson.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} possède un atelier de forage de puits d’eau sur camion avec ses accessoires, récemment acquis neuf, et fore des puits pour les chantiers, l’agriculture, l’industrie et les collectivités, avec son siège social à Bounoura, wilaya de Ghardaïa, et son parc matériel à Djelfa. Capacité en profondeur, méthode et calendrier se discutent pour chaque projet. Voir [forage de puits d’eau](page:drilling) pour le service et [démarrage de chantier](page:mobilization) pour la place d’un puits dans le lancement d’un chantier.',
           ],
         },
         {
           type: 'cta',
-          title: 'Vous ouvrez bientôt un chantier ?',
-          text: 'Envoyez-nous le lieu et l’étendue des travaux. Nous répondrons avec les engins, les matériaux et la séquence que nous pouvons proposer.',
+          title: 'Besoin d’eau sur un chantier, une exploitation ou une usine ?',
+          text: 'Envoyez-nous le lieu, l’usage prévu et ce que vous savez des forages voisins. Nous vous dirons ce que nous pouvons forer et comment préparer le dossier.',
           ctas: [
             { label: 'Nous contacter', page: 'contact', variant: 'primary' },
-            { label: 'Démarrage de chantier', page: 'mobilization', variant: 'secondary' },
+            { label: 'Forage de puits d’eau', page: 'drilling', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'foreign-contractor-checklist': {
+      slug: 'entreprises-etrangeres-algerie-check-list',
+      nav: 'Check-list pour les entreprises étrangères qui s’implantent en Algérie',
+      title: 'Entreprises étrangères en Algérie : check-list | ETAHG',
+      description: 'Succursale ou société, loi 23-12 sur les marchés publics, marge de préférence, plafond de sous-traitance, qualification et vérification d’un partenaire.',
+      summary: 'Une check-list pratique pour les entreprises étrangères et chinoises qui se préparent à travailler en Algérie : succursale ou société, règles des marchés publics, sous-traitance, documents de qualification et d’immatriculation, et vérification d’un partenaire algérien.',
+      eyebrow: 'Travailler en Algérie',
+      h1: 'Check-list pour les entreprises étrangères qui s’implantent en Algérie',
+      lead: 'Les entreprises étrangères, et parmi elles beaucoup d’entreprises chinoises, ont construit une large part des infrastructures récentes de l’Algérie, presque toujours avec des partenaires, des sous-traitants et des fournisseurs algériens à leurs côtés. {{company}} offre à ces entreprises une base locale à Djelfa et à Ghardaïa. Cette check-list résume, en termes généraux, le cadre qu’un nouvel arrivant doit connaître ; elle ne constitue pas un conseil juridique, et les textes évoluent.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'roads',
+      related: ['partners', 'roads', 'rental', 'aggregates'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Les formes de présence',
+          paragraphs: [
+            'Une entreprise étrangère peut être présente en Algérie de plusieurs manières. Un bureau de liaison peut représenter la maison mère mais ne peut pas faire de commerce. Une succursale immatriculée au registre du commerce est le véhicule habituel pour exécuter un marché précis : elle est traitée comme un investissement étranger, doit être immatriculée auprès du Centre national du registre du commerce (CNRC) et porte ses propres immatriculations fiscales et sociales. Une société de droit algérien, typiquement une SARL ou une SPA, est le véhicule d’une présence durable ; depuis les lois de finances de 2020, l’obligation pour des partenaires algériens de détenir 51 % du capital ne s’applique plus aux secteurs non stratégiques, mais elle reste en vigueur pour les activités stratégiques et, en vertu de la loi minière de 2025, s’applique toujours à l’exploitation des carrières.',
+            'La forme qui convient dépend du marché et de l’horizon. Beaucoup d’entreprises utilisent une succursale pour un premier projet et créent une société une fois qu’un portefeuille existe.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Marchés publics : la loi 23-12 et la marge de préférence',
+          paragraphs: [
+            'Les travaux publics en Algérie sont attribués en vertu de la loi du 5 août 2023 relative aux marchés publics (loi 23-12), qui a remplacé les principes de la réglementation de 2015 pendant que les décrets d’application étaient préparés ; le décret présidentiel 15-247 de 2015 a continué entre-temps de régir les procédures détaillées, et le portail électronique des marchés publics prévu par la nouvelle loi a reçu ses règles de fonctionnement en 2026. Deux dispositions concernent directement les soumissionnaires étrangers. Une marge de préférence de 25 % est accordée aux produits d’origine algérienne et aux sociétés de droit algérien dont le capital est détenu majoritairement par des nationaux résidents. Et pour certains grands projets désignés par les autorités, le cahier des charges des appels d’offres internationaux impose aux soumissionnaires étrangers de s’engager à investir dans un partenariat, dans le même domaine d’activité, avec une telle société algérienne, sous peine de sanctions si l’engagement n’est pas honoré ; la présence de cette clause dans un appel d’offres donné ressort de son cahier des charges.',
+            'Pour une entreprise étrangère, la conséquence est qu’un partenaire algérien crédible et qualifié n’est pas seulement utile sur le chantier : il fait partie de l’offre.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Sous-traitance : le plafond de 40 % et l’agrément préalable',
+          paragraphs: [
+            'En vertu de la réglementation de 2015, la sous-traitance dans un marché public ne peut dépasser 40 % du montant du marché, le sous-traitant doit être agréé par le service contractant avant de commencer, une copie du contrat de sous-traitance est déposée, et le sous-traitant doit déclarer sa présence sur le chantier. Les soumissionnaires indiquent aussi dans leur offre la part qu’ils entendent sous-traiter à des sociétés de droit algérien. Quels que soient les chiffres exacts des textes applicables à un appel d’offres donné, la direction est constante : la sous-traitance algérienne est attendue, déclarée et plafonnée.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Le certificat de qualification',
+          paragraphs: [
+            'Toute entreprise qui exécute des travaux de bâtiment, de travaux publics ou d’hydraulique dans le cadre d’un marché public doit détenir un certificat de qualification et de classification professionnelles, créé par le décret exécutif 93-289 de 1993 et renouvelé depuis. Le certificat indique les domaines d’activité et la catégorie de l’entreprise, qui dépend de son encadrement technique, de son matériel et de sa capacité financière, et détermine les montants de marchés auxquels elle peut soumissionner. Un sous-traitant qui travaille sur un marché public est en général censé en détenir un pour son domaine. C’est le document le plus utile à demander à un partenaire algérien, parce qu’il résume ce que l’État a vérifié sur l’entreprise.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Les documents qu’on demandera à une entreprise étrangère, et qu’elle demandera',
+          intro: 'Le dossier algérien habituel ; les dénominations sont celles qui figurent sur les documents.',
+          caption: 'Immatriculations et attestations du dossier d’une entreprise algérienne',
+          head: ['Document', 'Délivré par', 'Ce qu’il montre'],
+          rows: [
+            ['Extrait du registre de commerce (RC)', 'CNRC, consultable via le portail Sidjilcom', 'Existence légale, activités, siège social, gérants'],
+            ['Numéro d’identification fiscale (NIF)', 'Administration fiscale', 'Immatriculation fiscale ; figure sur chaque facture'],
+            ['Extrait de rôle', 'Administration fiscale', 'Situation fiscale à jour (ou échéancier de paiement)'],
+            ['Attestations de mise à jour CNAS / CASNOS', 'Caisses de sécurité sociale', 'Cotisations sociales acquittées pour les salariés / les gérants'],
+            ['Certificat de qualification et classification', 'Ministère ou commission de wilaya', 'Domaines et catégorie pour les travaux publics'],
+            ['Statuts et NIS', 'Notaire ; Office national des statistiques (ONS)', 'Forme juridique, capital, identifiant statistique'],
+            ['Casier judiciaire du gérant', 'Ministère de la Justice', 'Exigé dans la plupart des dossiers d’appel d’offres publics'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment vérifier un partenaire algérien',
+          paragraphs: [
+            'Demandez les documents ci-dessus et vérifiez ce qui peut l’être : l’extrait du registre de commerce contre les données du CNRC, les attestations fiscales et sociales pour leurs dates, le certificat de qualification pour ses domaines et sa validité. Regardez ensuite ce qu’aucun certificat ne montre. L’entreprise possède-t-elle le matériel qu’elle décrit, et où est-il stationné ? Pouvez-vous visiter le parc, la carrière ou la station ? Connaît-elle le terrain de la région où se trouve votre projet, et peut-elle expliquer comment elle s’y mobiliserait ? Y a-t-il une organisation de pièces et d’entretien derrière les machines ? Contrats, correspondance et documents de chantier sont-ils disponibles dans une langue que votre équipe lit ? Les réponses à ces questions séparent un partenaire d’un en-tête de lettre.',
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'note',
+          title: 'Points pratiques souvent découverts tard',
+          list: [
+            'Les paiements en Algérie se font en dinars par des banques algériennes ; la part transférable d’un marché est définie dans le marché lui-même',
+            'Le personnel de chantier a besoin de permis de travail ; l’affiliation des salariés locaux à la sécurité sociale est contrôlée sur le chantier',
+            'Importer du matériel, même temporairement, prend des mois et les règles changent ; la location locale fait le relais',
+            'Les marchés publics s’exécutent sur une documentation en français ; une équipe de chantier bilingue fait gagner des semaines',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'fc-51-49', q: 'La règle 51/49 s’applique-t-elle encore aux entreprises étrangères en Algérie ?', a: 'En général plus pour la construction et les travaux publics : les lois de finances de 2020 ont supprimé l’obligation pour des partenaires algériens de détenir 51 % du capital dans les secteurs non stratégiques, tout en la maintenant pour les activités stratégiques, et la loi minière de 2025 la conserve pour l’exploitation des carrières. Une entreprise étrangère peut donc détenir une société de construction en Algérie, mais les marchés publics continuent de favoriser les sociétés à capitaux majoritairement algériens par la marge de préférence et l’engagement de partenariat.' },
+            { id: 'fc-preference', q: 'Qu’est-ce que la marge de préférence nationale dans les marchés publics algériens ?', a: 'C’est une marge de préférence de 25 %, prévue par la loi 23-12 de 2023, accordée aux produits d’origine algérienne et aux sociétés de droit algérien dont le capital est détenu majoritairement par des nationaux résidents, appliquée lors de la comparaison des offres.' },
+            { id: 'fc-subcontract-limit', q: 'Quelle part d’un marché public peut être sous-traitée en Algérie ?', a: 'En vertu de la réglementation des marchés publics de 2015, la sous-traitance ne peut dépasser 40 % du montant du marché, et chaque sous-traitant doit être agréé au préalable par le service contractant ; les textes d’application de la loi de 2023 sont à vérifier pour l’appel d’offres concerné.' },
+            { id: 'fc-qualification', q: 'Qu’est-ce que le certificat de qualification et classification ?', a: 'C’est le certificat, créé par le décret 93-289 de 1993, que toute entreprise exécutant des travaux de bâtiment, de travaux publics ou d’hydraulique dans le cadre d’un marché public doit détenir ; il indique les domaines d’activité de l’entreprise et sa catégorie, qui dépend de son personnel, de son matériel et de sa capacité financière, et c’est le premier document à demander à un partenaire algérien.' },
+            { id: 'fc-check-partner', q: 'Comment une entreprise étrangère peut-elle vérifier une entreprise algérienne ?', a: 'En obtenant son extrait du registre de commerce (RC), son identification fiscale (NIF), ses attestations fiscales et de sécurité sociale et son certificat de qualification, en les contrôlant auprès des organismes émetteurs tels que le CNRC, puis en visitant son parc, sa carrière ou sa station pour confirmer que le matériel et l’organisation décrits existent réellement.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} est une SARL algérienne créée en 1997, immatriculée à Bounoura, wilaya de Ghardaïa, avec son propre parc d’engins à son parc matériel de Djelfa et sa propre carrière et station de concassage à Oued Sdeur près d’Aïn El Ibel. Elle est organisée pour travailler avec les entreprises internationales comme sous-traitant, fournisseur d’engins et de granulats, partenaire de démarrage de chantier ou partenaire local, et met ses documents d’immatriculation et sa présentation d’entreprise à la disposition de ses partenaires. Voir [partenaire local des entreprises internationales](page:partners), [travaux routiers](page:roads), [location d’engins](page:rental) et [granulats fins](page:aggregates).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Vous préparez une offre ou un projet en Algérie ?',
+          text: 'Écrivez-nous avec une courte description du projet et la langue que vous préférez. Nous répondons avec ce que nous pouvons y apporter.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Partenaires internationaux', page: 'partners', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'road-pavement-layers': {
+      slug: 'couches-de-chaussee-terrains-algeriens',
+      nav: 'Les couches de chaussée sur les terrains algériens',
+      title: 'Couches de chaussée sur les terrains algériens | ETAHG',
+      description: 'Comment se construisent les routes du Tell au Sahara : plate-forme, fondation, base et roulement, catalogue du CTTP, tuf, gel des plateaux, chaleur du sud.',
+      summary: 'Plate-forme, couche de forme, fondation, base et roulement, les matériaux de chacune, l’approche du catalogue algérien des chaussées face au climat et au trafic, et ce qui change entre le littoral, l’Atlas, les Hauts Plateaux et le Sahara.',
+      eyebrow: 'Travaux routiers',
+      h1: 'Les couches de chaussée sur les terrains algériens : du Tell au Sahara',
+      lead: 'Une route est un empilement de couches qui ont chacune leur fonction, et l’empilement change avec le sol, le climat et le trafic. {{company}} a constitué son parc pour construire des routes et l’a fait dans de nombreuses régions d’Algérie ; cet article décrit les couches, les matériaux et la manière dont les quatre grands terrains du pays modifient la conception.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'roads',
+      related: ['roads', 'aggregates', 'rental'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'L’empilement, de bas en haut',
+          paragraphs: [
+            'Tout en bas se trouve la plate-forme, le terrain naturel ou remblayé après terrassements, dont la portance est classée d’après les essais de sol. Lorsque le sol est faible, une couche de forme en matériau sélectionné la relève jusqu’à la classe exigée par le dimensionnement. Viennent ensuite les couches de chaussée proprement dites : une couche de fondation et une couche de base, qui répartissent les charges des roues, et la couche de roulement, qui porte le trafic, évacue l’eau et donne l’adhérence. Entre la base et le roulement peuvent s’intercaler une couche d’accrochage ou une couche de liaison, et l’ensemble est drainé par des accotements et des fossés, sans lesquels aucun empilement ne dure.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Couches et matériaux usuels',
+          intro: 'Les épaisseurs sont des fourchettes indicatives pour des routes ordinaires ; le bureau d’études les fixe pour chaque projet.',
+          caption: 'Couches de chaussée, leur fonction et les matériaux habituellement spécifiés en Algérie',
+          head: ['Couche', 'Fonction', 'Matériaux usuels', 'Épaisseur indicative'],
+          rows: [
+            ['Plate-forme / couche de forme', 'Plateforme portante, protection contre le gel et l’eau', 'Remblai sélectionné, tuf, sol traité', 'Variable, selon la classe de sol'],
+            ['Couche de fondation', 'Répartit les charges vers le sol', 'Grave non traitée (GNT 0/31,5, 0/40), tuf dans le sud', 'Environ 20 à 30 cm'],
+            ['Couche de base', 'Couche structurelle principale', 'Grave concassée, ou base bitumineuse (grave-bitume)', 'Environ 15 à 25 cm non liée, 10 à 15 cm bitumineuse'],
+            ['Couche de liaison / roulement', 'Trafic, étanchéité, adhérence', 'Enrobé à chaud (béton bitumineux 0/10 ou 0/14), enduit superficiel sur les routes à faible trafic', 'Environ 5 à 8 cm d’enrobé ; 1 à 2 cm d’enduit superficiel'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment le catalogue algérien aborde le dimensionnement',
+          paragraphs: [
+            'Le dimensionnement routier algérien s’appuie en grande partie sur le catalogue de dimensionnement des chaussées neuves publié par l’organisme de contrôle technique des travaux publics (CTTP), avec les essais de sols et de matériaux des laboratoires nationaux. La méthode du catalogue classe le trafic (en poids lourds par jour et durée de dimensionnement), la portance de la plate-forme et la zone climatique du site, puis propose des structures pour chaque combinaison et chaque type de réseau. Les ingénieurs utilisent aussi la méthode CBR et le catalogue français comme références. Ce qui compte pour une entreprise ou un maître d’ouvrage, c’est qu’une structure ne s’improvise pas sur le chantier : les couches, les matériaux et leurs épaisseurs viennent de l’étude, et le savoir-faire de l’entreprise consiste à les produire et à les compacter à la densité et à l’uni spécifiés.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Matériaux : grave concassée, tuf et bitume',
+          paragraphs: [
+            'Les couches non liées utilisent une grave concassée, la grave non traitée (GNT), à courbe maîtrisée telle que 0/31,5, compactée à la bonne teneur en eau ; sa qualité dépend de la dureté de la roche (essais Los Angeles et Micro-Deval) et de la propreté des fines. Dans les zones sud et sahariennes, les encroûtements gypso-calcaires appelés tufs sont un matériau traditionnel de premier choix pour les couches de fondation et de base, avec leurs propres règles de dimensionnement parce qu’ils se comportent autrement qu’une GNT classique : ils gagnent en cohésion lorsqu’ils sont compactés à sec, mais peuvent se dégrader sous l’eau et la fatigue, ce qui explique que leur emploi soit spécifié avec précaution.',
+            'Les couches bitumineuses sont fabriquées en centrale d’enrobage à chaud à partir de gravillons concassés, de sable concassé et de bitume routier ; la classe de pénétration 40/50 est la plus couramment utilisée en Algérie, le 35/50 se rencontrant aussi dans les spécifications, toutes deux adaptées à un climat chaud. La mise en œuvre suit le finisseur, les compacteurs et les fenêtres de température de l’enrobé, et s’arrête lorsque l’air est trop froid ou que le vent refroidit la couche trop vite.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Ce que chaque terrain change',
+          paragraphs: [
+            'Sur le Tell littoral, la pluie, les sols argileux et les nappes hautes mettent l’accent sur le drainage, les couches de forme et la protection de la plate-forme ; les déblais dans les marnes et la stabilité des remblais sont les problèmes d’ingénierie. Dans les chaînes de l’Atlas, c’est le tracé lui-même qui est le défi : déblais rocheux, remblais de grande hauteur, ouvrages de soutènement et fortes pentes, avec une saison d’enrobés courte en altitude.',
+            'Sur les Hauts Plateaux, à environ mille mètres, les hivers apportent le gel et une neige occasionnelle ; le dimensionnement se prémunit donc contre la pénétration du gel et la saturation des sols fins au printemps, et le programme place les travaux bitumineux dans les mois chauds. La demande en granulats est forte parce que les tracés sont longs, ce qui fait d’une carrière proche le facteur décisif du coût des couches non liées. Au Sahara, les problèmes s’inversent : la chaleur, qui limite les heures pour les enrobés et le béton et oriente le choix de la classe de bitume ; le sable éolien, qui envahit la route et abrase la surface ; la rareté de l’eau pour le compactage ; et l’emploi du tuf local et de matériaux concassés là où la bonne roche est loin. Les crues des oueds dictent les ouvrages hydrauliques et la hauteur des remblais.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Compactage, eau et logistique',
+          paragraphs: [
+            'Quel que soit le terrain, les couches ne tiennent que si elles sont compactées à la densité spécifiée et à la bonne teneur en eau ; c’est pourquoi les compacteurs vibrants, les citernes à eau et un laboratoire sur le chantier comptent autant que le finisseur. Dans l’intérieur de l’Algérie, l’eau de compactage est elle-même une question logistique, résolue par citernage ou par un puits sur le tracé. Le transport des granulats de la carrière au chantier, par camions et semi-remorques bennes, et l’approvisionnement en bitume par citernes calorifugées complètent le tableau : un projet routier dans ces régions est un projet de logistique autant que de construction.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'rp-layers', q: 'Quelles sont les couches d’une route ?', a: 'De bas en haut : la plate-forme (le terrain naturel ou remblayé préparé), une couche de forme facultative, la couche de fondation, la couche de base et la couche de roulement, parfois avec une couche de liaison entre la base et le roulement ; chaque couche répartit les charges vers celle du dessous, et le roulement assure l’adhérence et l’étanchéité.' },
+            { id: 'rp-thickness', q: 'Quelle est l’épaisseur des couches de chaussée en Algérie ?', a: 'Pour une route ordinaire, les ordres de grandeur sont d’environ 20 à 30 cm de fondation non liée, 15 à 25 cm de base non liée ou 10 à 15 cm de base bitumineuse, et 5 à 8 cm d’enrobé à chaud en roulement, mais les épaisseurs réelles sont fixées par l’étude de dimensionnement d’après le trafic, la classe de plate-forme et la zone climatique, suivant le catalogue algérien du CTTP.' },
+            { id: 'rp-tuf', q: 'Qu’est-ce que le tuf dans la construction routière algérienne ?', a: 'Le tuf est le nom donné aux encroûtements gypso-calcaires des zones sud et sahariennes de l’Algérie, largement utilisés comme matériau de fondation et de base parce que la bonne roche est loin ; il a ses propres règles de dimensionnement, car il gagne en cohésion au compactage mais peut se dégrader sous l’eau et la fatigue.' },
+            { id: 'rp-bitumen', q: 'Quelle classe de bitume est utilisée en Algérie ?', a: 'Le bitume routier de classe de pénétration 40/50 est le plus couramment utilisé en Algérie, le 35/50 se rencontrant aussi dans les spécifications ; ce sont deux classes dures adaptées à un climat chaud, employées pour les enrobés à chaud de roulement et les couches de base bitumineuses.' },
+            { id: 'rp-winter', q: 'Peut-on mettre en œuvre des enrobés en hiver sur les Hauts Plateaux ?', a: 'Généralement pas pendant les mois froids : à environ mille mètres d’altitude, le gel, le vent et la neige occasionnelle refroidissent la couche trop vite pour le compactage ; les couches bitumineuses des Hauts Plateaux sont donc programmées à la saison chaude, tandis que les terrassements et les couches non liées continuent lorsque le sol le permet.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} construit des routes avec son propre parc complet, des terrassements et du réglage au compactage, au répandage de bitume et à la mise en œuvre des enrobés, en marché direct ou en sous-traitance, et fournit les granulats fins concassés de sa propre carrière et station de concassage à Oued Sdeur près d’Aïn El Ibel, dans la wilaya de Djelfa. Créée en 1997, elle a réalisé des projets routiers dans de nombreuses régions d’Algérie. Voir [travaux routiers](page:roads), [production de granulats fins](page:aggregates) et [location d’engins](page:rental).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Un lot route, plateforme ou accès à chiffrer ?',
+          text: 'Envoyez-nous le tracé, les couches spécifiées et le lieu. Nous répondons avec ce que nous pouvons construire, fournir ou louer pour ce lot.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Travaux routiers', page: 'roads', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'crushed-sand-vs-dune-sand': {
+      slug: 'sable-concasse-sable-de-dune-sable-de-riviere-beton-algerie',
+      nav: 'Sable concassé, sable de dune ou sable de rivière pour le béton en Algérie',
+      title: 'Sable concassé, de dune ou de rivière pour béton | ETAHG',
+      description: 'Pourquoi le sable naturel est rare en Algérie, ce que fait le sable de dune dans le béton, en quoi le sable concassé diffère, et le sable des enrobés.',
+      summary: 'Les trois sables disponibles en Algérie comparés pour le béton et les enrobés : sable alluvionnaire rare, sable de dune très fin et sable concassé anguleux à fines maîtrisées, avec les résultats de la recherche algérienne sur les mélanges.',
+      eyebrow: 'Granulats',
+      h1: 'Sable concassé, sable de dune ou sable de rivière : quel sable pour le béton en Algérie ?',
+      lead: 'Le sable est l’ingrédient du béton et des enrobés dont l’Algérie a à la fois le plus et le moins : le sud en est couvert, et le nord n’en trouve pas assez de la bonne sorte. {{company}}, qui produit des granulats fins concassés dans sa propre station dans la wilaya de Djelfa, compare les trois sables qu’un projet peut utiliser.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'aggregates',
+      related: ['aggregates', 'roads'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Pourquoi le sable naturel est rare dans le nord',
+          paragraphs: [
+            'Pendant des décennies, le béton du nord de l’Algérie a été fabriqué avec du sable alluvionnaire dragué dans les oueds. Cette ressource est finie, son extraction abîme les lits et les nappes, et elle est restreinte et surveillée depuis des années. Il en résulte un marché où un sable alluvionnaire propre et bien gradué est cher et incertain, surtout loin des rares sources autorisées, et où les entreprises se tournent vers les deux alternatives que le pays possède en abondance : les sables de dune du Sahara et le sable concassé des carrières de calcaire.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Le sable de dune : abondant mais très fin',
+          paragraphs: [
+            'Le sable de dune est roulé, propre et remarquablement uniforme, et c’est là le problème. Ses grains se situent presque tous dans une étroite bande de tailles fines, si bien que son module de finesse est bien en dessous de la plage que préfèrent les normes du béton ; un béton fabriqué avec lui seul demande plus d’eau et de ciment pour être ouvrable, se rétracte davantage et tend vers une résistance plus faible. La recherche algérienne l’a néanmoins beaucoup étudié, parce qu’il est gratuit et partout dans le sud : utilisé comme correcteur en mélange avec un sable plus grossier, dans certains cas avec des fines ou des additions pour compléter la courbe, il donne des bétons acceptables, et il est largement employé dans les mortiers et dans les matériaux à base de sable des routes du Sahara. La règle empirique est que le sable de dune corrige une courbe ; il en constitue rarement une à lui seul.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Le sable concassé : anguleux, avec des fines à maîtriser',
+          paragraphs: [
+            'Le sable concassé, appelé aussi sable manufacturé ou sable de concassage, est la fraction 0/3 à 0/5 qui sort d’une station de concassage-criblage, en Algérie le plus souvent à partir de calcaire. Ses grains sont anguleux et rugueux, ce qui améliore l’adhérence avec la pâte de ciment et la résistance mécanique du mélange, mais demande un peu plus d’eau ou d’adjuvant pour la même ouvrabilité. Sa courbe est continue et peut être ajustée à la station, et il contient une part de fines, la poussière de fracturation, qui est à la fois sa faiblesse et son atout : trop de fines argileuses nuisent au béton, mais des fines calcaires propres comblent les vides et améliorent la cohésion.',
+            'C’est pourquoi l’essai au bleu de méthylène, qui mesure l’activité de l’argile dans les fines, compte autant que l’équivalent de sable pour le sable concassé. Les études algériennes sur les bétons et mortiers ordinaires au sable calcaire concassé trouvent généralement un optimum autour de 10 à 15 % de fines, résistance et durabilité étant maintenues jusqu’à environ 20 % dans certaines séries, lorsque ces fines sont de la poussière calcaire plutôt que de l’argile ; la spécification plafonne néanmoins les fines à une catégorie fixée par la norme. Une station peut aussi laver ou classer à l’air le sable pour amener la teneur en fines au chiffre demandé par la spécification.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Les trois sables côte à côte',
+          intro: 'Tendances générales ; les résultats d’essais d’une source donnée font foi.',
+          caption: 'Comparaison du sable alluvionnaire, du sable de dune et du sable concassé pour le béton et les enrobés en Algérie',
+          head: ['Propriété', 'Sable alluvionnaire (de rivière)', 'Sable de dune', 'Sable concassé'],
+          rows: [
+            ['Disponibilité', 'Rare, extraction réglementée', 'Abondant dans le sud', 'Produit à la demande dans les carrières'],
+            ['Forme des grains', 'Roulée', 'Roulée', 'Anguleuse'],
+            ['Granularité', 'Variable selon la source', 'Très fine, uniforme', 'Continue, ajustable à la station'],
+            ['Fines', 'Souvent argileuses', 'Peu', 'Poussière calcaire, à maîtriser'],
+            ['Demande en eau', 'Faible', 'Élevée', 'Modérée'],
+            ['Résistance du béton', 'Bonne avec une bonne courbe', 'Plus faible seul ; utilisable en mélange', 'Bonne ; l’angularité aide'],
+            ['Régularité', 'Dépend de la rivière', 'Élevée', 'Élevée lorsque la production est contrôlée'],
+            ['Enrobés', 'Possible', 'Pas seul', 'Préféré : les grains anguleux résistent aux déformations'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Ce que cela signifie pour les enrobés et les couches de chaussée',
+          paragraphs: [
+            'Pour les enrobés à chaud, la réponse est moins ambiguë que pour le béton : le sable concassé est préféré parce que ses grains anguleux s’imbriquent et résistent à l’orniérage sous trafic lourd par temps chaud, ce qui est exactement la condition algérienne ; les sables roulés donnent un enrobé plus facile à mettre en œuvre mais qui se déforme plus tôt. Dans les couches non liées, la fraction sable d’une grave vient du même concasseur que les gravillons, et la question se pose rarement, tandis qu’au Sahara les couches stabilisées à base de sable utilisent le sable de dune par nécessité.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Choisir en pratique',
+          paragraphs: [
+            'C’est le laboratoire du projet qui choisit, par des gâchées d’essai, parmi les sables réellement disponibles à une distance économique du chantier. Ce qu’un fournisseur peut faire, c’est livrer un sable dont la courbe, la teneur en fines et la propreté restent les mêmes du premier camion au dernier, et fournir des résultats d’essais pour chaque période de livraison. Pour un maître d’ouvrage, les questions utiles sont d’où vient le sable, comment ses fines sont maîtrisées, quelles sont ses valeurs d’équivalent de sable et de bleu de méthylène, et si la fourniture peut tenir la cadence dont le chantier a besoin.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'ds-dune-concrete', q: 'Peut-on utiliser le sable de dune dans le béton ?', a: 'Le sable de dune peut être utilisé dans le béton surtout comme correcteur en mélange avec un sable plus grossier, parce que seul il est trop fin et uniforme, ce qui augmente la demande en eau et le retrait et abaisse la résistance ; la recherche algérienne documente des bétons acceptables avec des mélanges et avec des additions qui complètent la courbe.' },
+            { id: 'ds-crushed-vs-river', q: 'Le sable concassé est-il meilleur que le sable de rivière pour le béton ?', a: 'Il est différent plutôt que meilleur : le sable concassé est anguleux, ce qui améliore l’adhérence et la résistance, et sa courbe peut être maîtrisée à la station, mais il demande un peu plus d’eau ou d’adjuvant et ses fines doivent être propres ; le sable de rivière est roulé et ouvrable, mais rare et variable en Algérie. Avec une formulation adaptée, le sable concassé donne un béton de qualité équivalente.' },
+            { id: 'ds-fines', q: 'Quelle teneur en fines un sable concassé peut-il contenir ?', a: 'Cela dépend de la spécification et de la nature des fines : les études algériennes sur les sables calcaires concassés trouvent généralement optimales, dans un béton ordinaire, des teneurs en fines d’environ 10 à 15 %, et acceptables jusqu’à environ 20 % dans certaines études, lorsque les fines sont de la poussière calcaire plutôt que de l’argile, ce que vérifie l’essai au bleu de méthylène ; la spécification fixe la catégorie à livrer.' },
+            { id: 'ds-why-scarce', q: 'Pourquoi le sable de rivière est-il rare en Algérie ?', a: 'Parce que l’extraction de sable alluvionnaire dans les oueds est restreinte depuis des années pour protéger les lits et les nappes ; les sources autorisées sont donc peu nombreuses et éloignées de la plupart des chantiers, ce qui fait du sable concassé l’alternative habituelle dans le nord et des mélanges au sable de dune l’alternative dans le sud.' },
+            { id: 'ds-asphalt', q: 'Quel sable est utilisé dans les enrobés ?', a: 'Le sable concassé est généralement préféré pour les enrobés à chaud parce que ses grains anguleux s’imbriquent et résistent à l’orniérage sous trafic lourd par temps chaud, alors que les sables roulés donnent un enrobé qui se déforme plus tôt.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} produit des granulats fins concassés de qualité dans sa propre carrière et station de concassage à Oued Sdeur près d’Aïn El Ibel, dans la wilaya de Djelfa, avec des machines adaptées aux projets qui exigent de fortes cadences de production, et livre avec ses propres camions et semi-remorques. Les exigences d’essais sont convenues avant la fourniture. Voir [production de granulats fins](page:aggregates) et, pour l’emploi du même matériau dans les chaussées, [travaux routiers](page:roads).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Vous cherchez une source de sable fiable ?',
+          text: 'Envoyez-nous les fractions, les quantités et le chantier. Nous répondons avec des résultats d’essais et une proposition rendu chantier.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Production de granulats fins', page: 'aggregates', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'public-works-glossary': {
+      slug: 'lexique-travaux-publics-francais-anglais-arabe-chinois',
+      nav: 'Lexique des travaux publics : français, anglais, arabe et chinois',
+      title: 'Lexique TP : français, anglais, arabe, chinois | ETAHG',
+      description: 'Termes de travaux publics des chantiers algériens en français, anglais, arabe et chinois : engins, granulats, couches de chaussée, forage et marchés.',
+      summary: 'Les engins, matériaux, couches de chaussée et termes contractuels qu’une équipe étrangère rencontre sur un chantier algérien, en français, anglais, arabe et chinois simplifié.',
+      eyebrow: 'Travailler en Algérie',
+      h1: 'Lexique des travaux publics : termes français, anglais, arabes et chinois utilisés sur les chantiers algériens',
+      lead: 'Les documents de chantier algériens sont en français, les équipes parlent arabe, et de plus en plus d’ingénieurs qui lisent les plans parlent chinois ou anglais. {{company}}, qui s’adresse aux entreprises internationales depuis ses bases de Djelfa et de Ghardaïa, a rassemblé les termes qui reviennent le plus souvent.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'rental',
+      related: ['fleet', 'rental', 'roads', 'partners'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Comment utiliser ce lexique',
+          paragraphs: [
+            'La colonne française est celle qui apparaît dans les CCTP, les devis quantitatifs et les rapports de chantier algériens ; la colonne arabe donne le terme écrit standard, avec entre parenthèses le mot couramment entendu sur le chantier lorsqu’il diffère ; la colonne chinoise utilise le terme d’ingénierie de Chine continentale. Les termes sont groupés par thème. Lorsque plusieurs mots existent, c’est le plus courant sur les chantiers algériens qui est donné.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Engins de terrassement et de mise en œuvre',
+          caption: 'Noms des engins dans les quatre langues',
+          head: ['Français', 'Anglais', 'Arabe', 'Chinois'],
+          rows: [
+            ['pelle hydraulique', 'hydraulic excavator', 'حفّارة هيدروليكية', '液压挖掘机'],
+            ['bouteur (bulldozer)', 'bulldozer', 'جرّافة (بلدوزر)', '推土机'],
+            ['chargeuse sur pneus', 'wheel loader', 'محمّلة بعجلات (شارجور)', '轮式装载机'],
+            ['niveleuse', 'motor grader', 'آلة تسوية (نيفلوز)', '平地机'],
+            ['finisseur', 'asphalt paver', 'فرّاشة الإسفلت (فينيسور)', '沥青摊铺机'],
+            ['compacteur vibrant', 'vibratory roller', 'مدحلة اهتزازية', '振动压路机'],
+            ['camion-benne', 'tipper truck, dump truck', 'شاحنة قلاّبة', '自卸卡车'],
+            ['semi-remorque benne', 'tipper semi-trailer', 'نصف مقطورة قلاّبة', '自卸半挂车'],
+            ['répandeuse de bitume', 'bitumen distributor', 'شاحنة رش الزفت (القار)', '沥青洒布车'],
+            ['citerne à bitume', 'bitumen tanker', 'صهريج الزفت', '沥青运输罐车'],
+            ['chariot de forage (carrière)', 'surface rock drill', 'آلة حفر الصخور', '露天凿岩钻车'],
+            ['atelier de forage sur camion', 'truck-mounted drilling rig', 'جهاز حفر محمول على شاحنة', '车载钻机'],
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Granulats et station de concassage',
+          caption: 'Vocabulaire des granulats et de la station dans les quatre langues',
+          head: ['Français', 'Anglais', 'Arabe', 'Chinois'],
+          rows: [
+            ['carrière', 'quarry', 'محجرة', '采石场'],
+            ['station de concassage', 'crushing plant', 'محطة تكسير (كسّارة)', '破碎站'],
+            ['concasseur à mâchoires', 'jaw crusher', 'كسّارة فكّية', '颚式破碎机'],
+            ['concasseur à cône', 'cone crusher', 'كسّارة مخروطية', '圆锥破碎机'],
+            ['concasseur à percussion', 'impact crusher', 'كسّارة صدمية', '反击式破碎机'],
+            ['crible', 'screen', 'غربال', '筛分机'],
+            ['granulats', 'aggregates', 'ركام (حصى)', '骨料'],
+            ['sable concassé', 'crushed sand, manufactured sand', 'رمل مكسّر', '机制砂'],
+            ['gravillon', 'fine gravel, chippings', 'حصى صغير (غرافييه)', '碎石'],
+            ['grave non traitée (GNT)', 'unbound graded aggregate', 'حصى مدرّج غير معالج', '级配碎石'],
+            ['fines', 'fines', 'الدقائق (الغبار)', '石粉'],
+            ['équivalent de sable', 'sand equivalent', 'مكافئ الرمل', '砂当量'],
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Routes et terrassements',
+          caption: 'Termes de construction routière dans les quatre langues',
+          head: ['Français', 'Anglais', 'Arabe', 'Chinois'],
+          rows: [
+            ['terrassement', 'earthworks', 'أشغال ترابية', '土方工程'],
+            ['déblai / remblai', 'cut / fill', 'حفر / ردم', '挖方 / 填方'],
+            ['plate-forme', 'subgrade, platform', 'أرضية (الطبقة الحاملة)', '路基'],
+            ['couche de forme', 'capping layer', 'طبقة التشكيل', '路床'],
+            ['couche de fondation', 'sub-base', 'طبقة الأساس', '底基层'],
+            ['couche de base', 'base course', 'الطبقة القاعدية', '基层'],
+            ['couche de roulement', 'wearing course', 'طبقة السطح', '面层'],
+            ['béton bitumineux (enrobé à chaud)', 'hot-mix asphalt', 'خرسانة إسفلتية', '热拌沥青混合料'],
+            ['grave-bitume', 'bituminous base', 'حصى مقيّر', '沥青稳定碎石'],
+            ['couche d’accrochage', 'tack coat', 'طبقة التثبيت', '粘层'],
+            ['compactage', 'compaction', 'رصّ (دكّ)', '压实'],
+            ['piste d’accès', 'access track', 'مسلك الدخول', '施工便道'],
+            ['installation de chantier', 'site mobilization, site set-up', 'تجهيز الورشة', '施工进场（三通一平）'],
+            ['forage d’eau (puits)', 'water well', 'بئر (فوراج)', '水井'],
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Marchés et documents de chantier',
+          caption: 'Vocabulaire contractuel et administratif dans les quatre langues',
+          head: ['Français', 'Anglais', 'Arabe', 'Chinois'],
+          rows: [
+            ['maître d’ouvrage (service contractant)', 'project owner, contracting authority', 'صاحب المشروع (المصلحة المتعاقدة)', '业主（发包方）'],
+            ['maître d’œuvre', 'engineer, supervising consultant', 'صاحب العمل (مكتب الدراسات)', '监理/设计单位'],
+            ['entreprise titulaire', 'main contractor', 'المقاول الرئيسي', '总承包商'],
+            ['sous-traitance / sous-traitant', 'subcontracting / subcontractor', 'المناولة / المناول', '分包 / 分包商'],
+            ['marché public', 'public contract', 'صفقة عمومية', '公共采购合同'],
+            ['CCTP (cahier des clauses techniques particulières)', 'technical specification', 'دفتر الشروط التقنية الخاصة', '技术规范'],
+            ['bordereau des prix unitaires', 'schedule of unit prices', 'جدول الأسعار الوحدوية', '单价表'],
+            ['devis quantitatif et estimatif', 'bill of quantities', 'الكشف الكمي والتقديري', '工程量清单'],
+            ['ordre de service (ODS)', 'notice to proceed', 'أمر بالخدمة', '开工令'],
+            ['PV de réception', 'acceptance report', 'محضر الاستلام', '验收报告（验收证书）'],
+            ['attachement', 'measurement sheet', 'كشف الأشغال المنجزة', '计量单'],
+            ['situation de travaux', 'progress payment statement', 'وضعية الأشغال', '进度款报表'],
+            ['location avec opérateur', 'rental with operator', 'كراء مع سائق', '带操作手租赁'],
+            ['registre de commerce (RC)', 'commercial register extract', 'السجل التجاري', '商业登记证'],
+            ['certificat de qualification et classification', 'qualification and classification certificate', 'شهادة التأهيل والتصنيف المهنيين', '资质等级证书'],
+          ],
+        },
+        {
+          type: 'callout',
+          variant: 'tip',
+          title: 'Trois mots qui prêtent à confusion',
+          paragraphs: [
+            '« Leasing » désigne habituellement en Algérie le crédit-bail bancaire, et non la location opérationnelle. « Forage » désigne un puits foré, pas seulement l’action de forer. « Attachement » est le relevé contradictoire signé sur le chantier, et non une pièce jointe à un courriel.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'gl-language', q: 'Dans quelle langue sont rédigés les marchés de construction en Algérie ?', a: 'Les marchés publics, les spécifications et les documents de chantier en Algérie sont en général rédigés en français, l’arabe étant utilisé dans l’administration et sur le chantier ; une équipe de chantier bilingue, ou un partenaire local qui travaille dans les deux langues, fait gagner un temps considérable à une entreprise étrangère.' },
+            { id: 'gl-finisseur', q: 'Qu’est-ce qu’un finisseur ?', a: 'Un finisseur est la machine qui met en œuvre l’enrobé à chaud en une couche régulière devant les compacteurs ; en anglais il s’appelle asphalt paver, en arabe فرّاشة الإسفلت et en chinois 沥青摊铺机.' },
+            { id: 'gl-attachement', q: 'Qu’est-ce qu’un attachement sur un chantier algérien ?', a: 'Un attachement est le relevé des quantités de travaux exécutées pendant une période, signé par l’entreprise et le maître d’œuvre, qui sert de base à la situation de travaux.' },
+            { id: 'gl-gnt', q: 'Que signifie GNT dans une spécification routière ?', a: 'GNT signifie grave non traitée, une grave concassée non liée telle qu’un 0/31,5 utilisée pour les couches de fondation et de base ; en anglais on l’appelle unbound graded aggregate et en chinois 级配碎石.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} travaille en français et en arabe sur le chantier ; ce site et la présentation de l’entreprise existent dans les quatre langues, et les partenaires sont invités à indiquer la langue qu’ils préfèrent pour la correspondance. Les engins du premier tableau sont les catégories de son propre [parc](page:fleet), proposées en [location courte et longue durée](page:rental) ; les termes routiers décrivent ses [travaux routiers](page:roads) ; et la page [partenaires internationaux](page:partners) explique comment démarre une coopération avec une entreprise étrangère.',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Un terme vous manque ?',
+          text: 'Dites-nous quel mot il vous faut, dans quelle langue, et nous l’ajouterons.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Partenaires internationaux', page: 'partners', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'subcontracting-algeria': {
+      slug: 'sous-traitance-travaux-publics-algerie',
+      nav: 'Comment fonctionne la sous-traitance des travaux publics en Algérie',
+      title: 'La sous-traitance des travaux publics en Algérie | ETAHG',
+      description: 'Sous-traitance dans les travaux publics algériens : base juridique, plafond de 40 %, agrément par le service contractant, paiement et lots typiques.',
+      summary: 'Code civil, décret de 2015 sur les marchés publics et loi de 2023, circuit d’agrément, paiement et lots habituellement sous-traités : comment fonctionne la sous-traitance dans les travaux publics algériens, pour les entreprises titulaires et les sous-traitants.',
+      eyebrow: 'Travailler en Algérie',
+      h1: 'Comment fonctionne la sous-traitance des travaux publics en Algérie',
+      lead: 'La plupart des grands projets en Algérie sont réalisés par une entreprise titulaire et un cercle de sous-traitants algériens qui font les terrassements, le transport, les granulats, les puits et les finitions. {{company}} propose son parc, ses granulats et ses équipes routières aux entreprises titulaires précisément sur ces lots. Voici comment les textes encadrent cette relation et comment elle fonctionne en pratique, en termes généraux.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'roads',
+      related: ['roads', 'partners', 'mobilization'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'La base juridique',
+          paragraphs: [
+            'Trois niveaux de textes encadrent la sous-traitance en Algérie. Le code civil permet à un entrepreneur de sous-traiter tout ou partie des travaux, sauf si le contrat l’interdit, tout en restant pleinement responsable envers le maître d’ouvrage des travaux du sous-traitant. La réglementation des marchés publics, le décret présidentiel 15-247 de 2015 et la loi 23-12 de 2023 qui en remplace les principes au fur et à mesure de la publication des textes d’application, ajoute les conditions propres aux marchés publics : un plafond, un agrément préalable et des déclarations. Et le marché lui-même, par son cahier des prescriptions spéciales, peut restreindre davantage la sous-traitance ou exiger que les sous-traitants soient nommés dans l’offre.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Le plafond de 40 % et ce qui ne peut pas être sous-traité',
+          paragraphs: [
+            'En vertu de la réglementation de 2015, la part d’un marché public qui est sous-traitée ne peut dépasser 40 % de son montant total. Les marchés de fournitures courantes ne peuvent pas être sous-traités du tout. Le soumissionnaire indique dans son offre le montant de la part transférable du marché correspondant aux prestations sous-traitées à des sociétés de droit algérien, point qui intéresse particulièrement les soumissionnaires étrangers, puisqu’il relie la sous-traitance à la part du marché qui peut être payée en devises. Les décrets d’application de la loi de 2023 peuvent ajuster ces chiffres ; les textes applicables à un appel d’offres donné sont ceux que citent ses documents.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'Le circuit d’agrément',
+          intro: 'La séquence habituellement suivie sur un marché public ; les marchés privés sont plus libres mais la copient souvent.',
+          items: [
+            { title: 'Identification', text: 'L’entreprise titulaire identifie le lot à sous-traiter et la société algérienne qu’elle entend employer, idéalement dès l’offre.' },
+            { title: 'Dossier', text: 'Le sous-traitant fournit son extrait du registre de commerce, ses attestations fiscales et sociales, son certificat de qualification et une description de ses moyens.' },
+            { title: 'Demande d’agrément', text: 'L’entreprise titulaire soumet le sous-traitant et le projet de contrat de sous-traitance au service contractant pour agrément préalable.' },
+            { title: 'Agrément et contrat', text: 'Une fois l’agrément obtenu, le contrat de sous-traitance est signé avec les mentions obligatoires exigées par la réglementation, et une copie est déposée auprès du service contractant.' },
+            { title: 'Déclaration sur le chantier', text: 'Le sous-traitant déclare sa présence au service contractant lorsqu’il commence, et son personnel est affilié à la sécurité sociale.' },
+            { title: 'Exécution et paiement', text: 'Les travaux sont mesurés dans les attachements de l’entreprise titulaire ; le sous-traitant est payé par celle-ci, ou directement par le service contractant lorsque le marché le prévoit.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Le paiement',
+          paragraphs: [
+            'Dans le cas général, l’entreprise titulaire paie le sous-traitant sur les acomptes qu’elle reçoit, selon les termes du contrat de sous-traitance. La réglementation prévoit aussi le paiement direct d’un sous-traitant agréé par le service contractant lorsque le marché le permet, une protection qui mérite d’être négociée par un sous-traitant dont le lot est important. Dans les deux cas, la trésorerie d’un sous-traitant suit le rythme des situations de travaux du marché principal, avec les délais que la comptabilité publique peut impliquer ; le contrat de sous-traitance doit dire ce qui se passe lorsque l’entreprise titulaire est payée en retard. Les paiements se font en dinars par des banques algériennes.',
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Ce qu’une entreprise titulaire vérifie avant d’agréer un sous-traitant',
+          paragraphs: [
+            'Le dossier est le premier filtre : une inscription valide au registre de commerce dans la bonne activité, des attestations fiscales et sociales à jour, et un certificat de qualification dans le domaine concerné. Le deuxième filtre est la capacité : le sous-traitant possède-t-il, ou a-t-il un accès fiable à, les machines dont le lot a besoin, et où sont-elles ? Peut-il se mobiliser sur le chantier dans le délai disponible, et connaît-il le terrain ? Le troisième est l’organisation : un chef de chantier qui sait lire les plans, un suivi de laboratoire, une pratique de la sécurité, et quelqu’un qui répond au téléphone. Les entreprises titulaires qui sautent les deuxième et troisième filtres les découvrent en général dans le premier mois des travaux.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Les lots le plus souvent sous-traités',
+          intro: 'Lots typiques des projets d’infrastructure algériens et ce que le sous-traitant doit apporter.',
+          caption: 'Lots couramment sous-traités et les moyens qu’ils exigent',
+          head: ['Lot', 'Ce qui est attendu', 'Moyens typiques'],
+          rows: [
+            ['Terrassements et plateformes', 'Déblais et remblais selon les plans, compactage à la densité', 'Pelles, bulldozers, niveleuses, compacteurs, citernes à eau'],
+            ['Couches de chaussée', 'Fondation, base et parfois enrobés selon la spécification', 'Niveleuses, compacteurs, finisseur, répandeuse de bitume, suivi de laboratoire'],
+            ['Fourniture et transport de granulats', 'Fractions conformes à la spécification, au rythme de livraison', 'Carrière et station de concassage, camions et semi-remorques'],
+            ['Démarrage de chantier', 'Pistes d’accès, plateformes, premiers terrassements, eau', 'Parc mobilisé, atelier de forage'],
+            ['Puits d’eau', 'Forage autorisé, équipé et testé', 'Atelier de forage, matériel d’essai de pompage'],
+            ['Engins avec conducteur', 'Machines disponibles sur le chantier pour l’entreprise titulaire', 'Parc, conducteurs, soutien à l’entretien'],
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'sc-limit', q: 'Quelle est la limite de sous-traitance dans les marchés publics algériens ?', a: 'En vertu de la réglementation des marchés publics de 2015 (décret 15-247), la sous-traitance ne peut dépasser 40 % du montant total d’un marché public, et les marchés de fournitures courantes ne peuvent pas être sous-traités du tout ; les textes d’application de la loi de 2023 sont à vérifier pour l’appel d’offres concerné.' },
+            { id: 'sc-approval', q: 'Un sous-traitant doit-il être agréé en Algérie ?', a: 'Oui. Sur un marché public, le sous-traitant doit être agréé au préalable par le service contractant, une copie du contrat de sous-traitance est déposée auprès de celui-ci, et le sous-traitant déclare sa présence sur le chantier lorsqu’il commence.' },
+            { id: 'sc-foreign', q: 'Une entreprise titulaire étrangère peut-elle sous-traiter à une société algérienne ?', a: 'Oui, et c’est attendu : les soumissionnaires indiquent dans leur offre la part du marché sous-traitée à des sociétés de droit algérien, les soumissionnaires étrangers des appels d’offres internationaux portant sur des projets désignés doivent s’engager à un partenariat avec une société à capitaux majoritairement algériens en vertu de la loi de 2023, et la sous-traitance locale est le moyen habituel d’assurer terrassements, transport, granulats et puits.' },
+            { id: 'sc-payment', q: 'Qui paie le sous-traitant sur un marché public algérien ?', a: 'En général, l’entreprise titulaire paie le sous-traitant sur ses propres acomptes selon les termes du contrat de sous-traitance, mais la réglementation permet aussi le paiement direct d’un sous-traitant agréé par le service contractant lorsque le marché le prévoit.' },
+            { id: 'sc-documents', q: 'Quels documents un sous-traitant doit-il avoir en Algérie ?', a: 'Typiquement un extrait du registre de commerce dans l’activité concernée, le numéro d’identification fiscale et un extrait de rôle à jour, des attestations de sécurité sociale à jour (CNAS et CASNOS), le certificat de qualification et de classification pour son domaine, et une description de son matériel et de son personnel.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}}, SARL algérienne créée en 1997, intervient en sous-traitance sur des lots définis tels que terrassements, couches de chaussée, mise en œuvre des enrobés, préparation de site, fourniture de granulats et puits d’eau, avec son propre parc basé à Djelfa et sa propre carrière et station de concassage à Oued Sdeur près d’Aïn El Ibel. Ses documents d’immatriculation sont à la disposition des entreprises titulaires qui préparent un dossier d’agrément. Voir [travaux routiers](page:roads), [partenaire local des entreprises internationales](page:partners) et [démarrage de chantier](page:mobilization).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Vous cherchez un sous-traitant prêt pour l’agrément ?',
+          text: 'Envoyez-nous le lot, le lieu et le calendrier. Nous répondons avec notre capacité et les documents pour votre dossier d’agrément.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Partenaires internationaux', page: 'partners', variant: 'secondary' },
+          ],
+        },
+      ],
+    },
+
+    'crushing-plant-explained': {
+      slug: 'comment-une-station-de-concassage-produit-du-sable',
+      nav: 'Comment une station de concassage-criblage produit des granulats fins',
+      title: 'Comment une station de concassage produit du sable | ETAHG',
+      description: 'Du tir de mines au stock : concasseurs à mâchoires, à cône et à axe vertical, cribles, maîtrise des fines et ce qui décide de la production de sable.',
+      summary: 'Un circuit de concassage de carrière expliqué côté acheteur : extraction, concassage primaire, secondaire et tertiaire, criblage, maîtrise des fines, et les facteurs qui décident de la production et de la régularité des granulats fins.',
+      eyebrow: 'Granulats',
+      h1: 'Comment une station de concassage-criblage produit des granulats fins',
+      lead: 'Une station de concassage transforme la roche abattue en matériau gradué et régulier grâce à une suite de machines qui réduisent chacune un peu plus la taille et trient ce qui en sort. {{company}}, qui exploite sa propre carrière et station de concassage dans la wilaya de Djelfa, explique le circuit pour les acheteurs de son produit plutôt que pour ceux qui construisent de telles stations.',
+      datePublished: '2026-10-06',
+      dateModified: '2026-10-06',
+      service: 'aggregates',
+      related: ['aggregates', 'fleet'],
+      blocks: [
+        {
+          type: 'prose',
+          title: 'Tout commence au front de taille',
+          paragraphs: [
+            'Une carrière est un gradin taillé dans un gisement de roche, en Algérie le plus souvent du calcaire, sous un titre minier délivré par l’agence nationale des activités minières et renouvelé dans le cadre de la loi minière de 2025. Un chariot de foration perce un maillage de trous dans le gradin, les explosifs sont chargés et mis à feu par une équipe habilitée, et le tir abat un tas de roche fragmentée dont la distribution de tailles dépend du maillage de foration et de la charge. Une chargeuse ou une pelle alimente cette roche dans des camions ou directement dans le concasseur primaire. La qualité du sable final se décide déjà ici : une roche dure, propre et non altérée donne des granulats résistants et propres ; une roche à passées argileuses donne des fines nocives que la station devra éliminer.',
+          ],
+        },
+        {
+          type: 'steps',
+          title: 'Le circuit, étape par étape',
+          intro: 'Un circuit typique à trois étages pour les granulats fins ; les stations diffèrent dans le détail.',
+          items: [
+            { title: 'Alimentation et scalpage', text: 'Une trémie et un alimentateur vibrant dosent la roche dans le circuit ; une grille (grizzly) ou un scalpeur retire les fines naturelles et la terre avant l’entrée dans le concasseur.' },
+            { title: 'Concassage primaire : le concasseur à mâchoires', text: 'Deux mâchoires, l’une fixe et l’autre mobile, compriment la roche jusqu’à ce qu’elle se brise et tombe par l’ouverture ; le primaire réduit des blocs de plusieurs centaines de millimètres à un produit d’environ 100 à 200 mm.' },
+            { title: 'Concassage secondaire : concasseur à cône ou à percussion', text: 'Un concasseur à cône comprime la roche entre un manteau en rotation et un bol ; un concasseur à percussion la projette contre des plaques. Tous deux ramènent le matériau à quelques dizaines de millimètres et commencent à former les grains.' },
+            { title: 'Concassage tertiaire : le concasseur à axe vertical', text: 'Un VSI accélère les pierres dans un rotor et les projette contre une couronne d’enclumes ou un lit de roche, les brisant selon leurs plans de faiblesse ; c’est l’étage qui produit les grains cubiques et l’essentiel du sable concassé.' },
+            { title: 'Criblage', text: 'Des cribles vibrants à plusieurs étages séparent le flux en fractions commerciales, 0/3, 3/8, 8/15 et ainsi de suite, et renvoient les refus vers le concasseur d’où ils viennent ; c’est ce circuit fermé qui donne une courbe maîtrisée.' },
+            { title: 'Maîtrise des fines et mise en stock', text: 'La poussière est captée par arrosage ou aspiration, et la teneur en fines du sable est ajustée par criblage, classification à l’air ou lavage ; des convoyeurs constituent les stocks où les camions chargent.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Pourquoi l’étage tertiaire décide de la qualité du sable',
+          paragraphs: [
+            'Les concasseurs à mâchoires et à cône travaillent par compression et laissent des grains plats et allongés, acceptables pour une couche de fondation mais peu idéaux pour le béton et les enrobés. Le concassage par percussion, et surtout le concasseur à axe vertical, brise la roche selon ses plans naturels et arrondit les angles, ce qui donne un produit plus cubique, mieux gradué, et génère la fraction sable en quantité. Une station qui vend des granulats fins pour béton et enrobés vit donc de son étage tertiaire : la vitesse de son rotor, l’usure de ses pièces et l’alimentation qu’il reçoit fixent la courbe et la forme du sable. C’est aussi là qu’interviennent les broyeurs pour les produits les plus fins.',
+          ],
+        },
+        {
+          type: 'table',
+          title: 'Ce qui décide de la production d’une station',
+          intro: 'Les facteurs sur lesquels un acheteur doit s’informer lorsqu’un projet exige une cadence de fourniture élevée et régulière.',
+          caption: 'Facteurs qui influencent la capacité et la régularité d’une station de concassage',
+          head: ['Facteur', 'Effet', 'Ce qu’il faut demander au fournisseur'],
+          rows: [
+            ['Dureté et abrasivité de la roche', 'Une roche plus dure se concasse plus lentement et use plus vite', 'Quelle roche, et quelles valeurs Los Angeles et Micro-Deval'],
+            ['Granulométrie d’entrée et tir', 'Une alimentation bien fragmentée garde le primaire fluide', 'Comment le front de taille est exploité'],
+            ['Réglages du concasseur et pièces d’usure', 'Le réglage de l’ouverture et l’usure des blindages déplacent la courbe', 'À quelle fréquence réglages et blindages sont vérifiés'],
+            ['Surface et étages de criblage', 'Le criblage est souvent le goulot d’étranglement', 'Quelles fractions peuvent être produites simultanément'],
+            ['Circuit fermé', 'Le refus renvoyé au concasseur stabilise le produit', 'Le circuit est-il fermé sur la fraction sable'],
+            ['Humidité et fines', 'Une alimentation humide ou argileuse colmate les cribles', 'Comment les fines sont maîtrisées ; le sable est-il lavé ou classé'],
+            ['Stock et transport', 'Les stocks absorbent les pointes ; les camions fixent la cadence rendue', 'Stock au sol ; camions en propre ou loués'],
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'La régularité est le produit',
+          paragraphs: [
+            'Pour l’acheteur, la valeur d’une station n’est pas son tonnage de pointe mais la constance de son sable d’une semaine à l’autre : même courbe, mêmes fines, même propreté. Cette régularité vient d’une alimentation stable, de l’entretien des concasseurs et des cribles, et des essais à la station, avec granulométrie et équivalent de sable réalisés sur des échantillons de production et consignés. Les projets qui exigent de fortes cadences de production, comme un grand programme de bétonnage ou les couches d’une longue route, devraient demander à voir ces relevés et visiter la station ; les stocks, l’état des cribles et la maîtrise de la poussière en disent long en dix minutes.',
+          ],
+        },
+        {
+          type: 'faq',
+          title: 'Questions fréquentes',
+          items: [
+            { id: 'cp-stages', q: 'Quels sont les étages d’une station de concassage ?', a: 'Une station typique comprend un étage primaire (un concasseur à mâchoires qui réduit la roche abattue à environ 100 à 200 mm), un étage secondaire (un concasseur à cône ou à percussion qui la ramène à quelques dizaines de millimètres), un étage tertiaire (souvent un concasseur à axe vertical qui forme les grains et produit le sable) et des cribles qui trient les fractions et renvoient les refus vers les concasseurs.' },
+            { id: 'cp-jaw-vs-cone', q: 'Quelle est la différence entre un concasseur à mâchoires et un concasseur à cône ?', a: 'Un concasseur à mâchoires brise les gros blocs en les comprimant entre une mâchoire fixe et une mâchoire mobile et sert de concasseur primaire, tandis qu’un concasseur à cône comprime une roche déjà réduite entre un manteau en rotation et un bol et sert de concasseur secondaire ou tertiaire pour des produits plus fins et plus uniformes.' },
+            { id: 'cp-vsi', q: 'À quoi sert un concasseur VSI ?', a: 'Un concasseur à axe vertical (VSI) projette les pierres à grande vitesse contre une couronne d’enclumes ou un lit de roche pour qu’elles se brisent selon leurs plans naturels ; il est utilisé à l’étage tertiaire pour produire des grains cubiques et du sable concassé pour le béton et les enrobés.' },
+            { id: 'cp-fines', q: 'Comment maîtrise-t-on les fines dans le sable concassé ?', a: 'Par criblage, par classification à l’air ou par lavage, après avoir limité la poussière à la source par arrosage et aspiration ; la teneur en fines visée est celle que demande la spécification du projet, et l’essai au bleu de méthylène vérifie que les fines restantes ne sont pas argileuses.' },
+            { id: 'cp-capacity', q: 'Quelle quantité de granulats une station de concassage peut-elle produire ?', a: 'Cela dépend de la taille des concasseurs et des cribles, de la dureté de la roche, des fractions produites en même temps et de l’organisation de la carrière et du transport ; plutôt qu’un tonnage d’affiche, un acheteur doit demander la cadence soutenue que la station peut tenir pour les fractions dont il a besoin et le stock disponible.' },
+          ],
+        },
+        {
+          type: 'prose',
+          title: 'Comment ETAHG peut aider',
+          paragraphs: [
+            '{{company}} exploite sa propre carrière et station de concassage, la Carrière Djellal El Gharbi à Oued Sdeur près d’Aïn El Ibel dans la wilaya de Djelfa, avec des concasseurs et broyeurs qui produisent des granulats fins de qualité et sont particulièrement adaptés aux projets exigeant de fortes cadences de production, et transporte avec ses propres camions et semi-remorques bennes. Des visites de la station peuvent être discutées lorsqu’un projet se prépare. Voir [production de granulats fins](page:aggregates) et la page [parc d’engins](page:fleet).',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Un projet à forte demande en granulats ?',
+          text: 'Indiquez-nous les fractions, la cadence et le lieu. Nous répondons avec ce que la station peut tenir et comment les livraisons se dérouleraient.',
+          ctas: [
+            { label: 'Nous contacter', page: 'contact', variant: 'primary' },
+            { label: 'Production de granulats fins', page: 'aggregates', variant: 'secondary' },
           ],
         },
       ],

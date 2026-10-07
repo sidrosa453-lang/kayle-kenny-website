@@ -46,7 +46,8 @@
       "geo": {
         "lat": 32.4595,
         "lng": 3.6958
-      }
+      },
+      "geoConfirmed": false
     },
     {
       "id": "depot",
@@ -62,7 +63,8 @@
       "geo": {
         "lat": 34.6728,
         "lng": 3.263
-      }
+      },
+      "geoConfirmed": false
     },
     {
       "id": "quarry",
@@ -87,7 +89,8 @@
       "geo": {
         "lat": 34.3486,
         "lng": 3.2235
-      }
+      },
+      "geoConfirmed": false
     },
     {
       "id": "parts",

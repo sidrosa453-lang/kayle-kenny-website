@@ -85,7 +85,7 @@ Bonjour,
 
 Pour votre rubrique [économie régionale / témoignages d'entreprises], je vous propose un sujet court : SARL ETAHG, entreprise de travaux publics créée en 1997 à Ghardaïa, avec sa carrière et son dépôt dans la wilaya de Djelfa, vient de lancer un site en quatre langues dont le chinois pour se positionner comme partenaire local des grandes entreprises étrangères qui démarrent des chantiers dans le Sud et sur les Hauts Plateaux.
 
-Éléments disponibles : communiqué (FR/AR), photos de la carrière et des catégories d'engins, entretien avec le gérant, article pratique « mobiliser des engins sur un nouveau chantier en Algérie » (https://www.etahg.com/fr/conseils/mobiliser-engins-nouveau-chantier-algerie/) reproductible avec mention de la source.
+Éléments disponibles : communiqué (FR/AR), photos de la carrière et des catégories d'engins, entretien avec le gérant, article pratique « mobiliser des engins sur un nouveau chantier en Algérie » (https://www.etahg.com/fr/conseils/mobiliser-chantier-hauts-plateaux-sahara-algerie/) reproductible avec mention de la source.
 
 Merci de citer www.etahg.com en lien.
 

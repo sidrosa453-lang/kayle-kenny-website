@@ -21,11 +21,11 @@ Eligibility reminders (Google guidelines): a profile needs a physical place wher
 | Opening date | 1997 (month/day optional: April 1997) |
 | Description | NAP.md §8 FR version first (Algerian searchers), EN under "From the business" if a second field exists — 750 chars max |
 | Attributes | "Online estimates"; "Identifies as…" skip; LGBTQ/accessibility: fill truthfully or skip |
-| Messaging | Enable; reply within 24 h; welcome message below |
+| Messaging | Enable; internal target: reply within 24 h (never promised publicly); welcome message below |
 | Logo | 720×720 PNG from `docs/logo-512.png` (upscale/pad to 720) |
 | Cover | 1024×576 landscape photo (crushing plant or fleet, no plates) |
 
-Welcome message (chat): FR `Bonjour, merci de contacter SARL ETAHG. Indiquez le service (location d'engins, granulats, démarrage de chantier, forage) et la wilaya du chantier ; nous répondons sous 24 h.` / EN `Thank you for contacting SARL ETAHG. Tell us the service (equipment rental, aggregates, site start-up, drilling) and the project location; we reply within 24 h.`
+Welcome message (chat): FR `Bonjour, merci de contacter SARL ETAHG. Indiquez le service (location d'engins, granulats, démarrage de chantier, forage) et la wilaya du chantier ; nous vous répondons pendant les heures de bureau.` / EN `Thank you for contacting SARL ETAHG. Tell us the service (equipment rental, aggregates, site start-up, drilling) and the project location; we reply during office hours.`
 
 ### 1.2 Quarry — Carrière Djellal El Gharbi, Oued Sdeur, Aïn El Ibel (Djelfa)
 Create only if the quarry has staff present during stated hours and customers (truck drivers, buyers) come there.
@@ -58,9 +58,9 @@ Create only if customers come to the depot (equipment hand-over, inspections). I
 |------------------------|----------------|
 | Location d'engins de TP / Heavy equipment rental | `Location courte et longue durée d'engins de travaux publics : pelles hydrauliques, bulldozer, chargeuses, niveleuses, compacteurs, finisseur, camions et semi-remorques bennes, matériel bitume. Durée, opérateurs, transport et maintenance convenus par projet.` |
 | Production de granulats / Fine aggregates | `Granulats fins (sable concassé) produits dans notre carrière et station de concassage d'Oued Sdeur, Aïn El Ibel (Djelfa), pour bétons, enrobés et chaussées. Chaîne de concassage adaptée aux fortes cadences. Enlèvement ou livraison à convenir.` |
-| Travaux routiers / Road construction | `Réalisation de routes avec un parc complet : terrassements, réglage, compactage, répandage de bitume, revêtement en enrobés. Expérience de nombreuses régions d'Algérie (Tell, Atlas, Hauts Plateaux, Sahara). En entreprise générale ou en sous-traitance.` |
+| Travaux routiers / Road construction | `Réalisation de routes avec un parc complet : terrassements, réglage, compactage, répandage de bitume, revêtement en enrobés. Expérience de la construction routière dans de nombreuses régions d'Algérie et connaissance des terrains du pays (Tell, Atlas, Hauts Plateaux, Sahara). En entreprise générale ou en sous-traitance.` |
 | Démarrage de chantier / Project mobilization | `Ouverture et démarrage de nouveaux chantiers : mobilisation des engins, débroussaillage, pistes d'accès, plateformes, terrassements, approvisionnement en granulats et en eau. Pour les entreprises EPC et maîtres d'ouvrage qui démarrent un projet en Algérie.` |
-| Forage de puits d'eau / Water well drilling | `Forage de puits d'eau avec foreuse montée sur camion et accessoires : eau de chantier, besoins agricoles, industriels ou collectifs. Les autorisations de forage relèvent en général des services hydrauliques de la wilaya ; nous intervenons dans ce cadre.` |
+| Forage de puits d'eau / Water well drilling | `Forage de puits d'eau avec foreuse montée sur camion et accessoires : eau de chantier, besoins agricoles, industriels ou collectifs. Les autorisations de forage sont délivrées au niveau de la wilaya (arrêté du wali après examen par le guichet unique) ; nous intervenons dans ce cadre.` |
 | Pièces de rechange (EURL KAYLE KENNY) / Spare parts | `Via EURL KAYLE KENNY (Mohammadia, Alger), société du groupe : pièces de rechange pour moteurs diesel d'engins lourds, compatibles Cummins. Fournisseur indépendant, non affilié à Cummins Inc. et non approuvé par celle-ci. www.kaylekenny.com` |
 
 ## 3. Photos — 12 shots to take (minimum 10 per profile; JPG, ≥720×720, name files `sarl-etahg-<subject>.jpg`; **no number plates, no brand logos, no faces, no documents with personal data**)
@@ -99,10 +99,10 @@ FR: `Granulats fins de qualité, produits dans notre propre carrière et station
 AR: `ركام ناعم عالي الجودة من محجرتنا ومحطة التكسير الخاصة بنا بواد السدر، عين الإبل (ولاية الجلفة). رمل مكسّر للخرسانة والخرسانة الإسفلتية وطبقات الطرق، بخط تكسير يلائم المشاريع ذات وتيرة الإنتاج العالية. التحميل بالموقع أو التوصيل حسب المشروع. المحجرة: +213 660 36 75 50.`
 
 **Post 4 — Water well drilling (week 7)** · button → https://www.etahg.com/fr/services/forage-puits-eau/
-FR: `L'accès à l'eau conditionne tout chantier sur les Hauts Plateaux et au Sahara. SARL ETAHG dispose d'une foreuse de puits d'eau montée sur camion, avec ses accessoires, pour les besoins de chantier, agricoles, industriels ou collectifs. Les autorisations de forage relèvent en général des services de l'hydraulique de la wilaya ; nous intervenons dans ce cadre, sur demande. Contact : contact@etahg.com.`
-AR: `الوصول إلى الماء شرط لكل ورشة في الهضاب العليا والصحراء. تتوفر SARL ETAHG على آلة حفر آبار المياه محمولة على شاحنة مع ملحقاتها، لحاجات الورشات والفلاحة والصناعة والجماعات. تراخيص الحفر تصدر عادة عن مصالح الري بالولاية، ونعمل في هذا الإطار عند الطلب. الاتصال: contact@etahg.com.`
+FR: `L'accès à l'eau conditionne tout chantier sur les Hauts Plateaux et au Sahara. SARL ETAHG dispose d'une foreuse de puits d'eau montée sur camion, avec ses accessoires, pour les besoins de chantier, agricoles, industriels ou collectifs. Les autorisations de forage sont délivrées au niveau de la wilaya (arrêté du wali après examen par le guichet unique) ; nous intervenons dans ce cadre, sur demande. Contact : contact@etahg.com.`
+AR: `الوصول إلى الماء شرط لكل ورشة في الهضاب العليا والصحراء. تتوفر SARL ETAHG على آلة حفر آبار المياه محمولة على شاحنة مع ملحقاتها، لحاجات الورشات والفلاحة والصناعة والجماعات. تراخيص الحفر تُمنح على مستوى الولاية (قرار الوالي بعد دراسة الشباك الوحيد)، ونعمل في هذا الإطار عند الطلب. الاتصال: contact@etahg.com.`
 
-Later posts: Kayle Kenny parts (with the Cummins disclaimer, link https://www.etahg.com/fr/services/pieces-de-rechange/), mobilization checklist article (https://www.etahg.com/fr/conseils/mobiliser-engins-nouveau-chantier-algerie/), international partners page.
+Later posts: Kayle Kenny parts (with the Cummins disclaimer, link https://www.etahg.com/fr/services/pieces-de-rechange/), mobilization checklist article (https://www.etahg.com/fr/conseils/mobiliser-chantier-hauts-plateaux-sahara-algerie/), international partners page.
 
 ## 6. Q&A seeds (owner posts the question from the company account and answers it; FR then AR)
 

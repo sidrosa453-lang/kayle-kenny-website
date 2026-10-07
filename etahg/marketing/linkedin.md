@@ -88,8 +88,8 @@ FR: `Ouvrir un chantier dans le Sud ou sur les Hauts Plateaux commence bien avan
 #EPC #Mobilization #Algeria #Infrastructure #LocalPartner
 
 **Post 5 — Water well drilling** (link https://www.etahg.com/services/water-well-drilling/)
-EN: `Water decides whether a remote site can run. SARL ETAHG operates a truck-mounted water well drilling rig with its accessories, for construction sites and for agricultural, industrial and community needs, on request. Drilling authorisations are, in general, issued by the wilaya water services; we work within that framework.`
-FR: `L'eau décide si un chantier isolé peut tourner. SARL ETAHG dispose d'une foreuse de puits d'eau montée sur camion, avec ses accessoires, pour les chantiers et les besoins agricoles, industriels ou collectifs. Les autorisations relèvent en général des services de l'hydraulique de la wilaya. https://www.etahg.com/fr/services/forage-puits-eau/`
+EN: `Water decides whether a remote site can run. SARL ETAHG operates a truck-mounted water well drilling rig with its accessories, for construction sites and for agricultural, industrial and community needs, on request. Drilling authorisations are issued at wilaya level (order of the wali after the single-window review); we work within that framework.`
+FR: `L'eau décide si un chantier isolé peut tourner. SARL ETAHG dispose d'une foreuse de puits d'eau montée sur camion, avec ses accessoires, pour les chantiers et les besoins agricoles, industriels ou collectifs. Les autorisations de forage sont délivrées au niveau de la wilaya (arrêté du wali après examen par le guichet unique) ; nous intervenons dans ce cadre. https://www.etahg.com/fr/services/forage-puits-eau/`
 #WaterWell #Forage #Sahara #HautsPlateaux
 
 Later: Kayle Kenny parts (with disclaimer, https://www.etahg.com/services/spare-parts/), company-profile PDF (https://www.etahg.com/downloads/etahg-company-profile-en.pdf), Chinese post sharing https://www.etahg.com/zh/.

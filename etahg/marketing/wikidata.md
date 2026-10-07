@@ -39,7 +39,7 @@ Create the item only when **at least two independent references** exist, for exa
 | phone number (P1329) | +213 558 96 10 49 | — | website (allowed for contact data) |
 | email address (P968) | mailto:contact@etahg.com | — | website |
 | coordinate location (P625) | lat/lng of the HQ pin **supplied by the owner** (site.config.json currently holds approximate values 32.4595, 3.6958 — do not enter until confirmed) | — | — |
-| subsidiary / has subsidiary (P355) | EURL KAYLE KENNY (create only if it meets notability itself; otherwise skip) | — | — |
+| subsidiary / has subsidiary (P355) | EURL KAYLE KENNY — enter ONLY if the owner confirms that SARL ETAHG (or its gérant) owns the EURL (BRIEF.md says "part of ETAHG's portfolio / group", not a confirmed parent–subsidiary link) and only if the EURL item meets notability itself; otherwise skip P355 and use "affiliated" / "group company" wording in descriptions | — | — |
 | described at URL (P973) | each press article URL | — | — |
 | Kompass ID / other identifier properties | only if a Kompass or D&B identifier property exists and the listing is public | — | — |
 
